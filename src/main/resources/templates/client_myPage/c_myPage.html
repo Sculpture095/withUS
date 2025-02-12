@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet"/>
-    <link href="../../css/main.css" rel="stylesheet"/>
-    <link href="../../css/c_myPage.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../../css/main.css" rel="stylesheet" />
+    <link href="../../css/c_myPage.css" rel="stylesheet" />
     <title>클라이언트 마이페이지</title>
 </head>
 <body>
-
 <!-- Header -->
 <div th:replace="~{header :: header}"></div>
 
@@ -23,29 +25,28 @@
         <div class="sidebar_content">
             <div class="profile_box items-center">
                 <div class="user_img_box"><a href="img"></a></div>
-<!--                <button class="grade">등급</button>-->
                 <div class="user_text">
                     <h2>유저아이디</h2>
-                    <p>user1@naver.com</p>
+                    <p th:text="${member.email}"></p>
                 </div>
             </div>
             <!-- Sidebar -->
             <div class="sidebar_menu">
                 <ul class="mt-8 space-y-4">
                     <li class="current-page">
-                        <a href="c_myPage.html" class="flex justify-between items-center textdeco">
+                        <a th:href="@{/c_myPage}" class="flex justify-between items-center textdeco">
                             <span>개인정보 관리</span>
                             <span>&gt;</span>
                         </a>
                     </li>
                     <li>
-                        <a href="c_project.html"  class="flex justify-between items-center textdeco">
+                        <a th:href="@{/c_project}" class="flex justify-between items-center textdeco">
                             <span>프로젝트 관리</span>
                             <span>&gt;</span>
                         </a>
                     </li>
                     <li>
-                        <a href="c_account.html" class="flex justify-between items-center textdeco">
+                        <a th:href="@{/c_account}" class="flex justify-between items-center textdeco">
                             <span>계좌 관리</span>
                             <span>&gt;</span>
                         </a>
@@ -53,52 +54,49 @@
                 </ul>
             </div>
         </div>
-
+        <!-- Main Content -->
         <div class="content">
-            <!-- 클라이언트 소개 -->
             <div class="section">
                 <h3>클라이언트 소개</h3>
                 <div class="info-text" id="infoText">
-                    <span id="displayText" th:text="${myPage.introduce != null ? myPage.introduce : '정보를 입력하세요'}">정보를 입력하세요</span>
+                        <span id="displayText" th:text="${myPage.introduce}">
+                        </span>
                     <textarea id="editTextArea" style="display: none;" placeholder="클라이언트 소개를 입력하세요"></textarea>
                 </div>
                 <button class="btn" id="editButton">수정</button>
                 <button class="btn" id="saveButton" style="display: none;">저장</button>
             </div>
-
-            <!-- 클라이언트 정보 -->
             <div class="section">
                 <h3>클라이언트 정보</h3>
                 <div class="info" id="infoSection">
                     <div>
+                        <span>클라이언트 형태</span>
+                        <span id="partnerType" th:text="${member.userType}"></span>
+                    </div>
+                    <div>
                         <span>이름</span>
-                        <span id="name" th:text="${member.name != null ? member.name : '정보를 입력하세요'}"></span>
-                        <!-- <input type="text" id="editName" style="display: none; width: 250px; height: 23px;  float: right;" placeholder="정보를 입력하세요"> -->
+                        <span id="name" th:text="${member.name}"></span>
                     </div>
                     <div>
                         <span>닉네임</span>
-                        <span id="nickname" th:text="${member.nickname != null ? member.nickname : '정보를 입력하세요'}"></span>
-                        <input type="text" id="editNickname" style="display: none; width: 250px; height: 23px; float: right;" placeholder="정보를 입력하세요">
+                        <span id="nickname" th:text="${member.nickname}"></span>
+
                     </div>
-                    <div>
-                        <span>생년월일</span>
-                        <span id="birthdate" th:text="${myPage.birth != null ? myPage.birth : '정보를 입력하세요'}"></span>
-                        <!-- <input type="date" id="editBirthdate" style="display: none;"> -->
-                    </div>
+
                     <div>
                         <span>사업자번호</span>
-                        <span id="businessNumber" th:text="${myPage.businessNum != null ? myPage.businessNum : '정보를 입력하세요'}"></span>
-                        <input type="text" id="editBusinessNumber" style="display: none; width: 250px; height: 23px; float: right;" placeholder="정보를 입력하세요">
+                        <span id="businessNumber" th:text="${myPage.businessNum}"></span>
+                        <input type="text" id="editBusinessNumber" style="display: none; width: 250px; height: 23px;  float: right;" placeholder="정보를 입력하세요">
                     </div>
                     <div>
                         <span>주소</span>
-                        <span id="address" th:text="${myPage.address != null ? myPage.address : '정보를 입력하세요'}"></span>
-                        <input type="text" id="editAddress" style="display: none; width: 250px; height: 23px; float: right;" placeholder="정보를 입력하세요">
+                        <span id="address" th:text="${myPage.address}"></span>
+                        <input type="text" id="editAddress" style="display: none; width: 250px; height: 23px;  float: right;" placeholder="정보를 입력하세요">
                     </div>
                     <div>
                         <span>우편번호</span>
-                        <span id="postalCode" th:text="${myPage.address != null ? myPage.address : '정보를 입력하세요'}"></span>
-                        <input type="text" id="editPostalCode" style="display: none; width: 250px; height: 23px; float: right;" placeholder="정보를 입력하세요">
+                        <span id="postalCode" th:text="${myPage.zipcode}"></span>
+                        <input type="text" id="editPostalCode" style="display: none; width: 250px; height: 23px;  float: right;" placeholder="정보를 입력하세요">
                     </div>
                 </div>
                 <button class="btn" id="editInfoButton">수정</button>
@@ -106,78 +104,157 @@
             </div>
         </div>
     </div>
-</div>
+</div> <!-- wrapper -->
+
 
 <!-- Footer -->
-    <div  th:replace="~{footer :: footer}"></div>
+<div  th:replace="~{footer :: footer}"></div>
+
 
 <script src="/js/header_footer.js"></script>
 <script src="/js/script.js"></script>
-
-
-
 <script>
-
-
-    // 클라이언트 소개 수정 기능
+    // 수정 버튼 클릭 시 텍스트 영역으로 전환
     const editButton = document.getElementById("editButton");
     const saveButton = document.getElementById("saveButton");
     const displayText = document.getElementById("displayText");
     const editTextArea = document.getElementById("editTextArea");
 
     editButton.onclick = function() {
-        displayText.style.display = "none";
-        editTextArea.style.display = "block";
-        editTextArea.value = displayText.innerText.trim();
-        editButton.style.display = "none";
-        saveButton.style.display = "inline";
+        displayText.style.display = "none"; // 현재 텍스트 숨기기
+        editTextArea.style.display = "block"; // 텍스트 영역 보이기
+        editTextArea.value = displayText.innerText; // 현재 내용을 텍스트 영역에 설정
+        editButton.style.display = "none"; // 수정 버튼 숨기기
+        saveButton.style.display = "inline"; // 저장 버튼 보이기
     }
 
     saveButton.onclick = function() {
-        displayText.innerText = editTextArea.value.trim();
-        displayText.style.display = "inline";
-        editTextArea.style.display = "none";
-        editButton.style.display = "inline";
-        saveButton.style.display = "none";
+        displayText.innerText = editTextArea.value; // 텍스트 영역의 내용을 info-text에 설정
+        displayText.style.display = "inline"; // 텍스트 보이기
+        editTextArea.style.display = "none"; // 텍스트 영역 숨기기
+        editButton.style.display = "inline"; // 수정 버튼 보이기
+        saveButton.style.display = "none"; // 저장 버튼 숨기기
     }
 
-    // 클라이언트 정보 수정 기능
+    // --------------------------------------------------------------------------------------
+
+    // 정보 수정 버튼 클릭 시 입력 필드로 전환
     const editInfoButton = document.getElementById("editInfoButton");
     const saveInfoButton = document.getElementById("saveInfoButton");
 
     editInfoButton.onclick = function() {
+        // 각 정보 항목을 수정할 수 있는 입력 필드로 전환
+        document.querySelectorAll('.info div').forEach((div) => {
+            const span = div.querySelector('span:nth-child(2)'); // 두 번째 span (정보 텍스트)
+            const input = div.querySelector('input'); // 해당 div 내부 input
+
+            if (span && input) {
+                span.style.display = "none"; // 기존 텍스트 숨기기
+                input.style.display = "block"; // 입력 필드 보이기
+                input.value = span.innerText.trim() === "정보를 입력하세요" ? "" : span.innerText; // 기본값 설정
+                input.placeholder = span.innerText.trim() === "정보를 입력하세요" ? input.placeholder : span.innerText; // DB 데이터 반영
+            }
+        });
+        editInfoButton.style.display = "none"; // 수정 버튼 숨기기
+        saveInfoButton.style.display = "inline"; // 저장 버튼 보이기
+    }
+
+    saveInfoButton.onclick = function() {
+        // 각 입력 필드의 내용을 span에 업데이트
         document.querySelectorAll('.info div').forEach((div) => {
             const span = div.querySelector('span:nth-child(2)');
             const input = div.querySelector('input');
 
             if (span && input) {
-                span.style.display = "none";
-                input.style.display = "block";
-                input.value = span.innerText.trim() === "정보를 입력하세요" ? "" : span.innerText.trim();
-                input.placeholder = span.innerText.trim() === "정보를 입력하세요" ? input.placeholder : span.innerText;
+                span.innerText = input.value.trim() === "" ? "정보를 입력하세요" : input.value; // 빈값이면 기본 메시지 유지
+                span.style.display = "inline"; // 텍스트 보이기
+                input.style.display = "none"; // 입력 필드 숨기기
             }
         });
-        editInfoButton.style.display = "none";
-        saveInfoButton.style.display = "inline";
+        editInfoButton.style.display = "inline"; // 수정 버튼 보이기
+        saveInfoButton.style.display = "none"; // 저장 버튼 숨기기
     }
+
+
+    saveButton.onclick = function() {
+        const updatedText = editTextArea.value;
+
+        fetch('/api/updateMyPage', {
+            method: 'POST',  // 데이터를 저장하는 요청
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                introduce: updatedText
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("서버 응답:", data); // ✅ 응답 확인용 콘솔 출력
+                if (data.success) {
+                    displayText.innerText = updatedText;
+                    displayText.style.display = "inline";
+                    editTextArea.style.display = "none";
+                    editButton.style.display = "inline";
+                    saveButton.style.display = "none";
+                } else {
+                    alert("데이터 저장에 실패했습니다.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error); // ✅ 오류 출력 추가
+                alert("서버 요청 중 오류가 발생했습니다.");
+            });
+    };
 
     saveInfoButton.onclick = function() {
-        document.querySelectorAll('.info div').forEach((div) => {
-            const span = div.querySelector('span:nth-child(2)');
-            const input = div.querySelector('input, select');
+        const updatedData = {
 
-            if (span && input) {
-                span.innerText = input.value.trim() === "" ? "정보를 입력하세요" : input.value;
-                span.style.display = "inline";
-                input.style.display = "none";
-            }
-        });
-        editInfoButton.style.display = "inline";
-        saveInfoButton.style.display = "none";
-    }
+            businessNum: document.getElementById("editBusinessNumber").value,
+            address: document.getElementById("editAddress").value,
+            zipcode: document.getElementById("editPostalCode").value
+        };
 
+        fetch('/api/updateMyPage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("서버 응답:", data); // ✅ 응답 확인용 콘솔 출력
+                if (data.success) {
+                    // 화면 업데이트
+
+                    document.getElementById("businessNumber").innerText = updatedData.businessNum;
+                    document.getElementById("address").innerText = updatedData.address;
+                    document.getElementById("postalCode").innerText = updatedData.zipcode;
+
+                    // 입력 필드 숨기고 span 다시 표시
+                    document.querySelectorAll('.info div').forEach((div) => {
+                        const span = div.querySelector('span:nth-child(2)');
+                        const input = div.querySelector('input');
+
+                        if (span && input) {
+                            span.style.display = "inline";
+                            input.style.display = "none";
+                        }
+                    });
+
+                    editInfoButton.style.display = "inline"; // 수정 버튼 보이기
+                    saveInfoButton.style.display = "none"; // 저장 버튼 숨기기
+                } else {
+                    alert("데이터 저장에 실패했습니다.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error); // ✅ 오류 출력 추가
+                alert("서버 요청 중 오류가 발생했습니다.");
+            });
+    };
 
 </script>
-
 </body>
 </html>

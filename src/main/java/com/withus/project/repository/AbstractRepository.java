@@ -35,9 +35,20 @@ public abstract class AbstractRepository<T> {
     }
 
     // 부분 업데이트 (Partial Update) 메서드 추가
-    public void partialUpdate(String id, Map<String, Object> fields) {
-        T entity = findById(id).orElseThrow(() ->
-                new EntityNotFoundException("Entity not found with idx: " + id));
+    public void partialUpdate(Object id, Map<String, Object> fields) {
+        T entity;
+        if (id instanceof String) {
+            entity = findById((String) id).orElseThrow(() ->
+                    new EntityNotFoundException("Entity not found with idx: " + id));
+        } else if (id instanceof UUID) {
+            entity = findById((UUID) id).orElseThrow(() ->
+                    new EntityNotFoundException("Entity not found with UUID: " + id));
+        } else if (id instanceof Integer) { // ✅ Integer 지원 추가
+            entity = findById((Integer) id).orElseThrow(() ->
+                    new EntityNotFoundException("Entity not found with idx: " + id));
+        } else {
+            throw new IllegalArgumentException("Unsupported ID type: " + id.getClass().getSimpleName());
+        }
 
         fields.forEach((fieldName, value) -> {
             try {
@@ -51,6 +62,8 @@ public abstract class AbstractRepository<T> {
 
         entityManager.merge(entity);
     }
+
+
 
     // delete: 엔티티 삭제
     public void delete(T entity) {
@@ -73,6 +86,14 @@ public abstract class AbstractRepository<T> {
                         "SELECT e FROM " + getEntityClass().getSimpleName() + " e WHERE e.id = :id",
                         getEntityClass())
                 .setParameter("id", id)
+                .getResultStream()
+                .findFirst();
+    }
+    public Optional<T> findById(Integer idx) {
+        return entityManager.createQuery(
+                        "SELECT e FROM " + getEntityClass().getSimpleName() + " e WHERE e.id = :id",
+                        getEntityClass())
+                .setParameter("idx", idx)
                 .getResultStream()
                 .findFirst();
     }

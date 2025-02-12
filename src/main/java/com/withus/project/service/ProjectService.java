@@ -55,8 +55,18 @@ public class ProjectService {
 
     // 클라이언트가 자신의 프로젝트를 조회
     public List<ProjectDTO> getClientProjects(String id) {
-        validateClient(id);
+        System.out.println("🔍 [ProjectService] 클라이언트 프로젝트 조회 요청: " + id);
+
         List<ProjectEntity> projects = projectRepository.findProjectByMemberId(id);
+
+        if (projects.isEmpty()) {
+            System.out.println("⚠ [ProjectService] 등록된 프로젝트가 없습니다.");
+        } else {
+            for (ProjectEntity project : projects) {
+                System.out.println("📌 프로젝트 ID: " + project.getProjectId() + ", 이름: " + project.getProjectName());
+            }
+        }
+
         return projects.stream().map(projectMapper::toDTO).collect(Collectors.toList());
     }
 

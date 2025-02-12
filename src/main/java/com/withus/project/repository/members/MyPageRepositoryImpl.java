@@ -5,11 +5,13 @@ import com.withus.project.domain.members.MyPageEntity;
 import com.withus.project.repository.AbstractRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 @Transactional(transactionManager = "transactionManager")
@@ -45,9 +47,13 @@ public class MyPageRepositoryImpl extends AbstractRepository<MyPageEntity> {
      * @param id 업데이트할 엔터티의 식별자
      * @param fields 업데이트할 필드와 값의 맵
      */
-    public void partialUpdate(String id, Map<String, Object> fields) {
-        super.partialUpdate(id, fields);
+    public void partialUpdate(UUID myPageId, Map<String, Object> fields) {
+        Integer myPageIdx = findIdxByMyPageId(myPageId)
+                .orElseThrow(() -> new EntityNotFoundException("해당 myPageId에 대한 MyPage 정보를 찾을 수 없습니다: " + myPageId));
+
+        super.partialUpdate(myPageIdx, fields); // ✅ 변환 후 업데이트 실행
     }
+
 
     /**
      * Member ID를 기반으로 MyPageEntity 단일 조회
@@ -59,11 +65,80 @@ public class MyPageRepositoryImpl extends AbstractRepository<MyPageEntity> {
         return super.findAllByMemberId(id).stream().findFirst();
     }
 
-    public Integer findIdxByMemberId(String id) {
-        return findSingleByMemberId(id)
-                .map(MyPageEntity::getMyPageIdx)
-                .orElse(null); // 없을 경우 null 반환
+
+    public UUID findMyPageIdByMemberId(String memberId) {
+        try {
+            return getEntityManager().createQuery(
+                            "SELECT m.myPageId FROM MyPageEntity m WHERE m.member.id = :memberId", UUID.class)
+                    .setParameter("memberId", memberId)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null; // 해당 사용자의 마이페이지가 없을 경우 null 반환
+        }
     }
+
+    public Optional<MyPageEntity> findByMyPageId(UUID myPageId) {
+        return getEntityManager().createQuery(
+                        "SELECT m FROM MyPageEntity m WHERE m.myPageId = :myPageId", MyPageEntity.class)
+                .setParameter("myPageId", myPageId)
+                .getResultStream()
+                .findFirst();
+    }
+
+    public Optional<Integer> findIdxByMyPageId(UUID myPageId) {
+        return getEntityManager().createQuery(
+                        "SELECT m.myPageIdx FROM MyPageEntity m WHERE m.myPageId = :myPageId", Integer.class)
+                .setParameter("myPageId", myPageId)
+                .getResultStream()
+                .findFirst();
+    }
+
+    @Transactional
+    public void partialUpdateByMyPageId(UUID myPageId, Map<String, Object> fields) {
+        Optional<Integer> idxOptional = findIdxByMyPageId(myPageId);
+
+        if (idxOptional.isEmpty()) {
+            throw new EntityNotFoundException("해당 myPageId에 대한 myPageIdx를 찾을 수 없습니다: " + myPageId);
+        }
+
+        Integer myPageIdx = idxOptional.get();
+
+        // 동적으로 update query 생성
+        StringBuilder queryBuilder = new StringBuilder("UPDATE MyPageEntity m SET ");
+        for (String key : fields.keySet()) {
+            queryBuilder.append("m.").append(key).append(" = :").append(key).append(", ");
+        }
+        queryBuilder.setLength(queryBuilder.length() - 2); // 마지막 콤마 제거
+        queryBuilder.append(" WHERE m.myPageIdx = :myPageIdx");
+
+        var query = getEntityManager().createQuery(queryBuilder.toString());
+        for (Map.Entry<String, Object> entry : fields.entrySet()) {
+            query.setParameter(entry.getKey(), entry.getValue());
+        }
+        query.setParameter("myPageIdx", myPageIdx);
+        query.executeUpdate();
+    }
+
+
+
+
+
+
+
+    /**
+     * UUID 기반으로 MyPageEntity 단일 조회
+     *
+     * @param myPageId MyPage UUID
+     * @return MyPageEntity (Optional)
+     */
+    public Optional<MyPageEntity> findSingleByMyPageId(UUID myPageId) {
+        return getEntityManager().createQuery(
+                        "SELECT m FROM MyPageEntity m WHERE m.myPageId = :myPageId", MyPageEntity.class)
+                .setParameter("myPageId", myPageId)
+                .getResultStream()
+                .findFirst();
+    }
+
 
     public void createDefaultMyPage(MemberEntity member) {
         MyPageEntity newMyPage = new MyPageEntity();

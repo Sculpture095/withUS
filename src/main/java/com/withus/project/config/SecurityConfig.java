@@ -41,18 +41,11 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // ✅ CORS 설정
                 .csrf(csrf -> csrf.disable()) // ✅ CSRF 비활성화
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/signup", "/css/**", "/js/**", "/img/**",
-                                "/api/members/**", "/logout", "/logoutPage",
-                                "/api/projects/**", "/findProject", "/findProject/filter",
-                                "/findProject/search", "/findProject/detail/**",
-                                "/mypage/**","/c_myPage") // ✅ 마이페이지 관련 모든 경로 허용
-                        .permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll() // ✅ 🔥 모든 요청 허용 (개발용)
                 )
-
                 .sessionManagement(session -> session
                         .sessionFixation().none() // 기존 세션 유지
-                        .invalidSessionUrl("/login") // 세션이 만료되면 로그인 페이지로 이동
+                        .invalidSessionUrl("/login") // 세션 만료 시 로그인 페이지로 이동
                         .maximumSessions(1).expiredUrl("/login") // 동시 로그인 제한 및 만료 시 로그인 페이지로 이동
                 )
                 .logout(logout -> logout
@@ -72,6 +65,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 
     /**
      * In-Memory 사용자 정의 (테스트용)

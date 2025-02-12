@@ -20,4 +20,8 @@ public class MyPageDTO {
     private String zipcode; // 우편번호
     private String birth; // 생년월일 (응답용, 수정 불가)
     private Integer businessNum; // 사업자 번호 (응답용)
+
+    public UUID getMyPageIdAsUUID() {
+        return myPageId != null ? UUID.fromString(myPageId) : null;
+    }
 }

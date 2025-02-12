@@ -195,10 +195,15 @@ body {
 }
 
 /* Footer 스타일 추가 */
-#footer {
+#footer-container {
     /*background-color: #f1f1f1; !* 배경색 *!*/
     /*text-align: center; !* 가운데 정렬 *!*/
-    /*width: 100%;*/
+    width: 100%;
+}
+footer {
+    width: 100%;
+    background-color: #000; /* footer의 배경 유지 */
+    text-align: center;
 }
 
 

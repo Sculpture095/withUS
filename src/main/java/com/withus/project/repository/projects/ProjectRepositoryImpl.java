@@ -80,8 +80,8 @@ public class ProjectRepositoryImpl extends AbstractRepository<ProjectEntity> {
     public List<ProjectEntity> findProjectByMemberId(String id) {
         return entityManager.createQuery(
                         "SELECT p FROM ProjectEntity p " +
-                                "WHERE p.projectIdx = (" +
-                                "  SELECT c.member.memberIdx FROM ClientEntity c " +
+                                "WHERE p.client.clientIdx = (" +
+                                "  SELECT c.clientIdx FROM ClientEntity c " +
                                 "  WHERE c.member.memberIdx = (" +
                                 "    SELECT m.memberIdx FROM MemberEntity m WHERE m.id = :id" +
                                 "  )" +

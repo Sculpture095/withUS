@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 @Transactional(transactionManager = "transactionManager")
@@ -42,20 +43,26 @@ public class MyPageService {
     }
 
 
-    public MyPageDTO getMyPageByUserId(String id) {
-        return myPageRepository.findSingleByMemberId(id)
+    public MyPageDTO getMyPageByUserId(String memberId) {
+        UUID myPageId = myPageRepository.findMyPageIdByMemberId(memberId); // ✅ UUID 조회
+        if (myPageId == null) {
+            throw new EntityNotFoundException("해당 회원 ID에 대한 마이페이지 정보를 찾을 수 없습니다: " + memberId);
+        }
+
+        return myPageRepository.findSingleByMyPageId(myPageId) // ✅ UUID 기반 조회
                 .map(myPageMapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("해당 사용자의 마이페이지 정보를 찾을 수 없습니다: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("해당 myPageId에 대한 마이페이지 정보를 찾을 수 없습니다: " + myPageId));
     }
 
     //공통 필드 업데이트(주소, 프로필 등)
-    public void updateCommonFields(String id, Map<String, Object> fields){
-        Integer idx = myPageRepository.findIdxByMemberId(id);
-        if (idx == null) {
-            throw new EntityNotFoundException("사용자 ID에 해당하는 MyPage 정보를 찾을 수 없습니다: " + id);
-        }
-        myPageRepository.partialUpdate(id, fields);
+    public void updateCommonFields(UUID myPageId, Map<String, Object> fields) {
+        myPageRepository.partialUpdateByMyPageId(myPageId, fields);
     }
+
+
+
+
+
 
     //파트너의 학력 정보를 업데이트
     public void updatePartnerEducation(String id, Map<String, Object> fields){
