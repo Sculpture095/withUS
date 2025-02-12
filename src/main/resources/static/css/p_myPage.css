@@ -1,0 +1,978 @@
+* {
+    font-family: 'REM', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    min-height: 100vh; /* 최소 높이를 100vh로 설정 */
+    justify-content: center; /* 수직 중앙 정렬 */
+    align-items: center; /* 수평 중앙 정렬 */
+}
+
+.wrapper {
+    width: 1080px; /* 너비 설정 */
+    background: #fff; /* 배경색 */
+    border-radius: 8px; /* 둥근 모서리 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    padding: 20px; /* 내부 여백 */
+    overflow: auto; /* 내용이 넘치지 않도록 */
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
+
+.mypage_container {
+    display: flex; /* Flexbox 사용 */
+    max-width: 100%; /* 최대 너비 설정 */
+    height: 100%; /* 높이 설정 */
+}
+
+.grade{
+    background: #7dbc4a;
+    color: #fff;
+    border-style: none;
+    border-radius: 5px;
+    padding: 3px 20px;
+}
+
+.profile_box {
+    flex: 1; /* 비율 설정 */
+    display: flex; /* Flexbox 사용 */
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    padding: 20px; /* 내부 여백 */
+    border-radius: 8px; /* 둥근 모서리 */
+    margin-right: 20px; /* 오른쪽 여백 */
+}
+
+.user_img_box {
+    width: 150px; /* 이미지 박스 너비 */
+    height: 150px; /* 이미지 박스 높이 */
+    border-radius: 50%; /* 둥근 이미지 */
+    overflow: hidden; /* 이미지가 박스를 넘지 않도록 */
+    background-color: #ddd; /* 기본 배경색 */
+    display: flex; /* Flexbox 사용 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+}
+
+.user_img {
+    width: 100%; /* 이미지 너비 */
+    height: 100%; /* 이미지 높이 */
+    object-fit: cover; /* 이미지 비율 유지 */
+}
+
+.user_text {
+    text-align: center; /* 텍스트 중앙 정렬 */
+    margin-top: 10px; /* 위쪽 여백 */
+}
+
+.user_text h2 {
+    margin: 10px 0 5px; /* 여백 설정 */
+    font-size: 20px; /* 폰트 크기 */
+}
+
+.user_text p {
+    margin: 0; /* 여백 제거 */
+    color: #777; /* 텍스트 색상 */
+}
+
+/* 사이드 메뉴바 style */
+
+.sidebar_menu {
+    flex: 1; /* 비율 설정 */
+    margin-right: 20px; /* 오른쪽 여백 */
+    border-radius: 8px; /* 둥근 모서리 */
+    padding: 10px; /* 내부 여백 */
+}
+
+.sidebar_menu ul {
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    padding: 0; /* 패딩 제거 */
+    margin: 0; /* 마진 제거 */
+}
+
+.sidebar_menu li {
+    margin: 20px 0; /* 아래 여백 */
+}
+
+.textdeco {
+    color: #3a3a3a; /* 링크 색상 */
+    text-decoration: none;
+}
+
+.sidebar_menu a:hover {
+    font-weight: 500; /* 글씨 두껍게 */
+    color: #5b5b5b; /* 링크 색상 */
+} 
+
+.sidebar_content{
+    padding-left: 30px;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.items-center{
+    align-items: center;
+}
+
+.flex{
+    display: flex;
+}
+
+/* 클릭한 페이지의 메뉴 텍스트 색상 고정 */
+.current-page a span{
+    color: #4C3DF2;
+}
+
+
+.section {
+    flex: 2; /* 비율 설정 */
+    border-radius: 8px; /* 둥근 모서리 */
+    padding: 50px; /* 내부 여백 */
+    margin-bottom: 20px; /* 아래 여백 */
+}
+
+.section h3 {
+    margin-bottom: 10px; /* 아래 여백 */
+    font-size: 18px; /* 폰트 크기 */
+    border-bottom: 2px solid #f1f1f1; /* 아래 테두리 */
+    padding-bottom: 5px; /* 아래 여백 */
+}
+
+.section textarea {
+    width: 100%; /* 너비 100% */
+    height: 300px; /* 높이 설정 */
+    padding: 10px; /* 내부 여백 */
+    border-radius: 4px; /* 둥근 모서리 */
+    resize: none; /* 크기 조절 비활성화 */
+    border-color: #ddd;
+}
+
+.section .btn {
+    margin-top: 10px; /* 위쪽 여백 */
+    padding: 10px 20px; /* 내부 여백 */
+    background-color: #4C3DF2; /* 버튼 배경색 */
+    color: #fff; /* 버튼 텍스트 색상 */
+    border: none; /* 테두리 제거 */
+    border-radius: 4px; /* 둥근 모서리 */
+    cursor: pointer; /* 포인터 커서 */
+    position: relative; /* 상대 위치 */
+    float: right; /* 오른쪽 정렬 */
+}
+
+.section .btn:hover {
+    background-color: #372cac; /* 호버 시 배경색 */
+}
+
+
+
+.info {
+    width: 100%; /* 너비를 100%로 설정 */
+    display: flex; /* Flexbox 사용 */
+    flex-wrap: wrap; /* 줄 바꿈 */
+}
+
+
+.info div {
+    width: 100%; /* 너비 100% */
+    display: flex; /* Flexbox 사용 */
+    justify-content: space-between; /* 양쪽 정렬 */
+    padding: 5px 0; /* 위아래 여백 */
+    border-bottom: 1px solid #f1f1f1; /* 아래 테두리 */
+}
+
+.info div:last-child {
+    border-bottom: none; /* 마지막 항목의 아래 테두리 제거 */
+}
+
+.info div span {
+    display: block; /* 블록 요소로 설정 */
+}
+
+/* Footer 스타일 추가 */
+#footer {
+    background-color: #f1f1f1; /* 배경색 */
+    text-align: center; /* 가운데 정렬 */
+    width: 100%;
+}
+
+
+/* 경력 페이지 스타일 */
+.info-table {
+    width: 100%; /* 너비 100% */
+    border-collapse: collapse; /* 테두리 겹치기 */
+    margin: 20px 0; /* 위아래 여백 */
+    resize: none;
+}
+
+.info-table th, .info-table td {
+    width: 700px;
+    padding: 12px; /* 내부 여백 */
+    text-align: left; /* 왼쪽 정렬 */
+    border-bottom: 1px solid #ddd; /* 아래 테두리 */
+}
+
+.info-table th {
+    color: #949494;
+    font-size: 13px;
+    font-weight: bold; /* 글씨 두껍게 */
+}
+
+
+
+/* 모달 스타일 */
+
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 고정 위치 */
+    z-index: 1; /* 최상위 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 전체 너비 */
+    height: 100%; /* 전체 높이 */
+    overflow: auto; /* 스크롤 가능 */
+    background-color: rgba(0, 0, 0, 0.5); /* 투명한 배경 */
+}
+
+.modal-content {
+    background-color: #fff; /* 배경색 */
+    margin: 10% auto; /* 중앙 정렬 */
+    padding: 20px; /* 내부 여백 */
+    border: 1px solid #888; /* 테두리 */
+    width: 80%; /* 너비 설정 */
+    max-width: 500px; /* 최대 너비 설정 */
+    border-radius: 8px; /* 둥근 모서리 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    position: relative; /* 상대 위치 */
+}
+
+.close {
+    color: #aaa; /* 닫기 버튼 색상 */
+    position: absolute; /* 절대 위치 */
+    right: 20px; /* 오른쪽 여백 */
+    top: 20px; /* 위쪽 여백 */
+    font-size: 28px; /* 폰트 크기 */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* 호버 시 색상 변경 */
+    text-decoration: none; /* 밑줄 제거 */
+    cursor: pointer; /* 포인터 커서 */
+}
+
+.experience-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+}
+
+#experienceForm{
+    margin-top: 25px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.button-group {
+    text-align: center; /* 버튼 중앙 정렬 */
+    margin-top: 20px;
+}
+
+.submit-btn,
+.cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px; /* 버튼 간격 조정 */
+}
+
+.submit-btn {
+    background-color: #4C3DF2;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #3b30bd; /* hover 시 배경색 */
+}
+
+.cancel-btn {
+    background-color: #ccc; /* 취소 버튼 색상 */
+    color: black;
+}
+
+.cancel-btn:hover {
+    background-color: #bbb; /* hover 시 배경색 */
+}
+
+.date-input {
+    width: 100%; /* 너비 100% */
+    padding: 10px; /* 내부 여백 */
+    border: 1px solid #ddd; /* 테두리 */
+    border-radius: 4px; /* 둥근 모서리 */
+    margin: 0 5px; /* 좌우 여백 */
+}
+
+.date-separator {
+    margin: 0 10px; /* 좌우 여백 */
+    font-weight: bold; /* 두껍게 */
+}
+
+
+/* 개인정보 관리 페이지 */
+.input_text{
+    font-size: 15px;
+    color: rgb(196, 196, 196);
+}
+
+
+
+/* 포트폴리오 관리 페이지 */
+.portfolio_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card-item {
+    background-color: #fff; /* 카드 배경색 */
+    border-radius: 8px; /* 둥근 모서리 */
+    border: 1px solid #ededed;
+    overflow: hidden; /* 내용이 넘치지 않도록 */
+}
+
+.card-item img {
+    width: 100%; /* 이미지 너비 100% */
+    height: auto; /* 높이는 자동으로 조정 */
+}
+
+.card-item a {
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+.card-text {
+    padding: 5px; /* 내부 여백 줄임 */
+}
+
+.card_title {
+    font-size: 15px; /* 제목 크기 줄임 */
+    margin-top: 10px;
+    margin-bottom: 15px; /* 아래 여백 줄임 */
+    color: #4a4a4b;
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+
+.card-text p {
+    margin-bottom: 5px; /* 아래 여백 줄임 */
+    color: #6c757d; /* 텍스트 색상 */
+}
+
+.moreview {
+    cursor: pointer; /* 포인터 커서 */
+    float: right;
+    font-size: 13px;
+}
+
+
+/* 프로젝트 관리 페이지 */
+
+.project-table {
+    width: 100%; /* 너비 100% */
+    border-collapse: collapse; /* 테두리 겹치기 */
+    margin: 20px 0; /* 위아래 여백 */
+    resize: none;
+}
+
+.project-table table{
+    width: 700px;
+}
+
+.project-table table a{
+    text-decoration: none;
+    color: #3a3a3a;
+}
+
+.project-table table a:hover{
+    color: #a5a5a5;
+}
+
+.project-table th, .project-table td {
+    padding: 12px; /* 내부 여백 */
+    text-align: left; /* 기본 왼쪽 정렬 */
+    border-bottom: 1px solid #ddd; /* 아래 테두리 */
+}
+
+.project-table th:last-child, .project-table td:last-child {
+    text-align: right; /* 마지막 열 오른쪽 정렬 */
+}
+
+.project-table th {
+    color: #949494;
+    font-size: 13px;
+    font-weight: bold; /* 글씨 두껍게 */
+}
+
+
+/* 보유기술 관리 페이지 */
+/* 모달창 스킬 선택 */
+/* 기술 스택 선택 스타일링 */
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.select-box {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 38px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+/* 버튼 그룹 스타일링 */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.reg_btn,
+.cancel_btn {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.reg_btn {
+    background-color: #4C3DF2;
+    color: white;
+}
+
+.cancel_btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.reg_btn:hover {
+    background-color: #3b30bd;
+}
+
+.cancel_btn:hover {
+    background-color: #5a6268;
+}
+
+/* 기존 기술 스택 관련 스타일 유지 */
+.container{
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.custom-select{
+    position: relative;
+    width: 100%;
+}
+
+.select-box{
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    padding: 0 10px;
+    cursor: pointer;  
+}
+
+.selected-options{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0;
+}
+
+.tag{
+    background-color: #f2f2f2;
+    color: #000000;
+    border-radius: 5px;
+    margin-right: 5px;
+    padding: 6px 14px;
+    display: flex;
+    align-items: center;
+}
+
+.remove-tag{
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+.arrow{
+    margin: 0 10px;
+}
+
+.fa-angle-down{
+    color: #404040;
+    font-size: 15px;
+}
+
+.options {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-top: none;
+    max-height: 225px;
+    overflow-y: auto;
+    z-index: 1;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1)
+}
+
+.open .options{
+    display: block;
+    }
+
+.option-search-tags {
+    background-color: #ffffff;
+    /* border: 1px solid #ced4da; */
+    padding: 8px 0px;
+    margin: 8px;
+}
+
+.search-tags {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.clear{
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0;
+    color:#000;
+    top: 26px;
+    left: auto;
+    right: 15px;
+    }
+
+.option.active{
+    color: #000;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.tag:hover,
+.option:hover{
+    background-color:#eaeaea;
+}
+
+.option {
+    padding: 12px;
+    cursor: pointer;
+}
+
+
+.option:hover {
+    background-color: #f8f9fa;
+}
+
+.selected-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.no-result-message{
+    padding: 0px 0px 12px 12px;
+    display: none;
+    
+}
+
+.board-table textarea {
+    height: 400px;  /* 높이 설정 */
+}
+
+select{
+    appearance: none;
+}
+
+.select_box {
+    position: relative; /* 상대 위치 설정 */
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 수직 중앙 정렬 */
+}
+
+.select_box select {
+    width: 100%; /* select 요소가 가득 차도록 설정 */
+    padding-right: 30px; /* 화살표와 텍스트 간격 조정 */
+    border: 1px solid #ddd; /* 테두리 스타일 */
+    border-radius: 4px; /* 둥근 모서리 */
+    appearance: none; /* 기본 화살표 제거 */
+    -webkit-appearance: none; /* Safari에서 기본 화살표 제거 */
+    -moz-appearance: none; /* Firefox에서 기본 화살표 제거 */
+}
+
+.arrow {
+    position: absolute; /* 절대 위치 설정 */
+    right: 8px; /* 오른쪽에서 10px 떨어진 위치 */
+    pointer-events: none; /* 화살표 클릭 방지 */
+}
+
+.arrow i {
+    color: #404040; /* 화살표 색상 */
+    font-size: 15px; /* 화살표 크기 */
+}
+
+/* 계좌관리 */
+.content {
+    width: 800px;
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+
+
+/* 포트폴리오 관리 > 포트폴리오 상세보기 */
+
+.portfolio_detail_grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* 적절한 너비 조정 */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.portfolio_item {
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.portfolio_title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.portfolio_description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.portfolio_item img {
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.portfolio_buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.edit_btn, .delete_btn {
+    background-color: #4C3DF2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    /* border-radius: 4px; */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.delete_btn {
+    background-color: #d9534f;
+}
+
+.edit_btn:hover {
+    background-color: #372cac;
+}
+
+.delete_btn:hover {
+    background-color: #c9302c;
+}
+
+
+/* 포트폴리오 상세 -> 수정 */
+/* 기본 이미지 컨테이너 (한 줄에 한 장씩) */
+/* 파일 선택 버튼 (숨김 상태, 수정 모드에서만 보이게) */
+.file-input {
+    /* display: none; */
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.image_upload{
+    padding-right: 400px;
+}
+
+.file-input.show {
+    display: block;
+}
+/* 파일 선택 버튼 컨테이너 (왼쪽 정렬) */
+.file-input-container {
+    display: flex;
+    justify-content: flex-start; /* 내부 컨텐츠는 왼쪽 정렬 */
+    width: 100%;              /* 전체 너비 차지 */
+    margin-bottom: 10px;
+}
+
+/* 파일 선택 버튼 */
+.file-input-btn {
+    padding: 10px 15px;
+    background-color: #4C3DF2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.file-input-btn:hover {
+    background-color: #372cac;
+}
+
+/* 포트폴리오 상세 - 이미지 미리보기 컨테이너 */
+#portfolioImageContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-top: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    max-width: 100%;
+    padding: 10px 0; 
+    border-radius: 8px;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+}
+
+.portfolio_image {
+    text-align: center;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column; /* 기본적으로 한 줄에 한 장 */
+    gap: 10px;
+    justify-content: center;
+}
+
+/* 개별 이미지 박스 */
+.image_item {
+    position: relative;
+    display: flex;
+    /* justify-content: center; */
+}
+
+/* 수정 전: 큰 이미지 */
+.image_item img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    object-fit: contain;  /* 이미지가 잘리지않도록 함  */
+    display: block;
+}
+
+/* 수정 후: 여러 장 나란히 배치 */
+.portfolio_image.editing {
+    flex-direction: row; /* 여러 장이 한 줄에 나란히 배치됨 */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 수정 후: 작은 이미지 */
+.portfolio_image.editing .image_item img {
+    width: 250px;
+    height: auto;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+/* 개별 이미지 삭제 버튼 (오른쪽 상단 X 버튼) */
+.delete_img_btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 14px;
+    display: none; /* 기본적으로 숨김 */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete_img_btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 수정 후 X 버튼 보이기 */
+.portfolio_image.editing .delete_img_btn {
+    display: flex;
+}
+
+/* 스크롤바 스타일 (웹킷 브라우저용) */
+#portfolioImageContainer::-webkit-scrollbar {
+    height: 8px;
+}
+
+#portfolioImageContainer::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+}
+
+#portfolioImageContainer::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+
+
+/* 포트폴리오 추가 페이지 */
+
+
+/* 업로드 영역 스타일 (클릭 가능) */
+#imageUploadArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#imageUploadArea:hover {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+/* 이미지 미리보기 컨테이너 */
+#imagePreviewContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-top: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    max-width: 100%;
+
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* 개별 이미지 박스 */
+.image-item {
+    position: relative;
+    display: inline-block;
+}
+
+/* 미리보기 이미지 */
+.preview-image {
+    width: 250px;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    object-fit: contain;
+}
+
+
+/* 삭제 버튼 (오른쪽 상단 X 버튼) */
+.delete-img-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.delete-img-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 스크롤바 스타일 (웹킷 브라우저용) */
+#imagePreviewContainer::-webkit-scrollbar {
+    height: 8px; /* 가로 스크롤바 높이 */
+}
+
+#imagePreviewContainer::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+}
+
+#imagePreviewContainer::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+

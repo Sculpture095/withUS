@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <link href="/css/findProject_detail.css" rel="stylesheet"/>
+    <title>프로젝트 상세 정보</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
+
+<div class="detail_container">
+    <div class="header">
+        <div class="status">
+            <span class="recruiting" th:text="${project.proStatementDescription}"></span>
+            <span class="remote" th:text="${project.constructionDescription}"></span>
+        </div>
+        <span class="date" th:text="'등록일 ' + ${project.registrationDate}"></span>
+    </div>
+    <h1 class="title" th:text="${project.projectName}"></h1>
+    <div class="info-box">
+        <div class="info-item">
+            <p>예상 기간</p>
+            <strong th:text="${project.duration}"></strong>
+        </div>
+        <div class="info-item">
+            <p>예상 금액</p>
+            <strong th:text="${#numbers.formatInteger(project.amount, 1, 'COMMA') + ' 원'}"></strong>
+        </div>
+        <div class="info-item">
+            <p>지원자</p>
+            <strong></strong>
+        </div>
+    </div>
+    <ul class="details">
+        <li><p><strong>모집 마감일</strong></p> <span th:text="${project.closingDate}"></span></li>
+        <li><p><strong>프로젝트 시작일</strong></p> <span th:text="${project.startDate}"></span></li>
+        <li><p><strong>필요 기술</strong></p> <span th:each="skill : ${project.skills}" th:text="${skill}"></span></li>
+        <li><p><strong>필요 인원</strong></p> <span th:text="${project.teamSize} + '명'"></span></li>
+        <li><p><strong>위치</strong></p> <span th:text="${project.projectLocation}"></span></li>
+
+        <hr />
+        <div class="description">
+            <h2>프로젝트 내용</h2>
+            <p th:text="${project.projectInfo}">
+            </p>
+        </div>
+        <button class="apply-btn">지원하기</button>
+</div>
+
+
+<!-- footer -->
+<div id="footer"></div>
+<script src="../js/header_footer.js"></script>
+<!-- <script src="../js/script.js"></script>  -->
+</body>
+</html>

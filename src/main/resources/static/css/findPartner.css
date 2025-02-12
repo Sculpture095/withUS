@@ -1,0 +1,177 @@
+* {
+    font-family: 'REM', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f5f5f5;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* height: 100%; */
+}
+
+.container.project-list-view {
+    max-width: 1500px; 
+    margin: 0 auto;
+    padding: 20px;
+    /* flex: 1; */
+}
+
+.container.project-list-view h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    margin-top: 80px;  /* 상단 여백 추가 */
+    text-align: left;  /* 왼쪽 정렬 */
+    position: relative;  /* 위치 조정 */
+    top: 50px;  /* 필요에 따라 조정 */
+    display: flex;
+    align-items: center;  /* 수직 중앙 정렬 */
+    justify-content: center;  /* 수평 중앙 정렬 */
+}
+
+.partner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    margin-top: 100px;
+}
+
+.partner-card {
+    width: 1080px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.partner-info {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.partner-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 20px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+.profile-stats {
+    text-align: left; /* 왼쪽 정렬 */
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.profile-stats p {
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-between; /* 왼쪽 텍스트와 오른쪽 span 정렬 */
+    align-items: center;
+}
+
+.profile-stats span {
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.partner-details {
+    flex: 1;
+    padding: 20px;
+}
+
+.status-mark {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.2rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.partner-details h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.rating {
+    color: #f5c518;
+    margin-bottom: 0.5rem;
+}
+
+.rating i {
+    margin-right: 0.2rem;
+}
+
+.rating span {
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.skills {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.skills span {
+    background-color: #f0f0f0;
+    padding: 0.3rem 0.7rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    color: #333;
+}
+
+
+/* 검색창 */
+.search-container {
+    position: absolute; /* 절대 위치 설정 */
+    top: 110px; /* 카드 상단에서의 위치 (100px 아래로 이동) */
+    right: 10px; /* 카드 오른쪽에서의 위치 */
+    display: flex; /* 플렉스 박스 사용 */
+    align-items: center; 
+}
+
+.search-input {
+    padding: 0.5rem; /* 패딩 */
+    border: 1px solid #ccc; /* 테두리 */
+    border-radius: 5px; /* 둥근 테두리 */
+    font-size: 0.9rem; /* 폰트 크기 */
+    width: 150px; /* 너비 설정 */
+    margin-right: 5px; /* 버튼과의 간격 */
+}
+
+.search-button {
+    background-color: #007bff; /* 버튼 배경색 */
+    color: white; /* 버튼 텍스트 색상 */
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 테두리 */
+    padding: 0.5rem 0.75rem; /* 패딩 */
+    cursor: pointer; /* 커서 포인터 */
+    font-size: 0.9rem; /* 폰트 크기 */
+}
+
+.search-button:hover {
+    background-color: #0056b3; /* 호버 시 배경색 */
+}

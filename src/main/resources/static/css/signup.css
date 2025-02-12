@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.signup-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 150px auto; /* 상하 여백 150px, 좌우 자동 중앙 정렬 */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* 라디오 그룹 */
+.radio-group {
+    display: flex;
+    gap: 100px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.sign_btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4C3DF2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.sign_btn:hover {
+    background-color: #3b30bd;
+}
+
+/* 휴대폰 번호 입력 필드 높이 */
+.phone-group input {
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.phone-separator {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+/* 휴대폰 번호 그룹 스타일 */
+.phone-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 280px;
+}
+
+/* 변경된 부분: type-select 보이도록 수정 */
+.type-select {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    display: block; /* 기본적으로 보임 */
+}
+
+.error {
+    color: #ff3b3b;
+    font-size: 13px;
+    margin-top: 6px;
+    display: none;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.input-error {
+    border-color: #ff3b3b !important;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center; /* flex-start에서 center로 변경 */
+}
+
+.check-button, .verify-button {
+    width: 100px;
+    padding: 10px 15px;
+    background-color: #4C3DF2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    height: 40px;
+    font-size: 14px;
+}
+
+.check-button:hover, .verify-button:hover {
+    background-color: #3b30bd;
+}
+
+.verified {
+    background-color: #999 !important;
+    cursor: not-allowed;
+}
+
+/* 인증번호 입력 필드 스타일 */
+.verification-code-group {
+    display: none;
+    margin-top: 10px;
+}
+
+/* 입력 필드 높이 통일 */
+.input-group input[type="text"],
+.input-group input[type="password"],
+.input-group input[type="email"] {
+    flex: 1;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.check-button, .verify-button {
+    width: 100px;
+    padding: 10px 15px;
+    background-color: #4C3DF2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    height: 40px;
+    font-size: 14px;
+}
+
+.check-button:hover, .verify-button:hover {
+    background-color: #3b30bd;
+}
+
+.verified {
+    background-color: #999 !important;
+    cursor: not-allowed;
+}

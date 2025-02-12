@@ -1,0 +1,334 @@
+* {
+    font-family: 'REM', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.container.project-list-view {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+
+.container.project-list-view h2 {
+    font-size: 30px;
+    margin-top: 80px;  /* 상단 여백 추가 */
+    text-align: left;  /* 왼쪽 정렬 */
+    position: relative;  /* 위치 조정 */
+    margin-bottom: 100px;
+    display: flex;
+    align-items: center;  /* 수직 중앙 정렬 */
+    justify-content: center;  /* 수평 중앙 정렬 */
+}
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;  /* 각 프로젝트 아이템 사이 간격 */
+    margin-top: 120px;
+}
+
+.project-item {
+    position: relative;
+    width: 1080px;  /* 가로 넓이 설정 */
+    height: 300px;  /* 높이 설정 */
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;  /* 내부 여백 */
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    margin: 0 auto 30px auto;  /* ✅ 프로젝트 간 여백 추가 (30px) */
+}
+
+
+.project-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-info-box {
+    height: 100%;  /* 자식 요소가 부모의 높이를 채우도록 설정 */
+    display: flex;  /* Flexbox 사용 */
+    flex-direction: column;  /* 세로 방향으로 정렬 */
+    justify-content: center;  /* 수직 가운데 정렬 */
+    padding: 30px;  /* 패딩 추가 */
+}
+
+/* 프로젝트 상단(모집중 + 제목) 컨테이너 */
+.project-header-content {
+    display: flex;  /* Flexbox 사용 */
+    flex-direction: column;
+    align-items: wrap;  /* 수직 정렬 */
+    gap: 10px;
+}
+
+/* "모집중" 표시 스타일 */
+.badge-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 배지 간격 조정 */
+}
+
+.status-mark {
+    width: 80px;
+    height: 25px;
+    background-color: #5d9cfb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* 외주 배지 스타일 추가 */
+.status-mark.outsource {
+    background-color: #28a745; /* 초록색 */
+}
+
+/* 프로젝트 제목 스타일 */
+.project-header {
+    margin: 0;
+    padding-bottom: 25px;
+}
+
+.project-header a {
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    display: inline;
+}
+
+.project-header a:hover {
+    color: darkgray;
+}
+
+/* 기존 .project-info p { ... } 대신
+   왼쪽 정보(업무 시작일, 예상 기간 등)를 .left-info로 표시할 예정 */
+.project-info p {
+    font-size: 15px;  /* 정보 텍스트 크기 축소 */
+    margin: 8px 0;
+    color: #666;
+}
+
+.search-filter-container{
+    width: 1080px; /* .project-item과 동일한 너비 */
+    display: flex;
+    justify-content: space-between; /* 필터는 왼쪽, 검색창은 오른쪽 */
+    align-items: center;
+    margin: 0 auto 20px auto; /* 가운데 정렬 + 아래 여백 */
+
+}
+/* 검색 영역 스타일 */
+.search-container {
+    float: right;
+}
+
+
+.search-input {
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* ✅ 검색창 크기를 적절하게 줄임 */
+    height: 40px; /* ✅ 필터링 옵션과 동일한 높이로 조정 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* ✅ 필터링 컨테이너와의 간격 줄이기 */
+}
+
+
+.search-input input {
+    width: 100%;
+    height: 100%;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: gray;
+    font-size: 18px;
+}
+
+.search-button:hover {
+    color: darkgray; /* 호버 시 색상 변경 */
+}
+
+
+/* 프로젝트 상세 영역 (좌측 정보 + 수직선 + 우측 정보) */
+.project-details {
+    display: flex;
+    align-items: stretch;    /* 세로로 늘리기 */
+    margin-top: 10px;
+    flex: 1;                 /* 남은 공간 꽉 채워서 divider가 전체 높이를 가질 수 있도록 */
+}
+
+/* 왼쪽 정보(업무 시작일, 예상 기간, 예상 금액, 필요 기술) */
+.left-info {
+    display: flex;
+    width: 800px;
+    flex-direction: column;  /* 세로 쌓임 */
+    gap: 10px;               /* 항목 간 간격 */
+}
+
+.left-info p {
+    margin: 0;
+}
+
+/* 라벨(“업무 시작일”, “예상 금액” 등) */
+.info-label {
+    min-width: 80px;        /* 라벨 고정 혹은 최소 너비 */
+    margin-right: 8px;      /* 라벨과 칩 사이 간격 */
+    font-weight: bold;
+    text-align: left;
+}
+
+/* 값(날짜, 3개월, 500만원 등) */
+.info-value {
+    margin-left: 10px;  /* 라벨과 간격 */
+    text-align: left;   /* 왼쪽 정렬 */
+}
+
+.info-text {
+    display: grid;
+    grid-template-columns: 120px 1fr; /* 첫 컬럼 120px, 두 번째는 남은 공간 차지 */
+    align-items: flex-start;             /* 세로 정렬: 가운데 */
+    gap: 10px;
+}
+
+/* 스킬 리스트(칩) 컨테이너 */
+.skills {
+    display: flex;
+    flex-wrap: wrap;        /* 많아지면 자동 줄바꿈 */
+    gap: 0.5rem;            /* 칩들 간격 */
+}
+
+/* 각 스킬 칩 스타일 */
+.skills span {
+    background-color: #f0f0f0;
+    padding: 0.3rem 0.7rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    color: #333;
+}
+
+
+/* 가운데 수직선 */
+.divider {
+    width: 1px;
+    height: 100%;     /* 부모 높이에 맞춰 전체 채우기 */
+    background-color: #ccc;
+    margin: 0 45px 0 16px;
+}
+
+/* 오른쪽 "현재 지원자 수" */
+.right-info {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: center; /* 가운데 정렬 */
+    justify-content: center; /* 세로 중앙 정렬 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    font-size: 15px;
+
+}
+
+.applicant-label {
+    margin-bottom: 5px; /* "현재 지원자 수" 아래 여백 추가 */
+}
+
+.applicant-count {
+    font-size: 18px; /* 숫자를 더 강조 */
+    color: #007bff; /* 파란색 강조 (원하면 변경 가능) */
+    font-weight: bold;
+}
+
+/* 페이징 스타일 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    gap: 10px;
+}
+
+.pagination li {
+    display: inline-block;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    padding: 8px 12px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.pagination a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination .active {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+/* 필터링*/
+.filter-container {
+    display: flex;
+    gap: 15px; /* 필터 옵션 간격 */
+}
+.project-list {
+    padding-top: 10px; /* ✅ 프로젝트 리스트와 필터 사이 간격 추가 */
+}
+
+.filter-container select, .filter-container button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.filter-container button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-container button:hover {
+    background-color: #0056b3;
+}
+
+.filter-container button:hover {
+    background-color: #0056b3;
+}

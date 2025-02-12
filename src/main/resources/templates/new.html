@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Member</title>
+    <script>
+        async function submitForm(event) {
+            event.preventDefault(); // 폼 제출 기본 동작 방지
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // 비밀번호 확인 유효성 검사
+            if (password !== confirmPassword) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
+
+            const member = {
+                id: document.getElementById('id').value,
+                name: document.getElementById('name').value,
+                nickname: document.getElementById('nickname').value, // 닉네임 추가
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                password: password, // 비밀번호 추가
+                pcaType: document.getElementById('pcaType').value,
+                userType: document.getElementById('userType').value,
+            };
+
+            try {
+                const response = await fetch('/api/members', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(member),
+                });
+
+                if (response.ok) {
+                    alert('성공적으로 가입되었습니다!');
+                    window.location.href = '/'; // 성공 후 홈으로 이동
+                } else {
+                    alert('가입에 실패하였습니다. 다시 시도해주세요.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('서버와 통신 중 오류가 발생했습니다.');
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>Create Member</h1>
+<form id="memberForm" onsubmit="submitForm(event)">
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <label for="id">ID: </label>
+    <input type="text" id="id" name="id" required><br>
+
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="nickname">Nickname: </label>
+    <input type="text" id="nickname" name="nickname" required><br>
+
+    <label for="email">Email: </label>
+    <input type="text" id="email" name="email" required><br>
+
+    <label for="phone">Phone: </label>
+    <input type="text" id="phone" name="phone" required><br>
+
+    <label for="password">Password: </label>
+    <input type="password" id="password" name="password" required><br>
+
+    <label for="confirmPassword">Confirm Password: </label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+
+    <label for="pcaType">PCA Type:</label>
+    <select id="pcaType" name="pcaType">
+        <option value="CLIENT">CLIENT</option>
+        <option value="PARTNER">PARTNER</option>
+    </select><br>
+
+    <label for="userType">User Type:</label>
+    <select id="userType" name="userType">
+        <option value="INDIVIDUAL">개인</option>
+        <option value="TEAM">팀</option>
+        <option value="SOLE_PROPRIETOR">개인사업자</option>
+        <option value="CORPORATION">법인사업자</option>
+    </select><br>
+
+    <button type="submit">가입</button>
+</form>
+</body>
+</html>

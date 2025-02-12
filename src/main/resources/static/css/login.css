@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 로그인 컨테이너 스타일링 */
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 400px;
+    margin: auto; /* 상하 여백을 자동으로 조정 */
+    flex: 1;     /* 남은 공간을 차지하도록 설정 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 200px;
+    margin-bottom: 100px;
+    
+}
+
+/* Footer 스타일링 */
+#footer {
+    margin-top: auto; /* footer를 항상 하단에 배치 */
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.input-group-login {
+    margin-bottom: 20px;
+}
+
+.input-group-login label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+
+.input-group-login input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.input-group-login input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.log_btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn {
+    background-color: #4C3DF2;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.login-btn:hover {
+    background-color: #3b30bd;
+}
+
+.signup-btn {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.signup-btn:hover {
+    background-color: #e9ecef;
+}
+
+/* 구분선 스타일 */
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: calc(50% - 30px);
+    height: 1px;
+    background-color: #ddd;
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+.divider span {
+    background-color: white;
+    padding: 0 10px;
+    color: #777;
+    font-size: 14px;
+}
+ 
+
+ /* .google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: white;
+    color: #333;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+.google-btn span {
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.google-btn:hover {
+    background-color: #f8f8f8;
+}
+
+.google-logo {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}   */

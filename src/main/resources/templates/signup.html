@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>회원가입</title>
+
+    <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+    <link rel="stylesheet" th:href="@{/css/signup.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+<body>
+<!-- 메뉴바 -->
+<div th:replace="~{header :: header}"></div>
+
+<!-- 회원가입 폼 -->
+<div class="signup-container">
+    <h2>회원가입</h2>
+    <form id="signupForm">
+        <!-- 아이디 -->
+        <div class="form-group">
+            <label for="userid">아이디</label>
+            <div class="input-group">
+                <input type="text" id="userid" name="userid" required placeholder="아이디를 입력하세요">
+                <button type="button" class="check-button" onclick="checkDuplicate('id', 'userid')">중복확인</button>
+            </div>
+            <div class="error" id="userid-error">아이디는 6~30자의 영문, 숫자만 가능합니다.</div>
+        </div>
+
+        <!-- 닉네임 -->
+        <div class="form-group">
+            <label for="nickname">닉네임</label>
+            <div class="input-group">
+                <input type="text" id="nickname" name="nickname" required placeholder="닉네임을 입력하세요">
+                <button type="button" class="check-button" onclick="checkDuplicate('nickname', 'nickname')">중복확인</button>
+            </div>
+            <div class="error" id="nickname-error">닉네임은 2~10자까지 가능합니다.</div>
+        </div>
+
+        <!-- 이름 -->
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" required placeholder="이름을 입력하세요">
+        </div>
+
+        <!-- 비밀번호 -->
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" required placeholder="비밀번호를 입력하세요">
+            <div class="error" id="password-error">비밀번호는 8~32자, 영문+숫자+특수문자를 포함해야 합니다.</div>
+        </div>
+
+        <!-- 비밀번호 확인 -->
+        <div class="form-group">
+            <label for="password-confirm">비밀번호 확인</label>
+            <input type="password" id="password-confirm" name="password-confirm" required placeholder="비밀번호를 다시 입력하세요">
+            <div class="error" id="password-confirm-error">비밀번호가 일치하지 않습니다.</div>
+        </div>
+
+        <!-- 이메일 -->
+        <div class="form-group">
+            <label for="email">이메일</label>
+            <div class="input-group">
+                <input type="email" id="email" name="email" required placeholder="이메일을 입력하세요">
+                <button type="button" class="check-button" onclick="checkDuplicate('email', 'email')">중복확인</button>
+            </div>
+            <div class="error" id="email-error">올바른 이메일 형식이 아닙니다.</div>
+        </div>
+
+        <!-- 휴대폰 번호 -->
+        <div class="form-group">
+            <label for="phone">휴대폰 번호</label>
+            <div class="input-group">
+                <div class="phone-group">
+                    <input type="text" id="phone1" name="phone1" maxlength="3" required>
+                    <span class="phone-separator">-</span>
+                    <input type="text" id="phone2" name="phone2" maxlength="4" required>
+                    <span class="phone-separator">-</span>
+                    <input type="text" id="phone3" name="phone3" maxlength="4" required>
+                </div>
+                <button type="button" class="verify-button" onclick="sendVerification()">인증하기</button>
+            </div>
+        </div>
+
+        <!-- 회원 유형 (pcaType 선택: 클라이언트 vs 파트너스) -->
+        <div class="form-group">
+            <label>회원 유형</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="userTypeRadio" value="CLIENT" required checked> 클라이언트
+                </label>
+                <label>
+                    <input type="radio" name="userTypeRadio" value="PARTNER" required> 파트너스
+                </label>
+            </div>
+        </div>
+
+        <!-- 세부 유형 (userType) - 클라이언트용 -->
+        <div class="form-group" id="clientTypeGroup">
+            <label>클라이언트 유형</label>
+            <select id="clientType" class="type-select">
+                <option value="">클라이언트 형태 선택</option>
+                <option value="INDIVIDUAL">개인</option>
+                <option value="TEAM">팀</option>
+                <option value="SOLE_PROPRIETOR">개인사업자</option>
+                <option value="CORPORATION">법인사업자</option>
+            </select>
+        </div>
+
+        <!-- 세부 유형 (userType) - 파트너스용 -->
+        <div class="form-group" id="partnersTypeGroup" style="display:none;">
+            <label>파트너스 유형</label>
+            <select id="partnersType" class="type-select">
+                <option value="">파트너스 형태 선택</option>
+                <option value="INDIVIDUAL">개인</option>
+                <option value="TEAM">팀</option>
+                <option value="SOLE_PROPRIETOR">개인사업자</option>
+                <option value="CORPORATION">법인사업자</option>
+            </select>
+        </div>
+
+        <!-- pcaType hidden 필드 -->
+        <input type="hidden" id="pcaType" name="pcaType" value="CLIENT">
+        <!-- userType hidden 필드 (세부 유형) -->
+        <input type="hidden" id="userType" name="userType" value="">
+
+        <!-- 가입하기 버튼 -->
+        <button class="sign_btn" type="submit">가입하기</button>
+    </form>
+</div>
+
+<!-- footer -->
+<div th:replace="~{footer :: footer}"></div>
+
+<script>
+    // 유효성 검사 정규식
+    const patterns = {
+        userid: /^[a-zA-Z0-9]{6,30}$/,
+        nickname: /^.{2,10}$/,
+        password: /^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,32}$/,
+        email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    };
+
+    // 유효성 검사 함수
+    function validateField(field) {
+        const value = field.value.trim();
+        const errorElement = document.getElementById(`${field.id}-error`);
+        if (patterns[field.id] && !patterns[field.id].test(value)) {
+            errorElement.style.display = "block";
+            return false;
+        } else {
+            errorElement.style.display = "none";
+            return true;
+        }
+    }
+
+    // 중복 확인
+    async function checkDuplicate(type, inputId) {
+        const field = document.getElementById(inputId);
+        if (!validateField(field)) return;
+        try {
+            const response = await fetch(`/api/members/validate?${type}=${field.value}`);
+            if (!response.ok) {
+                alert(`${type.toUpperCase()} 중복: 이미 사용 중입니다.`);
+            } else {
+                alert(`${type.toUpperCase()} 사용 가능합니다.`);
+            }
+        } catch (error) {
+            console.error('중복 검사 오류:', error);
+        }
+    }
+
+    // 휴대폰 인증
+    function sendVerification() {
+        alert('휴대폰 인증 기능을 추가해야 합니다.');
+    }
+
+    // 회원 유형 토글 (라디오 버튼에 따라 세부 유형 드롭다운 표시/숨김)
+    function toggleUserTypeSelect() {
+        const selectedPca = document.querySelector('input[name="userTypeRadio"]:checked').value;
+        document.getElementById('pcaType').value = selectedPca;
+        if (selectedPca === "CLIENT") {
+            document.getElementById('clientTypeGroup').style.display = 'block';
+            document.getElementById('partnersTypeGroup').style.display = 'none';
+        } else if (selectedPca === "PARTNER") {
+            document.getElementById('clientTypeGroup').style.display = 'none';
+            document.getElementById('partnersTypeGroup').style.display = 'block';
+        }
+    }
+
+    // userType 값 업데이트 (세부 유형 hidden 필드에 저장)
+    function updateUserType() {
+        const pcaType = document.getElementById('pcaType').value;
+        let userTypeValue = "";
+        if (pcaType === "CLIENT") {
+            userTypeValue = document.getElementById('clientType').value;
+        } else if (pcaType === "PARTNER") {
+            userTypeValue = document.getElementById('partnersType').value;
+        }
+        document.getElementById('userType').value = userTypeValue;
+    }
+
+    // DOMContentLoaded 이벤트에서 초기 설정
+    document.addEventListener('DOMContentLoaded', function() {
+        toggleUserTypeSelect();
+        updateUserType();
+
+        // 라디오 버튼 변경 시 토글
+        document.querySelectorAll('input[name="userTypeRadio"]').forEach((radio) => {
+            radio.addEventListener('change', function() {
+                toggleUserTypeSelect();
+                updateUserType();
+            });
+        });
+
+        // 드롭다운 변경 시 userType 업데이트
+        document.getElementById('clientType').addEventListener('change', updateUserType);
+        document.getElementById('partnersType').addEventListener('change', updateUserType);
+    });
+
+    // 회원가입 AJAX 요청
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // userType hidden 필드를 최신 값으로 업데이트
+        updateUserType();
+
+        const formData = {
+            id: document.getElementById('userid').value,
+            nickname: document.getElementById('nickname').value,
+            name: document.getElementById('name').value,
+            password: document.getElementById('password').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone1').value
+                + document.getElementById('phone2').value
+                + document.getElementById('phone3').value,
+            pcaType: document.getElementById('pcaType').value,  // "CLIENT" 또는 "PARTNER"
+            userType: document.getElementById('userType').value  // 예: "INDIVIDUAL", "TEAM", "SOLE_PROPRIETOR", "CORPORATION"
+        };
+
+        if (!validateField(document.getElementById('userid')) ||
+            !validateField(document.getElementById('nickname')) ||
+            !validateField(document.getElementById('password')) ||
+            !validateField(document.getElementById('email'))) {
+            alert("입력값을 확인하세요.");
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/members/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            if (response.ok) {
+                alert('회원가입 성공!');
+                window.location.href = '/login';
+            } else {
+                alert('회원가입 실패: ' + await response.text());
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('회원가입 중 오류가 발생했습니다.');
+        }
+    });
+</script>
+</body>
+</html>

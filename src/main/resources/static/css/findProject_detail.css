@@ -1,0 +1,148 @@
+
+* {
+    font-family: 'REM', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.detail_container {
+    background-color: #fff;
+    width: 600px;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* 상하 여백 추가 및 수평 중앙 정렬 */
+    margin-top: 150px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.status span {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.recruiting {
+    background-color: #6ccf6d;
+}
+
+.remote {
+    background-color: #9d9d9d;
+}
+
+.date {
+    font-size: 12px;
+    color: #7d7d7d;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.info-box {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    text-align: center;
+}
+
+.info-item p {
+    font-size: 12px;
+    color: #7d7d7d;
+    margin-bottom: 5px;
+}
+
+.info-item strong {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.details {
+    list-style: none;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.details li {
+    display: flex; /* Flexbox 사용 */
+    justify-content: space-between; /* 양쪽 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    margin-bottom: 10px; /* 각 항목 간격 */
+}
+
+.details p {
+    margin: 0; /* 기본 여백 제거 */
+    font-size: 14px;
+    color: #333;
+    flex-grow: 1; /* 남는 공간을 채워 왼쪽 정렬 */
+}
+
+.details span {
+    font-size: 14px;
+    color: #555;
+    text-align: right;
+    flex-shrink: 0; /* 오른쪽에 고정 */
+}
+
+.details strong {
+    margin-right: 10px;
+}
+
+.description {
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.description h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.description p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.apply-btn {
+    width: 150px;
+    padding: 10px 0;
+    background-color: #4a65f6;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto; /* 버튼과 위 요소 간 간격 및 수평 중앙 정렬 */
+    display: block; /* 중앙 정렬을 위한 block 요소화 */
+    text-align: center; /* 버튼 내부 텍스트 가운데 정렬 */
+    margin-top: 80px;
+}
+
+.apply-btn:hover {
+    background-color: #3a4fd0;
+}
