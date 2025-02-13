@@ -1,0 +1,274 @@
+create database main;
+use main;
+drop database main;
+
+-- member
+CREATE TABLE `member` (
+  `member_idx` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `nickname` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `pcatype_idx` enum('ADMIN','CLIENT','PARTNER') NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `rank_idx` enum('BASIC','PLUS','PRIME') NOT NULL,
+  `usertype_idx` enum('CORPORATION','INDIVIDUAL','SOLE_PROPRIETOR','TEAM') NOT NULL,
+  PRIMARY KEY (`member_idx`),
+  UNIQUE KEY `uk_member_id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- client
+CREATE TABLE `client` (
+  `client_idx` int NOT NULL AUTO_INCREMENT,
+  `member_idx` int NOT NULL,
+  PRIMARY KEY (`client_idx`),
+  UNIQUE KEY `uk_client_member_idx` (`member_idx`),
+  CONSTRAINT `fk_client_member` FOREIGN KEY (`member_idx`) REFERENCES `member` (`member_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- partner
+CREATE TABLE `partner` (
+  `partner_idx` int NOT NULL AUTO_INCREMENT,
+  `admission` varchar(255) DEFAULT NULL,
+  `degree` varchar(255) DEFAULT NULL,
+  `graduation` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `major` varchar(255) DEFAULT NULL,
+  `schoolname` varchar(255) DEFAULT NULL,
+  `member_idx` int NOT NULL,
+  PRIMARY KEY (`partner_idx`),
+  UNIQUE KEY `uk_partner_member_idx` (`member_idx`),
+  CONSTRAINT `fk_partner_member` FOREIGN KEY (`member_idx`) REFERENCES `member` (`member_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- project
+CREATE TABLE `project` (
+  `project_idx` int NOT NULL AUTO_INCREMENT,
+  `amount` double NOT NULL,
+  `closingdate` date NOT NULL,
+  `construction` enum('OUTSOURCE','PERIOD') NOT NULL,
+  `duration` varchar(10) NOT NULL,
+  `is_completed` tinyint(1) NOT NULL DEFAULT '0',
+  `prostatement` enum('CANCELED','COMPLETED','ON_GOING') NOT NULL,
+  `project_id` char(36) NOT NULL,
+  `projectinfo` varchar(200) NOT NULL,
+  `projectlocation` varchar(20) DEFAULT NULL,
+  `projectname` varchar(70) NOT NULL,
+  `registrationdate` date NOT NULL,
+  `requirement` varchar(300) NOT NULL,
+  `startdate` date NOT NULL,
+  `teamsize` int NOT NULL,
+  `client_idx` int NOT NULL,
+  PRIMARY KEY (`project_idx`),
+  UNIQUE KEY `uk_project_id` (`project_id`),
+  KEY `fk_project_client` (`client_idx`),
+  CONSTRAINT `fk_project_client` FOREIGN KEY (`client_idx`) REFERENCES `client` (`client_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- board
+CREATE TABLE `board` (
+  `board_idx` int NOT NULL AUTO_INCREMENT,
+  `board_id` char(36) NOT NULL,
+  `ifntype_id` enum('FREE_BOARD','IT_BOARD','NOTICE_BOARD') NOT NULL,
+  `content` varchar(1500) NOT NULL,
+  `createdate` date NOT NULL,
+  `filepath` varchar(300) DEFAULT NULL,
+  `likecount` int NOT NULL,
+  `subject` varchar(250) NOT NULL,
+  `viewcount` int NOT NULL,
+  `member_idx` int NOT NULL,
+  PRIMARY KEY (`board_idx`),
+  UNIQUE KEY `uk_board_id` (`board_id`),
+  KEY `fk_board_member` (`member_idx`),
+  CONSTRAINT `fk_board_member` FOREIGN KEY (`member_idx`) REFERENCES `member` (`member_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- remark
+CREATE TABLE `remark` (
+  `remark_idx` int NOT NULL AUTO_INCREMENT,
+  `createdate` date NOT NULL,
+  `depth` int NOT NULL,
+  `likecount` int NOT NULL,
+  `remark_id` char(36) NOT NULL,
+  `remarks` varchar(300) NOT NULL,
+  `board_id` int NOT NULL,
+  `member_idx` int NOT NULL,
+  `parent_idx` int DEFAULT NULL,
+  PRIMARY KEY (`remark_idx`),
+  UNIQUE KEY `uk_remark_id` (`remark_id`),
+  KEY `fk_remark_board` (`board_id`),
+  KEY `fk_remark_member` (`member_idx`),
+  KEY `fk_remark_parent` (`parent_idx`),
+  CONSTRAINT `fk_remark_board` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_idx`) ON DELETE CASCADE,
+  CONSTRAINT `fk_remark_member` FOREIGN KEY (`member_idx`) REFERENCES `member` (`member_idx`),
+  CONSTRAINT `fk_remark_parent` FOREIGN KEY (`parent_idx`) REFERENCES `remark` (`remark_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- contract
+CREATE TABLE `contract` (
+  `contract_idx` int NOT NULL AUTO_INCREMENT,
+  `amount` double NOT NULL,
+  `contractdate` date NOT NULL,
+  `contract_id` char(36) NOT NULL,
+  `contractname` varchar(30) NOT NULL,
+  `detail` varchar(200) NOT NULL,
+  `constatus` enum('CANCELED','PENDING','SIGNED') NOT NULL,
+  `partner_idx` int NOT NULL,
+  `project_idx` int NOT NULL,
+  PRIMARY KEY (`contract_idx`),
+  UNIQUE KEY `uk_contract_id` (`contract_id`),
+  KEY `fk_contract_partner` (`partner_idx`),
+  KEY `fk_contract_project` (`project_idx`),
+  CONSTRAINT `fk_contract_partner` FOREIGN KEY (`partner_idx`) REFERENCES `partner` (`partner_idx`),
+  CONSTRAINT `fk_contract_project` FOREIGN KEY (`project_idx`) REFERENCES `project` (`project_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- case_table
+CREATE TABLE `case_table` (
+  `case_idx` int NOT NULL AUTO_INCREMENT,
+  `caseamount` double NOT NULL,
+  `case_id` char(36) NOT NULL,
+  `caseimg` varchar(500) NOT NULL,
+  `content` varchar(200) NOT NULL,
+  `createDate` date NOT NULL,
+  `rating` enum('AVERAGE','EXCELLENT','GOOD','POOR','TERRIBLE') NOT NULL,
+  `thumbnail` varchar(300) DEFAULT NULL,
+  `timeline` date NOT NULL,
+  `title` varchar(60) NOT NULL,
+  `contract_idx` int NOT NULL,
+  PRIMARY KEY (`case_idx`),
+  UNIQUE KEY `uk_case_id` (`case_id`),
+  KEY `fk_case_contract` (`contract_idx`),
+  CONSTRAINT `fk_case_contract` FOREIGN KEY (`contract_idx`) REFERENCES `contract` (`contract_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- certificate
+CREATE TABLE `certificate` (
+  `certificate_idx` int NOT NULL AUTO_INCREMENT,
+  `certificatedate` varchar(10) DEFAULT NULL,
+  `certificate_id` char(36) NOT NULL,
+  `certificatename` varchar(20) NOT NULL,
+  `institutionalname` varchar(20) NOT NULL,
+  `partner_idx` int NOT NULL,
+  PRIMARY KEY (`certificate_idx`),
+  UNIQUE KEY `uk_certificate_id` (`certificate_id`),
+  KEY `fk_certificate_partner` (`partner_idx`),
+  CONSTRAINT `fk_certificate_partner` FOREIGN KEY (`partner_idx`) REFERENCES `partner` (`partner_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- history
+CREATE TABLE `history` (
+  `history_idx` int NOT NULL AUTO_INCREMENT,
+  `companyname` varchar(50) DEFAULT NULL,
+  `duration` varchar(20) DEFAULT NULL,
+  `exitdate` date DEFAULT NULL,
+  `history_id` char(36) NOT NULL,
+  `joindate` date DEFAULT NULL,
+  `partner_idx` int NOT NULL,
+  PRIMARY KEY (`history_idx`),
+  UNIQUE KEY `uk_history_id` (`history_id`),
+  KEY `fk_history_partner` (`partner_idx`),
+  CONSTRAINT `fk_history_partner` FOREIGN KEY (`partner_idx`) REFERENCES `partner` (`partner_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- mypage
+CREATE TABLE `mypage` (
+  `mypage_idx` int NOT NULL AUTO_INCREMENT,
+  `account` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `businessnum` int DEFAULT NULL,
+  `introduce` varchar(500) DEFAULT NULL,
+  `mypage_id` char(36) NOT NULL,
+  `profile` varchar(255) DEFAULT NULL,
+  `zipcode` varchar(255) DEFAULT NULL,
+  `member_idx` int NOT NULL,
+  PRIMARY KEY (`mypage_idx`),
+  UNIQUE KEY `uk_mypage_id` (`mypage_id`),
+  UNIQUE KEY `uk_mypage_member_idx` (`member_idx`),
+  CONSTRAINT `fk_mypage_member` FOREIGN KEY (`member_idx`) REFERENCES `member` (`member_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- payment
+CREATE TABLE `payment` (
+  `payment_idx` int NOT NULL AUTO_INCREMENT,
+  `account` varchar(255) NOT NULL,
+  `amount` double NOT NULL,
+  `fee` double NOT NULL,
+  `method` enum('BANK_TRANSFER','CARD') NOT NULL,
+  `payment_id` char(36) NOT NULL,
+  `contract_idx` int NOT NULL,
+  PRIMARY KEY (`payment_idx`),
+  UNIQUE KEY `uk_payment_id` (`payment_id`),
+  KEY `fk_payment_contract` (`contract_idx`),
+  CONSTRAINT `fk_payment_contract` FOREIGN KEY (`contract_idx`) REFERENCES `contract` (`contract_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- portfolio
+CREATE TABLE `portfolio` (
+  `portfolio_idx` int NOT NULL AUTO_INCREMENT,
+  `enddate` date NOT NULL,
+  `portfoliocontext` varchar(2000) DEFAULT NULL,
+  `portfolio_id` char(36) NOT NULL,
+  `portfolioimg` varchar(500) DEFAULT NULL,
+  `portfoliotitle` varchar(30) DEFAULT NULL,
+  `publicok` bit(1) NOT NULL,
+  `portfoliourl` varchar(100) DEFAULT NULL,
+  `startdate` date NOT NULL,
+  `thumbnail` varchar(300) DEFAULT NULL,
+  `partner_idx` int NOT NULL,
+  PRIMARY KEY (`portfolio_idx`),
+  UNIQUE KEY `uk_portfolio_id` (`portfolio_id`),
+  KEY `fk_portfolio_partner` (`partner_idx`),
+  CONSTRAINT `fk_portfolio_partner` FOREIGN KEY (`partner_idx`) REFERENCES `partner` (`partner_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- questions
+CREATE TABLE `questions` (
+  `question_idx` int NOT NULL AUTO_INCREMENT,
+  `attachment` varchar(300) DEFAULT NULL,
+  `content` varchar(300) NOT NULL,
+  `question_id` char(36) NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `member_idx` int NOT NULL,
+  PRIMARY KEY (`question_idx`),
+  UNIQUE KEY `uk_question_id` (`question_id`),
+  KEY `fk_question_member` (`member_idx`),
+  CONSTRAINT `fk_question_member` FOREIGN KEY (`member_idx`) REFERENCES `member` (`member_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- selectproject
+CREATE TABLE `selectproject` (
+  `selectproject_idx` int NOT NULL AUTO_INCREMENT,
+  `selectproject_id` char(36) NOT NULL,
+  `yn` bit(1) NOT NULL,
+  `partner_idx` int NOT NULL,
+  `project_idx` int NOT NULL,
+  PRIMARY KEY (`selectproject_idx`),
+  UNIQUE KEY `uk_selectproject_id` (`selectproject_id`),
+  KEY `fk_selectproject_partner` (`partner_idx`),
+  KEY `fk_selectproject_project` (`project_idx`),
+  CONSTRAINT `fk_selectproject_partner` FOREIGN KEY (`partner_idx`) REFERENCES `partner` (`partner_idx`),
+  CONSTRAINT `fk_selectproject_project` FOREIGN KEY (`project_idx`) REFERENCES `project` (`project_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `selectskill` (
+  `selectskill_idx` int NOT NULL AUTO_INCREMENT,
+  `selectskill_id` char(36) NOT NULL,
+  `skill_code` enum('AI_PLATFORM','ANDROID','ANGULAR','ANSIBLE','APACHE','ASP_NET','AWS','AXURE_RP','AZURE','BIGQUERY','BLE','BLENDER','BOOTSTRAP','C','CASSANDRA','CHEF','CIRCLE_CI','CLICKHOUSE','COCOS2DX','CORDOVA','COUCH_DB','CPP','CSHARP','DART','DATASTAX','DJANGO','DOCKER','DYNAMO_DB','ECLIPSE','ELASTICSEARCH','ELECTRON','EMBER_JS','EXPRESS','FFMPEG','FIGMA','FIREBASE','FLASK','FLUTTER','GCP','GITLAB_CI_CD','GO','GOOGLE_CLOUD_PLATFORM','GRAPHQL','H2O_AI','HADOOP','IBM_DB2','ILLUSTRATOR','INTELLIJ','INVISION','IONIC','IOS','JAVA','JAVASCRIPT','JENKINS','JIRA','JQUERY','JSP','KAFKA','KNIME','KOTLIN','KOTLIN_MULTIPLATFORM','KUBERNETES','LARAVEL','LATEX','LESS','LOOKER','LUA','MAHOUT','MARIA_DB','MATLAB','ML_LIB','MONGODB','MSSQL','MYSQL','NAGIOS','NEO4J','NETBEANS','NGINX','OBJECTIVE_C','OPENCV','ORACLE','PANDAS','PERL','PHONEGAP','PHOTOSHOP','PHP','POSTGRESQL','POSTMAN','POWER_BI','PREMIERE_PRO','PROMETHEUS','PROTOPIE','PUPPET','PYCHARM','PYTHON','PYTORCH_LIGHTNING','QT','R','RAPIDMINER','REACT','REACT_NATIVE','REDIS','REDSHIFT','RUBY','RUBY_ON_RAILS','RUST','S3','SASS','SCALA','SCIPY','SCIPY_STATS','SKETCH','SNOWFLAKE','SPARK','SPRING_BOOT','SQLITE','SWAGGER','SWIFT','SWIFT_UI','TABLEAU','TERRAFORM','TOMCAT','TRAVIS_CI','TYPESCRIPT','UNITY','UNREAL_ENGINE','VSCODE','VUE','XAMARIN','ZOOKEEPER') NOT NULL,
+  `case_idx` int DEFAULT NULL,
+  `partner_idx` int DEFAULT NULL,
+  `project_idx` int DEFAULT NULL,
+  PRIMARY KEY (`selectskill_idx`),
+  UNIQUE KEY `uk_selectskill_id` (`selectskill_id`),
+  KEY `fk_selectskill_case` (`case_idx`),
+  KEY `fk_selectskill_partner` (`partner_idx`),
+  KEY `fk_selectskill_project` (`project_idx`),
+  CONSTRAINT `fk_selectskill_case` FOREIGN KEY (`case_idx`) REFERENCES `case_table` (`case_idx`),
+  CONSTRAINT `fk_selectskill_partner` FOREIGN KEY (`partner_idx`) REFERENCES `partner` (`partner_idx`),
+  CONSTRAINT `fk_selectskill_project` FOREIGN KEY (`project_idx`) REFERENCES `project` (`project_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
