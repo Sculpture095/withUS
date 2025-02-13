@@ -55,6 +55,9 @@ public class MyPageEntity {
     @Column(name = "businessnum")
     private Integer businessNum; // 사업자번호
 
+    @Column(name = "bankname")
+    private String bankName;
+
     @PrePersist
     public void prePersist() {
         if (this.myPageId == null){

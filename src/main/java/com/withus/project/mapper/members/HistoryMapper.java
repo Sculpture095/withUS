@@ -20,7 +20,8 @@ public interface HistoryMapper {
             @Mapping(target = "companyName", source = "companyName"),
             @Mapping(target = "joinDate", source = "joinDate"),
             @Mapping(target = "exitDate", source = "exitDate"),
-            @Mapping(target = "duration", source = "duration")
+            @Mapping(target = "duration", source = "duration"),
+            @Mapping(target = "work", source = "work")
     })
     HistoryEntity toEntity(HistoryDTO dto);
 
@@ -31,7 +32,8 @@ public interface HistoryMapper {
             @Mapping(target = "companyName", source = "companyName"),
             @Mapping(target = "joinDate", source = "joinDate"),
             @Mapping(target = "exitDate", source = "exitDate"),
-            @Mapping(target = "duration", source = "duration")
+            @Mapping(target = "duration", source = "duration"),
+            @Mapping(target = "work", source = "work")
     })
     HistoryDTO toDTO(HistoryEntity entity);
 

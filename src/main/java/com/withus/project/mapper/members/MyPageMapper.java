@@ -17,10 +17,10 @@ public interface MyPageMapper {
             @Mapping(target = "member.memberIdx", source = "memberIdx"),
             @Mapping(target = "address", source = "address"),
             @Mapping(target = "profile", source = "profile"),
+            @Mapping(target = "bankName", source = "bankName"),
             @Mapping(target = "account", source = "account"),
             @Mapping(target = "introduce", source = "introduce"),
             @Mapping(target = "zipcode", source = "zipcode"),
-            // 불변 필드 제외
             @Mapping(target = "birth", ignore = true),
             @Mapping(target = "businessNum", ignore = true)
     })
@@ -33,6 +33,7 @@ public interface MyPageMapper {
             @Mapping(target = "memberIdx", source = "member.memberIdx"),
             @Mapping(target = "address", source = "address"),
             @Mapping(target = "profile", source = "profile"),
+            @Mapping(target = "bankName", source = "bankName"),
             @Mapping(target = "account", source = "account"),
             @Mapping(target = "introduce", source = "introduce"),
             @Mapping(target = "zipcode", source = "zipcode"),

@@ -41,6 +41,9 @@ public class HistoryEntity {
     @Column(name = "companyname", length = 50)
     private String companyName; // 근무 회사명
 
+    @Column(name = "work")
+    private String work; //주요 업무
+
     @PrePersist
     public void prePersist() {
         if (this.historyId == null){

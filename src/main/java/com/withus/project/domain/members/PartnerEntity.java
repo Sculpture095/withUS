@@ -58,6 +58,8 @@ public class PartnerEntity  {
 
     @Column(name = "location")
     private String location; //거주지역
+
+
     // 🟢 개발자가 보유한 기술들 (OneToMany)
     @OneToMany(mappedBy = "partner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<SelectSkillEntity> ownedSkills;

@@ -3,7 +3,8 @@ package com.withus.project.controller;
 import com.withus.project.domain.dto.members.MemberDTO;
 import com.withus.project.domain.dto.members.MyPageDTO;
 import com.withus.project.domain.dto.projects.ProjectDTO;
-import com.withus.project.domain.projects.ProjectEntity;
+import com.withus.project.domain.members.HistoryEntity;
+import com.withus.project.repository.members.HistoryRepositoryImpl;
 import com.withus.project.service.ProjectService;
 import com.withus.project.service.member.MyPageService;
 import jakarta.persistence.EntityNotFoundException;
@@ -24,6 +25,7 @@ public class MyPageController {
 
     private final MyPageService myPageService;
     private final ProjectService projectService;
+    private HistoryRepositoryImpl historyRepository;
 
     @GetMapping("/myPage")
     public String myPage(HttpSession session, RedirectAttributes redirectAttributes){
@@ -75,13 +77,32 @@ public class MyPageController {
 
 
     @GetMapping("/p_myPage")
-    public String partnerMyPage(HttpSession session, Model model){
-        if(session.getAttribute("member")==null){
+    public String partnerMyPage(HttpSession session, Model model, RedirectAttributes redirectAttributes){
+        System.out.println("🔍 [MyPageController] /p_myPage 요청 들어옴");
+
+        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        System.out.println("🛠 [DEBUG] 세션에서 가져온 member: " + member);
+
+        if (member == null) {
+            System.out.println("⚠ [ERROR] 세션에 member 없음, 로그인 페이지로 이동");
+            redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
             return "redirect:/login";
         }
-        model.addAttribute("member",session.getAttribute("member"));
+        try {
+            MyPageDTO myPage = myPageService.getMyPageByUserId(member.getId());
+            System.out.println("✅ [MyPageController] 마이페이지 데이터 조회 완료: " + myPage);
+            model.addAttribute("member", member);
+            model.addAttribute("myPage", myPage);
+        } catch (EntityNotFoundException e) {
+            System.out.println("❌ [MyPageController] 마이페이지 정보를 찾을 수 없음");
+            redirectAttributes.addFlashAttribute("alertMessage", "마이페이지 정보를 찾을 수 없습니다.");
+            return "redirect:/";
+        }
+
         return "partner_myPage/p_myPage";
     }
+
+
 
     @PostMapping("/api/updateMyPage")
     @ResponseBody
@@ -125,6 +146,23 @@ public class MyPageController {
         model.addAttribute("member", member);
 
         return "client_myPage/c_project";
+    }
+
+    @GetMapping("/p_history")
+    public String partnerCareerPage(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+        MemberDTO member = (MemberDTO) session.getAttribute("member");
+
+        if (member == null) {
+            redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
+            return "redirect:/login";
+        }
+
+        // ✅ 사용자 경력 목록 가져오기
+        List<HistoryEntity> historyList = historyRepository.findAllByMemberId(member.getId());
+        model.addAttribute("historyList", historyList);
+        model.addAttribute("member", member);
+
+        return "partner_myPage/p_history";  // p_history.html 템플릿으로 이동
     }
 
 

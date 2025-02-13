@@ -48,10 +48,15 @@ public class SelectSkillEntity {
     @JoinColumn(name = "case_idx", foreignKey = @ForeignKey(name = "fk_selectskill_case"))
     private CaseEntity caseEntity;
 
+    @Column(name = "career_duration")
+    private Integer careerDuration; // 기술 경력 기간
+
     @PrePersist
     public void prePersist() {
         if (this.selectSkillId == null){
             this.selectSkillId = UUID.randomUUID();
         }
     }
+
+    
 }

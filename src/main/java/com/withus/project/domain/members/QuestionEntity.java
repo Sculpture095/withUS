@@ -38,6 +38,9 @@ public class QuestionEntity {
     @Column(name = "attachment", length = 300)
     private String attachment; // 첨부 파일
 
+    @Column(name = "is_answered")
+    private Boolean isAnswered; // 답변 여부
+
     @PrePersist
     public void prePersist() {
         if (this.questionId == null){

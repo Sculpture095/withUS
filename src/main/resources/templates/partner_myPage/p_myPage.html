@@ -17,67 +17,66 @@
     <title>파트너스 마이페이지</title>
 </head>
 <body>
-    <!-- Header -->
-    <div id="header"></div>
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
 
     <div class="wrapper">
         <div class="mypage_container">
             <div class="sidebar_content">
                 <div class="profile_box items-center">
                     <div class="user_img_box"><a href="img"></a></div>
-                    <button class="grade">등급</button>
                     <div class="user_text">
                         <h2>유저아이디</h2>
-                        <p>user1@naver.com</p>
+                        <p th:text="${member.email}"></p>
                     </div>
                 </div>
                 <!-- Sidebar -->
                 <div class="sidebar_menu">
                     <ul class="mt-8 space-y-4">
                         <li class="current-page">    
-                            <a href="p_myPage.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_myPage.html}" class="flex justify-between items-center textdeco">
                                 <span>개인정보 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_project.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_project}" class="flex justify-between items-center textdeco">
                                 <span>프로젝트 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_skill.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_skill}"  class="flex justify-between items-center textdeco">
                                 <span>보유기술 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_portfolio.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_portfolio}"  class="flex justify-between items-center textdeco">
                                 <span>포트폴리오 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_career.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_career}"  class="flex justify-between items-center textdeco">
                                 <span>경력 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_education.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{p_education}" class="flex justify-between items-center textdeco">
                                 <span>학력 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_certificate.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_certificate}" class="flex justify-between items-center textdeco">
                                 <span>자격증 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_account.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_account}" class="flex justify-between items-center textdeco">
                                 <span>계좌 관리</span>
                                 <span>&gt;</span>
                             </a>
@@ -91,7 +90,7 @@
                 <div class="section">
                     <h3>파트너스 소개</h3>
                     <div class="info-text" id="infoText">
-                        <span id="displayText">
+                        <span id="displayText" th:text="${myPage.introduce}">
                         </span>
                         <textarea id="editTextArea" style="display: none;" placeholder="파트너스 소개를 입력하세요"></textarea>
                     </div>
@@ -103,48 +102,30 @@
                     <div class="info" id="infoSection">
                         <div>
                             <span>파트너스 형태</span>
-                            <span id="partnerType">정보를 입력하세요</span>
-                            <input type="text" id="editPartnerType" style="display: none; width: 250px; height: 23px; float: right;" placeholder="정보를 입력하세요">
+                            <span id="editPartnerType" th:text="${member.userType}" ></span>
                         </div>
                         <div>
                             <span>이름</span>
-                            <span id="name">정보를 입력하세요</span>
-                            <input type="text" id="editName" style="display: none; width: 250px; height: 23px; float: right;" placeholder="정보를 입력하세요">
+                            <span id="name" th:text="${member.name}"></span>
                         </div>
                         <div>
                             <span>닉네임</span>
-                            <span id="nickname">정보를 입력하세요</span>
-                            <input type="text" id="editNickname" style="display: none; width: 250px;height: 23px;  float: right;" placeholder="정보를 입력하세요">
-                        </div>
-                        <div>
-                            <span>생년월일</span>
-                            <span id="birthdate">정보를 입력하세요</span>
-                            <input type="text" id="editBirthdate" style="display: none; width: 250px; height: 23px;  float: right;" placeholder="정보를 입력하세요">
-                        </div>
-                        <div>
-                            <span>성별</span>
-                            <span id="gender">정보를 입력하세요</span>
-                            <input type="text" id="editGender" style="display: none; width: 250px; height: 23px;  float: right;" placeholder="정보를 입력하세요">
+                            <span id="nickname" th:text="${member.nickname}"></span>
                         </div>
                         <div>
                             <span>사업자번호</span>
-                            <span id="businessNumber">정보를 입력하세요</span>
+                            <span id="businessNumber" th:text="${myPage.businessNum}"></span>
                             <input type="text" id="editBusinessNumber" style="display: none; width: 250px; height: 23px;  float: right;" placeholder="정보를 입력하세요">
                         </div>
                         <div>
                             <span>주소</span>
-                            <span id="address">정보를 입력하세요</span>
+                            <span id="address" th:text="${myPage.address}"></span>
                             <input type="text" id="editAddress" style="display: none; width: 250px; height: 23px;  float: right;" placeholder="정보를 입력하세요">
                         </div>
                         <div>
                             <span>우편번호</span>
-                            <span id="postalCode">정보를 입력하세요</span>
+                            <span id="postalCode" th:text="${myPage.zipcode}"></span>
                             <input type="text" id="editPostalCode" style="display: none; width: 250px; height: 23px;  float: right;" placeholder="정보를 입력하세요">
-                        </div>
-                        <div>
-                            <span>계좌번호</span>
-                            <span id="accountNumber">정보를 입력하세요</span>
-                            <input type="text" id="editAccountNumber" style="display: none; width: 250px; height: 23px;  float: right;" placeholder="정보를 입력하세요">
                         </div>
                     </div>
                     <button class="btn" id="editInfoButton">수정</button>
@@ -154,11 +135,13 @@
         </div>
     </div> <!-- wrapper -->
 
-     
-    <!-- footer -->
-    <div id="footer"></div>
-    <script src="../../js/header_footer.js"></script>
-    <script src="../../js/script.js"></script> 
+
+<!-- Footer -->
+<div  th:replace="~{footer :: footer}"></div>
+
+
+<script src="/js/header_footer.js"></script>
+<script src="/js/script.js"></script>
     <script>
         // 수정 버튼 클릭 시 텍스트 영역으로 전환
         const editButton = document.getElementById("editButton");
@@ -183,17 +166,17 @@
         }
 
         // --------------------------------------------------------------------------------------
-    
+
         // 정보 수정 버튼 클릭 시 입력 필드로 전환
         const editInfoButton = document.getElementById("editInfoButton");
         const saveInfoButton = document.getElementById("saveInfoButton");
-    
+
         editInfoButton.onclick = function() {
             // 각 정보 항목을 수정할 수 있는 입력 필드로 전환
             document.querySelectorAll('.info div').forEach((div) => {
                 const span = div.querySelector('span:nth-child(2)'); // 두 번째 span (정보 텍스트)
                 const input = div.querySelector('input'); // 해당 div 내부 input
-                
+
                 if (span && input) {
                     span.style.display = "none"; // 기존 텍스트 숨기기
                     input.style.display = "block"; // 입력 필드 보이기
@@ -204,13 +187,13 @@
             editInfoButton.style.display = "none"; // 수정 버튼 숨기기
             saveInfoButton.style.display = "inline"; // 저장 버튼 보이기
         }
-    
+
         saveInfoButton.onclick = function() {
             // 각 입력 필드의 내용을 span에 업데이트
             document.querySelectorAll('.info div').forEach((div) => {
                 const span = div.querySelector('span:nth-child(2)');
                 const input = div.querySelector('input');
-                
+
                 if (span && input) {
                     span.innerText = input.value.trim() === "" ? "정보를 입력하세요" : input.value; // 빈값이면 기본 메시지 유지
                     span.style.display = "inline"; // 텍스트 보이기
@@ -220,6 +203,88 @@
             editInfoButton.style.display = "inline"; // 수정 버튼 보이기
             saveInfoButton.style.display = "none"; // 저장 버튼 숨기기
         }
+
+            //정보 수정
+
+            saveButton.onclick = function() {
+                const updatedText = editTextArea.value;
+
+                fetch('/api/updateMyPage', {
+                    method: 'POST',  // 데이터를 저장하는 요청
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        introduce: updatedText
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("서버 응답:", data); // ✅ 응답 확인용 콘솔 출력
+                        if (data.success) {
+                            displayText.innerText = updatedText;
+                            displayText.style.display = "inline";
+                            editTextArea.style.display = "none";
+                            editButton.style.display = "inline";
+                            saveButton.style.display = "none";
+                        } else {
+                            alert("데이터 저장에 실패했습니다.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error); // ✅ 오류 출력 추가
+                        alert("서버 요청 중 오류가 발생했습니다.");
+                    });
+            };
+
+            saveInfoButton.onclick = function() {
+                const updatedData = {
+
+                    businessNum: document.getElementById("editBusinessNumber").value,
+                    address: document.getElementById("editAddress").value,
+                    zipcode: document.getElementById("editPostalCode").value
+                };
+
+                fetch('/api/updateMyPage', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedData)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("서버 응답:", data); // ✅ 응답 확인용 콘솔 출력
+                        if (data.success) {
+                            // 화면 업데이트
+
+                            document.getElementById("businessNumber").innerText = updatedData.businessNum;
+                            document.getElementById("address").innerText = updatedData.address;
+                            document.getElementById("postalCode").innerText = updatedData.zipcode;
+
+                            // 입력 필드 숨기고 span 다시 표시
+                            document.querySelectorAll('.info div').forEach((div) => {
+                                const span = div.querySelector('span:nth-child(2)');
+                                const input = div.querySelector('input');
+
+                                if (span && input) {
+                                    span.style.display = "inline";
+                                    input.style.display = "none";
+                                }
+                            });
+
+                            editInfoButton.style.display = "inline"; // 수정 버튼 보이기
+                            saveInfoButton.style.display = "none"; // 저장 버튼 숨기기
+                        } else {
+                            alert("데이터 저장에 실패했습니다.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error); // ✅ 오류 출력 추가
+                        alert("서버 요청 중 오류가 발생했습니다.");
+                    });
+
+        };
     </script>
 </body>
 </html>
