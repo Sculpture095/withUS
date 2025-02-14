@@ -1,35 +1,39 @@
 select * from questions;
 
-INSERT INTO questions (attachment, content, question_id, subject, member_idx)
+INSERT INTO questions (attachment, content, is_answered, question_id, subject, member_idx)
 SELECT 
-  t.attachment, t.content, UUID(), t.subject, m.member_idx
+  t.attachment, t.content, t.is_answered, UUID(), t.subject, m.member_idx
 FROM (
   SELECT 
-    'gkdg123' AS id, 'attachment1.jpg' AS attachment, '이벤트가 언제 시작되나요?' AS subject, '이벤트 시작 날짜를 알고 싶습니다.' AS content
+    'gkdg123' AS id, 'attachment1.jpg' AS attachment, '이벤트가 언제 시작되나요?' AS subject, '이벤트 시작 날짜를 알고 싶습니다.' AS content , 0 AS is_answered
   UNION ALL
   SELECT 
     'sycc3456', 
     'attachment2.jpg', 
     '회원 가입이 안됩니다.', 
-    '회원 가입 시 오류가 발생하는데 해결 방법을 알려주세요.'
+    '회원 가입 시 오류가 발생하는데 해결 방법을 알려주세요.',
+    0
   UNION ALL
   SELECT 
     'zlwU4377', 
     'attachment3.png', 
     '비밀번호를 잊어버렸습니다.', 
-    '비밀번호를 재설정하고 싶습니다. 방법을 알려주세요.'
+    '비밀번호를 재설정하고 싶습니다. 방법을 알려주세요.',
+    0
   UNION ALL
   SELECT 
     'qFNK10', 
     'attachment4.png', 
     '아이디 찾기가 안됩니다.', 
-    '아이디 찾기 서비스가 작동하지 않습니다.'
+    '아이디 찾기 서비스가 작동하지 않습니다.',
+    1
   UNION ALL
   SELECT 
     'zUIeB11', 
     'attachment5.png', 
     '메일이 오지 않습니다.', 
-    '가입 확인 메일이 도착하지 않았습니다.'
+    '가입 확인 메일이 도착하지 않았습니다.',
+    1
 ) t
 JOIN member m ON m.id = t.id;
 
