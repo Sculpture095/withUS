@@ -52,7 +52,7 @@ CREATE TABLE `project` (
   `is_completed` tinyint(1) NOT NULL DEFAULT '0',
   `prostatement` enum('CANCELED','COMPLETED','ON_GOING') NOT NULL,
   `project_id` char(36) NOT NULL,
-  `projectinfo` varchar(200) NOT NULL,
+  `projectinfo` varchar(4000) NOT NULL,
   `projectlocation` varchar(20) DEFAULT NULL,
   `projectname` varchar(70) NOT NULL,
   `registrationdate` date NOT NULL,
