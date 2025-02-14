@@ -231,7 +231,7 @@ CREATE TABLE `questions` (
   `question_idx` int NOT NULL AUTO_INCREMENT,
   `attachment` varchar(300) DEFAULT NULL,
   `content` varchar(300) NOT NULL,
-  `is_answered` tinyint(1) NOT NULL DEFAULT '0',
+  `is_answered` tinyint(1) NOT NULL DEFAULT '1',
   `question_id` char(36) NOT NULL,
   `subject` varchar(50) NOT NULL,
   `member_idx` int NOT NULL,
