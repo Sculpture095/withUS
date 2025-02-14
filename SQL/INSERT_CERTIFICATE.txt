@@ -1,0 +1,18 @@
+select * from certificate;
+
+INSERT INTO certificate (certificatedate, certificate_id, certificatename, institutionalname, partner_idx)
+SELECT 
+   t.certificatedate, UUID(), t.certificatename, t.institutionalname, p.partner_idx
+FROM partner p
+JOIN member m ON p.member_idx = m.member_idx
+JOIN (
+  SELECT 'gkdg123' AS id, '2020-05-01' AS certificatedate, '정보처리기사' AS certificatename, '한국산업인력공단' AS institutionalname
+  UNION ALL
+  SELECT 'sycc3456', '2023-05-02', '빅데이터분석기사', '한국데이터산업진흥원'
+  UNION ALL
+  SELECT 'zlwU4377', '2022-05-03', '정보보안기사', '한국인터넷진흥원'
+  UNION ALL
+  SELECT 'qFNK10', '2021-05-04', '리눅스마스터', '한국정보통신진흥협회'
+  UNION ALL
+  SELECT 'zUIeB11', '2020-05-05', 'ADSP', '한국데이터산업진흥원'
+) t ON m.id = t.id;
