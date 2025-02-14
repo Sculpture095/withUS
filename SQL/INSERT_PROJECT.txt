@@ -7,77 +7,63 @@ SELECT
   p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
   p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
   c.client_idx
-  FROM (
+FROM (
   SELECT      
     5000000 AS amount,     
     STR_TO_DATE('2025-01-04','%Y-%m-%d') AS closingdate,     
     'PERIOD' AS construction,     
     '180일' AS duration,     
-     0 AS is_completed,     
+    0 AS is_completed,     
     'ON_GOING' AS prostatement,     
-    '.Net 기반 키오스크 및 포스 유지보수 프로젝트는 키오스크와 포스 환경에서의 효율성을 개선하기 위한 작업입니다.
-     
-     모집 마감일           2025년 01월 14일
-     지원자 수             9명
-     구인 배경             신규 프로젝트에 필요한 작업자를 구인하고 있습니다.
-     구인 유형             사내 프로젝트에 필요한 인력을 구인합니다.
-     
-    프로젝트 산업 분야        IT•정보통신업
-    협업 예정 인력           PM, 기획자, 디자이너, 개발자
-
-    우선 순위              [1순위] 업무 능력  [2순위] 예산 범위  [3순위] 근무 시작일
-
-
-  업무 내용
-
-<프로젝트 개요>
-
-프로젝트 소개:
-- 비버웍스 키오스크 및 포스 신규 기능 개발 및 유지 보수
-
-회사 소개:
-- 자사는 오프라인 커머스 대상 디지털 플랫폼을 개발, 제공하는 회사로 무인 결제기와 포스 시스템을 개발하여 매장관리, 매출증대, 회원관리, 구매관리, 회계관리 등 다양한 솔루션을 제공하는 글로벌 스마트 솔루션 사업자입니다.
-
-프로젝트 진행 상황:
-- 프로젝트는 완료되었으나 기획 추가/변경에 대한 추가적인 개발요건 및 기존 기능/화면 수정
-
-전체 시스템 구성:
-- 플랫폼: Windows Desktop(WPF, Maui), Android(Maui)
-- 사용 언어: C#
-
-전체 프로젝트 일정:
-- 전체 프로젝트 일정:6개월
-- 투입 예정일: 2025년 01월
-- 인터뷰 및 계약 일정:지원자 발생 후 인터뷰 진행, 2~3일 이내 계약 여부 공유드릴 예정입니다.
-- 계약 진행 프로세스: 프로젝트 지원 > 실무진 대면 인터뷰 1회 (코딩 테스트 x) > 계약 결정
-
-
-<상세 업무 내용>
-
-모집 인원:
-- 경력 4년 이상 1명 (월 500만 원~800만 원)
-- 미팅 시 경력에 따라 금액 협의 가능합니다.
-
-상세 업무:
-- 신규 기능 개발 및 기획 변경사항 개발
-- 내부 개발자들과 업무 협업하여 진행할 예정입니다.
-
-필수 기술:
-- C# WPF, Maui
-- Serial, Tcp 장비제어
-
-자격 요건:
-- 최소 4년 이상의 유사업종 경력
-
-우대 사항:
-- 기획, 백엔드 간의 소통 능력' AS projectinfo,     
+    CONCAT(
+        '.Net 기반 키오스크 및 포스 유지보수 프로젝트는 키오스크와 포스 환경에서의 효율성을 개선하기 위한 작업입니다.',
+        '\n\n모집 마감일           2025년 01월 14일\n',
+        '지원자 수             9명\n',
+        '구인 배경             신규 프로젝트에 필요한 작업자를 구인하고 있습니다.\n',
+        '구인 유형             사내 프로젝트에 필요한 인력을 구인합니다.\n\n',
+        '프로젝트 산업 분야        IT•정보통신업\n',
+        '협업 예정 인력           PM, 기획자, 디자이너, 개발자\n\n',
+        '우선 순위              [1순위] 업무 능력  [2순위] 예산 범위  [3순위] 근무 시작일\n\n',
+        '업무 내용\n\n',
+        '<프로젝트 개요>\n\n',
+        '프로젝트 소개:\n',
+        '- 비버웍스 키오스크 및 포스 신규 기능 개발 및 유지 보수\n\n',
+        '회사 소개:\n',
+        '- 자사는 오프라인 커머스 대상 디지털 플랫폼을 개발, 제공하는 회사로 무인 결제기와 포스 시스템을 개발하여 매장관리, 매출증대, 회원관리, 구매관리, 회계관리 등 다양한 솔루션을 제공하는 글로벌 스마트 솔루션 사업자입니다.\n\n',
+        '프로젝트 진행 상황:\n',
+        '- 프로젝트는 완료되었으나 기획 추가/변경에 대한 추가적인 개발요건 및 기존 기능/화면 수정\n\n',
+        '전체 시스템 구성:\n',
+        '- 플랫폼: Windows Desktop(WPF, Maui), Android(Maui)\n',
+        '- 사용 언어: C#\n\n',
+        '전체 프로젝트 일정:\n',
+        '- 전체 프로젝트 일정:6개월\n',
+        '- 투입 예정일: 2025년 01월\n',
+        '- 인터뷰 및 계약 일정:지원자 발생 후 인터뷰 진행, 2~3일 이내 계약 여부 공유드릴 예정입니다.\n',
+        '- 계약 진행 프로세스: 프로젝트 지원 > 실무진 대면 인터뷰 1회 (코딩 테스트 x) > 계약 결정\n\n',
+        '<상세 업무 내용>\n\n',
+        '모집 인원:\n',
+        '- 경력 4년 이상 1명 (월 500만 원~800만 원)\n',
+        '- 미팅 시 경력에 따라 금액 협의 가능합니다.\n\n',
+        '상세 업무:\n',
+        '- 신규 기능 개발 및 기획 변경사항 개발\n',
+        '- 내부 개발자들과 업무 협업하여 진행할 예정입니다.\n\n',
+        '필수 기술:\n',
+        '- C# WPF, Maui\n',
+        '- Serial, Tcp 장비제어\n\n',
+        '자격 요건:\n',
+        '- 최소 4년 이상의 유사업종 경력\n\n',
+        '우대 사항:\n',
+        '- 기획, 백엔드 간의 소통 능력'
+    ) AS projectinfo,     
     '서울특별시 강남구' AS projectlocation,     
     '.Net 기반 키오스크 및 포스 유지보수' AS projectname,     
     STR_TO_DATE('2024-12-17','%Y-%m-%d') AS registrationdate,     
     '.Net · 4년 이상,C# · 4년 이상' AS requirement,     
     STR_TO_DATE('2024-12-17','%Y-%m-%d') AS startdate,     
     5 AS teamsize,     
-    'puZP22341' AS client_id   
+    'puZP22341' AS client_id
+) 
+
   UNION ALL   
   SELECT      
     7500000,     
@@ -1420,7 +1406,7 @@ SELECT
     'Android',     
     STR_TO_DATE('2024-12-26', '%Y-%m-%d'),     
     0,     
-    21  
+    'szoeDO28'  
     UNION ALL
     SELECT
     3000000, 
@@ -1473,7 +1459,7 @@ SELECT
     '요구사항 없음', 
     STR_TO_DATE('2024-12-26', '%Y-%m-%d'), 
     0, 
-    22
+    'SdoTD29'
   UNION ALL
   SELECT
     0, 
@@ -1544,7 +1530,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     '요구사항 없음', 
     STR_TO_DATE('2024-10-14', '%Y-%m-%d'), 
     4, 
-    23
+    'YrKB30'
   UNION ALL
   SELECT
     0, 
@@ -1615,7 +1601,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     '요구사항 없음', 
     STR_TO_DATE('2024-10-14', '%Y-%m-%d'), 
     1, 
-    24
+    'GCjcw31'
   UNION ALL
   SELECT
     0, 
@@ -1683,7 +1669,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     '요구사항 없음', 
     STR_TO_DATE('2024-10-14', '%Y-%m-%d'), 
     4, 
-    25
+    'PkGlsi32'
   UNION ALL
   SELECT
     0, 
@@ -1752,7 +1738,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     '요구사항 없음', 
     STR_TO_DATE('2024-10-14', '%Y-%m-%d'), 
     5, 
-    26
+    'rZxp33'
   UNION ALL
   SELECT
     1000000, 
@@ -1831,7 +1817,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     'Vue.js · 경력 무관,GitHub · 경력 무관,restful api · 경력 무관', 
     STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
     27, 
-    27
+    'ANPK34'
   UNION ALL
   SELECT
     10000000, 
@@ -1896,7 +1882,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     'Android,Flutter,iOS', 
     STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
     19, 
-    28
+    'gnCtj35'
   UNION ALL
   SELECT
     4150000, 
@@ -1963,7 +1949,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     '요구사항 없음', 
     STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
     0, 
-    29
+    'uXeP36'
   UNION ALL
   SELECT
     10000000, 
@@ -2021,7 +2007,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     '요구사항 없음', 
     STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
     14, 
-    30
+    'gpBf37'
   UNION ALL
   SELECT
   10000000, 
@@ -2086,7 +2072,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
   '요구사항 없음', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   8, 
-  31
+  'QGhj48'
 UNION ALL
 SELECT 
   3500000, 
@@ -2145,7 +2131,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   33, 
-  32
+  'mybXVx49'
 UNION ALL
 SELECT 
   1100000, 
@@ -2207,7 +2193,7 @@ SELECT
   'Figma', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   15, 
-  33
+  'xbAYqJ50'
 UNION ALL
 SELECT 
   10000000, 
@@ -2259,7 +2245,7 @@ SELECT
   '스프레드시트', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   38, 
-  34
+  'DyIgxm51'
 UNION ALL
 SELECT 
   25000000, 
@@ -2321,7 +2307,7 @@ SELECT
   'MariaDB, Python, Ubuntu, 오드로이드', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   10, 
-  35
+  'FFORbx52'
 UNION ALL
 SELECT 
   2500000, 
@@ -2373,7 +2359,7 @@ SELECT
   'React, Storybook, TypeScript', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   12, 
-  36
+  'vVOnv53'
 UNION ALL
 SELECT 
   30000000, 
@@ -2438,7 +2424,7 @@ SELECT
   'Python, TensorFlow, BigQuery', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   20, 
-  37
+  'JrCZ54'
 UNION ALL
 SELECT
   7500000, 
@@ -2513,7 +2499,7 @@ SELECT
   'Node.js · 10년 이하,MySQL · 10년 이하,AWS · 8년 이하,RDBMS · 8년 이하', 
   STR_TO_DATE('2024-12-17', '%Y-%m-%d'), 
   11, 
-  38
+  'BOdkWf55'
 UNION ALL
 SELECT 
   2000000, 
@@ -2568,7 +2554,7 @@ SELECT
   'Vanilla JS', 
   STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
   22, 
-  39
+  'XQZgBK56'
 UNION ALL
 SELECT 
   25000000, 
@@ -2642,7 +2628,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
   44, 
-  40
+  'TujJWb57'
 UNION ALL 
 SELECT
   6000000,     
@@ -2704,7 +2690,7 @@ SELECT
   'C# · 경력 무관,C++ · 경력 무관',     
   STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
   0,     
-  41  
+  'towNF58'  
 UNION ALL   
 SELECT      
   30000000,     
@@ -2773,7 +2759,7 @@ SELECT
   'Android,iOS',     
   STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
   61,     
-  42  
+  'pEmNC59'  
 UNION ALL   
 SELECT      
   5000000,     
@@ -2833,7 +2819,7 @@ SELECT
   '요구사항 없음',     
   STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
   5,     
-  43  
+  'RpWP60'  
 UNION ALL   
 SELECT      
   20000000,     
@@ -2890,7 +2876,7 @@ SELECT
   '요구사항 없음',     
   STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
   12,     
-  44  
+ 'kTYS61'  
 UNION ALL   
 SELECT      
   5500000,     
@@ -2949,7 +2935,7 @@ SELECT
   '어도비 · 경력 무관',     
   STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
   6,     
-  45
+  'ZvSxN62'
 UNION ALL
 SELECT
   5800000, 
@@ -3008,7 +2994,7 @@ SELECT
   '어도비 · 경력 무관', 
   STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
   0, 
-  46  
+  'OGWCFY63'  
 UNION ALL  
 SELECT 
   4000000, 
@@ -3065,7 +3051,7 @@ SELECT
   'Windows,Windows Service', 
   STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
   23, 
-  47
+   'wajKpc64'
 UNION ALL  
 SELECT 
   130000000, 
@@ -3169,7 +3155,7 @@ SELECT
   'AWS,Linux,MySQL,Spring Boot,Tomcat,Vue.js', 
   STR_TO_DATE('2024-12-24', '%Y-%m-%d'), 
   3, 
-  48
+  'JKxL65'
 UNION ALL  
 SELECT 
   5000000, 
@@ -3230,7 +3216,7 @@ SELECT
   'Cafe24', 
   STR_TO_DATE('2024-12-24', '%Y-%m-%d'), 
   6, 
-  49
+  'wWXwg66'
 UNION ALL  
 SELECT 
   40000000, 
@@ -3287,7 +3273,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-24', '%Y-%m-%d'), 
   24, 
-  50
+  'jtPrKY67'
 UNION ALL  
 SELECT 
   3300000, 
@@ -3346,7 +3332,7 @@ SELECT
   'Photoshop · 경력 무관,Illustrator · 경력 무관', 
   STR_TO_DATE('2024-12-05', '%Y-%m-%d'), 
   8, 
-  51
+  'eAZFXj87'
 UNION ALL  
 SELECT 
   6500000, 
@@ -3409,7 +3395,7 @@ SELECT
   'PHP · 4~12년,Legacy PHP · 4~12년', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   14, 
-  52
+  'WKoc88'
 UNION ALL  
 SELECT 
   5000000, 
@@ -3493,7 +3479,7 @@ SELECT
   'Kafka · 경력 무관,Airflow · 경력 무관,PostgreSQL · 경력 무관,tableau · 경력 무관,Kubernetes · 경력 무관', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   3, 
-  53
+  'yrDPzg89'
 UNION ALL  
 SELECT 
   7500000, 
@@ -3568,7 +3554,7 @@ SELECT
   'Nestjs · 8년 이상,Node.js · 경력 무관,TypeScript · 경력 무관,MySQL · 경력 무관,PostgreSQL · 경력 무관', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   11, 
-  54
+  'MAlD90'
 UNION ALL  
 SELECT 
   1000000, 
@@ -3628,7 +3614,7 @@ SELECT
   'Firebase,nuxt.js,Vue.js', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   15, 
-  55
+  'KUyVjP91'
 UNION ALL  
 SELECT 
   10000000, 
@@ -3695,7 +3681,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   39, 
-  56
+  'tojpCa92'
 UNION ALL  
 SELECT 
   5500000, 
@@ -3762,7 +3748,7 @@ SELECT
   'React · 경력 무관', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   10, 
-  57
+  'aianiZ93'
 UNION ALL  
 SELECT 
   5000000, 
@@ -3855,7 +3841,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   24, 
-  58
+  'piDooe94'
 UNION ALL  
 SELECT 
   10000000, 
@@ -3938,7 +3924,7 @@ c. 공통
   'AWS,JavaScript,MySQL,next.js,Node.js,prisma,React Native,TypeScript', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   10, 
-  59
+  'wCgz95'
 UNION ALL  
 SELECT 
   4000000, 
@@ -3992,7 +3978,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   47, 
-  60
+  'retC96'
   UNION ALL
   SELECT 
     7500000 AS amount,
@@ -4067,8 +4053,7 @@ SELECT
     'React · 10년 이상,JavaScript · 경력 무관,TypeScript · 경력 무관' AS requirement,
     STR_TO_DATE('2024-12-19', '%Y-%m-%d') AS startdate,
     4 AS teamsize,
-    61 AS client_idx
-
+    'VSTd97' AS client_idx
   UNION ALL
   SELECT 
     4500000 AS amount,
@@ -4142,8 +4127,7 @@ SELECT
     'Flutter · 경력 무관' AS requirement,
     STR_TO_DATE('2024-12-23', '%Y-%m-%d') AS startdate,
     9 AS teamsize,
-    62 AS client_idx
-
+    'iWxc98' AS client_idx
   UNION ALL
   SELECT 
     6000000 AS amount,
@@ -4216,7 +4200,7 @@ SELECT
 	'Node.js · 경력 무관,TypeScript · 경력 무관,Express · 경력 무관,Nestjs · 경력 무관' AS requirement,
     STR_TO_DATE('2024-12-24', '%Y-%m-%d') AS startdate,
     5 AS teamsize,
-    63 AS client_idx
+    'WvObw99' AS client_idx
   UNION ALL
   SELECT 
     4000000 AS amount,
@@ -4262,7 +4246,7 @@ SELECT
 	'요구사항 없음' AS requirement,
     STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate,
     8 AS teamsize,
-    64 AS client_idx
+    'BSpqRg100' AS client_idx
   UNION ALL
   SELECT 
     1666624 AS amount,
@@ -4332,7 +4316,7 @@ SELECT
     'React · 4년 이상,HTML · 4년 이상,JavaScript · 4년 이상,CSS · 4년 이상' AS requirement,
     STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate,
     10 AS teamsize,
-    65 AS client_idx
+    'VKvT101' AS client_idx
   UNION ALL
   SELECT 
     3500000 AS amount,
@@ -4393,7 +4377,7 @@ SELECT
 	'PHP · 1~3년,MySQL · 1~3년' AS requirement,
     STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate,
     6 AS teamsize,
-    66 AS client_idx
+    'YBVr102' AS client_idx
   UNION ALL
   SELECT 
     15000000 AS amount, 
@@ -4470,7 +4454,7 @@ d. 사용자 경험(UX/UI)
 	'AWS,CSS,HTML,JavaScript,Python,React' AS requirement, 
     STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate, 
     20 AS teamsize, 
-    67 AS client_idx
+    'RYEa103' AS client_idx
   UNION ALL
   SELECT 
     6500000 AS amount, 
@@ -4537,7 +4521,7 @@ d. 사용자 경험(UX/UI)
 	'React · 7년 이상' AS requirement, 
     STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate, 
     4 AS teamsize, 
-    68 AS client_idx
+    'SLMM104' AS client_idx
   UNION ALL
   SELECT 
     5000000 AS amount, 
@@ -4586,7 +4570,7 @@ d. 사용자 경험(UX/UI)
 	'요구사항 없음' AS requirement, 
     STR_TO_DATE('2024-12-19', '%Y-%m-%d') AS startdate, 
     24 AS teamsize, 
-    69 AS client_idx
+    'RyAdh105' AS client_idx
   UNION ALL
   SELECT 
     80000000 AS amount, 
@@ -4653,7 +4637,7 @@ d. 사용자 경험(UX/UI)
 	'Android,iOS' AS requirement, 
     STR_TO_DATE('2024-12-17', '%Y-%m-%d') AS startdate, 
     55 AS teamsize, 
-    70 AS client_idx
+	'prEZ106' AS client_idx
    UNION ALL
    SELECT
   -- 프로젝트 1
@@ -4706,7 +4690,7 @@ d. 사용자 경험(UX/UI)
   'C#,JavaScript,next.js,React,winform',
   STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
   12,
-  71
+  'LfQW166'
   UNION ALL
   SELECT
   -- 프로젝트 2
@@ -4757,7 +4741,7 @@ d. 사용자 경험(UX/UI)
   'AWS Amplify,dynamodb,lambda,TypeScript',
   STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
   28,
-  72
+  'DmSUv167'
   UNION ALL
   SELECT
   -- 프로젝트 3
@@ -4813,7 +4797,7 @@ d. 사용자 경험(UX/UI)
   'MSSQL · 5년 이상',
   STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
   5,
-  73
+  'lRGEnz168'
   UNION ALL
   SELECT
   -- 프로젝트 4
@@ -4893,7 +4877,7 @@ d. 사용자 경험(UX/UI)
   'Django · 3년 이하,restful api · 3년 이하',
   STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
   4,
-  74
+  'GivybI169'
   UNION ALL
   SELECT
   -- 프로젝트 5
@@ -4943,7 +4927,7 @@ d. 사용자 경험(UX/UI)
   'MFC',
   STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
   14,
-  75
+  'ZvroU170'
   UNION ALL
   SELECT
   -- 프로젝트 6
@@ -4996,7 +4980,7 @@ d. 사용자 경험(UX/UI)
   '요구사항 없음',
   STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
   63,
-  76
+  'arntr171'
   UNION ALL
   SELECT
   -- 프로젝트 7
@@ -5066,7 +5050,7 @@ HW 주요 기능 :
   '요구사항 없음',
   STR_TO_DATE('2024-12-18', '%Y-%m-%d'),
   22,
-  77
+  'UwJajM172'
   UNION ALL
   SELECT
   3500000 AS amount, 
@@ -5126,7 +5110,7 @@ HW 주요 기능 :
   'Illustrator · 3년 이하,Photoshop · 3년 이하,Lightroom · 3년 이하' AS requirement, 
   STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate, 
   2 AS teamsize, 
-  78 AS client_idx
+  'qKsD173' AS client_idx
 UNION ALL
 SELECT 
   10000000 AS amount, 
@@ -5199,14 +5183,14 @@ SELECT
   '요구사항 없음' AS requirement, 
   STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate, 
   2 AS teamsize, 
-  79 AS client_idx
+  'kvsWK174' AS client_idx
 UNION ALL
 SELECT 
   5500000 AS amount, 
   STR_TO_DATE('2025-01-07', '%Y-%m-%d') AS closingdate, 
   'PERIOD' AS construction, 
   '120일' AS duration, 
-  0 AS is_completed, 
+   0 AS is_completed, 
   'ON_GOING' AS prostatement, 
   '사내 ERP 솔루션 백엔드 Go/SQL 개발(상주/원격 여부 협의) 프로젝트는 고객의 요구를 반영한 최적화된 솔루션을 제공합니다.
   
@@ -5271,7 +5255,7 @@ SELECT
   'Go · 3년 이하,SQL Server · 3년 이하' AS requirement, 
   STR_TO_DATE('2024-12-20', '%Y-%m-%d') AS startdate, 
   4 AS teamsize, 
-  80 AS client_idx
+  'rvUm175' AS client_idx
 UNION ALL
 SELECT 
     1200000 AS amount, 
@@ -5319,7 +5303,7 @@ SELECT
     'CSS,HTML,WordPress' AS requirement, 
     STR_TO_DATE('2025-01-07', '%Y-%m-%d') AS startdate, 
     4 AS teamsize, 
-    81 AS client_idx
+	'kpkQd176' AS client_idx
 UNION ALL
 SELECT 
     4500000 AS amount, 
@@ -5390,7 +5374,7 @@ SELECT
     'TypeScript · 4년 이하,React · 4년 이하,next.js · 4년 이하,TailwindCSS · 4년 이하,prisma · 4년 이하,PostgreSQL · 4년 이하' AS requirement, 
     STR_TO_DATE('2025-01-07', '%Y-%m-%d') AS startdate, 
     2 AS teamsize, 
-    82 AS client_idx
+    'FbNHgr177' AS client_idx
 UNION ALL
 SELECT 
     7500000 AS amount, 
@@ -5453,7 +5437,7 @@ SELECT
     'Java · 경력 무관,전자정부프레임워크 · 경력 무관,Oracle · 경력 무관' AS requirement, 
     STR_TO_DATE('2025-01-10', '%Y-%m-%d') AS startdate, 
     3 AS teamsize, 
-    83 AS client_idx
+    'sdDj178' AS client_idx
 UNION ALL
 SELECT 
     30000000 AS amount, 
@@ -5531,7 +5515,7 @@ SELECT
     'ASP.NET,C#,Git,MySQL,next.js,React,TypeScript' AS requirement, 
     STR_TO_DATE('2025-01-10', '%Y-%m-%d') AS startdate, 
     10 AS teamsize, 
-    84 AS client_idx
+    'hqENG179' AS client_idx
 UNION ALL
 SELECT 
     7500000 AS amount, 
@@ -5587,7 +5571,7 @@ SELECT
     'MariaDB · 경력 무관,Java · 경력 무관,Spring · 경력 무관,PL/SQL · 경력 무관' AS requirement, 
     STR_TO_DATE('2025-01-11', '%Y-%m-%d') AS startdate, 
     7 AS teamsize, 
-    85 AS client_idx
+    'DBhNb180' AS client_idx
 UNION ALL
 SELECT 
     7000000 AS amount, 
@@ -5673,7 +5657,7 @@ SELECT
     'Kotlin · 2년 이상,SQLite · 경력 무관,Android · 9년 이상,Java · 9년 이상' AS requirement, 
     STR_TO_DATE('2024-12-28', '%Y-%m-%d') AS startdate, 
     7 AS teamsize, 
-    86 AS client_idx
+    'WuQAA181' AS client_idx
 UNION ALL
 SELECT 
     5500000 AS amount, 
@@ -5747,7 +5731,7 @@ SELECT
     'jdk11 · 경력 무관,springboot2.7 · 경력 무관,Oracle · 경력 무관,MyBatis · 경력 무관,JEUS · 경력 무관,webtob · 경력 무관,전자정부프레임워크 · 경력 무관' AS requirement, 
     STR_TO_DATE('2025-01-03', '%Y-%m-%d') AS startdate, 
     3 AS teamsize, 
-    87 AS client_idx
+    'uqCP182' AS client_idx
 UNION ALL
 SELECT 
     4000000 AS amount, 
@@ -5819,7 +5803,7 @@ SELECT
     'JavaScript · 2~5년,TypeScript · 2~5년,React · 2~5년' AS requirement, 
     STR_TO_DATE('2025-01-03', '%Y-%m-%d') AS startdate, 
     7 AS teamsize, 
-    88 AS client_idx
+    'vPxuC183' AS client_idx
 UNION ALL
 SELECT 
     10000000 AS amount, 
@@ -5877,7 +5861,7 @@ SELECT
     '요구사항 없음' AS requirement, 
     STR_TO_DATE('2025-01-03', '%Y-%m-%d') AS startdate, 
     55 AS teamsize, 
-    89 AS client_idx
+    'FSQF184' AS client_idx
 UNION ALL
 SELECT 
     30000000 AS amount, 
@@ -5944,7 +5928,7 @@ SELECT
     'Android,iOS' AS requirement, 
     STR_TO_DATE('2025-01-03', '%Y-%m-%d') AS startdate, 
     12 AS teamsize, 
-    90 AS client_idx
+    'hqnTlq185' AS client_idx
 UNION ALL
 SELECT 
     8000000 AS amount, 
@@ -6003,7 +5987,7 @@ SELECT
     'Figma,Photoshop' AS requirement, 
     STR_TO_DATE('2024-12-16', '%Y-%m-%d') AS startdate, 
     39 AS teamsize, 
-    91 AS client_idx
+    'fImOJM186' AS client_idx
 UNION ALL
 SELECT 
     20000000 AS amount, 
@@ -6066,7 +6050,7 @@ b. 또 하나는 보고서 소스를 올려두고 ChatGPT 등 AI에게 응답자
     '요구사항 없음' AS requirement, 
     STR_TO_DATE('2024-12-16', '%Y-%m-%d') AS startdate, 
     64 AS teamsize, 
-    92 AS client_idx
+    'lrkdIs187' AS client_idx
 UNION ALL
 SELECT 
     40000000 AS amount, 
@@ -6138,7 +6122,7 @@ SELECT
     'Java,MySQL,next.js' AS requirement, 
     STR_TO_DATE('2024-12-16', '%Y-%m-%d') AS startdate, 
     16 AS teamsize, 
-    93 AS client_idx
+    'YDGC188' AS client_idx
 UNION ALL
 SELECT 
     1700000 AS amount, 
@@ -6183,7 +6167,7 @@ SELECT
     'charka ui,Figma,next.js,React,React-query' AS requirement, 
     STR_TO_DATE('2024-12-16', '%Y-%m-%d') AS startdate, 
     14 AS teamsize, 
-    94 AS client_idx
+    'PBwVxV189' AS client_idx
 
 UNION ALL
 SELECT 
@@ -6247,7 +6231,7 @@ SELECT
     '요구사항 없음' AS requirement, 
     STR_TO_DATE('2024-12-16', '%Y-%m-%d') AS startdate, 
     27 AS teamsize, 
-    95 AS client_idx
+    'Solp190' AS client_idx
 UNION ALL
 SELECT 
     3000000 AS amount, 
@@ -6330,7 +6314,7 @@ SELECT
     'Android,AWS,Flutter,GitHub,iOS' AS requirement, 
     STR_TO_DATE('2024-12-16', '%Y-%m-%d') AS startdate, 
     15 AS teamsize, 
-    96 AS client_idx
+    'FxnMGb191' AS client_idx
 UNION ALL
 SELECT 
     5000000 AS amount, 
@@ -6384,7 +6368,7 @@ SELECT
     '요구사항 없음' AS requirement, 
     STR_TO_DATE('2024-12-16', '%Y-%m-%d') AS startdate, 
     12 AS teamsize, 
-    97 AS client_idx
+    'SCDI192' AS client_idx
 UNION ALL
 SELECT 
     6500000 AS amount, 
@@ -6455,7 +6439,7 @@ SELECT
     'ms office · 경력 무관' AS requirement, 
     STR_TO_DATE('2024-12-16', '%Y-%m-%d') AS startdate, 
     1 AS teamsize, 
-    98 AS client_idx
+    'GMPN193' AS client_idx
 UNION ALL
 SELECT 
     3000000 AS amount, 
@@ -6515,7 +6499,7 @@ SELECT
     'AWS,Node.js,PostgreSQL,React Native' AS requirement, 
     STR_TO_DATE('2024-12-16', '%Y-%m-%d') AS startdate, 
     16 AS teamsize, 
-    99 AS client_idx
+	'EMZCSJ194' AS client_idx
 UNION ALL
 SELECT 
     6000000 AS amount, 
@@ -6581,7 +6565,7 @@ SELECT
     'Figma · 7년 이상' AS requirement, 
     STR_TO_DATE('2024-12-16', '%Y-%m-%d') AS startdate, 
     16 AS teamsize, 
-    100 AS client_idx
+    'irELmD195' AS client_idx
   UNION ALL
   SELECT      
     2500000 AS amount,     
@@ -6635,7 +6619,7 @@ SELECT
     '요구사항 없음' AS requirement,     
     STR_TO_DATE('2024-12-17','%Y-%m-%d') AS startdate,     
     47 AS teamsize,     
-    101 AS client_idx  
+    'ounzbl226' AS client_idx  
   UNION ALL
   SELECT      
     7500000 AS amount,     
@@ -6708,7 +6692,7 @@ SELECT
     'React · 경력 무관,Redis · 경력 무관,AWS · 경력 무관,jupyter notebook · 경력 무관' AS requirement,     
     STR_TO_DATE('2024-12-17','%Y-%m-%d') AS startdate,     
     6 AS teamsize,     
-    102 AS client_idx
+    'ryvtcu227' AS client_idx
   UNION ALL
   SELECT      
     1250000 AS amount,     
@@ -6762,7 +6746,7 @@ SELECT
     'C# Winform,ChromeExtension,JavaScript' AS requirement,     
     STR_TO_DATE('2024-12-17','%Y-%m-%d') AS startdate,     
     4 AS teamsize,     
-    103 AS client_idx
+    'myPqVT228' AS client_idx
   UNION ALL
   SELECT      
     5000000 AS amount,     
@@ -6834,7 +6818,7 @@ SELECT
     'rxswift · 10년 이하' AS requirement,     
     STR_TO_DATE('2024-12-20','%Y-%m-%d') AS startdate,     
     5 AS teamsize,     
-    104 AS client_idx
+    'jdzTo229' AS client_idx
   UNION ALL
   SELECT      
     1000000 AS amount,     
@@ -6891,7 +6875,7 @@ SELECT
     'admob,Android,AWS,CSS,HTML,Java,JavaScript,jQuery,Node.js' AS requirement,     
     STR_TO_DATE('2024-12-26','%Y-%m-%d') AS startdate,     
     5 AS teamsize,     
-    105 AS client_idx
+    'gKbpwS230' AS client_idx
   UNION ALL
   SELECT      
     5000000 AS amount,     
@@ -6943,7 +6927,7 @@ SELECT
     '요구사항 없음' AS requirement,     
     STR_TO_DATE('2024-12-16','%Y-%m-%d') AS startdate,     
     16 AS teamsize,     
-    106 AS client_idx
+    'uvLOLm231' AS client_idx
   UNION ALL
   SELECT      
     4000000 AS amount,     
@@ -6990,7 +6974,7 @@ SELECT
     'CSS,HTML,JavaScript' AS requirement,     
     STR_TO_DATE('2024-12-24','%Y-%m-%d') AS startdate,     
     9 AS teamsize,     
-    107 AS client_idx
+    'GtEQS232' AS client_idx
   UNION ALL
   SELECT      
     8000000 AS amount,     
@@ -7064,7 +7048,7 @@ SELECT
     '전자정부프레임워크 · 5년 이상' AS requirement,     
     STR_TO_DATE('2024-11-28','%Y-%m-%d') AS startdate,     
     17 AS teamsize,     
-    108 AS client_idx
+    'HzQsN233' AS client_idx
   UNION ALL
   SELECT      
     500000 AS amount,     
@@ -7127,7 +7111,7 @@ SELECT
     'Android,AWS,iOS,Java,JavaScript,MySQL,React Native,Redis,View.js' AS requirement,     
     STR_TO_DATE('2024-12-13','%Y-%m-%d') AS startdate,     
     2 AS teamsize,     
-    109 AS client_idx
+    'laRT234' AS client_idx
   UNION ALL
   SELECT      
     1250000 AS amount,     
@@ -7176,7 +7160,7 @@ SELECT
     'React Native' AS requirement,     
     STR_TO_DATE('2024-12-13','%Y-%m-%d') AS startdate,     
     2 AS teamsize,     
-    110 AS client_idx
+    'DQjpKl235' AS client_idx
   UNION ALL
   SELECT
     5000000 AS amount,     
@@ -7235,7 +7219,7 @@ SELECT
     'Java · 6년 이하,MySQL · 6년 이하' AS requirement,     
     STR_TO_DATE('2024-12-16','%Y-%m-%d') AS startdate,     
     12 AS teamsize,     
-    111 AS client_idx
+    'yLApHl236' AS client_idx
 UNION ALL
 SELECT
     5000000 AS amount,     
@@ -7301,7 +7285,7 @@ SELECT
     'React · 경력 무관,JSP · 경력 무관,Node.js · 경력 무관,TypeScript · 경력 무관' AS requirement,     
     STR_TO_DATE('2024-12-11','%Y-%m-%d') AS startdate,     
     2 AS teamsize,     
-    112 AS client_idx
+    'liJtEC237' AS client_idx
 UNION ALL
 SELECT
     18000000 AS amount,     
@@ -7354,7 +7338,7 @@ SELECT
     'Android,AWS,C++,C,CentOS,Cocos2dx,Java,JavaScript,Kotlin,MariaDB,MySQL,Node.js,PHP,Spring,Ubuntu' AS requirement,     
     STR_TO_DATE('2024-12-12','%Y-%m-%d') AS startdate,     
     22 AS teamsize,     
-    113 AS client_idx
+    'qdDoh238' AS client_idx
 UNION ALL
 SELECT
     500000 AS amount,     
@@ -7412,7 +7396,7 @@ SELECT
     'WordPress' AS requirement,     
     STR_TO_DATE('2024-12-18','%Y-%m-%d') AS startdate,     
     7 AS teamsize,     
-    114 AS client_idx
+    'iXLtm239' AS client_idx
 UNION ALL
 SELECT
     6000000 AS amount,     
@@ -7503,7 +7487,7 @@ SELECT
     'React · 3~7년,next.js · 3~7년,React Native · 3~7년' AS requirement,     
     STR_TO_DATE('2024-12-11','%Y-%m-%d') AS startdate,     
     4 AS teamsize,     
-    115 AS client_idx
+    'uBkEiR240' AS client_idx
 UNION ALL
 SELECT
     450000 AS amount,     
@@ -7550,7 +7534,7 @@ SELECT
     '요구사항 없음' AS requirement,     
     STR_TO_DATE('2024-12-11','%Y-%m-%d') AS startdate,     
     23 AS teamsize,     
-    136 AS client_idx
+    'vfLZaf241' AS client_idx
 UNION ALL
 SELECT
     17640000 AS amount,     
@@ -7644,7 +7628,7 @@ SELECT
     'Figma,Notion,slack' AS requirement,     
     STR_TO_DATE('2024-12-11','%Y-%m-%d') AS startdate,     
     21 AS teamsize,     
-    117 AS client_idx
+    'DjrdY242' AS client_idx
 UNION ALL
 SELECT
     4000000 AS amount,     
@@ -7700,7 +7684,7 @@ SELECT
     'ppt · 5년 이하,Excel · 5년 이하,Figma · 5년 이하' AS requirement,     
     STR_TO_DATE('2024-12-11','%Y-%m-%d') AS startdate,     
     5 AS teamsize,     
-    118 AS client_idx
+    'XWSQw243' AS client_idx
 UNION ALL
 SELECT
     8000000 AS amount,     
@@ -7753,7 +7737,7 @@ LIDAR, 카메라 및 기타 센서 기술: 자율 주행에 필요한 센서 데
     'C++ · 경력 무관,Python · 경력 무관' AS requirement,     
     STR_TO_DATE('2024-12-11','%Y-%m-%d') AS startdate,     
     5 AS teamsize,     
-    119 AS client_idx
+    'HKTl244' AS client_idx
 UNION ALL
 SELECT
     30000000 AS amount,     
@@ -7822,7 +7806,7 @@ Key Information Access (예. 대회 리더보드(Competition Leaderboard) 및 �
     'Android,iOS' AS requirement,     
     STR_TO_DATE('2024-12-11','%Y-%m-%d') AS startdate,     
     38 AS teamsize,     
-    120 AS client_idx
+    'ypXTbB245' AS client_idx
  UNION ALL
  SELECT
     180000000 AS amount,     
@@ -7875,7 +7859,7 @@ Key Information Access (예. 대회 리더보드(Competition Leaderboard) 및 �
     '요구사항 없음' AS requirement,     
     STR_TO_DATE('2024-12-11', '%Y-%m-%d') AS startdate,     
     61 AS teamsize,     
-    121 AS client_idx
+    'JWczW246' AS client_idx
   UNION ALL
   SELECT
     2500000 AS amount,     
@@ -7929,7 +7913,7 @@ Key Information Access (예. 대회 리더보드(Competition Leaderboard) 및 �
     '요구사항 없음' AS requirement,     
     STR_TO_DATE('2024-12-11', '%Y-%m-%d') AS startdate,     
     57 AS teamsize,     
-    122 AS client_idx
+    'Mdmx247' AS client_idx
   UNION ALL
   SELECT
     1000000 AS amount,     
@@ -7982,7 +7966,7 @@ Key Information Access (예. 대회 리더보드(Competition Leaderboard) 및 �
     'C#' AS requirement,     
     STR_TO_DATE('2024-12-11', '%Y-%m-%d') AS startdate,     
     11 AS teamsize,     
-    123 AS client_idx
+    'zbYIjc248' AS client_idx
   UNION ALL
   SELECT
     7000000 AS amount,     
@@ -8062,7 +8046,7 @@ Key Information Access (예. 대회 리더보드(Competition Leaderboard) 및 �
     'Kotlin · 경력 무관,PostgreSQL · 경력 무관,IntelliJ · 경력 무관,GitHub · 경력 무관' AS requirement,     
     STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate,     
     1 AS teamsize,     
-    124 AS client_idx
+    'vIJf249' AS client_idx
   UNION ALL
   SELECT
     750000 AS amount,     
@@ -8113,7 +8097,7 @@ Key Information Access (예. 대회 리더보드(Competition Leaderboard) 및 �
     'iOS,Swift' AS requirement,     
     STR_TO_DATE('2024-12-20', '%Y-%m-%d') AS startdate,     
     5 AS teamsize,     
-    125 AS client_idx
+    'LaqctV250' AS client_idx
   UNION ALL
   SELECT
     8000000 AS amount,     
@@ -8181,7 +8165,7 @@ Key Information Access (예. 대회 리더보드(Competition Leaderboard) 및 �
     'Python · 경력 무관,AWS · 경력 무관' AS requirement,     
     STR_TO_DATE('2024-12-20', '%Y-%m-%d') AS startdate,     
     4 AS teamsize,     
-    126 AS client_idx
+    'Cmwj251' AS client_idx
   UNION ALL
   SELECT
     30000000 AS amount,     
@@ -8259,7 +8243,7 @@ Key Information Access (예. 대회 리더보드(Competition Leaderboard) 및 �
     'Java,Nginx,React,Vue.js' AS requirement,     
     STR_TO_DATE('2024-12-10', '%Y-%m-%d') AS startdate,     
     30 AS teamsize,     
-    127 AS client_idx
+    'xoIz252' AS client_idx
   UNION ALL
   SELECT
     4000000 AS amount,     
@@ -8338,7 +8322,7 @@ Key Information Access (예. 대회 리더보드(Competition Leaderboard) 및 �
     'UnrealEngine · 4년 이상,Photon · 경력 무관' AS requirement,     
     STR_TO_DATE('2024-12-10', '%Y-%m-%d') AS startdate,     
     2 AS teamsize,     
-    128 AS client_idx
+    'XMPKXP253' AS client_idx
   UNION ALL
   SELECT
     200000 AS amount,     
@@ -8385,7 +8369,7 @@ Key Information Access (예. 대회 리더보드(Competition Leaderboard) 및 �
     'HTML' AS requirement,     
     STR_TO_DATE('2024-12-10', '%Y-%m-%d') AS startdate,     
     14 AS teamsize,     
-    129 AS client_idx
+    'lCrGmK254' AS client_idx
   UNION ALL
   SELECT
     5000000 AS amount,     
@@ -8445,7 +8429,7 @@ Key Information Access (예. 대회 리더보드(Competition Leaderboard) 및 �
     '요구사항 없음' AS requirement,     
     STR_TO_DATE('2024-12-10', '%Y-%m-%d') AS startdate,     
     49 AS teamsize,     
-    130 AS client_idx
+	'NIexwJ255' AS client_idx
 UNION ALL
 SELECT 
   40000000, 
@@ -8501,7 +8485,7 @@ SELECT
   'Android,iOS', 
   STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
   35, 
-  131 
+  'rzIS256' 
 UNION ALL
 SELECT 
   6000000, 
@@ -8561,7 +8545,7 @@ SELECT
   'Java · 4~7년,Spring · 4~7년,SQL · 4~7년', 
   STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
   11, 
-  132 
+  'dHMBJp257' 
 UNION ALL
 SELECT 
   6000000, 
@@ -8621,7 +8605,7 @@ SELECT
   'Java · 4~7년,Spring · 4~7년,SQL · 4~7년', 
   STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
   11, 
-  133 
+  'fRWWec258' 
 UNION ALL
 SELECT 
   5500000, 
@@ -8682,7 +8666,7 @@ SELECT
   'Java · 4~7년,Spring · 4~7년,SQL · 4~7년', 
   STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
   20, 
-  134 
+  'ORyE259' 
 UNION ALL
 SELECT 
   4500000, 
@@ -8752,7 +8736,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
   23, 
-  135 
+  'kqFlEf260' 
 UNION ALL
 SELECT 
   1000000, 
@@ -8806,7 +8790,7 @@ SELECT
   'cubrid,전자정부표준프레임워크', 
   STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
   4, 
-  136 
+  'eoVe261' 
 UNION ALL
 SELECT 
   2000000, 
@@ -8864,7 +8848,7 @@ SELECT
   'Java,MySQL,React,Spring Boot', 
   STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
   33, 
-  137 
+  'ztyR262' 
 UNION ALL
 SELECT 
   1000000, 
@@ -8938,7 +8922,7 @@ SELECT
   'Eclipse,Java Spring,Tomcat,전자정부표준프레임워크', 
   STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
   9, 
-  138 
+  'oZtrq263' 
 UNION ALL
 SELECT 
   5000000, 
@@ -9000,7 +8984,7 @@ SELECT
   'React · 3년 이상,next.js · 3년 이상', 
   STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
   8, 
-  139 
+  'wXNl264' 
 UNION ALL
 SELECT 
   10000000, 
@@ -9073,7 +9057,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
   7, 
-  140
+  'hDHgq265'
 UNION ALL
 SELECT
   10000000, 
@@ -9125,7 +9109,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-11', '%Y-%m-%d'),
    61, 
-   141
+   'ArDQiw266'
 UNION ALL
 SELECT  
   3000000,  
@@ -9179,7 +9163,7 @@ SELECT
   'C++,C,Linux,WebRTC',  
   STR_TO_DATE('2024-12-03', '%Y-%m-%d'),  
   6,  
-  142
+  'QqKIB267'
 UNION ALL
 SELECT 
   30000000, 
@@ -9246,7 +9230,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   7, 
-  143
+  'VRAZy268'
 UNION ALL
 SELECT 
   3800000, 
@@ -9330,7 +9314,7 @@ SELECT
   'Figma · 2년 이상', 
   STR_TO_DATE('2024-12-11', '%Y-%m-%d'), 
   5, 
-  144
+  'ExtUl269'
 UNION ALL
 SELECT 
   4000000, 
@@ -9389,7 +9373,7 @@ SELECT
   'React · 3년 이하,Cordova · 3년 이하', 
   STR_TO_DATE('2024-12-12', '%Y-%m-%d'), 
   0, 
-  145
+  'NCJn270'
 UNION ALL
 SELECT 
   4000000, 
@@ -9449,7 +9433,7 @@ SELECT
   'Flutter · 4년 이하,Dart · 4년 이하', 
   STR_TO_DATE('2024-12-10', '%Y-%m-%d'), 
   1, 
-  146
+  'JjdRpW271'
 UNION ALL
 SELECT 
   3000000, 
@@ -9504,7 +9488,7 @@ SELECT
   'CSS, HTML, JavaScript', 
   STR_TO_DATE('2024-12-11', '%Y-%m-%d'), 
   20, 
-  147
+  'wBLnh272'
 UNION ALL
 SELECT 
   3200000, 
@@ -9573,7 +9557,7 @@ SELECT
   'React · 2년 이상,next.js · 경력 무관', 
   STR_TO_DATE('2024-12-18', '%Y-%m-%d'), 
   1, 
-  148
+  'TUIWd273'
 UNION ALL
 SELECT 
   4500000, 
@@ -9655,7 +9639,7 @@ SELECT
   'Vue.js · 3~7년, JavaScript · 경력 무관, TypeScript · 3~7년', 
   STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
   1, 
-  149
+  'Mcfa274'
 UNION ALL
 SELECT 
   15000000, 
@@ -9713,7 +9697,7 @@ SELECT
   'Android', 
   STR_TO_DATE('2024-12-12', '%Y-%m-%d'), 
   13, 
-  150
+  'fzSB275'
   UNION ALL
   SELECT 
   3000000, 
@@ -9774,7 +9758,7 @@ SELECT
   'Python · 4년 이상,Windows · 4년 이상', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   5, 
-  151
+  'RgNQ276'
 UNION ALL
 SELECT 
   3000000, 
@@ -9847,7 +9831,7 @@ SELECT
   'Adobe Photoshop · 2년 이상,Figma · 2년 이상,Illustrator · 2년 이상,HTML · 경력 무관,CSS · 경력 무관', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   3, 
-  152
+  'OQZlAD277'
 UNION ALL
 SELECT 
   12000000, 
@@ -9906,7 +9890,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-12', '%Y-%m-%d'), 
   5, 
-  153
+  'VBQKJp278'
 UNION ALL
 SELECT 
   4000000, 
@@ -9967,7 +9951,7 @@ SELECT
   'Adobe Photoshop,Figma', 
   STR_TO_DATE('2024-12-13', '%Y-%m-%d'), 
   22, 
-  154
+  'zLYuY279'
 UNION ALL
 SELECT 
   5000000, 
@@ -10024,7 +10008,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-06', '%Y-%m-%d'), 
   39, 
-  155
+  'qFNRFV280'
 UNION ALL
 SELECT 
   5000000, 
@@ -10107,7 +10091,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-06', '%Y-%m-%d'), 
   40, 
-  156
+  'dcaq281'
 UNION ALL
 SELECT 
   9600000, 
@@ -10170,7 +10154,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-06', '%Y-%m-%d'), 
   34, 
-  157
+  'egZII282'
 UNION ALL
 SELECT 
   3500000, 
@@ -10232,7 +10216,7 @@ SELECT
   'Angular,CSS,HTML,JavaScript,Node.js', 
   STR_TO_DATE('2024-12-06', '%Y-%m-%d'), 
   19, 
-  158
+  'ddlhpA283'
 UNION ALL
 SELECT 
   6000000, 
@@ -10280,7 +10264,7 @@ SELECT
   'Salesforce', 
   STR_TO_DATE('2024-12-06', '%Y-%m-%d'), 
   3, 
-  159
+  'ugdDMB284'
 UNION ALL
 SELECT 
   150000000, 
@@ -10343,7 +10327,7 @@ SELECT
   '요구사항 없음', 
   STR_TO_DATE('2024-12-06', '%Y-%m-%d'), 
   69, 
-  160
+  'iVujXy285'
   UNION ALL
   SELECT 
     26000000, 
@@ -10397,7 +10381,7 @@ SELECT
     'AWS,Flutter,nest.js,next.js,Node.js,React', 
     STR_TO_DATE('2024-12-06', '%Y-%m-%d'), 
     42, 
-    161
+    'zcJh286'
 UNION ALL
 SELECT 
     5000000, 
@@ -10461,7 +10445,7 @@ SELECT
     'PHP · 5년 이하,MySQL · 5년 이하,HTML · 5년 이하,jQuery · 5년 이하', 
     STR_TO_DATE('2024-12-10', '%Y-%m-%d'), 
     4, 
-    162
+    'NEyBhW287'
 UNION ALL
 SELECT 
     4000000, 
@@ -10525,7 +10509,7 @@ SELECT
     'Figma', 
     STR_TO_DATE('2024-12-13', '%Y-%m-%d'), 
     35, 
-    163
+    'zqbrAk288'
 UNION ALL
 SELECT 
     7000000, 
@@ -10579,7 +10563,7 @@ SELECT
     '요구사항 없음', 
     STR_TO_DATE('2024-12-16', '%Y-%m-%d'), 
     7, 
-    164
+    'vTou289'
 UNION ALL
 SELECT 
     8000000, 
@@ -10646,7 +10630,7 @@ SELECT
     'Python · 경력 무관,AWS · 경력 무관', 
     STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
     6, 
-    165
+    'FlhbTc290'
 UNION ALL
 SELECT 
     4500000, 
@@ -10712,7 +10696,7 @@ SELECT
     'TypeScript · 경력 무관,React · 경력 무관,next.js · 경력 무관,TailwindCSS · 경력 무관,prisma · 경력 무관,PostgreSQL · 경력 무관', 
     STR_TO_DATE('2024-12-10', '%Y-%m-%d'), 
     4, 
-    166
+    'guVZhh291'
 UNION ALL
 SELECT 
     6000000, 
@@ -10770,7 +10754,7 @@ SELECT
     'C# · 경력 무관,C++ · 경력 무관', 
     STR_TO_DATE('2024-11-27', '%Y-%m-%d'), 
     2, 
-    167
+    'gbokf292'
 UNION ALL
 SELECT 
     5000000, 
@@ -10836,7 +10820,7 @@ SELECT
     'Go · 3년 이하,SQL Server · 3년 이하', 
     STR_TO_DATE('2024-12-12', '%Y-%m-%d'), 
     0, 
-    168
+    'zVth293'
 UNION ALL
 SELECT 
     5000000, 
@@ -10891,7 +10875,7 @@ SELECT
     'TypeScript · 경력 무관,next.js · 경력 무관,Jotai · 경력 무관,swr · 경력 무관,i18next · 경력 무관,Sass · 경력 무관,highcharts · 경력 무관,framer-motion · 경력 무관', 
     STR_TO_DATE('2024-12-13', '%Y-%m-%d'), 
     6, 
-    169
+    'DHpddC294'
 UNION ALL
 SELECT 
     4500000, 
@@ -10975,7 +10959,7 @@ SELECT
     '요구사항 없음', 
     STR_TO_DATE('2024-12-05', '%Y-%m-%d'), 
     6, 
-    170
+    'yHNRuo295'
 UNION ALL
 SELECT 
     7500000, 
@@ -10984,14 +10968,34 @@ SELECT
     '30일', 
     0, 
     'COMPLETED', 
-    '기업 고객 대상 데이터 분석 및 리포트 서비스 개발 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.', 
+    '기업 고객 대상 데이터 분석 및 리포트 서비스 개발 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.
+    
+모집 마감일 : 2024년 12월 15일  
+지원자 수 : 12명  
+구인 배경 : 기업 고객 대상 데이터 분석 및 리포트 서비스 개발 프로젝트 진행을 위한 인력 충원  
+구인 유형 : 외주 (OUTSOURCE)  
+프로젝트 산업 분야 : 데이터 분석 및 IT 서비스  
+협업 예정 인력 : 프로젝트 매니저 1명, 데이터 엔지니어 1명, 백엔드 개발자 1명  
+우선 순위 :  [1순위] 일정 준수 (계약 후 30일)  [2순위] 업무 능력 (Python, MySQL, ETL 각 3년 이상 경험)  [3순위] 프로젝트 완료 상태 (COMPLETED)  
+근무 지역 : 서울특별시 강동구  
+프로젝트 개요 : 기업 고객 대상 데이터 분석 및 리포트 서비스 개발을 위한 맞춤형 솔루션 개발 프로젝트  
+
+**업무 내용**  
+- 기업 고객을 위한 데이터 분석 및 리포트 자동화 솔루션 개발  
+- Python을 활용한 데이터 처리 및 분석 파이프라인 구축  
+- MySQL 기반 데이터베이스 설계 및 최적화  
+- ETL 프로세스를 활용한 데이터 수집, 변환 및 적재 자동화  
+- 데이터 시각화 및 분석 결과 리포트 생성  
+- 프로젝트 일정 내 완성도를 높이기 위한 협업 및 테스트 진행  
+- 관련 문서 작성 및 기술 지원  
+', 
     '서울특별시 강동구', 
     '기업 고객 대상 데이터 분석 서비스 개발', 
     STR_TO_DATE('2024-12-15', '%Y-%m-%d'), 
     'Python · 3년 이상,MySQL · 3년 이상,ETL · 3년 이상', 
     STR_TO_DATE('2024-12-15', '%Y-%m-%d'), 
     12, 
-    171
+    'RNuQp296'
 UNION ALL
 SELECT 
     6200000, 
@@ -11000,14 +11004,47 @@ SELECT
     '90일', 
     0, 
     'ON_GOING', 
-    '데이터 시각화 플랫폼 구축 및 운영 프로젝트는 고객의 요구를 반영한 최적화된 솔루션을 제공합니다.', 
+    '데이터 시각화 플랫폼 구축 및 운영 프로젝트는 고객의 요구를 반영한 최적화된 솔루션을 제공합니다.
+    
+모집 마감일 : 2024년 12월 18일
+지원자 수: 9명
+구인 배경: 데이터 시각화 플랫폼 구축 및 운영 프로젝트 진행을 위한 인력 충원
+구인 유형: 기간제 계약 (PERIOD)
+프로젝트 산업 분야: IT·정보통신업
+협업 예정 인력: 프로젝트 매니저(PM) 1명, 백엔드 개발자 2명, 프론트엔드 개발자 2명, 데이터 엔지니어 1명
+우선 순위: 업무 능력 | 일정 준수 | 예산 범위
+
+업무 내용
+
+데이터 시각화 플랫폼 구축 및 운영 프로젝트의 성공적인 수행을 위해 아래의 업무를 담당할 인력을 모집합니다.
+
+데이터 시각화 시스템 개발 및 운영
+-D3.js를 활용한 데이터 시각화 UI/UX 개발
+-Node.js 기반 백엔드 개발 및 API 연동
+
+플랫폼 성능 최적화 및 유지보수
+-대용량 데이터 처리 및 최적화
+-실시간 데이터 반영 및 성능 개선
+
+고객 요구사항 반영 및 기능 개발
+-프로젝트 목표에 맞는 맞춤형 시각화 솔루션 제공
+-UI/UX 개선 및 신규 기능 개발
+
+협업 및 커뮤니케이션
+-PM 및 데이터 엔지니어와 협력하여 프로젝트 진행
+-개발팀 내 코드 리뷰 및 문서화 진행
+
+우대 사항
+-D3.js 및 데이터 시각화 관련 프로젝트 경험
+-Node.js 기반 서버 개발 및 API 설계 경험
+-대용량 데이터 처리 및 최적화 경험', 
     '서울특별시 성동구', 
     '데이터 시각화 플랫폼 구축', 
     STR_TO_DATE('2024-12-18', '%Y-%m-%d'), 
     'D3.js · 2년 이상,Node.js · 3년 이상', 
     STR_TO_DATE('2024-12-18', '%Y-%m-%d'), 
     9, 
-    172
+   'RxElM297'
 UNION ALL
 SELECT 
     8000000, 
@@ -11016,14 +11053,33 @@ SELECT
     '180일', 
     0, 
     'CANCELED', 
-    '스마트홈 시스템 개발 및 설치 프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.', 
+    '스마트홈 시스템 개발 및 설치 프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.
+    
+모집 마감일 : 2024년 12월 09일
+지원자 수 : 11명
+구인 배경 : 스마트홈 시스템 개발 및 설치 프로젝트를 수행하기 위한 외부 인력을 구인하고 있습니다.
+구인 유형: 외주 개발 인력을 모집합니다.
+프로젝트 산업 분야: 스마트홈, IoT
+협업 예정 인력 : 프로젝트 매니저 1명, 임베디드 개발자 2명, UI/UX 디자이너 1명
+우선 순위 : 산출물 완성도 | 일정 준수 | 예산 범위
+
+업무 내용:
+스마트홈 시스템 개발 및 설치 프로젝트는 사용자 맞춤형 스마트홈 솔루션을 구축하는 작업입니다. 프로젝트에는 다음과 같은 주요 업무가 포함됩니다.
+
+스마트홈 시스템 개발: C++ 및 C#을 활용한 IoT 기기 연동 및 소프트웨어 개발
+센서 및 디바이스 통합: IoT 환경에서 스마트홈 기기(조명, 보안, 온도 조절 시스템 등)와의 연동 개발
+사용자 인터페이스(UI) 개발: 직관적인 UX/UI 설계 및 응용 프로그램 개발
+네트워크 및 데이터 관리: IoT 장치 간 원활한 통신을 위한 네트워크 및 데이터 처리 로직 구현
+테스트 및 유지보수: 시스템 성능 검증 및 안정적인 운영을 위한 유지보수 지원
+이 프로젝트는 스마트홈 환경에서 다양한 IoT 기기와의 호환성을 고려하여 개발되며, 최종적으로 사용자 맞춤형 스마트홈 솔루션을 제공하는 것이 목표입니다.
+', 
     '서울특별시 구로구', 
     '스마트홈 시스템 개발 및 설치', 
     STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
     'C++,C#,IoT · 2년 이상', 
     STR_TO_DATE('2024-12-09', '%Y-%m-%d'), 
     11, 
-    173
+    'PvBbx298'
 UNION ALL
 SELECT 
     5400000, 
@@ -11032,14 +11088,28 @@ SELECT
     '120일', 
     0, 
     'ON_GOING', 
-    'ERP 시스템 개선 및 통합 관리 프로젝트는 고객의 요구를 반영한 최적화된 솔루션을 제공합니다.', 
+    'ERP 시스템 개선 및 통합 관리 프로젝트는 고객의 요구를 반영한 최적화된 솔루션을 제공합니다.
+
+모집 마감일: 2024년 12월 12일
+지원자 수: 10명
+구인 배경: ERP 시스템의 기능 개선 및 통합 관리를 위한 인력 충원
+구인 유형: 발주처에게서 수주한 프로젝트에 필요한 인력을 구인합니다. • 계약 체결 완료
+프로젝트 산업 분야: IT•정보통신업
+협업 예정 인력: 자사 PM 1명, 백엔드 개발자 2명, 프론트엔드 개발자 1명
+우선 순위: 산출물 완성도 | 2. 일정 준수 | 3. 금액
+
+업무 내용:
+ERP 시스템 개선 및 통합 관리 프로젝트는 고객의 비즈니스 요구를 정확히 반영하여 최적화된 솔루션을 제공하는 것을 목표로 합니다. 
+이 프로젝트는 기존 ERP 시스템의 성능을 향상시키고, 사용자의 업무 효율성을 극대화하기 위해 다양한 기능을 통합하는 작업을 포함합니다. 
+또한, 시스템의 안정성과 확장성을 높여 기업의 운영 전반에 걸쳐 효율적인 관리가 가능하도록 개선됩니다. 
+개발된 솔루션은 클라우드 기반의 통합 관리 플랫폼을 통해 데이터를 실시간으로 모니터링하고 분석할 수 있는 기능을 제공하며, 다양한 부서 간의 협업을 원활하게 할 수 있도록 지원합니다.', 
     '서울특별시 마포구', 
     'ERP 시스템 개선 및 통합 관리', 
     STR_TO_DATE('2024-12-12', '%Y-%m-%d'), 
     'SAP · 3년 이상,Java · 5년 이상', 
     STR_TO_DATE('2024-12-12', '%Y-%m-%d'), 
     10, 
-    174
+    'uBKf299'
 UNION ALL
 SELECT 
     6800000, 
@@ -11048,14 +11118,37 @@ SELECT
     '365일', 
     0, 
     'COMPLETED', 
-    'AI 기반 고객 서비스 자동화 시스템 개발 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.', 
+    'AI 기반 고객 서비스 자동화 시스템 개발 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.
+    
+    
+모집 마감일: 2024년 12월 19일
+지원자 수: 8명
+구인 배경:
+AI 기반 고객 서비스 자동화 시스템을 개발하기 위한 인력을 구인하고 있습니다. 고객 서비스의 효율성을 향상시키고, AI 기술을 활용하여 자동화된 서비스 제공을 목표로 하는 프로젝트의 일환으로 필요한 개발자를 모집합니다.
+구인 유형:
+외주 프로젝트에 필요한 인력을 구인합니다. 계약 체결이 완료된 상태에서 해당 프로젝트의 요구에 맞는 인력을 수급하려 합니다.
+프로젝트 산업 분야:
+AI 및 IT 분야에 속하는 프로젝트로, 고객 서비스 개선을 위한 자동화 시스템을 개발하는 작업입니다.
+협업 예정 인력:
+내부 개발팀과 협업하여 AI 시스템 개발을 진행합니다. 또한, 프로젝트 리더와의 긴밀한 협업이 예정되어 있습니다.
+우선 순위:[1순위] 업무 능력 [2순위] 예산 범위 [3순위] 근무 시작일
+
+업무 내용:
+본 프로젝트는 AI 기반 고객 서비스 자동화 시스템을 개발하는 작업으로, 주요 목표는 고객 응대의 자동화를 통해 효율적인 서비스 제공을 실현하는 것입니다. 
+해당 시스템은 인공지능 기술을 활용하여 고객 문의에 대한 자동 응답 및 처리, 문제 해결 과정을 신속하게 지원할 수 있도록 설계됩니다.
+
+프로젝트의 주요 업무는 Python을 활용한 AI 알고리즘 개발과 TensorFlow를 사용하여 모델을 학습시키는 작업을 포함합니다. 
+또한, 고객 서비스의 다양한 시나리오를 시뮬레이션하고, 이를 시스템에 최적화하여 실시간으로 반영하는 작업이 필요합니다.
+
+이 프로젝트는 365일 동안 진행되며, 각 단계에서의 요구사항에 맞춰 시스템을 점진적으로 개선하고 배포하는 과정입니다. 
+성공적인 프로젝트 완수를 위해 높은 수준의 기술력과 함께 문제 해결 능력, 그리고 팀 내외 협업이 중요한 역할을 합니다.', 
     '서울특별시 용산구', 
     'AI 기반 고객 서비스 자동화 시스템 개발', 
     STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
     'Python · 5년 이상,TensorFlow · 3년 이상', 
     STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
     8, 
-    175
+    'ptyD300'
 UNION ALL
 SELECT 
     6300000, 
@@ -11064,14 +11157,32 @@ SELECT
     '30일', 
     0, 
     'CANCELED', 
-    '모바일 헬스케어 앱 UI/UX 디자인 개선 프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.', 
+    '모바일 헬스케어 앱 UI/UX 디자인 개선 프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.
+    
+모집 마감일: 2024년 12월 18일
+지원자 수: 7명
+구인 배경:
+기존 프로젝트에서 모바일 헬스케어 앱의 UI/UX 디자인 개선이 필요하게 되어, 이에 맞는 디자인 전문가를 추가로 구인하고 있습니다. 해당 프로젝트는 사용자의 편리성을 높이고, 효율적인 UI/UX 디자인을 통해 앱의 사용성을 향상시키는 것을 목표로 합니다.
+구인 유형:
+발주처에서 수주한 프로젝트로, 해당 프로젝트에 필요한 인력을 구인합니다. 계약이 체결된 상태에서 진행 중인 프로젝트입니다.
+프로젝트 산업 분야:
+헬스케어 분야의 모바일 앱 디자인 개선 프로젝트입니다. 기존 헬스케어 앱의 UI/UX 디자인을 개선하고, 사용자의 요구를 반영하여 기능성을 강화하는 것이 주요 목표입니다.
+협업 예정 인력:
+자사 PM 1명, UI/UX 디자이너 1명, 그리고 외부 협업으로 Figma와 Sketch를 사용한 디자인 개선 작업을 진행할 예정입니다. 협업은 디자이너와 긴밀히 이루어지며, 기술적 요구사항을 충족하는 디자인 개선을 목표로 합니다.
+우선 순위: [1순위] 업무 능력 [2순위] 근무 시작일 [3순위] 예산 범위
+
+업무 내용:
+모바일 헬스케어 앱 UI/UX 디자인 개선 프로젝트는 사용자의 경험을 더욱 직관적이고 편리하게 개선하는 것을 목표로 합니다. 
+이 프로젝트에서는 Figma와 Sketch 도구를 활용하여, 기존 앱의 디자인을 개선하고, 사용자가 앱을 쉽게 탐색할 수 있도록 유도하는 인터페이스를 설계합니다. 
+또한, 사용자의 피드백을 바탕으로 디자인을 최적화하여, 앱의 기능성과 접근성을 높이는 데 중점을 둡니다. 프로젝트의 핵심은 모바일 환경에서 건강 데이터를 관리하고 추적할 수 있는 직관적인 디자인을 구현하는 것입니다. 
+디자인 개선 과정은 최신 UI/UX 트렌드를 반영하고, 사용자 테스트를 통해 최종 디자인을 다듬어 나갈 예정입니다.', 
     '부산광역시 해운대구', 
     '모바일 헬스케어 앱 UI/UX 디자인 개선', 
     STR_TO_DATE('2024-12-14', '%Y-%m-%d'), 
     'Figma · 3년 이상,Sketch · 2년 이상', 
     STR_TO_DATE('2024-12-14', '%Y-%m-%d'), 
     7, 
-    176
+    'ZlIJH301'
 UNION ALL
 SELECT 
     5500000, 
@@ -11080,14 +11191,36 @@ SELECT
     '60일', 
     0, 
     'ON_GOING', 
-    '전자상거래 시스템 유지보수 및 기능 추가 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.', 
+    '전자상거래 시스템 유지보수 및 기능 추가 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.
+    
+모집 마감일: 2024년 12월 5일
+지원자 수: 5명
+구인 배경:
+전자상거래 시스템의 지속적인 운영과 개선을 위해 추가 작업자가 필요합니다. 기존 시스템에 대한 유지보수와 기능 추가가 요구되어, 이를 담당할 개발자를 구인하고 있습니다.
+구인 유형:
+발주처에서 수주한 프로젝트에 필요한 인력을 구인합니다. 해당 프로젝트는 시스템 유지보수 및 새로운 기능 추가 작업을 포함하고 있습니다. 계약이 체결된 상태이며, 발주처와 협력하여 진행됩니다.
+프로젝트 산업 분야:
+전자상거래 (E-commerce)
+해당 프로젝트는 전자상거래 시스템을 대상으로 하며, 온라인 쇼핑몰 및 관련 서비스를 운영하는 시스템을 개선하고 확장하는 작업입니다.
+
+협업 예정 인력:
+자사 개발자 2명
+외부 개발자 3명
+
+우선 순위:[1순위] 예산 범위 [2순위] 업무 능력 [3순위] 근무 시작일
+
+업무 내용:
+이 프로젝트는 전자상거래 시스템의 유지보수와 새로운 기능 추가 작업을 다룹니다. 
+기존 플랫폼에서 발생하는 문제를 해결하고, 사용자 경험을 개선하는 기능들을 개발 및 적용합니다. 
+또한, React와 Node.js를 사용하여 프론트엔드 및 백엔드 시스템을 향상시키고, 기존 시스템에 맞춤형 솔루션을 추가하는 작업입니다. 
+새로운 기능을 통해 시스템의 효율성과 사용자 편의성을 높이는 것이 핵심 목표입니다. 시스템에 대한 깊은 이해와 최신 웹 개발 기술을 활용한 유지보수 및 기능 추가 작업이 요구됩니다.', 
     '서울특별시 동작구', 
     '전자상거래 시스템 유지보수 및 기능 추가', 
     STR_TO_DATE('2024-12-11', '%Y-%m-%d'), 
     'React · 3년 이상,Node.js · 3년 이상', 
     STR_TO_DATE('2024-12-11', '%Y-%m-%d'), 
     13, 
-    177
+    'LCuVDY302'
 UNION ALL
 SELECT 
     7000000, 
@@ -11096,14 +11229,37 @@ SELECT
     '90일', 
     0, 
     'ON_GOING', 
-    '블록체인 기반 금융 서비스 개발 프로젝트는 고객의 요구를 반영한 최적화된 솔루션을 제공합니다.', 
+    '블록체인 기반 금융 서비스 개발 프로젝트는 고객의 요구를 반영한 최적화된 솔루션을 제공합니다.
+    
+모집 마감일: 2024년 12월 18일
+지원자 수: 6명
+구인 배경:
+블록체인 기반의 금융 서비스 개발 프로젝트에 참여할 개발자가 필요합니다. 기존 팀을 보강하고, 프로젝트 진행에 필요한 핵심 인력을 구인 중입니다. 
+이 프로젝트는 고객의 요구에 맞춰 최적화된 솔루션을 제공하는 것으로, 블록체인 기술을 활용한 혁신적인 금융 서비스를 구축하는 것을 목표로 하고 있습니다.
+구인 유형:
+발주처에서 수주한 프로젝트로, 발주처와 협력하여 블록체인 기반의 금융 서비스를 개발하는 프로젝트입니다. 계약이 체결된 상태이며, 프로젝트의 요구사항을 충족하기 위한 기술력 있는 개발자를 구인합니다.
+프로젝트 산업 분야:
+-금융 서비스
+-블록체인 기술을 적용한 혁신적인 금융 솔루션을 개발하는 프로젝트로, 최근 금융 시장에서의 디지털화 및 블록체인 기술의 활용을 중심으로 한 시스템 개발이 포함됩니다.
+
+협업 예정 인력:
+-자사 개발자 3명
+-외부 개발자 4명
+
+우선 순위:[1순위] 업무 능력 [2순위] 예산 범위 [3순위] 근무 시작일
+
+업무 내용:
+이 프로젝트는 블록체인 기반 금융 서비스 시스템을 개발하는 작업으로, 고객의 요구 사항에 맞춘 최적화된 솔루션을 제공합니다. 
+주요 기술로는 Solidity와 Web3.js를 사용하여 스마트 계약 및 분산형 애플리케이션을 개발합니다. 개발자들은 블록체인 네트워크 상에서 금융 서비스에 필요한 기능들을 구현하고, 
+이를 통해 투명하고 안전한 금융 거래를 지원하는 시스템을 개발하는 데 참여합니다. 서비스의 효율성을 높이고, 사용자 편의성을 개선하는 작업이 주요한 업무 내용에 포함됩니다.
+', 
     '서울특별시 송파구', 
     '블록체인 기반 금융 서비스 개발', 
     STR_TO_DATE('2024-12-13', '%Y-%m-%d'), 
     'Solidity · 2년 이상,Web3.js · 2년 이상', 
     STR_TO_DATE('2024-12-13', '%Y-%m-%d'), 
     14, 
-    178
+    'KoaaKw303'
 UNION ALL
 SELECT 
     6700000, 
@@ -11112,14 +11268,37 @@ SELECT
     '180일', 
     0, 
     'CANCELED', 
-    '클라우드 기반 재고 관리 시스템 구축 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.', 
+    '클라우드 기반 재고 관리 시스템 구축 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.
+    
+모집 마감일: 2024년 12월 30일
+지원자 수: 8명
+구인 배경:
+클라우드 기반의 재고 관리 시스템을 구축하는 프로젝트로, 기술적 요구사항을 충족할 수 있는 전문 개발자가 필요합니다. 
+기존의 재고 관리 시스템을 클라우드로 이전하고, 새로운 기능을 추가하여 효율적인 재고 관리를 가능하게 할 시스템을 개발하는 것이 주요 목표입니다.
+구인 유형:
+발주처에서 수주한 프로젝트로, 계약이 완료된 상태이며, 클라우드 기반의 재고 관리 시스템 구축을 위한 개발자를 구인하고 있습니다. 
+프로젝트의 요구사항에 맞춰 클라우드 기술과 Java 개발 경험이 풍부한 인력을 찾고 있습니다.
+
+프로젝트 산업 분야:
+-물류 및 재고 관리 시스템
+-클라우드 기반 시스템 구축
+
+협업 예정 인력:
+-자사 개발자 2명
+-외부 개발자 3명
+
+우선 순위:[1순위] 업무 능력[2순위] 예산 범위 [3순위] 근무 시작일
+
+업무 내용:
+이 프로젝트는 클라우드 기반의 재고 관리 시스템 구축을 목표로 합니다. AWS를 활용하여 시스템을 클라우드 환경에 배치하고, 기존의 재고 관리 프로세스를 최적화하는 솔루션을 제공합니다. 
+Java를 사용하여 서버 측 애플리케이션을 개발하고, 재고 정보의 실시간 업데이트와 관리 기능을 구현합니다. 팀은 이 시스템이 고도화될 수 있도록 지속적으로 모니터링하고, 필요한 기능을 추가하는 작업을 진행할 것입니다.', 
     '경기도 성남시', 
     '클라우드 기반 재고 관리 시스템 구축', 
     STR_TO_DATE('2024-12-25', '%Y-%m-%d'), 
     'AWS · 3년 이상,Java · 5년 이상', 
     STR_TO_DATE('2024-12-25', '%Y-%m-%d'), 
     12, 
-    179
+    'lKTI304'
 UNION ALL
 SELECT 
     5800000, 
@@ -11128,14 +11307,40 @@ SELECT
     '60일', 
     0, 
     'ON_GOING', 
-    'AI 기반 고객 분석 및 추천 시스템 구축 프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.', 
+    'AI 기반 고객 분석 및 추천 시스템 구축 프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.
+    
+모집 마감일: 2025년 1월 20일
+지원자 수: 7명
+구인 배경:
+AI 기반 고객 분석 및 추천 시스템 구축 프로젝트로, 고객 데이터를 분석하고 이를 기반으로 맞춤형 추천 서비스를 제공하는 시스템을 개발할 예정입니다. 
+이 프로젝트에서는 다양한 데이터 분석 기술과 머신러닝 알고리즘을 활용하여 고객의 행동을 분석하고, 이를 기반으로 개인화된 추천을 자동으로 제공하는 시스템을 구축할 것입니다. 
+해당 시스템의 최적화와 데이터 분석에 대한 높은 이해도가 요구됩니다.
+
+구인 유형:
+발주처에서 수주한 프로젝트로, 계약이 완료된 상태입니다. AI 기반 고객 분석 및 추천 시스템을 구축하는 작업에 필요한 인력을 구인 중입니다. 
+프로젝트의 요구사항에 맞춰 Python과 TensorFlow에 대한 높은 숙련도가 필요합니다.
+
+프로젝트 산업 분야:
+-인공지능(AI)
+-데이터 분석
+-추천 시스템
+
+협업 예정 인력:
+-자사 개발자 2명
+-외부 AI 전문가 2명
+
+우선 순위:[1순위] 업무 능력 [2순위] 예산 범위 [3순위] 근무 시작일
+
+업무 내용:
+이 프로젝트는 고객 데이터를 기반으로 한 AI 분석 및 추천 시스템을 개발하는 것입니다. Python과 TensorFlow를 활용해 머신러닝 모델을 구축하고, 고객의 행동 패턴을 분석하여 개인화된 추천 서비스를 제공합니다. 
+데이터 처리 및 분석 능력, 모델 학습 및 최적화 작업을 주로 맡게 되며, 추천 시스템의 정확도를 높이고 다양한 고객 맞춤형 추천을 실시간으로 제공하는 시스템을 구축할 예정입니다.', 
     '서울특별시 강남구', 
     'AI 기반 고객 분석 및 추천 시스템 구축', 
     STR_TO_DATE('2024-12-18', '%Y-%m-%d'), 
     'Python · 4년 이상,TensorFlow · 3년 이상', 
     STR_TO_DATE('2024-12-18', '%Y-%m-%d'), 
     10, 
-    180
+    'MDqT305'
 UNION ALL
 SELECT 
  8000000, 
@@ -11144,14 +11349,46 @@ SELECT
     '40일', 
     0, 
     'ON_GOING', 
-    '산업용 저출력 인덕션 회로 설계 프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.', 
+    '산업용 저출력 인덕션 회로 설계 프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.
+    
+모집 마감일: 2024년 12월 18일
+예상 시작일: 계약 체결 이후, 즉시 시작
+진행 분류: 신규 프로젝트 진행
+기획 상태: 필요한 내용을 간단히 정리한 상태
+프로젝트 경험: IT 프로젝트 관리 경험 없음
+협업 예정 인력: 파트너와 협업 가능한 인력이 없습니다.
+우선 순위: [1순위] 산출물 완성도, [2순위] 금액, [3순위] 일정 준수
+
+업무 내용
+프로젝트 개요 :
+- 산업용 heating 장비(100 ~ 200W)의 회로 설계
+
+프로젝트의 현재 상황 :
+- PCB 제작 업체와는 컨텍 가능한 상황입니다. PCB Artwork 은 협력사를 통해 진행 가능하여 회로 설계에 대한 부분만 의뢰합니다.
+
+필요 요소 :
+- 회로 설계
+
+주요 기능 :
+- 전원 on/off ( 산업용이라 단순합니다. )
+- Watt 수를 변경할 가능성을 염두해둔 설계가 필요합니다.
+* 최초 목표는 200W 이나, 시제품을 만들어본 뒤 이를 변경할 가능성도 있습니다.
+- 전원 : 220V AC
+
+산출물 :
+- 회로도
+- Bom-list
+
+지원 시 참고 사항 :
+- 미팅 시 금액/일정 조율 가능합니다.
+', 
     '인천광역시 남동구', 
     '산업용 저출력 인덕션 회로 설계', 
     STR_TO_DATE('2024-12-04', '%Y-%m-%d'), 
     '요구사항 없음', 
     STR_TO_DATE('2024-12-04', '%Y-%m-%d'), 
     6, 
-    181
+    'XuIXx306'
 UNION ALL
 SELECT 
     30000000, 
@@ -11160,14 +11397,61 @@ SELECT
     '80일', 
     0, 
     'ON_GOING', 
-    '위치 기반 데이트 서비스 제공 모바일앱 구축 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.', 
+    '위치 기반 데이트 서비스 제공 모바일앱 구축 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.
+    
+모집 마감일: 2024년 12월 18일
+예상 시작일: 계약 체결 이후, 즉시 시작
+진행 분류: 신규 프로젝트 진행
+기획 상태: 아이디어만 있는 상태
+프로젝트 경험: IT 프로젝트 관리 경험 없음
+협업 예정 인력: 파트너와 협업 가능한 인력이 없습니다.
+우선 순위: [1순위] 산출물 완성도, [2순위] 금액, [3순위] 일정 준수
+
+업무 내용
+프로젝트 개요 :
+- 위치기반이 들어가있는 데이트서비스 제공 어플을 제작하려고합니다.
+- 현재 웹사이트로 운영중이며 가능한 빠르게 진행을 완료하고 싶습니다.
+
+프로젝트의 현재 상황 :
+- 아이디어 단계이며 대략적인 사업 기획이 완성되어 있는 상황입니다.
+
+필요 요소 :
+- 상세 기획( 요구 사항 정의, 기능 상세 정의, 화면 설계 등 )
+- UI/UX 디자인
+- 모바일앱 개발( android, ios )
+- 관리자페이지 개발
+- 서버/DB/인프라 구성
+
+개발 환경/언어 :
+- 모두 제안해주시기 바랍니다.
+
+매칭 구조 :
+- 일반 사용자와 저희 회사에 소속된 직원이 매칭됩니다.
+
+주요 기능 :
+- 결제 시스템( 카드 결제, 간편 결제 등 가능한 많은 결제 옵션을 도입하고 싶습니다. )
+- 고객이 매칭 요청을 등록하면 위치가 가까운 순서대로 직원들에게 매칭을 위한 알림이 갑니다. ( 앱 내에서도 알림/알림톡 )
+- 직원은 요청을 승인/거절할 수 있습니다.
+- 장시간 요청이 승인되지 않으면 반경을 더 넓혀서 매칭을 시도합니다.
+- 직원이 요청을 승인하면 매칭이 완료되고, 유저는 예약금을 결제합니다.
+- 직원들은 예약 일정을 확인할 수 있어야 합니다.
+- 직원들은 예약 일정에 맞춰 리마인드 알림톡을 받습니다.
+- 직원들은 본인의 프로필을 관리할 수 있습니다.
+- 배너 광고 기능이 들어가며 배너 광고를 관리할 수 있는 관리자 기능이 필요합니다.
+
+산출물 :
+- 소스 코드 원본
+- 디자인 원본
+- 기획 문서
+- 기술 문서( 범위 협의 )
+', 
     '서울특별시 구로구', 
     '위치 기반 데이트 서비스 제공 모바일앱 구축', 
     STR_TO_DATE('2024-12-04', '%Y-%m-%d'), 
     '요구사항 없음', 
     STR_TO_DATE('2024-12-04', '%Y-%m-%d'), 
     51, 
-    182
+    'AYeYIx307'
 UNION ALL
 SELECT 
     15000000, 
@@ -11176,14 +11460,55 @@ SELECT
     '60일', 
     0, 
     'ON_GOING', 
-    'AI를 활용한 꿀벌 기생충 감지 앱 구축 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.', 
+    'AI를 활용한 꿀벌 기생충 감지 앱 구축 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.
+    
+    모집 마감일: 2024년 12월 18일
+예상 시작일: 계약 체결 이후, 즉시 시작
+진행 분류: 신규 프로젝트 진행
+기획 상태: 필요한 내용을 간단히 정리한 상태
+프로젝트 경험: IT 프로젝트 관리 경험 없음
+협업 예정 인력: PM 1명
+우선 순위: [1순위] 산출물 완성도, [2순위] 금액, [3순위] 일정 준수
+관련 기술: Android
+
+업무 내용
+프로젝트 개요 :
+- 꿀벌 군집 현상의 가장 큰 원인 중에 하나인 Varroa mites라를 기생 진드기를 탐지할 수 있는 앱을 개발하고자 합니다.
+
+의뢰 목표 :
+- 사업화를 위한 1차 개발을 목표로 합니다.
+
+현재 준비 상황 :
+- 학습 데이터는 준비 중입니다. (이미지를 합성하여 만드는 등 같이 논의해 보고 준비하고자 합니다.)
+
+필요 요소 :
+- 꿀벌 기생충 감지 AI 모델 기획, 개발
+- Android 앱 기획, 디자인, 개발
+- 스토어 등록
+
+개발 환경/언어 등 :
+- Android 앱 개발 희망합니다.
+
+주요 기능 :
+- 꿀벌들을 사진 찍었을 때 꿀벌이 Varroa mites에 감염이 되어있는지 확인해 줄 수 있습니다.
+- 사전에 AI를 통해서 Varroa mites의 감염 여부를 학습시켜 놓습니다.
+- Varroa mites의 크기는 1mm ~ 1.5 mm로 매우 작습니다.
+- 다양한 위치에 기생하는 Varroa mites의 사진을 통해서 학습시키는 알고리즘도 포함합니다.
+- 현재 육안으로 확인할 경우 정확도는 약 30%입니다. 모델을 통한 정확도는 미팅 시 논의해보고자 합니다.
+
+참고 사이트/앱 :
+- 내용을 정리해 놓은 PPT 존재합니다. 미팅 시 공유드릴 예정입니다.
+
+지원 시 참고 사항 :
+- 유사한 프로젝트 경험이 있는 분 우대합니다.
+', 
     '서울특별시 강남구', 
     'AI를 활용한 꿀벌 기생충 감지 앱 구축', 
     STR_TO_DATE('2024-12-05', '%Y-%m-%d'), 
     'Android', 
     STR_TO_DATE('2024-12-05', '%Y-%m-%d'), 
     23, 
-    183
+    'GpxqBr308'
 UNION ALL
 SELECT 
     6000000, 
@@ -11192,14 +11517,57 @@ SELECT
     '30일', 
     0, 
     'CANCELED', 
-    '생성형 AI 활용 목적성 있는 글 생성기 개발 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.', 
+    '생성형 AI 활용 목적성 있는 글 생성기 개발 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.
+    
+    모집 마감일: 2024년 12월 18일
+예상 시작일: 계약 체결 이후, 즉시 시작
+진행 분류: 신규 프로젝트 진행
+기획 상태: 필요한 내용을 간단히 정리한 상태
+프로젝트 경험: IT 프로젝트 관리 경험 있음
+협업 예정 인력: 파트너와 협업 가능한 인력이 없습니다.
+우선 순위: [1순위] 산출물 완성도, [2순위] 일정 준수, [3순위] 금액
+
+업무 내용
+프로젝트 개요 :
+생성형 AI를 활용해 글 생성기를 만드려고 합니다.
+자기소개서나 블로그 글 등을 템플릿에 맞게끔 작성해주는 기능입니다.
+
+프로젝트의 현재 단계 :
+- PoC 단계입니다.
+
+현재 준비 상황 :
+- 간단한 기획 정리 중에 있습니다.( 러프하게 정리되어 있습니다. )
+
+필요 요소 :
+- 웹 서비스 기획 및 디자인
+- 웹 서비스 개발
+
+개발환경/언어/방식 :
+- PC 위주의 웹 개발입니다.
+- 환경 및 언어는 제안 부탁드립니다.
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+- 취업 준비생이나, 프리랜서가 자주 작성해야하는 글을 자동으로 작성할 수 있게끔 하는걸 목표하고 있습니다.
+- 자세한 내용은 정리 중에 있습니다.
+
+산출물 :
+- 기획 : 기능, 화면 등 기획/설계 문서 일체
+- 디자인 : UI/UX 및 리소스 디자인 원본 파일
+- 개발 : 개발 원본 소스 코드
+
+참고 서비스/사이트 :
+- 뤼튼, 라이너 같이 깔끔한 생성형 AI UI
+- 기존 기사 작성이나 게시글 작성 같은 생성형 AI 서드파티
+
+기타 참고 사항/유의 사항 :
+- AI를 만져보신 분이나, 웹 서비스를 빠르게 개발해보신 분', 
     '서울특별시 송파구', 
     '생성형 AI 활용 목적성 있는 글 생성기 개발', 
     STR_TO_DATE('2024-12-11', '%Y-%m-%d'), 
     '요구사항 없음', 
     STR_TO_DATE('2024-12-11', '%Y-%m-%d'), 
     23, 
-    184
+    'efQYa309'
 UNION ALL
 SELECT 
     5000000, 
@@ -11208,255 +11576,60 @@ SELECT
     '30일', 
     0, 
     'ON_GOING', 
-    '글로벌 이커머스 API 연동 및 개발 프로젝트는 다양한 시스템 간의 통신을 API로 최적화합니다.', 
+    '글로벌 이커머스 API 연동 및 개발 프로젝트는 다양한 시스템 간의 통신을 API로 최적화합니다.
+    
+    모집 마감일: 2024년 12월 18일
+예상 시작일: 계약 체결 이후, 즉시 시작
+진행 분류: 신규 프로젝트 진행
+기획 상태: 필요한 내용을 간단히 정리한 상태
+프로젝트 경험: IT 프로젝트 관리 경험 있음
+협업 예정 인력: 파트너와 협업 가능한 인력이 없습니다.
+우선 순위: [1순위] 산출물 완성도, [2순위] 일정 준수, [3순위] 금액
+관련 기술: Kotlin, MySQL, RESTful APIs, Selenium, Spring
+
+업무 내용
+
+프로젝트 개요 :
+- 저희는 일본을 비롯한 다양한 글로벌 이커머스 플랫폼과의 연동을 통해 통합 관리를 지원하는 서비스를 제공/개발하고 있습니다.
+- 단일 플랫폼에서 다수의 온라인 쇼핑몰을 손쉽게 관리함으로써, 셀러들의 운영 효율성을 극대화하는 것을 목표로 하고 있습니다.
+- 이커머스 플랫폼과의 API 연동 및 라쿠텐의 경우 셀레니움(Selenium)을 이용한 상품 등록 자동화 기능을 개발해 주시면 됩니다.
+
+현재 준비 상황 :
+- 시스템은 내부에서 개발 중인 상황이며 전달드리는 API 연동 및 개발만 진행해 주시면 됩니다.
+
+필요 요소 :
+- 기존 레거시 검토
+- 글로벌 이커머스 API 연동 및 개발
+
+개발환경/언어/방식 :
+- Kotlin, Spring 기반 웹으로 개발되어 있습니다.
+- DB는 MySQL로 구현되어 있습니다.
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+- 이커머스 플랫폼( Yahoo, Qoo10, Base) API 연동 개발
+- 셀레니움(Selenium)을 활용한 라쿠텐 상품 등록 자동화
+
+산출물 :
+- 소스 코드 원본 파일
+
+기타 참고 사항/유의 사항 :
+1. 아래 경험이 있으신 분들 및 업체 분들 지원 부탁드립니다.
+- Kotlin, Spring 기반 백엔드 개발 경험
+- RESTful API 연동 및 설계 경험
+- MySQL 또는 유사한 RDBMS 사용 경험
+- 셀레니움(Selenium)을 활용한 웹 자동화 경험 또는 높은 이해도
+- 이커머스 서비스 관련 개발 경험 및 일본 플랫폼 이해도 우대
+', 
     '서울특별시 광진구', 
     '글로벌 이커머스 API 연동 및 개발', 
     STR_TO_DATE('2024-12-10', '%Y-%m-%d'), 
     'Kotlin,MySQL,restful api,selenium,Spring', 
     STR_TO_DATE('2024-12-10', '%Y-%m-%d'), 
     10, 
-    185
-UNION ALL
-SELECT 
-    6000000, 
-    STR_TO_DATE('2025-01-03', '%Y-%m-%d'), 
-    'PERIOD', 
-    '21일', 
-    0, 
-    'COMPLETED', 
-    'BtoB 쇼핑몰 반응형 웹 디자인 및 퍼블리싱 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.', 
-    '서울특별시 강남구', 
-    'BtoB 쇼핑몰 반응형 웹 디자인 및 퍼블리싱', 
-    STR_TO_DATE('2024-12-16', '%Y-%m-%d'), 
-    'HTML,JSP', 
-    STR_TO_DATE('2024-12-16', '%Y-%m-%d'), 
-    5, 
-    186
-UNION ALL
-SELECT 
-    7000000,  -- amount
-    STR_TO_DATE('2024-12-28', '%Y-%m-%d'),  -- closingdate
-    'PERIOD',  -- construction
-    '365일',  -- duration
-    0,  -- is_completed
-    'ON_GOING',  -- prostatement
-    '대기업 금융 UMS (통합메시지) 솔루션 구축 개발 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.',  -- projectinfo
-    '서울특별시 강남구',  -- projectlocation
-    '대기업 금융 UMS (통합메시지) 솔루션 구축 개발',  -- projectname
-    STR_TO_DATE('2024-12-10', '%Y-%m-%d'),  -- registrationdate
-    'framework · 경력 무관,spring batch · 경력 무관,Spring Boot · 경력 무관,Active MQ · 경력 무관,JSP · 경력 무관,java8 · 경력 무관,Oracle · 경력 무관,MySQL · 경력 무관',  -- requirement
-    STR_TO_DATE('2024-12-10', '%Y-%m-%d'),  -- startdate
-    9,  -- teamsize
-    187  -- client_idx
-UNION ALL
-SELECT 
-    7500000,  -- amount
-    STR_TO_DATE('2024-12-29', '%Y-%m-%d'),  -- closingdate
-    'OUTSOURCE',  -- construction
-    '360일',  -- duration
-    0,  -- is_completed
-    'CANCELED',  -- prostatement
-    '주식매매시스템 운영 프로젝트 PM 프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.',  -- projectinfo
-    '서울특별시 영등포구',  -- projectlocation
-    '주식매매시스템 운영 프로젝트 PM ',  -- projectname
-    STR_TO_DATE('2024-12-11', '%Y-%m-%d'),  -- registrationdate
-    'Java · 경력 무관,Oracle · 경력 무관',  -- requirement
-    STR_TO_DATE('2024-12-11', '%Y-%m-%d'),  -- startdate
-    2,  -- teamsize
-    188  -- client_idx
-UNION ALL
-SELECT 
-    1000000,  -- amount
-    STR_TO_DATE('2025-01-04', '%Y-%m-%d'),  -- closingdate
-    'PERIOD',  -- construction
-    '2일',  -- duration
-    0,  -- is_completed
-    'ON_GOING',  -- prostatement
-    'Python 기반 EMS 프로그램 마무리 개발  프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.',  -- projectinfo
-    '경기도 용인시 기흥구',  -- projectlocation
-    'Python 기반 EMS 프로그램 마무리 개발 ',  -- projectname
-    STR_TO_DATE('2024-12-17', '%Y-%m-%d'),  -- registrationdate
-    'Python · 4년 이상',  -- requirement
-    STR_TO_DATE('2024-12-17', '%Y-%m-%d'),  -- startdate
-    1,  -- teamsize
-    189  -- client_idx
-UNION ALL
-SELECT 
-    40000000,  -- amount
-    STR_TO_DATE('2024-12-27', '%Y-%m-%d'),  -- closingdate
-    'OUTSOURCE',  -- construction
-    '120일',  -- duration
-    1,  -- is_completed
-    'COMPLETED',  -- prostatement
-    '운동기구 연동 iOS 및 WatchOS앱 개발  프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.',  -- projectinfo
-    '서울특별시 구로구',  -- projectlocation
-    '운동기구 연동 iOS 및 WatchOS앱 개발 ',  -- projectname
-    STR_TO_DATE('2024-12-09', '%Y-%m-%d'),  -- registrationdate
-    'Flutter,iOS,Swift,watchos',  -- requirement
-    STR_TO_DATE('2024-12-09', '%Y-%m-%d'),  -- startdate
-    34,  -- teamsize
-    190  -- client_idx
-UNION ALL
-SELECT 
-    470000,  -- amount
-    STR_TO_DATE('2025-01-04', '%Y-%m-%d'),  -- closingdate
-    'PERIOD',  -- construction
-    '2일',  -- duration
-    1,  -- is_completed
-    'ON_GOING',  -- prostatement
-    '구글 SEO 기술 문제 해결 프로젝트는 고객의 요구를 반영한 최적화된 솔루션을 제공합니다.',  -- projectinfo
-    '경기도 수원시 영통구',  -- projectlocation
-    '구글 SEO 기술 문제 해결',  -- projectname
-    STR_TO_DATE('2024-12-17', '%Y-%m-%d'),  -- registrationdate
-    'Cafe24,HTML',  -- requirement
-    STR_TO_DATE('2024-12-17', '%Y-%m-%d'),  -- startdate
-    5,  -- teamsize
-    191  -- client_idx
-UNION ALL
-SELECT 
-    9000000,  -- amount
-    STR_TO_DATE('2024-12-21', '%Y-%m-%d'),  -- closingdate
-    'OUTSOURCE',  -- construction
-    '60일',  -- duration
-    1,  -- is_completed
-    'CANCELED',  -- prostatement
-    '솔루션 기반 중개 플랫폼 MVP 웹/앱 구축 프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.',  -- projectinfo
-    '인천광역시 중구',  -- projectlocation
-    '솔루션 기반 중개 플랫폼 MVP 웹/앱 구축',  -- projectname
-    STR_TO_DATE('2024-12-03', '%Y-%m-%d'),  -- registrationdate
-    '요구사항 없음',  -- requirement
-    STR_TO_DATE('2024-12-03', '%Y-%m-%d'),  -- startdate
-    23,  -- teamsize
-    192  -- client_idx
-UNION ALL
-SELECT 
-    1000000,  -- amount
-    STR_TO_DATE('2024-12-21', '%Y-%m-%d'),  -- closingdate
-    'PERIOD',  -- construction
-    '7일',  -- duration
-    1,  -- is_completed
-    'COMPLETED',  -- prostatement
-    '부동산 데이터 가공 프로그램 개발 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.',  -- projectinfo
-    '서울특별시 금천구',  -- projectlocation
-    '부동산 데이터 가공 프로그램 개발',  -- projectname
-    STR_TO_DATE('2024-12-03', '%Y-%m-%d'),  -- registrationdate
-    'Python',  -- requirement
-    STR_TO_DATE('2024-12-03', '%Y-%m-%d'),  -- startdate
-    43,  -- teamsize
-    193  -- client_idx
-UNION ALL
-SELECT 
-    4000000,  -- amount
-    STR_TO_DATE('2024-12-22', '%Y-%m-%d'),  -- closingdate
-    'OUTSOURCE',  -- construction
-    '365일',  -- duration
-    0,  -- is_completed
-    'CANCELED',  -- prostatement
-    'PHP/MySQL 기반 백엔드 개발자 구인 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.',  -- projectinfo
-    '서울특별시 성동구',  -- projectlocation
-    'PHP/MySQL 기반 백엔드 개발자 구인',  -- projectname
-    STR_TO_DATE('2024-12-04', '%Y-%m-%d'),  -- registrationdate
-    'PHP · 3~4년,MySQL · 3~4년',  -- requirement
-    STR_TO_DATE('2024-12-04', '%Y-%m-%d'),  -- startdate
-    3,  -- teamsize
-    194  -- client_idx
-UNION ALL
-SELECT 
-    3000000,  -- amount
-    STR_TO_DATE('2024-12-22', '%Y-%m-%d'),  -- closingdate
-    'PERIOD',  -- construction
-    '30일',  -- duration
-    1,  -- is_completed
-    'COMPLETED',  -- prostatement
-    '내부 전자결재시스템 기획 프로젝트는 고객의 요구를 반영한 최적화된 솔루션을 제공합니다.',  -- projectinfo
-    '서울특별시 광진구',  -- projectlocation
-    '내부 전자결재시스템 기획',  -- projectname
-    STR_TO_DATE('2024-12-04', '%Y-%m-%d'),  -- registrationdate
-    '요구사항 없음',  -- requirement
-    STR_TO_DATE('2024-12-04', '%Y-%m-%d'),  -- startdate
-    13,  -- teamsize
-    195  -- client_idx
-UNION ALL
-SELECT 
-    6000000,  -- amount
-    STR_TO_DATE('2024-12-22', '%Y-%m-%d'),  -- closingdate
-    'OUTSOURCE',  -- construction
-    '20일',  -- duration
-    0,  -- is_completed
-    'ON_GOING',  -- prostatement
-    '텔레그램 미니앱 기반 게임 기획, 디자인 프로젝트는 고객의 요구를 반영한 최적화된 솔루션을 제공합니다.',  -- projectinfo
-    '서울특별시 서대문구',  -- projectlocation
-    '텔레그램 미니앱 기반 게임 기획, 디자인',  -- projectname
-    STR_TO_DATE('2024-12-04', '%Y-%m-%d'),  -- registrationdate
-    '요구사항 없음',  -- requirement
-    STR_TO_DATE('2024-12-04', '%Y-%m-%d'),  -- startdate
-    11,  -- teamsize
-    196  -- client_idx
-UNION ALL
-SELECT 
-    20000000,  -- amount
-    STR_TO_DATE('2024-12-22', '%Y-%m-%d'),  -- closingdate
-    'PERIOD',  -- construction
-    '60일',  -- duration
-    0,  -- is_completed
-    'ON_GOING',  -- prostatement
-    '고객/바이어 관리 시스템 기획 및 개발 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.',  -- projectinfo
-    '인천광역시 연수구',  -- projectlocation
-    '고객/바이어 관리 시스템 기획 및 개발',  -- projectname
-    STR_TO_DATE('2024-12-04', '%Y-%m-%d'),  -- registrationdate
-    '요구사항 없음',  -- requirement
-    STR_TO_DATE('2024-12-04', '%Y-%m-%d'),  -- startdate
-    45,  -- teamsize
-    197  -- client_idx
-UNION ALL
-SELECT 
-    18000000,  -- amount
-    STR_TO_DATE('2024-12-28', '%Y-%m-%d'),  -- closingdate
-    'OUTSOURCE',  -- construction
-    '30일',  -- duration
-    1,  -- is_completed
-    'CANCELED',  -- prostatement
-    '안전보호복 기성품의 3D 디자인 및 레이어드 구현 프로젝트는 특정 요구사항에 맞춘 고유의 개발을 포함합니다.',  -- projectinfo
-    '충청남도 공주시',  -- projectlocation
-    '안전보호복 기성품의 3D 디자인 및 레이어드 구현',  -- projectname
-    STR_TO_DATE('2024-12-10', '%Y-%m-%d'),  -- registrationdate
-    '요구사항 없음',  -- requirement
-    STR_TO_DATE('2024-12-10', '%Y-%m-%d'),  -- startdate
-    10,  -- teamsize
-    198  -- client_idx
-UNION ALL
-SELECT 
-    2500000,  -- amount
-    STR_TO_DATE('2024-12-29', '%Y-%m-%d'),  -- closingdate
-    'PERIOD',  -- construction
-    '5일',  -- duration
-    0,  -- is_completed
-    'ON_GOING',  -- prostatement
-    '키보드 하드웨어 매크로 개발(Keyboard Firmware Builder/QMK) 프로젝트는 맞춤형 솔루션을 제공하는 개발 작업입니다.',  -- projectinfo
-    '서울특별시 구로구',  -- projectlocation
-    '키보드 하드웨어 매크로 개발(Keyboard Firmware Builder/QMK)',  -- projectname
-    STR_TO_DATE('2024-12-11', '%Y-%m-%d'),  -- registrationdate
-    'Keyboard Firmware Builder,QMK',  -- requirement
-    STR_TO_DATE('2024-12-11', '%Y-%m-%d'),  -- startdate
-    5,  -- teamsize
-    199  -- client_idx
-UNION ALL
-SELECT 
-    30000000,  -- amount
-    STR_TO_DATE('2024-12-27', '%Y-%m-%d'),  -- closingdate
-    'OUTSOURCE',  -- construction
-    '45일',  -- duration
-    1,  -- is_completed
-    'COMPLETED',  -- prostatement
-    '가상계좌를 기반으로 하는 전자지갑 플랫폼 개발 프로젝트는 고객의 요구를 반영한 최적화된 솔루션을 제공합니다.',  -- projectinfo
-    '인천광역시 연수구',  -- projectlocation
-    '가상계좌를 기반으로 하는 전자지갑 플랫폼 개발',  -- projectname
-    STR_TO_DATE('2024-12-09', '%Y-%m-%d'),  -- registrationdate
-    '요구사항 없음',  -- requirement
-    STR_TO_DATE('2024-12-09', '%Y-%m-%d'),  -- startdate
-    27,  -- teamsize
-    200  -- client_idx
+    'HPeQIw310'
+
 ) p
 JOIN member m ON m.id = p.client_id
 JOIN client c ON c.member_idx = m.member_idx;
+
 
