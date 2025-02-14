@@ -1,0 +1,4 @@
+select * from `client`;
+
+INSERT INTO client (member_idx)
+SELECT member_idx FROM member WHERE pcatype_idx = 'CLIENT';
