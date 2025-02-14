@@ -38,13 +38,18 @@ public class QuestionEntity {
     @Column(name = "attachment", length = 300)
     private String attachment; // 첨부 파일
 
-    @Column(name = "is_answered")
-    private Boolean isAnswered; // 답변 여부
+    @Column(name = "is_answered", nullable = false, columnDefinition = "TINYINT(1) DEFAULT 0")
+    private Boolean isAnswered = false;
+
 
     @PrePersist
     public void prePersist() {
         if (this.questionId == null){
             this.questionId = UUID.randomUUID();
+        }
+
+        if (this.isAnswered == null) {
+            this.isAnswered = false;
         }
     }
 }
