@@ -166,20 +166,23 @@ CREATE TABLE `history` (
   `exitdate` date DEFAULT NULL,
   `history_id` char(36) NOT NULL,
   `joindate` date DEFAULT NULL,
+  `work` varchar(255) DEFAULT NULL,
   `partner_idx` int NOT NULL,
   PRIMARY KEY (`history_idx`),
   UNIQUE KEY `uk_history_id` (`history_id`),
   KEY `fk_history_partner` (`partner_idx`),
   CONSTRAINT `fk_history_partner` FOREIGN KEY (`partner_idx`) REFERENCES `partner` (`partner_idx`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 -- mypage
 CREATE TABLE `mypage` (
   `mypage_idx` int NOT NULL AUTO_INCREMENT,
   `account` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
+  `bankname` varchar(255) DEFAULT NULL,
+  `birth` varchar(255) DEFAULT NULL,
   `businessnum` int DEFAULT NULL,
-  `introduce` varchar(500) DEFAULT NULL,
+  `introduce` varchar(255) DEFAULT NULL,
   `mypage_id` char(36) NOT NULL,
   `profile` varchar(255) DEFAULT NULL,
   `zipcode` varchar(255) DEFAULT NULL,
@@ -188,7 +191,7 @@ CREATE TABLE `mypage` (
   UNIQUE KEY `uk_mypage_id` (`mypage_id`),
   UNIQUE KEY `uk_mypage_member_idx` (`member_idx`),
   CONSTRAINT `fk_mypage_member` FOREIGN KEY (`member_idx`) REFERENCES `member` (`member_idx`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 -- payment
 CREATE TABLE `payment` (
@@ -229,6 +232,7 @@ CREATE TABLE `questions` (
   `question_idx` int NOT NULL AUTO_INCREMENT,
   `attachment` varchar(300) DEFAULT NULL,
   `content` varchar(300) NOT NULL,
+  `is_answered` bit(1) DEFAULT NULL,
   `question_id` char(36) NOT NULL,
   `subject` varchar(50) NOT NULL,
   `member_idx` int NOT NULL,
@@ -236,7 +240,7 @@ CREATE TABLE `questions` (
   UNIQUE KEY `uk_question_id` (`question_id`),
   KEY `fk_question_member` (`member_idx`),
   CONSTRAINT `fk_question_member` FOREIGN KEY (`member_idx`) REFERENCES `member` (`member_idx`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 
 -- selectproject
@@ -256,6 +260,7 @@ CREATE TABLE `selectproject` (
 
 CREATE TABLE `selectskill` (
   `selectskill_idx` int NOT NULL AUTO_INCREMENT,
+  `career_duration` int DEFAULT NULL,
   `selectskill_id` char(36) NOT NULL,
   `skill_code` enum('AI_PLATFORM','ANDROID','ANGULAR','ANSIBLE','APACHE','ASP_NET','AWS','AXURE_RP','AZURE','BIGQUERY','BLE','BLENDER','BOOTSTRAP','C','CASSANDRA','CHEF','CIRCLE_CI','CLICKHOUSE','COCOS2DX','CORDOVA','COUCH_DB','CPP','CSHARP','DART','DATASTAX','DJANGO','DOCKER','DYNAMO_DB','ECLIPSE','ELASTICSEARCH','ELECTRON','EMBER_JS','EXPRESS','FFMPEG','FIGMA','FIREBASE','FLASK','FLUTTER','GCP','GITLAB_CI_CD','GO','GOOGLE_CLOUD_PLATFORM','GRAPHQL','H2O_AI','HADOOP','IBM_DB2','ILLUSTRATOR','INTELLIJ','INVISION','IONIC','IOS','JAVA','JAVASCRIPT','JENKINS','JIRA','JQUERY','JSP','KAFKA','KNIME','KOTLIN','KOTLIN_MULTIPLATFORM','KUBERNETES','LARAVEL','LATEX','LESS','LOOKER','LUA','MAHOUT','MARIA_DB','MATLAB','ML_LIB','MONGODB','MSSQL','MYSQL','NAGIOS','NEO4J','NETBEANS','NGINX','OBJECTIVE_C','OPENCV','ORACLE','PANDAS','PERL','PHONEGAP','PHOTOSHOP','PHP','POSTGRESQL','POSTMAN','POWER_BI','PREMIERE_PRO','PROMETHEUS','PROTOPIE','PUPPET','PYCHARM','PYTHON','PYTORCH_LIGHTNING','QT','R','RAPIDMINER','REACT','REACT_NATIVE','REDIS','REDSHIFT','RUBY','RUBY_ON_RAILS','RUST','S3','SASS','SCALA','SCIPY','SCIPY_STATS','SKETCH','SNOWFLAKE','SPARK','SPRING_BOOT','SQLITE','SWAGGER','SWIFT','SWIFT_UI','TABLEAU','TERRAFORM','TOMCAT','TRAVIS_CI','TYPESCRIPT','UNITY','UNREAL_ENGINE','VSCODE','VUE','XAMARIN','ZOOKEEPER') NOT NULL,
   `case_idx` int DEFAULT NULL,
@@ -270,5 +275,4 @@ CREATE TABLE `selectskill` (
   CONSTRAINT `fk_selectskill_partner` FOREIGN KEY (`partner_idx`) REFERENCES `partner` (`partner_idx`),
   CONSTRAINT `fk_selectskill_project` FOREIGN KEY (`project_idx`) REFERENCES `project` (`project_idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
 
