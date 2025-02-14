@@ -2,7 +2,7 @@ select * from selectproject;
 
 INSERT INTO selectproject (selectproject_id, yn, partner_idx, project_idx)
 SELECT
-  UUID(), b'1', p.partner_idx, pr.project_idx
+  UUID(), b'0', p.partner_idx, pr.project_idx
 FROM (
   SELECT 'gkdg123' AS partner_member_id, '.Net 기반 키오스크 및 포스 유지보수' AS project_name
   UNION ALL
@@ -13,7 +13,16 @@ FROM (
   SELECT 'qFNK10', '내부에서 사용할 웹 빌더 시스템 구축'
   UNION ALL
   SELECT 'zUIeB11', '차량관제 서비스 UI/UX 기획자'
+  UNION ALL
+  SELECT 'gFBy17', '암호화폐 거래소 인프라/DB 최적화 백엔드 개발자 구인'
+  UNION ALL
+  SELECT 'lEKv18', '암호화폐 거래소 Next.js 프론트엔드 개발자 구인'
+  UNION ALL
+  SELECT 'gCyJ19', '내부에서 사용할 웹 빌더 시스템 구축'
+  UNION ALL
+  SELECT 'zUIeB11', '차량관제 서비스 UI/UX 기획자'
 ) t
 JOIN member m ON m.id = t.partner_member_id
 JOIN partner p ON p.member_idx = m.member_idx
 JOIN project pr ON pr.projectname = t.project_name;
+
