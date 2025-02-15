@@ -12,79 +12,72 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../../css/main.css" rel="stylesheet" />
-    <link href="../../css/p_myPage.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="/css/p_myPage.css" rel="stylesheet" />
     <title>포트폴리오 관리</title>
 </head>
 <body>
-    <!-- Header -->
-    <div id="header"></div>
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
 
     <div class="wrapper">
         <div class="mypage_container">
             <div class="sidebar_content">
                 <div class="profile_box items-center">
                     <div class="user_img_box"><a href="img"></a></div>
-                    <button class="grade">등급</button>
                     <div class="user_text">
                         <h2>유저아이디</h2>
-                        <p>user1@naver.com</p>
+                        <p th:text="${member.email}"></p>
                     </div>
                 </div>
-                 <!-- Sidebar -->
+                <!-- Sidebar -->
                 <div class="sidebar_menu">
-                  <ul class="mt-8 space-y-4">
-                      <li>    
-                          <a href="p_myPage.html" class="flex justify-between items-center textdeco">
-                              <span>개인정보 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_project.html"  class="flex justify-between items-center textdeco">
-                              <span>프로젝트 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_skill.html"  class="flex justify-between items-center textdeco">
-                              <span>보유기술 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li class="current-page">
-                          <a href="p_portfolio.html"  class="flex justify-between items-center textdeco">
-                              <span>포트폴리오 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_history.html" class="flex justify-between items-center textdeco">
-                              <span>경력 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_education.html" class="flex justify-between items-center textdeco">
-                              <span>학력 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_certificate.html" class="flex justify-between items-center textdeco">
-                              <span>자격증 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                        <a href="p_account.html" class="flex justify-between items-center textdeco">
-                            <span>계좌 관리</span>
-                            <span>&gt;</span>
-                        </a>
-                    </li>
-                  </ul>
-              </div> 
-          </div>
+                    <ul class="mt-8 space-y-4">
+                        <li>
+                            <a th:href="@{/p_myPage}" class="flex justify-between items-center textdeco">
+                                <span>개인정보 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/findProject/partner/applied}" class="flex justify-between items-center textdeco">
+                                <span>프로젝트 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/partner/skills}"  class="flex justify-between items-center textdeco">
+                                <span>보유기술 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li class="current-page">
+                            <a th:href="@{/partner/portfolio}"  class="flex justify-between items-center textdeco">
+                                <span>포트폴리오 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/p_history}"  class="flex justify-between items-center textdeco">
+                                <span>경력 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{p_education}" class="flex justify-between items-center textdeco">
+                                <span>학력 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/partner/certificate}" class="flex justify-between items-center textdeco">
+                                <span>자격증 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
             <!-- Main Content -->
             <div class="content">
@@ -93,55 +86,33 @@
                     <div class="portfolio_grid">
 
                         <!-- 개별 포트폴리오 카드 -->
-                        <article class="card-item">
-                            <a href="p_portfolio_detail.html">
-                              <img src="../../img/test_img.png" alt="" />
-                              <div class="card-text">
-                                <h2 class="card_title">
-                                  카페 스마트 오더 시스템 구축, 매출 30% 성장한 K기업
-                                </h2>
+                        <article class="card-item" th:each="portfolio : ${portfolios}">
+                            <a th:href="@{/partner/portfolio/detail/{portfolioId}(portfolioId=${portfolio.portfolioId})}">
+                                <img th:src="${portfolio.portfolioImg}" />
+
+                                <div class="card-text">
+                                <h2 class="card_title" th:text="${portfolio.portfolioTitle}">포트폴리오 제목</h2>
                               </div>
                             </a>
                           </article>
 
-                          <article class="card-item">
-                            <a href="#">
-                              <img src="../../img/test_img.png" alt="" />
-                              <div class="card-text">
-                                <h2 class="card_title">
-                                  카페 스마트 오더 시스템 구축, 매출 30% 성장한 K기업
-                                </h2>
-                              </div>
-                            </a>
-                          </article>
-
-                          <article class="card-item">
-                            <a href="#">
-                              <img src="../../img/test_img.png" alt="" />
-                              <div class="card-text">
-                                <h2 class="card_title">
-                                  카페 스마트 오더 시스템 구축, 매출 30% 성장한 K기업
-                                </h2>
-                              </div>
-                            </a>
-                          </article>
                     </div>
-                    <button class="btn" id="addPortfolioButton">포트폴리오 추가하기</button>
+                    <button class="btn" id="addPortfolioButton" th:onclick="|window.location.href='@{/partner/portfolio/add}'|">포트폴리오 추가하기</button>
+
                 </div>
               </div>
         </div>
     </div> <!-- wrapper -->
 
-     
-<!-- footer -->
-<div id="footer"></div>
-<script src="../../js/header_footer.js"></script>
-<script src="../../js/script.js"></script> 
+
+    <!-- Footer -->
+    <div  th:replace="~{footer :: footer}"></div>
+
+
+    <script src="/js/header_footer.js"></script>
+    <script src="/js/script.js"></script>
   <script>
-//추가하기 버튼 클릭 시 페이지 이동
-  document.getElementById("addPortfolioButton").addEventListener("click", function() {
-    window.location.href = "p_portfolio_add.html"; // 추가 페이지로 이동
-});
+
   
 //삭제한 포트폴리오 숨기기
 document.addEventListener("DOMContentLoaded", function() {

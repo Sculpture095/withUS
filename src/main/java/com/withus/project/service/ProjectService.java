@@ -163,6 +163,16 @@ public class ProjectService {
         selectProjectRepository.save(selectProject);
     }
 
+    // 파트너가 자신이 지원한 프로젝트 조회
+    public List<ProjectDTO> getAppliedProjectsByPartner(String partnerId) {
+        List<SelectProjectEntity> selectedProjects = selectProjectRepository.findByMemberId(partnerId);
+
+        return selectedProjects.stream()
+                .map(sp -> projectMapper.toDTO(sp.getProject())) // 프로젝트 엔티티 -> DTO 변환
+                .collect(Collectors.toList());
+    }
+
+
 
 
     // 특정 프로젝트에서 파트너 삭제

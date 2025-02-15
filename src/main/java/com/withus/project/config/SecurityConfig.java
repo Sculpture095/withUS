@@ -1,8 +1,10 @@
 package com.withus.project.config;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -41,13 +43,26 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // ✅ CORS 설정
                 .csrf(csrf -> csrf.disable()) // ✅ CSRF 비활성화
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll() // ✅ 🔥 모든 요청 허용 (개발용)
+                        .requestMatchers("/auth/check-login","/uploads/**","/css/**","/js/**","/images/**").permitAll() // ✅ 로그인 여부 확인 API는 인증 없이 호출 가능
+                        .requestMatchers("/partner/portfolio/add", "/p_myPage/**", "/c_myPage/**").hasRole("USER") // ✅ 마이페이지는 ROLE_USER 필요
+                        .anyRequest().permitAll() // ✅ 그 외 요청은 허용
+                )
+
+
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            // ✅ 로그인되지 않은 경우 401 반환 (기존 302 리디렉트 방지)
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                            response.setContentType("application/json");
+                            response.getWriter().write("{\"loggedIn\": false, \"message\": \"Unauthorized\"}");
+                        })
                 )
                 .sessionManagement(session -> session
-                        .sessionFixation().none() // 기존 세션 유지
-                        .invalidSessionUrl("/login") // 세션 만료 시 로그인 페이지로 이동
-                        .maximumSessions(1).expiredUrl("/login") // 동시 로그인 제한 및 만료 시 로그인 페이지로 이동
+                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS) // ✅ 세션을 항상 유지
+                        .maximumSessions(1)
+                        .maxSessionsPreventsLogin(true)
                 )
+
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
@@ -67,6 +82,7 @@ public class SecurityConfig {
     }
 
 
+
     /**
      * In-Memory 사용자 정의 (테스트용)
      *
@@ -84,13 +100,20 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("*")); // 🔥 모든 도메인 허용
+        configuration.setAllowedOrigins(List.of("http://localhost:8090", "http://localhost:3000")); // ✅ 프론트엔드 도메인 추가
         configuration.setAllowedMethods(List.of("GET", "POST", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
-        configuration.setAllowCredentials(true);
+        configuration.setAllowCredentials(true); // ✅ 쿠키 포함 허용
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
+
+
+
+
+
+
 }

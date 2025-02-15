@@ -7,11 +7,13 @@ import com.withus.project.domain.members.PcaType;
 import com.withus.project.domain.projects.ProjectStatus;
 import com.withus.project.service.ProjectService;
 import com.withus.project.service.member.MemberService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Comparator;
 import java.util.List;
@@ -40,6 +42,40 @@ public class ProjectController {
 
         return "findProject";
     }
+
+    @GetMapping("/client")
+    public String getClientProjects(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+        MemberDTO member = (MemberDTO) session.getAttribute("member");
+
+        if (member == null) {
+            redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
+            return "redirect:/login";
+        }
+
+        List<ProjectDTO> projects = projectService.getClientProjects(member.getId());
+        model.addAttribute("projects", projects);
+        model.addAttribute("member", member);
+
+        return "client_myPage/c_project";
+    }
+
+    @GetMapping("/partner/applied")
+    public String getAppliedProjects(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+        MemberDTO member = (MemberDTO) session.getAttribute("member");
+
+        if (member == null) {
+            redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
+            return "redirect:/login";
+        }
+
+        List<ProjectDTO> appliedProjects = projectService.getAppliedProjectsByPartner(member.getId());
+        model.addAttribute("appliedProjects", appliedProjects);
+        model.addAttribute("member", member);
+
+
+        return "partner_myPage/p_project";
+    }
+
 
     @GetMapping("/filter")
     public String filterProjects(@RequestParam(required = false) ProjectStatus status,
@@ -117,5 +153,7 @@ public class ProjectController {
         model.addAttribute("project", project);
         return "findProject_detail";
     }
+
+
 
 }

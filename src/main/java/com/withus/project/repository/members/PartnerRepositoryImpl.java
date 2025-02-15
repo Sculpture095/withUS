@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Transactional(transactionManager = "transactionManager")
@@ -93,6 +94,22 @@ public class PartnerRepositoryImpl extends AbstractRepository<PartnerEntity> {
                         "SELECT c FROM CertificateEntity c WHERE c.partner.member.id = :id", CertificateEntity.class)
                 .setParameter("id", id)
                 .getResultList();
+    }
+
+    public Integer findPartnerIdxByMemberId(String memberId) {
+        return entityManager.createQuery(
+                        "SELECT p.partnerIdx FROM PartnerEntity p WHERE p.member.id = :memberId", Integer.class)
+                .setParameter("memberId", memberId)
+                .getSingleResult();
+    }
+
+    public Optional<PartnerEntity> findByMemberId(String memberId) {
+        return entityManager.createQuery(
+                        "SELECT p FROM PartnerEntity p WHERE p.member.memberIdx = " +
+                                "(SELECT m.memberIdx FROM MemberEntity m WHERE m.id = :memberId)", PartnerEntity.class)
+                .setParameter("memberId", memberId)
+                .getResultStream()
+                .findFirst();
     }
 
 }

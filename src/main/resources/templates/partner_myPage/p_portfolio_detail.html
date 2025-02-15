@@ -12,78 +12,71 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../../css/main.css" rel="stylesheet" />
-    <link href="../../css/p_myPage.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="/css/p_myPage.css" rel="stylesheet" />
     <title>포트폴리오 상세 페이지</title>
 </head>
 <body>
-    <!-- Header -->
-    <div id="header"></div>
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
 
     <div class="wrapper">
         <div class="mypage_container">
             <div class="sidebar_content">
                 <div class="profile_box items-center">
                     <div class="user_img_box"><a href="img"></a></div>
-                    <button class="grade">등급</button>
                     <div class="user_text">
                         <h2>유저아이디</h2>
-                        <p>user1@naver.com</p>
+                        <p th:text="${member.email}"></p>
                     </div>
                 </div>
-                 <!-- Sidebar -->
+                <!-- Sidebar -->
                 <div class="sidebar_menu">
-                  <ul class="mt-8 space-y-4">
-                      <li>    
-                          <a href="p_myPage.html" class="flex justify-between items-center textdeco">
-                              <span>개인정보 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_project.html"  class="flex justify-between items-center textdeco">
-                              <span>프로젝트 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_skill.html"  class="flex justify-between items-center textdeco">
-                              <span>보유기술 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li class="current-page">
-                          <a href="p_portfolio.html"  class="flex justify-between items-center textdeco">
-                              <span>포트폴리오 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_history.html" class="flex justify-between items-center textdeco">
-                              <span>경력 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_education.html" class="flex justify-between items-center textdeco">
-                              <span>학력 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_certificate.html" class="flex justify-between items-center textdeco">
-                              <span>자격증 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                        <a href="p_account.html" class="flex justify-between items-center textdeco">
-                            <span>계좌 관리</span>
-                            <span>&gt;</span>
-                        </a>
-                    </li>
-                  </ul>
-              </div> 
+                    <ul class="mt-8 space-y-4">
+                        <li>
+                            <a th:href="@{/p_myPage}" class="flex justify-between items-center textdeco">
+                                <span>개인정보 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/findProject/partner/applied}" class="flex justify-between items-center textdeco">
+                                <span>프로젝트 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/partner/skills}"  class="flex justify-between items-center textdeco">
+                                <span>보유기술 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li class="current-page">
+                            <a th:href="@{/partner/portfolio}"  class="flex justify-between items-center textdeco">
+                                <span>포트폴리오 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/p_history}"  class="flex justify-between items-center textdeco">
+                                <span>경력 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{p_education}" class="flex justify-between items-center textdeco">
+                                <span>학력 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/partner/certificate}" class="flex justify-between items-center textdeco">
+                                <span>자격증 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
           </div>
 
             <!-- Main Content -->
@@ -92,12 +85,14 @@
                   
                     <div class="portfolio_detail_grid">
                         <div class="portfolio_item">
+                            <!-- 포트폴리오 ID 저장 (숨김 처리) -->
+                            <input type="hidden" id="portfolioId" th:value="${portfolio.portfolioId}">
                             <!-- 제목 -->
-                            <h2 id="portfolioTitleText" class="portfolio_title">카페스마트오더 시스템 구축, 매출 30% 성장한 K기업</h2>
+                            <h2 id="portfolioTitleText" class="portfolio_title" th:text="${portfolio.portfolioTitle}">포트폴리오 제목</h2>
                             <input type="text" id="portfolioTitleInput" class="portfolio_title input_field" style="display: none;">
                     
                             <!-- 내용 -->
-                            <p id="portfolioDescriptionText" class="portfolio_description">포트폴리오 내용이 여기에 들어갑니다. 프로젝트의 설명을 자세히 적어주세요.</p>
+                            <p id="portfolioDescriptionText" class="portfolio_description" th:text="${portfolio.portfolioContext}">포트폴리오 내용</p>
                             <textarea id="portfolioDescriptionInput" class="portfolio_description input_field" style="display: none;"></textarea>
                     
                             <!-- 파일선택(기본적으로 숨김) -->
@@ -109,8 +104,10 @@
                         <div class="portfolio_image" id="portfolioImageContainer">
                             <!-- 기존 이미지 유지 -->
                             <div class="image_item">
-                                <img src="../../img/test_img.png" alt="포트폴리오 이미지">
-                                <button class="delete_img_btn" onclick="deleteImage(this)">X</button>
+                                <div class="portfolio-image-container">
+                                    <img th:src="${portfolio.portfolioImg}" />
+
+                                </div>
                             </div>
                         </div>
 
@@ -127,11 +124,13 @@
         </div>
     </div> <!-- wrapper -->
 
-     
-  <!-- footer -->
-  <div id="footer"></div>
-  <script src="../../js/header_footer.js"></script>
-  <script src="../../js/script.js"></script> 
+
+<!-- Footer -->
+<div  th:replace="~{footer :: footer}"></div>
+
+
+<script src="/js/header_footer.js"></script>
+<script src="/js/script.js"></script>
   <script>
     function enableEditing() {
         // 제목 및 내용 숨기기 & 입력 필드 보이기
@@ -163,65 +162,73 @@
         document.querySelector(".edit_btn").style.display = "none";
         document.querySelector(".save_btn").style.display = "inline-block";
     }
-    
+
     function saveChanges() {
-        // 입력 필드에서 수정된 값 가져오기
-        let newTitle = document.getElementById("portfolioTitleInput").value;
-        let newDescription = document.getElementById("portfolioDescriptionInput").value;
-    
-        // 제목 및 내용 다시 적용
-        document.getElementById("portfolioTitleText").innerText = newTitle;
-        document.getElementById("portfolioDescriptionText").innerText = newDescription;
-    
-        // 입력 필드 숨기기 & 텍스트 다시 보이기
-        document.getElementById("portfolioTitleText").style.display = "block";
-        document.getElementById("portfolioDescriptionText").style.display = "block";
-    
-        document.getElementById("portfolioTitleInput").style.display = "none";
-        document.getElementById("portfolioDescriptionInput").style.display = "none";
-    
-        // 이미지 업로드 필드 숨기기
-        document.querySelector(".image_upload_container").style.display = "none";
-    
-        // X 버튼 숨기기
-        document.querySelectorAll(".delete_img_btn").forEach(button => {
-            button.style.display = "none";
-        });
-    
-        // 이미지 컨테이너에서 수정 모드 해제 (다시 큰 이미지로 표시)
-        document.getElementById("portfolioImageContainer").classList.remove("editing");
-    
-        // 삭제 버튼 다시 보이기
-        document.getElementById("deleteButton").style.display = "inline-block";
-    
-        // 버튼 변경 (저장 → 수정)
-        document.querySelector(".edit_btn").style.display = "inline-block";
-        document.querySelector(".save_btn").style.display = "none";
-    }
-    
-
-
-    //포트폴리오 삭제 기능
-    function deletePortfolio() {
-        let confirmDelete = confirm("포트폴리오를 삭제하시겠습니까?");
-        
-        if (confirmDelete) {
-            // 삭제된 포트폴리오를 로컬 스토리지 또는 서버 DB에서 제거하는 로직 추가 가능
-            let portfolioId = document.getElementById("portfolioTitleText").innerText; // 예제 ID 값
-    
-            // 로컬 스토리지에서 삭제된 항목으로 저장 (데이터베이스 사용 시 AJAX 요청 필요)
-            let deletedPortfolios = JSON.parse(localStorage.getItem("deletedPortfolios")) || [];
-            deletedPortfolios.push(portfolioId);
-            localStorage.setItem("deletedPortfolios", JSON.stringify(deletedPortfolios));
-    
-            alert("삭제되었습니다.");
-            window.location.href = "p_portfolio.html"; // 삭제 후 페이지 이동
+        let portfolioInput = document.getElementById("portfolioId");
+        if (!portfolioInput || !portfolioInput.value) {
+            console.error("❌ portfolioId 요소를 찾을 수 없습니다.");
+            alert("오류 발생: 포트폴리오 ID를 찾을 수 없습니다.");
+            return;
         }
+        let portfolioId = portfolioInput.value.trim(); // 🔹 UUID 공백 제거
+
+        let newTitle = document.getElementById("portfolioTitleInput").value.trim();
+        let newDescription = document.getElementById("portfolioDescriptionInput").value.trim();
+
+        let requestData = {
+            portfolioId: portfolioId, // 🔹 UUID가 문자열로 전달되도록 확인
+            portfolioTitle: newTitle,
+            portfolioContext: newDescription
+        };
+
+        console.log("📤 전송 데이터:", requestData); // ✅ 요청 데이터 확인
+
+        fetch("/partner/portfolio/update", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestData)
+        })
+            .then(response => {
+                console.log("🛠 응답 상태:", response.status); // ✅ 응답 상태 확인
+                return response.text();
+            })
+            .then(data => {
+                console.log("📥 응답 데이터:", data); // ✅ 응답 데이터 확인
+                alert(data);
+                if (response.status === 200) location.reload();
+            })
+            .catch(error => console.error("❌ 요청 오류:", error));
     }
-    
+
+    function deletePortfolio() {
+        let portfolioId = document.getElementById("portfolioId").value;
+
+        if (!confirm("포트폴리오를 삭제하시겠습니까?")) return;
+
+        console.log("🗑 삭제 요청 - Portfolio ID:", portfolioId);
+
+        fetch(`/partner/portfolio/delete/${portfolioId}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(response => {
+                console.log("🛠 응답 상태:", response.status);
+                let status = response.status; // ✅ response.status를 변수에 저장
+                return response.text().then(data => ({ status, data })); // ✅ response와 data를 함께 전달
+            })
+            .then(({ status, data }) => { // ✅ response.status 대신 status 사용
+                console.log("📥 응답 데이터:", data);
+                alert(data);
+                if (status === 200) window.location.href = "/partner/portfolio"; // ✅ 정상 작동
+            })
+            .catch(error => console.error("❌ 요청 오류:", error));
+    }
 
 
-    
+
+
+
+
     // 이미지 업로드 기능 (여러 장 가능 & 기존 이미지 유지)
     document.getElementById("imageUpload").addEventListener("change", function(event) {
         let files = event.target.files;

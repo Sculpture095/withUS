@@ -41,8 +41,6 @@ public class MyPageEntity {
     @Column(name = "account")
     private String account; // 계좌번호
 
-    @Column(name = "birth", updatable = false)
-    private String birth; // 생년월일 (수정 불가)
 
 
 

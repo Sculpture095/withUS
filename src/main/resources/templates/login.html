@@ -10,14 +10,14 @@
     <link rel="stylesheet" th:href="@{/css/login.css}" />
 </head>
 <body>
+
 <!-- 메뉴바 -->
 <div th:replace="~{header :: header}"></div>
 
 <!-- 로그인 폼 -->
 <div class="login-container">
     <h2>로그인</h2>
-    <!-- name 속성을 "id"로 변경하면, DTO 매핑에도 도움이 됩니다. -->
-    <form th:action="@{/login}" method="POST">
+    <form id="loginForm">
         <div class="input-group-login">
             <label for="username">아이디</label>
             <input type="text" id="username" name="id" required>
@@ -27,38 +27,47 @@
             <input type="password" id="password" name="password" required>
         </div>
         <button type="submit" class="log_btn login-btn">로그인</button>
-        <button type="button" class="log_btn signup-btn" th:onclick="|location.href='@{/signup}'|">회원가입</button>
+        <button type="button" class="log_btn signup-btn" onclick="location.href='/signup'">회원가입</button>
     </form>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const loginForm = document.querySelector('form');
+        const loginForm = document.getElementById('loginForm');
 
         loginForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // "username" 필드에서 아이디 값을 읽어옵니다.
             const userId = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
             try {
                 const response = await fetch('/api/members/login', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    // JSON 페이로드에 "id" 키를 사용하여 서버에 전송합니다.
-                    body: JSON.stringify({
-                        id: userId,
-                        password: password
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include', // ✅ JSESSIONID 쿠키 포함
+                    body: JSON.stringify({ id: userId, password: password })
                 });
 
                 const data = await response.text();
+
                 if (response.ok) {
                     alert('로그인 성공!');
-                    window.location.href = '/';
+
+                    // ✅ 로그인 후 check-login을 호출하여 로그인 상태 확인
+                    fetch("/auth/check-login", {
+                        method: "GET",
+                        credentials: "include"
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.loggedIn) {
+                                alert('환영합니다, ' + data.nickname);
+                                window.location.href = '/';
+                            } else {
+                                alert('로그인은 되었지만 인증 정보를 가져오지 못했습니다.');
+                            }
+                        });
                 } else {
                     alert('로그인 실패: ' + data);
                 }
@@ -72,5 +81,6 @@
 
 <!-- footer -->
 <div th:replace="~{footer :: footer}"></div>
+
 </body>
 </html>

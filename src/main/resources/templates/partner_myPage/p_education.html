@@ -17,73 +17,66 @@
     <title>학력관리</title>
 </head>
 <body>
-    <!-- Header -->
-    <div id="header"></div>
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
 
     <div class="wrapper">
         <div class="mypage_container">
             <div class="sidebar_content">
                 <div class="profile_box items-center">
                     <div class="user_img_box"><a href="img"></a></div>
-                    <button class="grade">등급</button>
                     <div class="user_text">
-                        <h2>유저아이디</h2>
+                        <h2 th:text="${member.email}"></h2>
                         <p>user1@naver.com</p>
                     </div>
                 </div>
                 <!-- Sidebar -->
                 <div class="sidebar_menu">
                     <ul class="mt-8 space-y-4">
-                        <li>    
-                            <a href="p_myPage.html" class="flex justify-between items-center textdeco">
+                        <li>
+                            <a th:href="@{/p_myPage}" class="flex justify-between items-center textdeco">
                                 <span>개인정보 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_project.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/findProject/partner/applied}" class="flex justify-between items-center textdeco">
                                 <span>프로젝트 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_skill.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/skills}"  class="flex justify-between items-center textdeco">
                                 <span>보유기술 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_portfolio.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/portfolio}"  class="flex justify-between items-center textdeco">
                                 <span>포트폴리오 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_history.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_history}"  class="flex justify-between items-center textdeco">
                                 <span>경력 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
-                        <li class="current-page"> 
-                            <a href="p_education.html" class="flex justify-between items-center textdeco">
+                        <li class="current-page">
+                            <a th:href="@{/partner/education}" class="flex justify-between items-center textdeco">
                                 <span>학력 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_certificate.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_certificate}" class="flex justify-between items-center textdeco">
                                 <span>자격증 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="p_account.html" class="flex justify-between items-center textdeco">
-                                <span>계좌 관리</span>
-                                <span>&gt;</span>
-                            </a>
-                        </li>
                     </ul>
-                </div> 
+                </div>
             </div>
 
  <!-- Main Content -->
@@ -98,9 +91,12 @@
                         <th>졸업년도</th>
                     </tr>
                     <tr>
-                        <td>솔데스크 대학교</td>
-                        <td>컴퓨터공학</td>
-                        <td>2001.02.18</td>
+                        <td th:text="${partner.schoolName}"></td>
+                        <td th:text="${partner.major}"></td>
+                        <td th:text="${#strings.substring(partner.graduation, 0, 7)}"></td>
+                        <td>
+                            <button class="delete-btn" onclick="deleteEducation()">삭제</button>
+                        </td>
                     </tr>
             </table>
         </div>
@@ -112,64 +108,101 @@
 </div>
 </div> <!-- wrapper -->
 <!-- 모달 -->
-<div id="myModal" class="modal">
-<div class="modal-content">
-<span class="close">&times;</span>
-<div class="experience-container">
-
-<form id="experienceForm">
-    <div class="form-group">
-        <label for="companyName">학교명</label>
-        <input type="text" id="companyName" name="companyName" required placeholder="학교명을 입력하세요">
-    </div>
-    <div class="form-group">
-        <label for="techStack">전공</label>
-        <input type="text" id="techStack" name="techStack" required placeholder="전공을 입력하세요">
-    </div>
-    <div class="form-group">
-        <label for="employmentPeriod">졸업년도</label>
-        <div class="date-inputs">
-            <input type="date" id="endDate" name="endDate" required>
+<div id="educationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="education-container">
+            <form id="educationForm">
+                <div class="form-group">
+                    <label for="schoolName">학교명</label>
+                    <input type="text" id="schoolName" name="schoolName" required placeholder="학교명을 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label for="major">전공</label>
+                    <input type="text" id="major" name="major" required placeholder="전공을 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label for="graduationDate">졸업년도</label>
+                    <input type="month" id="graduationDate" name="graduationDate" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="submit-btn">저장</button>
+                    <button type="button" class="cancel-btn" onclick="closeModal()">취소</button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="button-group">
-        <button type="submit" class="submit-btn">추가</button>
-        <button type="button" class="cancel-btn" onclick="closeModal()">취소</button>
-    </div>
-</form>
-</div>
-</div>
 </div>
 
-<!-- footer -->
-<div id="footer"></div>
-<script src="../../js/header_footer.js"></script>
-<script src="../../js/script.js"></script> 
+<!-- Footer -->
+<div  th:replace="~{footer :: footer}"></div>
+
+
+<script src="/js/header_footer.js"></script>
+<script src="/js/script.js"></script>
 <script>
-// 모달 열기
-const modal = document.getElementById("myModal");
-const openModalButton = document.getElementById("openModal");
-const closeModalButton = document.getElementsByClassName("close")[0];
+    // 모달 열기 및 닫기
+    const modal = document.getElementById("educationModal");
+    const openModalButton = document.getElementById("openModal");
+    const closeModalButton = document.getElementsByClassName("close")[0];
 
-openModalButton.onclick = function() {
-modal.style.display = "block"; // 모달 열기
-}
+    openModalButton.onclick = function() {
+        modal.style.display = "block"; // 모달 열기
+    }
 
-closeModalButton.onclick = function() {
-modal.style.display = "none"; // 모달 닫기
-}
+    closeModalButton.onclick = function() {
+        modal.style.display = "none"; // 모달 닫기
+    }
 
-// 모달 외부 클릭 시 닫기
-window.onclick = function(event) {
-if (event.target == modal) {
-modal.style.display = "none"; // 모달 닫기
-}
-}
+    // 모달 외부 클릭 시 닫기
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none"; // 모달 닫기
+        }
+    }
 
-// 취소 버튼 클릭 시 모달 닫기
-function closeModal() {
-modal.style.display = "none"; // 모달 닫기
-}
+    // 취소 버튼 클릭 시 모달 닫기
+    function closeModal() {
+        modal.style.display = "none"; // 모달 닫기
+    }
+
+    // 학력 추가 및 수정 요청
+    document.getElementById("educationForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let schoolName = document.getElementById("schoolName").value;
+        let major = document.getElementById("major").value;
+        let graduationDate = document.getElementById("graduationDate").value;
+
+        fetch("/partner/education/update", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `schoolName=${schoolName}&major=${major}&graduationDate=${graduationDate}`
+        }).then(response => {
+            if (response.ok) {
+                alert("학력이 저장되었습니다.");
+                location.reload();
+            } else {
+                alert("저장 실패");
+            }
+        });
+    });
+
+    // 학력 삭제 요청
+    function deleteEducation() {
+        if (!confirm("정말 삭제하시겠습니까?")) return;
+
+        fetch("/partner/education/delete", {
+            method: "DELETE"
+        }).then(response => {
+            if (response.ok) {
+                alert("학력이 삭제되었습니다.");
+                location.reload();
+            } else {
+                alert("삭제 실패");
+            }
+        });
+    }
 </script>
 
 </body>

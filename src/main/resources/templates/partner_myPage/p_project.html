@@ -17,73 +17,66 @@
     <title>프로젝트 관리</title>
 </head>
 <body>
-    <!-- Header -->
-    <div id="header"></div>
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
 
     <div class="wrapper">
         <div class="mypage_container">
             <div class="sidebar_content">
                 <div class="profile_box items-center">
                     <div class="user_img_box"><a href="img"></a></div>
-                    <button class="grade">등급</button>
                     <div class="user_text">
                         <h2>유저아이디</h2>
-                        <p>user1@naver.com</p>
+                        <p th:text="${member.email}"></p>
                     </div>
                 </div>
                 <!-- Sidebar -->
                 <div class="sidebar_menu">
                     <ul class="mt-8 space-y-4">
-                        <li>    
-                            <a href="p_myPage.html" class="flex justify-between items-center textdeco">
+                        <li>
+                            <a th:href="@{/p_myPage}" class="flex justify-between items-center textdeco">
                                 <span>개인정보 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li class="current-page">
-                            <a href="p_project.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/findProject/partner/applied}" class="flex justify-between items-center textdeco">
                                 <span>프로젝트 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_skill.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/skills}"  class="flex justify-between items-center textdeco">
                                 <span>보유기술 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_portfolio.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/portfolio}"  class="flex justify-between items-center textdeco">
                                 <span>포트폴리오 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_history.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_history}"  class="flex justify-between items-center textdeco">
                                 <span>경력 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_education.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{p_education}" class="flex justify-between items-center textdeco">
                                 <span>학력 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_certificate.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/certificate}" class="flex justify-between items-center textdeco">
                                 <span>자격증 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="p_account.html" class="flex justify-between items-center textdeco">
-                                <span>계좌 관리</span>
-                                <span>&gt;</span>
-                            </a>
-                        </li>
                     </ul>
-                </div> 
+                </div>
             </div>
 
             <!-- Main Content -->
@@ -96,10 +89,11 @@
                                     <th>프로젝트명</th>
                                     <th>프로젝트 시작일</th>
                                 </tr>
-                                <tr>
-                                    <td><a href="../findProject_detail.html">고객 연동 점검 및 서비스 관리 시스템</a></td>
-                                    <td>2024.09.20</td>
-                                </tr>
+                            <tr th:each="project : ${appliedProjects}">
+                                <td><a th:href="@{'/findProject/detail/' + ${project.projectId}}" th:text="${project.projectName}"></a></td>
+                                <td th:text="${project.startDate}"></td>
+                            </tr>
+
                         </table>
                     </div>
                     
@@ -110,9 +104,11 @@
         </div>
     </div> <!-- wrapper -->
 
-  <!-- footer -->
-  <div id="footer"></div>
-  <script src="../../js/header_footer.js"></script>
-  <script src="../../js/script.js"></script> 
+<!-- Footer -->
+<div  th:replace="~{footer :: footer}"></div>
+
+
+<script src="/js/header_footer.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>

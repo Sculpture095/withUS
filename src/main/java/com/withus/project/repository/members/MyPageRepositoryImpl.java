@@ -144,7 +144,6 @@ public class MyPageRepositoryImpl extends AbstractRepository<MyPageEntity> {
         MyPageEntity newMyPage = new MyPageEntity();
         newMyPage.setMember(member);
         newMyPage.setIntroduce("자기소개를 입력하세요.");
-        newMyPage.setBirth(null);  // 최초 등록 시 생년월일 없음
         newMyPage.setBusinessNum(0);  // 사업자번호 기본값 0
         newMyPage.setAddress("미설정");  // 기본 주소
         newMyPage.setZipcode("00000");  // 기본 우편번호

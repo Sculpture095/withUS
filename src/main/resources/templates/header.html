@@ -54,9 +54,9 @@
                 </li>
             </ul>
 
-            <!-- 로그인 버튼: 세션에 id가 없으면 표시 -->
+            <!-- 로그인 버튼: 세션에 nickname이 없으면 표시 -->
             <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 bg-gradient-primary-to-secondary"
-                    th:if="${session == null or session.nickname == null}"
+                    th:if="${session.nickname == null}"
                     th:onclick="|location.href='@{/login}'|">
     <span class="d-flex align-items-center">
         <i class="bi-chat-text-fill me-2"></i>
@@ -65,7 +65,8 @@
             </button>
 
             <!-- 로그인 후 환영 메시지와 로그아웃 버튼 -->
-            <div th:if="${session != null and session.nickname != null}" style="display: flex; gap: 10px; align-items: center;">
+            <!--/*@thymesVar id="getAttribute" type=""*/-->
+            <div th:if="${session.nickname != null}" style="display: flex; gap: 10px; align-items: center;">
     <span class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
         <span class="d-flex align-items-center">
             <i class="bi-person-fill me-2"></i>

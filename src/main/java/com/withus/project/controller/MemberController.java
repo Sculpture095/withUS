@@ -5,12 +5,24 @@ import com.withus.project.service.member.AuthService;
 import com.withus.project.service.member.MemberService;
 import com.withus.project.service.member.MyPageService;
 import com.withus.project.service.member.PasswordService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -40,33 +52,50 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody MemberDTO dto, HttpSession session) {
+    public ResponseEntity<String> login(@RequestBody MemberDTO dto, HttpServletResponse response, HttpSession session) {
         System.out.println("로그인 요청 - 아이디: " + dto.getId());
+
         try {
-            // id 기반 로그인 처리
             String token = memberService.loginWithOAuthById(dto.getId(), "LOCAL");
             session.setAttribute("userToken", token);
 
-            // 로그인한 회원 정보 가져오기
             MemberDTO loggedInMember = memberService.getMemberById(dto.getId());
-
-            // 닉네임 저장
             session.setAttribute("nickname", loggedInMember.getNickname());
-
-            // ✅ 세션에 member 객체 저장 (해결책)
             session.setAttribute("member", loggedInMember);
+            session.setAttribute("pcaType", loggedInMember.getPcaType()); // ✅ pcaType 저장
 
-            // ✅ pcaType도 세션에 저장
-            session.setAttribute("pcaType", loggedInMember.getPcaType());
+            // ✅ 사용자 권한 부여
+            List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_USER"));
+            Authentication authentication = new UsernamePasswordAuthenticationToken(
+                    loggedInMember.getId(), null, authorities);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
 
-            System.out.println("로그인 성공 - member 저장됨: " + loggedInMember); // 디버깅용 로그
+            // ✅ JSESSIONID 쿠키 설정 추가
+            Cookie cookie = new Cookie("JSESSIONID", session.getId());
+            cookie.setPath("/");
+            cookie.setHttpOnly(true);
+            cookie.setMaxAge(60 * 60); // 1시간 유지
+            response.addCookie(cookie);
 
+            System.out.println("✅ 로그인 성공 - 세션 저장 완료: " + loggedInMember);
             return ResponseEntity.ok("로그인 성공");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body("로그인 실패: " + e.getMessage());
         }
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

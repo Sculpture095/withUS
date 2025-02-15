@@ -17,73 +17,66 @@
     <title>포트폴리오 관리</title>
 </head>
 <body>
-    <!-- Header -->
-    <div id="header"></div>
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
 
     <div class="wrapper">
         <div class="mypage_container">
             <div class="sidebar_content">
                 <div class="profile_box items-center">
                     <div class="user_img_box"><a href="img"></a></div>
-                    <button class="grade">등급</button>
                     <div class="user_text">
                         <h2>유저아이디</h2>
-                        <p>user1@naver.com</p>
+                        <p th:text="${member.email}"></p>
                     </div>
                 </div>
-                 <!-- Sidebar -->
+                <!-- Sidebar -->
                 <div class="sidebar_menu">
-                  <ul class="mt-8 space-y-4">
-                      <li>    
-                          <a href="p_myPage.html" class="flex justify-between items-center textdeco">
-                              <span>개인정보 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_project.html"  class="flex justify-between items-center textdeco">
-                              <span>프로젝트 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_skill.html"  class="flex justify-between items-center textdeco">
-                              <span>보유기술 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li class="current-page">
-                          <a href="p_portfolio.html"  class="flex justify-between items-center textdeco">
-                              <span>포트폴리오 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_history.html" class="flex justify-between items-center textdeco">
-                              <span>경력 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_education.html" class="flex justify-between items-center textdeco">
-                              <span>학력 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="p_certificate.html" class="flex justify-between items-center textdeco">
-                              <span>자격증 관리</span>
-                              <span>&gt;</span>
-                          </a>
-                      </li>
-                      <li>
-                        <a href="p_account.html" class="flex justify-between items-center textdeco">
-                            <span>계좌 관리</span>
-                            <span>&gt;</span>
-                        </a>
-                    </li>
-                  </ul>
-              </div> 
+                    <ul class="mt-8 space-y-4">
+                        <li>
+                            <a th:href="@{/p_myPage}" class="flex justify-between items-center textdeco">
+                                <span>개인정보 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/findProject/partner/applied}" class="flex justify-between items-center textdeco">
+                                <span>프로젝트 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/partner/skills}"  class="flex justify-between items-center textdeco">
+                                <span>보유기술 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li class="current-page">
+                            <a th:href="@{/partner/portfolio}"  class="flex justify-between items-center textdeco">
+                                <span>포트폴리오 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/p_history}"  class="flex justify-between items-center textdeco">
+                                <span>경력 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{p_education}" class="flex justify-between items-center textdeco">
+                                <span>학력 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/partner/certificate}" class="flex justify-between items-center textdeco">
+                                <span>자격증 관리</span>
+                                <span>&gt;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
           </div>
 
             <!-- Main Content -->
@@ -91,90 +84,128 @@
                 <div class="section">
                     <h3>포트폴리오 추가</h3>
                     <form id="portfolioForm">
-                        <label for="portfolioTitle"></label>
+                        <label for="portfolioTitle">제목</label>
                         <input type="text" id="portfolioTitle" class="input_field" placeholder="포트폴리오 제목을 입력하세요" required>
-            
-                        <label for="portfolioDescription"></label>
-                        <textarea id="portfolioDescription" class="input_field" placeholder="포트폴리오 내용을 입력하세요" required></textarea>
-            
-                        <input type="file" id="portfolioImage" class="file-input" accept="image/*" multiple>
 
-                        <!-- 이미지 미리보기 영역 -->
+                        <label for="portfolioContext">내용</label>
+                        <textarea id="portfolioContext" class="input_field" placeholder="포트폴리오 내용을 입력하세요" required></textarea>
+
+                        <label for="startDate">시작일자</label>
+                        <input type="date" id="startDate" class="input_field" required>
+
+                        <label for="endDate">종료일자</label>
+                        <input type="date" id="endDate" class="input_field" required>
+
+                        <label for="publicOk">공개 여부</label>
+                        <select id="publicOk" class="input_field">
+                            <option value="true">예</option>
+                            <option value="false">아니오</option>
+                        </select>
+
+                        <label for="portfolioImg">이미지 업로드</label>
+                        <input type="file" id="portfolioImg" class="file-input" accept="image/*" multiple>
+
+                        <!-- 이미지 미리보기 -->
                         <div id="imagePreviewContainer"></div>
-            
+
                         <button type="submit" class="btn save_btn">저장하기</button>
                     </form>
                 </div>
             </div>
-        
         </div>
-    </div> <!-- wrapper -->
+    </div>
 
-     
-  <!-- footer -->
-  <div id="footer"></div>
-  <script src="../../js/header_footer.js"></script>
-  <script src="../../js/script.js"></script> 
-  
-  <script>
-    // 업로드한 파일을 저장하는 배열 (기존 이미지 유지)
-let uploadedFiles = [];
 
-document.getElementById("portfolioImage").addEventListener("change", function(event) {
-    let imagePreviewContainer = document.getElementById("imagePreviewContainer");
-    
-    // 새로운 파일 가져오기
-    let newFiles = Array.from(event.target.files);
+<!-- Footer -->
+<div  th:replace="~{footer :: footer}"></div>
 
-    // 기존 파일 + 새로운 파일 추가
-    uploadedFiles = uploadedFiles.concat(newFiles);
 
-    // 기존 미리보기를 유지하면서 새로운 이미지 추가
-    uploadedFiles.forEach((file, index) => {
-        // 중복된 이미지가 추가되지 않도록 기존 미리보기 확인
-        if (!imagePreviewContainer.querySelector(`[data-index="${index}"]`)) {
+<script src="/js/header_footer.js"></script>
+<script src="/js/script.js"></script>
+<script>
+    document.getElementById("portfolioForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        console.log("✅ 포트폴리오 제출 이벤트 발생"); // 로그 추가
+
+        fetch("/auth/check-login", {
+            method: "GET",
+            credentials: "include" // 인증 정보 포함
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("로그인 상태 확인 요청 실패");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Login Check Response:", data); // 응답 디버깅
+                if (!data || typeof data.loggedIn === "undefined") {
+                    throw new Error("서버 응답 데이터가 올바르지 않습니다.");
+                }
+
+                if (!data.loggedIn) {
+                    alert("로그인이 필요합니다.");
+                    window.location.href = "/login";
+                    return;
+                }
+
+                let formData = new FormData();
+                formData.append("portfolioTitle", document.getElementById("portfolioTitle").value);
+                formData.append("portfolioContext", document.getElementById("portfolioContext").value);
+                formData.append("startDate", document.getElementById("startDate").value);
+                formData.append("endDate", document.getElementById("endDate").value);
+                formData.append("publicOk", document.getElementById("publicOk").value);
+
+                let files = document.getElementById("portfolioImg").files;
+                for (let i = 0; i < files.length; i++) {
+                    formData.append("portfolioImg", files[i]);
+                }
+
+
+                fetch("/partner/portfolio/add", {
+
+                    method: "POST",
+                    body: formData,
+                    credentials: "include" // 요청 시 인증 정보 포함
+
+                })
+                    // .then(response => response.json())
+                    // .then(data => console.log("Login Check Response:", data))
+                    // .catch(error => console.error("Error:", error));
+
+                    .then(response => {
+                        if (response.ok) {
+                            alert("포트폴리오가 저장되었습니다.");
+                            window.location.href = "/partner/portfolio";
+                        } else {
+                            alert("포트폴리오 저장 중 오류가 발생했습니다.");
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
+            })
+            .catch(error => console.error("로그인 확인 중 오류 발생:", error));
+    });
+    // 이미지 미리보기 기능
+    document.getElementById("portfolioImg").addEventListener("change", function(event) {
+        let imagePreviewContainer = document.getElementById("imagePreviewContainer");
+        imagePreviewContainer.innerHTML = ""; // 기존 미리보기 초기화
+
+        Array.from(event.target.files).forEach((file) => {
             let reader = new FileReader();
-
             reader.onload = function(e) {
                 let imageItem = document.createElement("div");
                 imageItem.classList.add("image-item");
-                imageItem.setAttribute("data-index", index);
 
                 imageItem.innerHTML = `
-                    <img src="${e.target.result}" class="preview-image">
-                    <button class="delete-img-btn" onclick="removeImage(${index})">X</button>
-                `;
-
+                <img src="${e.target.result}" class="preview-image">
+            `;
                 imagePreviewContainer.appendChild(imageItem);
             };
-
             reader.readAsDataURL(file);
-        }
+        });
     });
-
-    // input 요소의 파일 리스트 업데이트 (새 FileList 생성 필요)
-    let dataTransfer = new DataTransfer();
-    uploadedFiles.forEach(file => dataTransfer.items.add(file));
-    document.getElementById("portfolioImage").files = dataTransfer.files;
-});
-
-function removeImage(index) {
-    // 이미지 리스트에서 해당 이미지 제거
-    uploadedFiles.splice(index, 1);
-
-    // 미리보기에서 제거
-    let imageItem = document.querySelector(`[data-index="${index}"]`);
-    if (imageItem) {
-        imageItem.remove();
-    }
-
-    // input 요소의 파일 리스트 업데이트 (새 FileList 생성 필요)
-    let dataTransfer = new DataTransfer();
-    uploadedFiles.forEach(file => dataTransfer.items.add(file));
-    document.getElementById("portfolioImage").files = dataTransfer.files;
-}
-
-    </script>
+</script>
     
 </body>
 </html>

@@ -25,7 +25,7 @@ public class MyPageController {
 
     private final MyPageService myPageService;
     private final ProjectService projectService;
-    private HistoryRepositoryImpl historyRepository;
+    private final HistoryRepositoryImpl historyRepository;
 
     @GetMapping("/myPage")
     public String myPage(HttpSession session, RedirectAttributes redirectAttributes){
@@ -119,35 +119,6 @@ public class MyPageController {
 
         return Map.of("success", true);
     }
-
-    @GetMapping("/c_project")
-    public String clientProjectPage(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
-
-        if (member == null) {
-            redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
-            return "redirect:/login";
-        }
-
-        // ✅ 로그 추가: 클라이언트 ID 확인
-        System.out.println("🔍 [MyPageController] 클라이언트 ID: " + member.getId());
-
-        // ✅ 클라이언트가 등록한 프로젝트 목록 조회
-        List<ProjectDTO> projects = projectService.getClientProjects(member.getId());
-
-        // ✅ 로그 추가: 조회된 프로젝트 확인
-        System.out.println("📌 [MyPageController] 조회된 프로젝트 개수: " + projects.size());
-        for (ProjectDTO project : projects) {
-            System.out.println("📌 프로젝트: " + project.getProjectName());
-        }
-
-        // 모델에 데이터 추가
-        model.addAttribute("projects", projects);
-        model.addAttribute("member", member);
-
-        return "client_myPage/c_project";
-    }
-
     @GetMapping("/p_history")
     public String partnerCareerPage(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
         MemberDTO member = (MemberDTO) session.getAttribute("member");
@@ -164,6 +135,63 @@ public class MyPageController {
 
         return "partner_myPage/p_history";  // p_history.html 템플릿으로 이동
     }
+
+//    @GetMapping("/c_project")
+//    public String clientProjectPage(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+//        MemberDTO member = (MemberDTO) session.getAttribute("member");
+//
+//        if (member == null) {
+//            redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
+//            return "redirect:/login";
+//        }
+//
+//        // ✅ 로그 추가: 클라이언트 ID 확인
+//        System.out.println("🔍 [MyPageController] 클라이언트 ID: " + member.getId());
+//
+//        // ✅ 클라이언트가 등록한 프로젝트 목록 조회
+//        List<ProjectDTO> projects = projectService.getClientProjects(member.getId());
+//
+//        // ✅ 로그 추가: 조회된 프로젝트 확인
+//        System.out.println("📌 [MyPageController] 조회된 프로젝트 개수: " + projects.size());
+//        for (ProjectDTO project : projects) {
+//            System.out.println("📌 프로젝트: " + project.getProjectName());
+//        }
+//
+//        // 모델에 데이터 추가
+//        model.addAttribute("projects", projects);
+//        model.addAttribute("member", member);
+//
+//        return "client_myPage/c_project";
+//    }
+//
+//
+//    @GetMapping("/p_project")
+//    public String partnerProjectPage(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+//        MemberDTO member = (MemberDTO) session.getAttribute("member");
+//
+//        if (member == null) {
+//            redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
+//            return "redirect:/login";
+//        }
+//
+//        // ✅ 로그 추가: 클라이언트 ID 확인
+//        System.out.println("🔍 [MyPageController] 클라이언트 ID: " + member.getId());
+//
+//        // ✅ 클라이언트가 등록한 프로젝트 목록 조회
+//        List<ProjectDTO> projects = projectService.getClientProjects(member.getId());
+//
+//        // ✅ 로그 추가: 조회된 프로젝트 확인
+//        System.out.println("📌 [MyPageController] 조회된 프로젝트 개수: " + projects.size());
+//        for (ProjectDTO project : projects) {
+//            System.out.println("📌 프로젝트: " + project.getProjectName());
+//        }
+//
+//        // 모델에 데이터 추가
+//        model.addAttribute("projects", projects);
+//        model.addAttribute("member", member);
+//
+//        return "client_myPage/c_project";
+//    }
 
 
 

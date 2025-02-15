@@ -20,7 +20,7 @@ public class MyPageDTO {
     private String account; // 계좌번호
     private String introduce; // 자기소개
     private String zipcode; // 우편번호
-    private String birth; // 생년월일 (응답용, 수정 불가)
+
     private Integer businessNum; // 사업자 번호 (응답용)
     private String bankName;
 

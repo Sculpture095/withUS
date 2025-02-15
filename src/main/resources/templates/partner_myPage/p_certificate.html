@@ -17,73 +17,66 @@
     <title>자격증 관리</title>
 </head>
 <body>
-    <!-- Header -->
-    <div id="header"></div>
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
 
     <div class="wrapper">
         <div class="mypage_container">
             <div class="sidebar_content">
                 <div class="profile_box items-center">
                     <div class="user_img_box"><a href="img"></a></div>
-                    <button class="grade">등급</button>
                     <div class="user_text">
-                        <h2>유저아이디</h2>
-                        <p>user1@naver.com</p>
+                        <h2 th:text="${member.email}"></h2>
+                        <p></p>
                     </div>
                 </div>
                 <!-- Sidebar -->
                 <div class="sidebar_menu">
                     <ul class="mt-8 space-y-4">
-                        <li>    
-                            <a href="p_myPage.html" class="flex justify-between items-center textdeco">
+                        <li>
+                            <a th:href="@{/p_myPage}" class="flex justify-between items-center textdeco">
                                 <span>개인정보 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_project.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/findProject/partner/applied}" class="flex justify-between items-center textdeco">
                                 <span>프로젝트 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_skill.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/skills}"  class="flex justify-between items-center textdeco">
                                 <span>보유기술 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_portfolio.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/portfolio}"  class="flex justify-between items-center textdeco">
                                 <span>포트폴리오 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_history.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_history}"  class="flex justify-between items-center textdeco">
                                 <span>경력 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_education.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{p_education}" class="flex justify-between items-center textdeco">
                                 <span>학력 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
-                        <li class="current-page">
-                            <a href="p_certificate.html" class="flex justify-between items-center textdeco">
+                        <li  class="current-page">
+                            <a th:href="@{/partner/certificate}" class="flex justify-between items-center textdeco">
                                 <span>자격증 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="p_account.html" class="flex justify-between items-center textdeco">
-                                <span>계좌 관리</span>
-                                <span>&gt;</span>
-                            </a>
-                        </li>
                     </ul>
-                </div> 
+                </div>
             </div>
 
  <!-- Main Content -->
@@ -97,11 +90,16 @@
                         <th>발급기관</th>
                         <th>취득일자</th>
                     </tr>
-                    <tr>
-                        <td>정보처리기사</td>
-                        <td>한국산업인력공단</td>
-                        <td>2024.09.25</td>
-                    </tr>
+                   <tbody>
+                   <tr th:each="certificate : ${certificates}">
+                       <td th:text="${certificate.certificateName}"></td>
+                       <td th:text="${certificate.institutionalName}"></td>
+                       <td th:text="${certificate.certificateDate != null ? certificate.certificateDate.substring(0,7) : ''}"></td>
+                       <td>
+                           <button class="delete-btn" th:attr="data-id=${certificate.certificateId}" onclick="deleteCertificate(this)">삭제</button>
+                       </td>
+                   </tr>
+                   </tbody>
             </table>
         </div>
         
@@ -111,40 +109,40 @@
 </div>
 </div>
 </div> <!-- wrapper -->
+
 <!-- 모달 -->
 <div id="myModal" class="modal">
-<div class="modal-content">
-<span class="close">&times;</span>
-<div class="experience-container">
-
-<form id="experienceForm">
-    <div class="form-group">
-        <label for="companyName">자격증명</label>
-        <input type="text" id="companyName" name="companyName" required placeholder="자격증명을 입력하세요">
-    </div>
-    <div class="form-group">
-        <label for="techStack">발급기관</label>
-        <input type="text" id="techStack" name="techStack" required placeholder="기술스택을 입력하세요">
-    </div>
-    <div class="form-group">
-        <label for="employmentPeriod">취득일자</label>
-        <div class="date-inputs">
-            <input type="date" id="endDate" name="endDate" required>
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="experience-container">
+            <form id="certificateForm">
+                <div class="form-group">
+                    <label for="certificateName">자격증명</label>
+                    <input type="text" id="certificateName" name="certificateName" required placeholder="자격증명을 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label for="issuer">발급기관</label>
+                    <input type="text" id="issuer" name="issuer" required placeholder="발급기관을 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label for="issueDate">취득일자</label>
+                    <input type="month" id="issueDate" name="issueDate" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="submit-btn">추가</button>
+                    <button type="button" class="cancel-btn" onclick="closeModal()">취소</button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="button-group">
-        <button type="submit" class="submit-btn">추가</button>
-        <button type="button" class="cancel-btn" onclick="closeModal()">취소</button>
-    </div>
-</form>
-</div>
-</div>
 </div>
 
-<!-- footer -->
-<div id="footer"></div>
-<script src="../../js/header_footer.js"></script>
-<script src="../../js/script.js"></script> 
+<!-- Footer -->
+<div  th:replace="~{footer :: footer}"></div>
+
+
+<script src="/js/header_footer.js"></script>
+<script src="/js/script.js"></script>
 <script>
 // 모달 열기
 const modal = document.getElementById("myModal");
@@ -170,6 +168,47 @@ modal.style.display = "none"; // 모달 닫기
 function closeModal() {
 modal.style.display = "none"; // 모달 닫기
 }
+
+// 자격증 추가 요청
+document.getElementById("certificateForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let certificateName = document.getElementById("certificateName").value;
+    let issuer = document.getElementById("issuer").value;
+    let issueDate = document.getElementById("issueDate").value;
+
+    fetch("/partner/certificate/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `certificateName=${certificateName}&issuer=${issuer}&issueDate=${issueDate}`
+    }).then(response => {
+        if (response.ok) {
+            alert("자격증이 추가되었습니다.");
+            location.reload();
+        } else {
+            alert("추가 실패");
+        }
+    });
+});
+
+// 자격증 삭제 요청
+function deleteCertificate(button) {
+    let certificateId = button.getAttribute("data-id");
+    if (!confirm("정말 삭제하시겠습니까?")) return;
+
+    fetch(`/partner/certificate/delete/${certificateId}`, {
+        method: "DELETE"
+    }).then(response => {
+        if (response.ok) {
+            alert("자격증이 삭제되었습니다.");
+            location.reload();
+        } else {
+            alert("삭제 실패");
+        }
+    });
+}
+
+
 </script>
 
 </body>

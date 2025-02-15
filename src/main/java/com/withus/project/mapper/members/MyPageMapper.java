@@ -21,7 +21,6 @@ public interface MyPageMapper {
             @Mapping(target = "account", source = "account"),
             @Mapping(target = "introduce", source = "introduce"),
             @Mapping(target = "zipcode", source = "zipcode"),
-            @Mapping(target = "birth", ignore = true),
             @Mapping(target = "businessNum", ignore = true)
     })
     MyPageEntity toEntity(MyPageDTO dto);
@@ -37,8 +36,7 @@ public interface MyPageMapper {
             @Mapping(target = "account", source = "account"),
             @Mapping(target = "introduce", source = "introduce"),
             @Mapping(target = "zipcode", source = "zipcode"),
-            @Mapping(target = "birth", source = "birth"),
-            @Mapping(target = "businessNum", source = "businessNum"),
+            @Mapping(target = "businessNum", source = "businessNum")
     })
     MyPageDTO toDTO(MyPageEntity entity);
 

@@ -5,6 +5,7 @@ import com.withus.project.domain.members.MemberEntity;
 import com.withus.project.domain.members.PartnerEntity;
 import com.withus.project.repository.AbstractRepository;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -109,6 +110,17 @@ public class MemberRepositoryImpl extends AbstractRepository<MemberEntity> {
                 .getResultStream()
                 .findFirst();
 
+    }
+
+    public Integer findPartnerIdxByMemberId(String memberId) {
+        try {
+            return entityManager.createQuery(
+                            "SELECT p.partnerIdx FROM PartnerEntity p WHERE p.member.id = :memberId", Integer.class)
+                    .setParameter("memberId", memberId)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null; // partnerIdx가 없는 경우 null 반환
+        }
     }
 
     /**

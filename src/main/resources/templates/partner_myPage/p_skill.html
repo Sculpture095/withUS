@@ -17,73 +17,66 @@
     <title>프로젝트 관리</title>
 </head>
 <body>
-    <!-- Header -->
-    <div id="header"></div>
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
 
     <div class="wrapper">
         <div class="mypage_container">
             <div class="sidebar_content">
                 <div class="profile_box items-center">
                     <div class="user_img_box"><a href="img"></a></div>
-                    <button class="grade">등급</button>
                     <div class="user_text">
                         <h2>유저아이디</h2>
-                        <p>user1@naver.com</p>
+                        <p th:text="${member.email}"></p>
                     </div>
                 </div>
                 <!-- Sidebar -->
                 <div class="sidebar_menu">
                     <ul class="mt-8 space-y-4">
-                        <li>    
-                            <a href="p_myPage.html" class="flex justify-between items-center textdeco">
+                        <li>
+                            <a th:href="@{/p_myPage}" class="flex justify-between items-center textdeco">
                                 <span>개인정보 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_project.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/findProject/partner/applied}" class="flex justify-between items-center textdeco">
                                 <span>프로젝트 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li class="current-page">
-                            <a href="p_skill.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/portfolio}"  class="flex justify-between items-center textdeco">
                                 <span>보유기술 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_portfolio.html"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_portfolio}"  class="flex justify-between items-center textdeco">
                                 <span>포트폴리오 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_history.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/p_history}"  class="flex justify-between items-center textdeco">
                                 <span>경력 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_education.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{p_education}" class="flex justify-between items-center textdeco">
                                 <span>학력 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a href="p_certificate.html" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/certificate}" class="flex justify-between items-center textdeco">
                                 <span>자격증 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="p_account.html" class="flex justify-between items-center textdeco">
-                                <span>계좌 관리</span>
-                                <span>&gt;</span>
-                            </a>
-                        </li>
                     </ul>
-                </div> 
+                </div>
             </div>
 
             <!-- Main Content -->
@@ -92,14 +85,18 @@
                     <h3>보유기술</h3>
                     <div class="project-table">
                         <table>
+                            <thead>
                                 <tr>
                                     <th>기술명</th>
-                                    <th>경력</th>
+                                    <th>경력 (년)</th>
                                 </tr>
-                                <tr>
-                                    <td><a href="">JAVA</a></td>
-                                    <td>10년</td>
-                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="skill : ${ownSkills}">
+                                <td th:text="${skill.skillType.name}"></td>
+                                <td th:text="${skill.careerDuration}"></td>
+                            </tr>
+                            </tbody>
                         </table>
                     </div>
                         <button class="btn" id="openModal">기술 추가하기</button>
@@ -107,82 +104,43 @@
             </div>
         </div>
     </div> <!-- wrapper -->
+
+
     <!-- 모달 -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-    <span class="close">&times;</span>
-    <div class="experience-container">
-    
-    <form id="experienceForm">
-        <div class="form-group">
-            <label for="companyName">기술명</label>
-            <!-- <input type="text" id="companyName" name="companyName" required placeholder="기술명을 입력하세요"> -->
-            <div class="skill_container">
-                <div class="custom-select">
-                <div class="select-box">
-                    <input type="text" class="tags_input" name="tags" hidden />
-                    <div class="selected-options">
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="experience-container">
+                <form id="experienceForm">
+                    <div class="form-group">
+                        <label for="skillSelect">기술명</label>
+                        <select id="skillSelect" name="skillType" required>
+                            <option value="">기술을 선택하세요</option>
+                            <option th:each="skill : ${skillList}" th:value="${skill.name}" th:text="${skill.name}"></option>
+                        </select>
                     </div>
-                   <div class="arrow">
-                        <i class="fa fa-angle-down"></i>
-                   </div>
-                </div> 
-                <div class="options">
-                    <div class="option-search-tags">
-                        <input type="text" class="search-tags"
-                        placeholder="검색어를 입력하세요" />
-                        <button type="button" class="clear">
-                            <!-- <i class="fa fa-close"></i> -->
-                        </button>
-                        </div>
-                        <div class="option all-tags" data-value="All" style="display: none;">Select All</div>
-                        <div class="option" data-value=".Net">.Net</div>
-                        <div class="option" data-value="3dsMax">3dsMax</div>
-                        <div class="option" data-value="Adobe Photoshop">Adobe Photoshop</div>
-                        <div class="option" data-value="AfterEffect">AfterEffect</div>
-                        <div class="option" data-value="Ajax">Ajax</div>
-                        <div class="option" data-value="Android">Android</div>
-                        <div class="option" data-value="Angular">Angular</div>
-                        <div class="option" data-value="Apache">Apache</div>
-                        <div class="option" data-value="Arduino">Arduino</div>
-                        <div class="option" data-value="ASP">ASP</div>
-                        <div class="option" data-value="ASP.NET">ASP.NET</div>
-                        <div class="option" data-value="AutoCAD">AutoCAD</div>
-                        <div class="option" data-value="AWS">AWS</div>
-                        <div class="option" data-value="Azure">Azure</div>
-                        <div class="no-result-message" >검색결과가 없습니다</div>
-                </div>
-                <span class="tag_error_msg error"></span>
+
+                    <div class="form-group">
+                        <label for="careerDuration">경력 (년)</label>
+                        <input type="number" id="careerDuration" name="careerDuration" min="0" required placeholder="예: 5">
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="submit-btn">추가</button>
+                        <button type="button" class="cancel-btn" onclick="closeModal()">취소</button>
+                    </div>
+                </form>
             </div>
-            <!-- <input type="button" class="btn_submit" value="Submit"> -->
         </div>
-
-
-
-
-
-
-
-
-        </div>
-        <div class="form-group">
-            <label for="techStack">경력</label>
-            <input type="text" id="techStack" name="techStack" required placeholder="예) 5년">
-        </div>
-        
-        <div class="button-group">
-            <button type="submit" class="submit-btn">추가</button>
-            <button type="button" class="cancel-btn" onclick="closeModal()">취소</button>
-        </div>
-    </form>
-    </div>
-    </div>
     </div>
 
-  <!-- footer -->
-  <div id="footer"></div>
-  <script src="../../js/header_footer.js"></script>
-  <script src="../../js/script.js"></script> 
+    <!-- Footer -->
+    <div  th:replace="~{footer :: footer}"></div>
+
+
+    <script src="/js/header_footer.js"></script>
+    <script src="/js/script.js"></script>
+
   <script>
     // 모달 열기
     const modal = document.getElementById("myModal");
@@ -208,6 +166,36 @@
     function closeModal() {
     modal.style.display = "none"; // 모달 닫기
     }
+
+    // AJAX 요청으로 기술 추가
+    document.getElementById("experienceForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let skillType = document.getElementById("skillSelect").value;
+        let careerDuration = document.getElementById("careerDuration").value.trim();
+
+        if (!skillType || !careerDuration) {
+            alert("기술명과 경력을 입력해주세요.");
+            return;
+        }
+
+        fetch("/partner/add-skill", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                skillType: skillType,
+                careerDuration: parseInt(careerDuration)
+            })
+        })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                window.location.reload();
+            })
+            .catch(error => console.error("Error:", error));
+    });
     </script>
     
 </body>
