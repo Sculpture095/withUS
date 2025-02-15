@@ -52,7 +52,7 @@ CREATE TABLE `project` (
   `is_completed` tinyint(1) NOT NULL DEFAULT '0',
   `prostatement` enum('CANCELED','COMPLETED','ON_GOING') NOT NULL,
   `project_id` char(36) NOT NULL,
-  `projectinfo` varchar(200) NOT NULL,
+  `projectinfo` varchar(4000) NOT NULL,
   `projectlocation` varchar(20) DEFAULT NULL,
   `projectname` varchar(70) NOT NULL,
   `registrationdate` date NOT NULL,
@@ -172,7 +172,7 @@ CREATE TABLE `history` (
   UNIQUE KEY `uk_history_id` (`history_id`),
   KEY `fk_history_partner` (`partner_idx`),
   CONSTRAINT `fk_history_partner` FOREIGN KEY (`partner_idx`) REFERENCES `partner` (`partner_idx`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- mypage
 CREATE TABLE `mypage` (
@@ -180,9 +180,8 @@ CREATE TABLE `mypage` (
   `account` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `bankname` varchar(255) DEFAULT NULL,
-  `birth` varchar(255) DEFAULT NULL,
   `businessnum` int DEFAULT NULL,
-  `introduce` varchar(255) DEFAULT NULL,
+  `introduce` varchar(500) DEFAULT NULL,
   `mypage_id` char(36) NOT NULL,
   `profile` varchar(255) DEFAULT NULL,
   `zipcode` varchar(255) DEFAULT NULL,
@@ -191,7 +190,7 @@ CREATE TABLE `mypage` (
   UNIQUE KEY `uk_mypage_id` (`mypage_id`),
   UNIQUE KEY `uk_mypage_member_idx` (`member_idx`),
   CONSTRAINT `fk_mypage_member` FOREIGN KEY (`member_idx`) REFERENCES `member` (`member_idx`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- payment
 CREATE TABLE `payment` (
@@ -232,7 +231,7 @@ CREATE TABLE `questions` (
   `question_idx` int NOT NULL AUTO_INCREMENT,
   `attachment` varchar(300) DEFAULT NULL,
   `content` varchar(300) NOT NULL,
-  `is_answered` tinyint(1) NOT NULL DEFAULT '0',
+  `is_answered` tinyint(1) NOT NULL DEFAULT '1',
   `question_id` char(36) NOT NULL,
   `subject` varchar(50) NOT NULL,
   `member_idx` int NOT NULL,
@@ -240,7 +239,7 @@ CREATE TABLE `questions` (
   UNIQUE KEY `uk_question_id` (`question_id`),
   KEY `fk_question_member` (`member_idx`),
   CONSTRAINT `fk_question_member` FOREIGN KEY (`member_idx`) REFERENCES `member` (`member_idx`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- selectproject
@@ -274,5 +273,5 @@ CREATE TABLE `selectskill` (
   CONSTRAINT `fk_selectskill_case` FOREIGN KEY (`case_idx`) REFERENCES `case_table` (`case_idx`),
   CONSTRAINT `fk_selectskill_partner` FOREIGN KEY (`partner_idx`) REFERENCES `partner` (`partner_idx`),
   CONSTRAINT `fk_selectskill_project` FOREIGN KEY (`project_idx`) REFERENCES `project` (`project_idx`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

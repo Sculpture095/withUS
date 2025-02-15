@@ -1,0 +1,56 @@
+select * from selectskill;
+
+INSERT INTO selectskill (selectskill_id, skill_code, case_idx, project_idx)
+SELECT
+  UUID(), t.skill_code, c.case_idx, pr.project_idx
+FROM (
+  SELECT 
+    'JAVA' AS skill_code, '키오스크 및 포스 유지보수' AS case_title, '.Net 기반 키오스크 및 포스 유지보수' AS project_name
+  UNION ALL
+  SELECT 
+	'REACT', '키오스크 및 포스 유지보수', '.Net 기반 키오스크 및 포스 유지보수'
+  UNION ALL
+  SELECT 
+    'PYTHON', '암호화폐 거래소 인프라/DB 최적화', '암호화폐 거래소 인프라/DB 최적화 백엔드 개발자 구인'
+  UNION ALL
+  SELECT 
+    'DOCKER', '암호화폐 거래소 Next.js 프론트엔드', '암호화폐 거래소 Next.js 프론트엔드 개발자 구인'
+  UNION ALL
+  SELECT 
+    'AWS', '웹 빌더 시스템 구축', '내부에서 사용할 웹 빌더 시스템 구축'
+  UNION ALL
+  SELECT 
+    'REACT', '차량관제 서비스 UI/UX 기획', '차량관제 서비스 UI/UX 기획자'
+  UNION ALL
+  SELECT 
+    'IOS', 'iOS 사용자 인증 보완 개발', 'iOS 사용자 인증 보완 개발'
+  UNION ALL
+  SELECT 
+    'AWS', '운영 업무리더 구인 (SAP BW/RPA 등)', '운영 업무리더 구인 (SAP BW/RPA 등)'
+  UNION ALL
+  SELECT 
+    'C', '워드프레스 플러그인 결제 모듈 수정', '워드프레스 플러그인 결제 모듈 수정'
+  UNION ALL
+  SELECT 
+    'REACT', '금융권 차세대 프로젝트 내 UMS 구축 React 프론트 개발', '금융권 차세대 프로젝트 내 UMS 구축 React 프론트 개발'
+  UNION ALL
+  SELECT 
+    'CPP', '학습 콘텐츠 개발 및 양산 프로젝트 진행 관리(PMO)', '학습 콘텐츠 개발 및 양산 프로젝트 진행 관리(PMO)'
+  UNION ALL
+  SELECT 
+    'PYTHON', 'Python 기반 음식 배달 POS 유지보수', 'Python 기반 음식 배달 POS 유지보수 (재택근무)'
+  UNION ALL
+  SELECT 
+    'ANDROID', '이동서비스 예약 중개 플랫폼 구축', '이동서비스 예약 중개 플랫폼 구축'
+  UNION ALL
+  SELECT 
+    'FIGMA', '안전점검 플랫폼 웹 및 앱 UI/UX 리뉴얼 디자인', '안전점검 플랫폼 웹 및 앱 UI/UX 리뉴얼 디자인'
+  UNION ALL
+  SELECT 
+    'REACT', 'WebRTC 서버 구성 및 네트워크 최적화 방향 자문', 'WebRTC 서버 구성 및 네트워크 최적화 방향 자문'
+  UNION ALL
+  SELECT 
+    'ASP_NET', '자격증 LMS 시스템 내 자동 문자 연동 오류 수정', '자격증 LMS 시스템 내 자동 문자 연동 오류 수정'
+) t
+LEFT JOIN case_table c ON c.title = t.case_title
+LEFT JOIN project pr ON pr.projectname = t.project_name;

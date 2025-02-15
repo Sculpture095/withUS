@@ -1,0 +1,64 @@
+select * from remark;
+
+-- 첫 번째 댓글
+INSERT INTO remark (remark_id, board_id, member_idx, createdate, depth, likecount, remarks, parent_idx)
+SELECT 
+    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'puZP22341'),
+    DATE('2024-01-05 10:30:15'), 0, 10, 'Python 활용 사례가 특히 눈에 띕니다. 좋은 글 감사드려요.', 
+    NULL
+FROM board
+WHERE board_idx = 1
+LIMIT 1;
+
+-- 두 번째 댓글
+INSERT INTO remark (remark_id, board_id, member_idx, createdate, depth, likecount, remarks, parent_idx)
+SELECT 
+    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'qFNK10'),
+    DATE('2024-01-06 15:20:45'), 0, 16, 'Python을 이용한 데이터 분석 방법이 참신하네요!', NULL
+FROM board
+WHERE board_idx = 1
+LIMIT 1;
+
+-- 세 번째 댓글
+INSERT INTO remark (remark_id, board_id, member_idx, createdate, depth, likecount, remarks, parent_idx)
+SELECT 
+    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'zUIeB11'),
+    DATE('2024-01-07 22:10:30'), 0, 0, 'AI 관련 주제는 언제나 흥미롭습니다. 잘 읽었어요.', NULL
+FROM board
+WHERE board_idx = 1
+LIMIT 1;
+
+-- 1. 최상위 댓글 삽입 (부모 댓글이 없으므로 parent_idx는 NULL, depth는 0)
+INSERT INTO remark (remark_id, board_id, member_idx, createdate, depth, likecount, remarks,   parent_idx)
+SELECT 
+    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'qmsNLR3132'),
+    DATE('2024-08-18 10:15:30'), 0, 26, '저도 날씨가 좋아서 산책 나가려 합니다! 좋은 하루 보내세요!', NULL
+FROM board
+WHERE board_idx = 2
+LIMIT 1;
+
+-- 2. 첫 번째 댓글의 remark_idx 값을 변수에 저장 (이후 답글에 부모 키로 사용)
+SET @parentRemarkIdx = LAST_INSERT_ID();
+
+-- 3. 두 번째 댓글 삽입 (첫 번째 댓글의 답글: depth 1, parent_idx에 저장된 부모 댓글의 remark_idx 사용)
+INSERT INTO remark (remark_id, board_id, member_idx, createdate, depth, likecount, remarks, parent_idx)
+SELECT 
+    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'uLUh5832'),
+    DATE('2024-08-19 08:45:12'), 1, 23, '정말 기분 좋은 날씨네요! 이런 날엔 밖에서 커피 한잔 하는 것도 좋겠어요.',
+    @parentRemarkIdx
+FROM board
+WHERE board_idx = 2
+LIMIT 1;
+
+-- 4. 세 번째 댓글 삽입 (첫 번째 댓글의 또 다른 답글: depth 1, parent_idx 동일)
+INSERT INTO remark (remark_id, board_id, member_idx, createdate, depth, likecount, remarks, parent_idx)
+SELECT 
+    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'xpdoV7'),
+    DATE('2024-08-20 14:30:55'), 1, 41, '맑은 하늘을 보니 드라이브 가고 싶네요! 어디 좋은 장소 추천해 주실 수 있나요?',
+    @parentRemarkIdx
+FROM board
+WHERE board_idx = 2
+LIMIT 1;
+
+
+
