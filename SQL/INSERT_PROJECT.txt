@@ -6096,6 +6096,11 @@ SELECT
     STR_TO_DATE('2024-12-16', '%Y-%m-%d') AS startdate, 
     1 AS teamsize, 
     'GMPN193' AS client_idx
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+
 
 
 INSERT INTO project (
@@ -7763,7 +7768,7 @@ SELECT
     4 AS teamsize,     
     'qdDoh238' AS client_id  
 
-select * from `project`;
+
 
 INSERT INTO project (
   amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
@@ -9472,7 +9477,411 @@ Python
 JOIN member m ON m.id = p.client_id
 JOIN client c ON c.member_idx = m.member_idx;
 
+-- -------------------------------------------------------------------------
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    4500000 AS amount,     
+    STR_TO_DATE('2024-12-29','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '90일' AS duration,     
+     0 AS is_completed,     
+    'CANCELED' AS prostatement,     
+    '
+모집 마감일
+
+2024년 12월 16일
+
+지원자 수
+
+4명
+
+구인 배경
+
+신규 프로젝트에 필요한 작업자를 구인하고 있습니다.
+
+구인 유형
+
+사내 프로젝트에 필요한 인력을 구인합니다.
+
+프로젝트 산업 분야
+
+IT•정보통신업
+
+협업 예정 인력
+
+자사 PM1명
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 일정 준수
+[3순위] 금액
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개:
+- 플랫폼 유지보수 및 업데이트
+
+프로젝트 진행 상황:
+- 운영 중인 플랫폼이 있습니다.
+
+전체 시스템 구성:
+- Web
+
+전체 프로젝트 일정:
+- 전체 프로젝트 일정:3개월
+- 인터뷰 및 계약 일정:지원자 발생 후 인터뷰 진행, 2~3일 이내 계약 여부 공유드릴 예정입니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 실무진 인터뷰 1회 (코딩 테스트 x) > 계약 결정
 
 
+<상세 업무 내용>
+
+모집 인원:
+- 경력 2~4년 차 1명 (월 450만 원)
+
+상세 업무:
+- Vue3, React (Nuxt, Next), Nest(우대 사항) 프레임워크를 이용한 Web application 개발
+- 다양한 최신 스택을 효율적으로 활용하여 개발 진행
+
+필수 기술:
+- Typescript, Webpack, Vue3, Pinia, React (Nuxt, Next), Zusand/Recoil
+
+자격 요건:
+- 2년 이상 혹은 이에 준하는 관련 경력 있으신 분
+- HTML5, CSS 전처리기, Javascript(최소 ES5) 지식을 보유하고 계신 분
+- Javascript MV* 기반 웹앱(Angular, React, Vue 등) 개발 및 운영 경험이 있으신 분
+- Grunt, Gulp, Webpack 등의 도구 경험이 있으신 분
+- ES5, ES6 관련 기술 경험이 있으신 분
+
+우대 사항:
+- Fullstack, 적극적으로 Code Review에 참여한 경험을 보유하신 분
+- UX를 깊이 고민하고 개선하기 위해 노력하시는 분
+- 단위 테스트, 통합 테스트 자동화 및 배포 자동화 경험이 있으신 분
+- 웹사이트 성능 측정 및 최적화 경험이 있으신 분
+' AS projectinfo,     
+    '경기도 성남시' AS projectlocation,     
+    '플랫폼 유지보수 및 업데이트 Frontend 개발' AS projectname,     
+    STR_TO_DATE('2024-12-11','%Y-%m-%d') AS registrationdate,     
+    'Vue.js · 경력 무관,React · 경력 무관,nuxt.js · 경력 무관,next.js · 경력 무관,TypeScript · 경력 무관,Webpack · 경력 무관,pinia · 경력 무관,Zustand · 경력 무관,recoil · 경력 무관' AS requirement,     
+    STR_TO_DATE('2024-01-01','%Y-%m-%d') AS startdate,     
+    4 AS teamsize,     
+    'iXLtm239' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    9000000 AS amount,     
+    STR_TO_DATE('2024-12-27','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '210일' AS duration,     
+     0 AS is_completed,     
+    'CANCELED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 12월 16일
+
+지원자 수
+
+3명
+
+구인 배경
+
+기존 팀에 작업자를 추가 증원하려 합니다.
+
+구인 유형
+
+발주처에게서 수주한 프로젝트에 필요한 인력을 구인합니다. • 계약 체결 완료
+발주처: 롯데
+
+프로젝트 산업 분야
+
+IT•정보통신업
+
+협업 예정 인력
+
+대형프로젝트로 다수의 설계자 투입되어 있음
+
+우선 순위
+
+[1순위] 업무 능력
+[2순위] 예산 범위
+[3순위] 근무 시작일
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개 :
+- 업무지원시스템 차세대 PostgreSQL DBA
+
+프로젝트 진행 상황 :
+- 프로젝트는 착수하여 진행중입니다. DBA 한분 투입되어 있으며 추가 증원을 위해 구인합니다.
+
+전체 시스템 구성 :
+- PostgreSQL
+
+전체 프로젝트 일정 :
+- 즉시 투입 가능하신 분으로 모집하고 있습니다.
+- 7월 말까지 진행됩니다.
+- 인터뷰 및 계약 일정: 인터뷰 진행 후 2~3일 이내 계약 여부 결정 가능합니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 간단한 전화 인터뷰) > 고객사 PM 면접 > 계약 결정
+
+
+<상세 업무 내용>
+
+모집 인원 :
+- 1명
+- 경력 13 ~ 20년
+* 경력/이력/업무 역량에 따라 조율 가능합니다.
+- 월 800~900
+
+상세 업무 :
+- DBA/DA
+
+필수 기술:
+
+
+
+- PostgreSQL
+
+자격 요건 :
+- 고급 이상
+- PostgreSQL DBA 경험
+- DBA 및 DA 업무 경험
+' AS projectinfo,     
+    '서울특별시 중구' AS projectlocation,     
+    '업무지원시스템 차세대 PostgreSQL DBA' AS projectname,     
+    STR_TO_DATE('2024-12-09','%Y-%m-%d') AS registrationdate,     
+    'PostgreSQL · 경력 무관' AS requirement,     
+    STR_TO_DATE('2024-01-01','%Y-%m-%d') AS startdate,     
+	3 AS teamsize,     
+    'uBkEiR240' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    20000000 AS amount,     
+    STR_TO_DATE('2024-12-23','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '60일' AS duration,     
+     0 AS is_completed,     
+    'CANCELED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 12월 16일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+운영 중인 서비스의 리뉴얼 또는 유지보수를 하려 합니다.
+
+기획 상태
+
+상세한 기획 문서가 존재요구사항 정의서, 제안요청서
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+자사 백엔드 개발자 1인
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 일정 준수
+[3순위] 금액
+관련 기술
+
+C++CGolangMODBUS/TCPMQTT(IoT)
+업무 내용
+프로젝트 개요 :
+- 기존 P형 화재 수신기를 대상으로하여 원격제어 시스템을 개발하였습니다. 현재 기존 시스템을 기반으로 R형 수신기를 원격제어 가능한 시스템을 개발하고자 합니다. 가능하면 어플리케이션 및 대시보드를 그대로 적용하고자 합니다.
+
+현재 준비 상황 :
+- 기존 소스 코드 보유 중입니다.(프런트 UI는 변경이 없을 것으로 예상됩니다.)
+
+진행 계획 :
+- 요구사항 분석 및 설계 : 시스템 요구사항 및 아키텍처 설계 (1~2주)
+- 서버 및 프로토콜 개발 : REST API, MQTT, MODBUS/TCP 구현 (4~6주)
+- 프론트엔드 및 UI 개발 : 대시보드 및 사용자 알림 시스템 개발 (기존 소프트웨어 사용)
+- 통합 및 시스템 테스트 : 프로토콜 통합, 실제 수신기 연동 및 성능 테스트 (2~3주)
+- 문서화 및 최종
+- 배포 : API 문서, 사용자 매뉴얼 작성 및 배포 (1~2주)
+
+개발 환경/언어 등 :
+1) 백엔드
+- 프레임워크: C/C++, GO (GOLANG)
+- 통신 프로토콜: MODBUS/TCP, MQTT, REST API
+- 데이터베이스: MariaDB //MariaDB로 변경, 기존 DB와 호환 가능
+2) 프론트엔드(기존 소프트웨어 사용)
+- 프레임워크: React.js
+3) 네트워크 및 보안
+- MQTT 브로커: Mosquitto
+- 암호화: SSL/TLS
+- 인증: API Key
+
+주요 기능/화면 및 요구 사항 :
+1. 프로젝트 개요
+1.1 프로젝트 명
+- GR형 화재 수신기 원격제어 시스템 개발
+1.2 목적
+- 화재 수신기의 실시간 데이터 모니터링 및 이벤트 발생 시 원격 제어 기능을 제공.
+- 경고/알람 발생 시 사용자에게 실시간 알림 전송 및 이벤트 해결.
+- 기존 화재 수신기 프로토콜(MODBUS/TCP)과 REST API, MQTT를 통합하여 효율적인
+시스템 구축.
+
+2. 개발 범위
+2.1 주요 기능
+1) 실시간 데이터 모니터링:
+- 수신기로부터 데이터를 주기적으로 수집(MQTT, MODBUS/TCP).
+- 대시보드에서 실시간 상태 확인. // 기존 대시보드 이용
+2) 이벤트 처리:
+- 알람 및 경고 이벤트 감지.
+이벤트 발생 시 사용자에게 알림 전송(MQTT Publish)
+3) 원격 제어:
+알람 초기화, 경고 무시 등의 명령을 MQTT(TCP)로 전송.
+수신기와의 명령 연동(MODBUS/TCP).
+릴레이 제어는 수신기 TCP 또는 Serial(RS-485 OR RS232) 통신으로 처리
+4) 로그 관리:
+이벤트 및 명령 기록을 데이터베이스에 저장. // 기존에 구현함
+사용자에게 조회 기능 제공. // 기존에 구현함
+5) 보안:
+SSL/TLS를 통한 데이터 암호화. // 기존에 구현함
+인증 및 권한 관리. // 기존에 구현함
+2.2 제외 범위
+수신기 하드웨어 설계 및 제조.
+클라우드 플랫폼 구성(필요 시 추가 협의).
+
+산출물 :
+- 개발 원본 소스 코드
+' AS projectinfo,     
+    '경기도 부천시' AS projectlocation,     
+    'R형 화재수신기 원격제어 시스템 개발' AS projectname,     
+    STR_TO_DATE('2024-12-05','%Y-%m-%d') AS registrationdate,     
+    'C++,C,Golang,MODBUS/TCP,MQTT(IoT)' AS requirement,     
+    STR_TO_DATE('2024-01-01','%Y-%m-%d') AS startdate,     
+    10 AS teamsize,     
+    'vfLZaf241' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    6000000 AS amount,     
+    STR_TO_DATE('2024-12-29','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '30일' AS duration,     
+     0 AS is_completed,     
+    'CANCELED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 12월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 금액
+[3순위] 일정 준수
+업무 내용
+프로젝트 개요 :
+- 내부 PC 모니터링 프로그램 개발
+
+프로젝트의 현재 상황 :
+- 기존에 사용하던 프로그램의 소스 코드 확보가 불가능하여 동일한 기능으로 다시 제작하려고 합니다.
+
+필요 요소 :
+- 윈도우 응용 프로그램 개발
+
+개발 환경/언어 :
+- 제안해주세요.
+
+요구 사항 :
+1. 프로그램이 설치되어 있는 PC의 화면을 10fps 내외로 전송합니다.
+2. 영상은 서버에 저장됩니다.
+3. 어드민 프로그램에서는 영상을 실시간으로 재생할 수 있어야 합니다.
+4. 타겟 PC 에서 현재 실행하고 있는 프로그램이 어떤 것인지를 표시할 수 있어야 합니다. 특정 프로그램을 사용하고 있는 경우, 검색이 될 수 있어야 합니다.
+5. 타겟 PC에 설치되어 있는 ZGU 프로그램을 우회할 수 있어야 합니다.
+* ZGU : 허용된 프로그램 이외 프로그램의 인터넷 접속을 차단하는 프로그램입니다.
+6. 타겟 PC 600 ~ 800대 가량이며, 원활히 작동해야 합니다.
+7. Win7, Win10, Win11 등을 대응해야 합니다.
+
+산출물 :
+- 실행 파일 및 소스 코드 원본
+
+지원 시 참고 사항 :
+- 유지보수 체결 희망하며, 유지보수 비용은 별도로 책정하여 계약합니다.
+' AS projectinfo,     
+    '경기도 의정부시' AS projectlocation,     
+    '내부 PC 모니터링 프로그램 개발' AS projectname,     
+    STR_TO_DATE('2024-12-11','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-01-01','%Y-%m-%d') AS startdate,     
+    7 AS teamsize,     
+    'DjrdY242' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
 
 
