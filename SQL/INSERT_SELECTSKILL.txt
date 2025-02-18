@@ -5,22 +5,22 @@ SELECT
   UUID(), t.skill_code, c.case_idx, pr.project_idx
 FROM (
   SELECT 
-    'JAVA' AS skill_code, '키오스크 및 포스 유지보수' AS case_title, '.Net 기반 키오스크 및 포스 유지보수' AS project_name
+    'JAVA' AS skill_code, '.Net 기반 키오스크 및 포스 유지보수' AS case_title, '.Net 기반 키오스크 및 포스 유지보수' AS project_name
   UNION ALL
   SELECT 
-	'REACT', '키오스크 및 포스 유지보수', '.Net 기반 키오스크 및 포스 유지보수'
+	'REACT', '.Net 기반 키오스크 및 포스 유지보수', '.Net 기반 키오스크 및 포스 유지보수'
   UNION ALL
   SELECT 
-    'PYTHON', '암호화폐 거래소 인프라/DB 최적화', '암호화폐 거래소 인프라/DB 최적화 백엔드 개발자 구인'
+    'PYTHON', '암호화폐 거래소 인프라/DB 최적화 백엔드 개발자 구인', '암호화폐 거래소 인프라/DB 최적화 백엔드 개발자 구인'
   UNION ALL
   SELECT 
-    'DOCKER', '암호화폐 거래소 Next.js 프론트엔드', '암호화폐 거래소 Next.js 프론트엔드 개발자 구인'
+    'DOCKER', '암호화폐 거래소 Next.js 프론트엔드 개발자 구인', '암호화폐 거래소 Next.js 프론트엔드 개발자 구인'
   UNION ALL
   SELECT 
-    'AWS', '웹 빌더 시스템 구축', '내부에서 사용할 웹 빌더 시스템 구축'
+    'AWS', '내부에서 사용할 웹 빌더 시스템 구축', '내부에서 사용할 웹 빌더 시스템 구축'
   UNION ALL
   SELECT 
-    'REACT', '차량관제 서비스 UI/UX 기획', '차량관제 서비스 UI/UX 기획자'
+    'REACT', '차량관제 서비스 UI/UX 기획자', '차량관제 서비스 UI/UX 기획자'
   UNION ALL
   SELECT 
     'IOS', 'iOS 사용자 인증 보완 개발', 'iOS 사용자 인증 보완 개발'
@@ -51,6 +51,244 @@ FROM (
   UNION ALL
   SELECT 
     'ASP_NET', '자격증 LMS 시스템 내 자동 문자 연동 오류 수정', '자격증 LMS 시스템 내 자동 문자 연동 오류 수정'
+  UNION ALL
+  SELECT 
+    'PHP', '협회 자격 시험접수 및 자격증 발급 사이트 리뉴얼 구축', '협회 자격 시험접수 및 자격증 발급 사이트 리뉴얼 구축'
+  UNION ALL
+  SELECT 
+    'FIGMA', '중고차 거래 플랫폼 React 웹 통합 개발', '중고차 거래 플랫폼 React 웹 통합 개발'
+  UNION ALL
+  SELECT 
+    'JAVASCRIPT', '외국어 교육서비스 반응형 웹 퍼블리싱 및 컴포넌트 개발', '외국어 교육서비스 반응형 웹 퍼블리싱 및 컴포넌트 개발'
+  UNION ALL
+  SELECT 
+    'PHP', '고도몰 기반 쇼핑몰 기능 개발 및 유지보수 PHP 개발자 (재택근무)', '고도몰 기반 쇼핑몰 기능 개발 및 유지보수 PHP 개발자 (재택근무)'
+  UNION ALL
+  SELECT 
+    'FIGMA', '웹 서비스 플랫폼 콘텐츠 디자이너 구인 (일 4시간/재택근무)', '웹 서비스 플랫폼 콘텐츠 디자이너 구인 (일 4시간/재택근무)'
+  UNION ALL
+  SELECT 
+    'ANDROID', '안드로이드 앱 디컴파일 및 코드 획득 및 통신 방식 분석', '안드로이드 앱 디컴파일 및 코드 획득 및 통신 방식 분석'
+  UNION ALL
+  SELECT 
+    'C', 'JAKA ROBOT 과 Vision 을 이용한 Pick 데모 개발', 'JAKA ROBOT 과 Vision 을 이용한 Pick 데모 개발'
+  UNION ALL
+  SELECT
+	'PYTHON', 'JAKA ROBOT 과 Vision 을 이용한 Pick 데모 개발', 'JAKA ROBOT 과 Vision 을 이용한 Pick 데모 개발'
+  UNION ALL
+  SELECT
+    'CPP', '[정규직] Deep Learning Engineer(딥러닝 개발자)', '[정규직] Deep Learning Engineer(딥러닝 개발자)'
+  UNION ALL
+  SELECT
+	'PYTHON', '[정규직] Deep Learning Engineer(딥러닝 개발자)', '[정규직] Deep Learning Engineer(딥러닝 개발자)'
+  UNION ALL
+  SELECT
+    'CPP', '[정규직] Deep Learning Inference Optimization Engineer(딥러닝 추론 최적화 개발자)', '[정규직] Deep Learning Inference Optimization Engineer(딥러닝 추론 최적화 개발자)'
+  UNION ALL
+  SELECT 
+    'PYTHON', '[정규직] Deep Learning Inference Optimization Engineer(딥러닝 추론 최적화 개발자)', '[정규직] Deep Learning Inference Optimization Engineer(딥러닝 추론 최적화 개발자)'
+  UNION ALL
+  SELECT 
+    'C', '[정규직] Application Engineer(어플리케이션 개발자)', '[정규직] Application Engineer(어플리케이션 개발자)'
+  UNION ALL
+  SELECT 
+    'CPP', '[정규직] Application Engineer(어플리케이션 개발자)', '[정규직] Application Engineer(어플리케이션 개발자)'
+  UNION ALL
+  SELECT 
+    'C', '[정규직] Perception Engineer(자율주행 인지 개발자)', '[정규직] Perception Engineer(자율주행 인지 개발자)'
+  UNION ALL
+  SELECT 
+    'CPP', '[정규직] Perception Engineer(자율주행 인지 개발자)', '[정규직] Perception Engineer(자율주행 인지 개발자)'
+  UNION ALL
+  SELECT 
+    'PYTHON', '[정규직] Perception Engineer(자율주행 인지 개발자)', '[정규직] Perception Engineer(자율주행 인지 개발자)'
+  UNION ALL
+  SELECT 
+    'VUE', 'Vue.js 프론트엔드 개발자 추가 증원 (주 10시간 재택근무)', 'Vue.js 프론트엔드 개발자 추가 증원 (주 10시간 재택근무)'
+  UNION ALL
+  SELECT 
+    'JAVASCRIPT', 'Vue.js 프론트엔드 개발자 추가 증원 (주 10시간 재택근무)', 'Vue.js 프론트엔드 개발자 추가 증원 (주 10시간 재택근무)'
+  UNION ALL
+  SELECT 
+    'FLUTTER', 'Flutter 기반 소개팅 앱 개발', 'Flutter 기반 소개팅 앱 개발'
+  UNION ALL
+  SELECT 
+    'IOS', 'Flutter 기반 소개팅 앱 개발', 'Flutter 기반 소개팅 앱 개발'
+  UNION ALL
+  SELECT 
+    'ANDROID', 'Flutter 기반 소개팅 앱 개발', 'Flutter 기반 소개팅 앱 개발'
+  UNION ALL
+  SELECT 
+    'FIGMA', '정규직 UI/UX 디자이너', '정규직 UI/UX 디자이너'
+  UNION ALL
+  SELECT 
+    'JAVASCRIPT', '정규직 UI/UX 디자이너', '정규직 UI/UX 디자이너'
+  UNION ALL
+  SELECT 
+    'REACT', 'NFT P2P 거래 플랫폼을 구축', 'NFT P2P 거래 플랫폼을 구축'
+  UNION ALL
+  SELECT 
+    'JAVA', 'NFT P2P 거래 플랫폼을 구축', 'NFT P2P 거래 플랫폼을 구축'
+  UNION ALL
+  SELECT 
+    'FIGMA', '사진 영상 공모전 웹 디자인', '사진 영상 공모전 웹 디자인' 
+  UNION ALL
+  SELECT 
+    'MARIA_DB', '진동센서 데이터 수집을 위한 DAQ 및 서버 구축', '진동센서 데이터 수집을 위한 DAQ 및 서버 구축'
+  UNION ALL
+  SELECT 
+    'PYTHON', '진동센서 데이터 수집을 위한 DAQ 및 서버 구축', '진동센서 데이터 수집을 위한 DAQ 및 서버 구축'
+  UNION ALL
+  SELECT 
+    'React', 'React 컴포넌트 업데이트', 'React 컴포넌트 업데이트'
+  UNION ALL
+  SELECT 
+    'TypeScript', 'React 컴포넌트 업데이트', 'React 컴포넌트 업데이트'
+  UNION ALL
+  SELECT 
+    'MySQL', 'Node.js 기반 프리미엄 모임 앱 서비스 백엔드 개발', 'Node.js 기반 프리미엄 모임 앱 서비스 백엔드 개발'
+  UNION ALL
+  SELECT 
+    'AWS', 'Node.js 기반 프리미엄 모임 앱 서비스 백엔드 개발', 'Node.js 기반 프리미엄 모임 앱 서비스 백엔드 개발'
+  UNION ALL
+  SELECT 
+    'React', 'Node.js 기반 프리미엄 모임 앱 서비스 백엔드 개발', 'Node.js 기반 프리미엄 모임 앱 서비스 백엔드 개발'
+  UNION ALL
+  SELECT 
+    'CPP', '교육 훈련 모델 유지보수 및 운영', '교육 훈련 모델 유지보수 및 운영'
+  UNION ALL
+  SELECT 
+    'CSHARP', '교육 훈련 모델 유지보수 및 운영', '교육 훈련 모델 유지보수 및 운영'
+  UNION ALL
+  SELECT 
+    'Android', '역사 관련 Android 및 iOS 앱 구축', '역사 관련 Android 및 iOS 앱 구축'
+  UNION ALL
+  SELECT 
+    'iOS', '역사 관련 Android 및 iOS 앱 구축', '역사 관련 Android 및 iOS 앱 구축'
+  UNION ALL
+  SELECT 
+    'AWS', '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)', '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)'
+  UNION ALL
+  SELECT 
+    'MySQL', '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)', '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)'
+  UNION ALL
+  SELECT 
+    'SPRING_BOOT', '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)', '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)'
+  UNION ALL
+  SELECT 
+    'Tomcat', '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)', '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)'
+  UNION ALL
+  SELECT 
+    'Photoshop', '가전제품 설명서 제작/홈페이지 제작 디자인', '가전제품 설명서 제작/홈페이지 제작 디자인'
+  UNION ALL
+  SELECT 
+    'Illustrator', '가전제품 설명서 제작/홈페이지 제작 디자인', '가전제품 설명서 제작/홈페이지 제작 디자인'
+  UNION ALL
+  SELECT 
+    'PHP', '레거시 PHP 기반 ERP 운영/유지보수', '레거시 PHP 기반 ERP 운영/유지보수'
+  UNION ALL
+  SELECT 
+    'Kafka', '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)', '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)'
+  UNION ALL
+  SELECT 
+    'PostgreSQL', '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)', '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)'
+  UNION ALL
+  SELECT 
+    'Kubernetes', '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)', '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)'  
+  UNION ALL
+  SELECT 
+    'Typescript', 'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인', 'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인'
+  UNION ALL
+  SELECT 
+    'PostgreSQL', 'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인', 'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인'
+  UNION ALL
+  SELECT 
+    'MySQL', 'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인', 'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인'  
+    UNION ALL
+  SELECT 
+    'Firebase', '기존 사이트 소스 검토 및 배포를 위한 오류 해결', '기존 사이트 소스 검토 및 배포를 위한 오류 해결'
+  UNION ALL
+  SELECT 
+    'React', 'React 기반 항공사 사내 시스템 프론트엔드 개발자 구인', 'React 기반 항공사 사내 시스템 프론트엔드 개발자 구인'
+  UNION ALL
+  SELECT 
+    'AWS', 'B2B 차량 호출 서비스 추가 기능 개발', 'B2B 차량 호출 서비스 추가 기능 개발'
+  UNION ALL
+  SELECT 
+    'JavaScript', 'B2B 차량 호출 서비스 추가 기능 개발', 'B2B 차량 호출 서비스 추가 기능 개발'
+  UNION ALL
+  SELECT 
+    'MySQL', 'B2B 차량 호출 서비스 추가 기능 개발', 'B2B 차량 호출 서비스 추가 기능 개발'
+  UNION ALL
+  SELECT 
+    'TypeScript', 'B2B 차량 호출 서비스 추가 기능 개발', 'B2B 차량 호출 서비스 추가 기능 개발'
+  UNION ALL
+  SELECT 
+    'SPRING_BOOT', '쇼핑몰 관리자 웹 프런트엔드 개발', '쇼핑몰 관리자 웹 프런트엔드 개발'
+  UNION ALL
+  SELECT 
+    'Java', '쇼핑몰 관리자 웹 프런트엔드 개발', '쇼핑몰 관리자 웹 프런트엔드 개발'
+  UNION ALL
+  SELECT 
+    'Javascript', '웹(React) 프런트엔드 개발', '웹(React) 프런트엔드 개발'
+  UNION ALL
+  SELECT 
+    'Typescript', '웹(React) 프런트엔드 개발', '웹(React) 프런트엔드 개발'
+  UNION ALL
+  SELECT 
+    'React', '웹(React) 프런트엔드 개발', '웹(React) 프런트엔드 개발'
+  UNION ALL
+  SELECT 
+    'Flutter', 'Flutter 기반 AI 의료 애플리케이션 기능 고도화(재택근무)', 'Flutter 기반 AI 의료 애플리케이션 기능 고도화(재택근무)'
+  UNION ALL
+  SELECT 
+    'Android', 'Flutter 기반 AI 의료 애플리케이션 기능 고도화(재택근무)', 'Flutter 기반 AI 의료 애플리케이션 기능 고도화(재택근무)'
+  UNION ALL
+  SELECT 
+    'iOS', 'Flutter 기반 AI 의료 애플리케이션 기능 고도화(재택근무)', 'Flutter 기반 AI 의료 애플리케이션 기능 고도화(재택근무)'
+  UNION ALL
+  SELECT 
+    'TypeScript', 'TypeScript(Express or Nest) 기반 백엔드 개발', 'TypeScript(Express or Nest) 기반 백엔드 개발'
+  UNION ALL
+  SELECT 
+    'Express', 'TypeScript(Express or Nest) 기반 백엔드 개발', 'TypeScript(Express or Nest) 기반 백엔드 개발'
+  UNION ALL
+  SELECT 
+    'React', 'React 프론트엔드 개발자 구인 (주 2일 근무 / 재택근무)', 'React 프론트엔드 개발자 구인 (주 2일 근무 / 재택근무)'
+  UNION ALL
+  SELECT 
+    'Javascript', 'React 프론트엔드 개발자 구인 (주 2일 근무 / 재택근무)', 'React 프론트엔드 개발자 구인 (주 2일 근무 / 재택근무)'
+  UNION ALL
+  SELECT 
+    'CPP', 'React 프론트엔드 개발자 구인 (주 2일 근무 / 재택근무)', 'React 프론트엔드 개발자 구인 (주 2일 근무 / 재택근무)'
+  UNION ALL
+  SELECT 
+    'PHP', 'PHP/MySQL 기반 CRM 백엔드 개발자 구인', 'PHP/MySQL 기반 CRM 백엔드 개발자 구인'
+  UNION ALL
+  SELECT 
+    'MySQL', 'PHP/MySQL 기반 CRM 백엔드 개발자 구인', 'PHP/MySQL 기반 CRM 백엔드 개발자 구인'
+  UNION ALL
+  SELECT 
+    'AWS', 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발', 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발'
+  UNION ALL
+  SELECT 
+    'JavaScript', 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발', 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발'
+  UNION ALL
+  SELECT 
+    'Python', 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발', 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발'  
+  UNION ALL
+  SELECT 
+    'React', 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발', 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발'  
+    
+
+    
+    
+    
+ 
+    
+    
+    
+    
 ) t
 LEFT JOIN case_table c ON c.title = t.case_title
 LEFT JOIN project pr ON pr.projectname = t.project_name;
