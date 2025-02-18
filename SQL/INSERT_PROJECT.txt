@@ -33600,3 +33600,3776 @@ Android
 ) p
 JOIN member m ON m.id = p.client_id
 JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    20000000 AS amount,     
+    STR_TO_DATE('2024-11-23','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '60일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 19일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+운영 중인 서비스의 리뉴얼 또는 유지보수를 하려 합니다.
+
+기획 상태
+
+상세한 기획 문서가 존재요구사항 정의서
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+관련 기술
+
+AndroidJavaKotlin
+업무 내용
+프로젝트 개요 :
+- 천정형 공기청정기를 셋업 하기 위한 App과 관리서버의 개발입니다.
+- 앱은 설치 기사님 및 내부 직원들이 사용할 예정입니다.
+
+현재 준비 상황 :
+- 하드웨어는 개발이 완료되어 있습니다.
+- 기존 앱이 있으며 리뉴얼이 필요한 상황입니다.
+- 기존 소스 코드 검토도 가능하나 신규 앱 개발을 고려하고 있습니다.
+
+필요 요소 :
+- 천정형 공기청정기 셋업 Android 앱 기획 및 디자인
+- 천정형 공기청정기 셋업 Android 앱 퍼블리싱 및 개발
+- 서버 구축 및 관리자 웹 개발
+
+개발환경/언어/방식 :
+- Android
+- Kotlin 또는 JAVA 기반으로 네이티브 앱으로 개발을 희망합니다.
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+1. 천정형 공기청정기 설치 후 네트워크 연동 및 세팅에 사용할 앱 개발입니다.
+2. 주요 기능은 아래와 같습니다.
+- 로그인, 제품 연동, 세팅 셋업, 서버로 정보 이관 등
+3. 서버로 데이터 이관 후 관리 및 확인할 수 있는 관리자 페이지 개발도 필요합니다.
+4. 제품 셋업을 위한 설정 화면, 테스트 화면 등을 개발해야 하며, 제품 셋업을 위하여 wifi 1:1 통신을 해야 합니다.
+5. App를 관리하기 위한 서버 ( 기존 서버 있음 )를 연동해야 하며, 기존 서버도 일부 수정 보완 해야 합니다.
+6. 디자인을 하긴 해야 하나, 업무 용도 이므로 편의성 위주로만 고려하면 됩니다.
+' AS projectinfo,     
+    '서울특별시 중구' AS projectlocation,     
+    '천정형 공기청정기 셋업 Android 앱 구축' AS projectname,     
+    STR_TO_DATE('2024-11-05','%Y-%m-%d') AS registrationdate,     
+    'Android,Java,Kotlin' AS requirement,     
+    STR_TO_DATE('2024-11-09','%Y-%m-%d') AS startdate,     
+    27 AS teamsize,     
+    'EMZCSJ194' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    10000000 AS amount,     
+    STR_TO_DATE('2024-11-23','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '30일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 19일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+상세한 기획 문서가 존재요구사항 정의서, 제안요청서
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+파트너는 지속적으로 팀위주로 모집 하려고 합니다. 현제는 1명이 있습니다. 팀은 2명정도 예상하고 지원을 할 예정입니다.
+
+우선 순위
+
+[1순위] 금액
+[2순위] 일정 준수
+[3순위] 산출물 완성도
+관련 기술
+
+RAG
+업무 내용
+프로젝트 개요 :
+- 새로운 서비스를 개발하기 위한 초기 단계로 기능 구현 가능 여부를 확인하기 위해 의뢰합니다.
+
+의뢰 목표 :
+- 프로토타입 개발을 목표로 합니다.
+
+현재 준비 상황 :
+- 레시피에 대한 데이터 약 2000개 정도 준비되었습니다.
+- 관련 로직이나 알고리즘 정리해 두었습니다.
+
+필요 요소 :
+- 생성형 AI 기반 레시피 생성 모델 개발
+- 시연용 화면 디자인, 퍼블리싱
+
+개발환경/언어/방식 :
+- 생성형 AI 사용
+- RAG에 전문성이 있으면 좋겠습니다.
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+1) 개인 상황이나 감정 등을 입력하면 레시피를 생성하여 제공하는 AI입니다.
+- 상황이나 감정에 따라 맛과 향을 매칭하고 개인 맞춤을 실현하기 위해, 유연한 데이터 구조를 중점으로 집중했습니다.
+- RAG를 활용한 챗봇기능과 API를 사용합니다. 가능성 여부는 확인하였습니다. 맛을 정의한다는 것은 정말 의미 있는 프로젝트라 생각할 수 있습니다. 기술은 충분히 설명할 수 있습니다. 기능과 요구서 도 설명 할 수 있습니다. 시각화는 관계도 정도입니다.
+- 자세한 것은 보안 상 미팅 시 공유드릴 예정입니다.
+2) 시연용 화면 몇 본 정도 디자인과 퍼블리싱 같이 요청드립니다.
+- 정해진 시나리오에 따라 동작하는 화면 몇 본 정도면 됩니다. (템플릿을 이용하여도 됩니다.)
+' AS projectinfo,     
+    '경기도 안산시 단원구' AS projectlocation,     
+    '생성형 AI 기반 레시피 생성 모델 개발' AS projectname,     
+    STR_TO_DATE('2024-11-05','%Y-%m-%d') AS registrationdate,     
+    'RAG' AS requirement,     
+    STR_TO_DATE('2024-11-08','%Y-%m-%d') AS startdate,     
+    23 AS teamsize,     
+    'irELmD195' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    3500000 AS amount,     
+    STR_TO_DATE('2024-11-23','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '10일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 19일
+
+예상 시작일
+
+2024년 12월 01일
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+아이디어만 있는 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 없음
+
+협업 예정 인력
+
+수입업무 담당자 2인
+
+우선 순위
+
+[1순위] 금액
+[2순위] 산출물 완성도
+[3순위] 일정 준수
+업무 내용
+프로젝트 개요 :
+- 간단한 원가/이력 관리 웹페이지 개발
+
+의뢰 목표 :
+- 이력 관리 및 원가 관리를 전산화
+
+사용 인원 :
+- 관리 직원 : 3~4명
+- 발주를 등록하는 구매 직원 : 5~6명
+
+필요 요소 :
+- 업무 분석/설계
+- 웹 프런트엔드 개발
+- 백엔드 개발
+- 서버/DB/인프라 구성
+
+지원 플랫폼 :
+- Web
+
+개발 환경/언어 :
+- 인프라 : Cafe24 호스팅 사용
+- 모두 제안해주세요.
+
+1) 로그인
+2) 구매 직원이 발주 등록
+* 발주 등록 시 입력하는 정보 : 상품명, 옵션, 구매 수량, 구매 url, 비고 ( 단순 입력폼 )
+3) 관리 직원이 발주 건을 확인하고 원가 계산
+* 단가/비용/운임 비용/통관 비용/환전 수수료 등 비용을 입력하면 최종 원가 계산
+4) 입고 확인
+* 관리자가 발주건에 대한 상태값을 변경
+
+참고 사항 :
+- 구매 직원과 관리 직원은 페이지 접속 권한이 차등 부여
+
+지원 시 참고 사항 :
+- 별도 UI 디자인 없이 진행하고자 합니다. 화면은 개발자분이 편하신 형태로 구성해주시기 바랍니다.
+- 미팅 시 모바일앱 버전 개발 비용에 대해 문의드릴 예정입니다.
+' AS projectinfo,     
+    '부산광역시 부산진구' AS projectlocation,     
+    '간단한 원가/이력 관리 웹페이지 개발' AS projectname,     
+    STR_TO_DATE('2024-11-05','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-08','%Y-%m-%d') AS startdate,     
+    51 AS teamsize,     
+    'ounzbl226' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    7000000 AS amount,     
+    STR_TO_DATE('2024-11-23','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '60일' AS duration,     
+     0 AS is_completed,     
+    'ON_GOING' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 19일
+
+지원자 수
+
+1명
+
+구인 배경
+
+신규 프로젝트에 필요한 작업자를 구인하고 있습니다.
+
+구인 유형
+
+사내 프로젝트에 필요한 인력을 구인합니다.
+
+프로젝트 산업 분야
+
+서비스업
+
+협업 예정 인력
+
+2~3명
+
+우선 순위
+
+[1순위] 업무 능력
+[2순위] 근무 시작일
+[3순위] 예산 범위
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개:
+- 마이크로서비스아키텍처(MSA) 환경기반으로 MES, ERP SYSTEM 개발자 구인(back, front)
+
+프로젝트 진행 상황:
+- 개발 진행중입니다.
+
+전체 시스템 구성:
+- Web
+
+전체 프로젝트 일정:
+- 전체 프로젝트 일정:2개월
+- 인터뷰 및 계약 일정:지원자 발생 인터뷰 진행, 2~3일 이내 계약 여부 공유드릴 예정입니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 실무진 인터뷰 1회 (코딩 테스트 x) > 계약 결정
+
+
+<상세 업무 내용>
+
+모집 인원:
+- 경력 4~7년 차 1명 (월 600~700만 원)
+
+상세 업무:
+- 자사 개발자와 협업해서 MES, ERP SYSTEM 개발
+- UI TOOL : eXBuilder 6.0 (토마토시스템)
+
+필수 기술:
+- eXBuilder 6.0 (사용 가능자)
+- Java, JavaScript, Spring Boot, 전자정부프레임워크
+
+우대 사항:
+- MES 개발 유경험자
+- UI Tool : XPLATFORM 경험자 우대
+- 마이크로서비스(MSA) 유경험자
+' AS projectinfo,     
+    '경상남도 창원시 마산회원구' AS projectlocation,     
+    '자사 MES, ERP SYSTEM 개발' AS projectname,     
+    STR_TO_DATE('2024-11-05','%Y-%m-%d') AS registrationdate,     
+    'exBuilder6 · 1년 이상,Java · 1년 이상,JavaScript · 1년 이상,Spring Boot · 1년 이상,전자정부프레임워크 · 1년 이상' AS requirement,     
+    STR_TO_DATE('2024-11-09','%Y-%m-%d') AS startdate,     
+    1 AS teamsize,     
+    'ryvtcu227' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    2000000 AS amount,     
+    STR_TO_DATE('2024-11-26','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '14일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 19일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+자사 PM 1명, 기획자
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 일정 준수
+[3순위] 금액
+관련 기술
+
+Figma
+업무 내용
+프로젝트 개요 :
+- MVP를 개선하여 내년 2월말 최종 버전을 출시하려고 합니다.
+- 영문 버전을 기본으로 하고, 이를 번역하여 한국 시장에도 출시합니다.
+
+프로젝트의 현재 상황 :
+- 화면 Flow 및 와이어프레임 내용이 담긴 figma 를 작성하고 있습니다. (12/6 완성 예정)
+
+필요 요소 :
+- NUSEUM NOTE UX/UI 디자인
+
+디자인 툴 :
+- figma
+
+디자인 컨셉 :
+- 건강 관리 노트(수첩) 컨셉을 구상하고 있습니다.
+
+주요 기능 :
+1) 사용자 로그인/회원가입(구글, 카카오)
+2) survey 출생연도, 성별/50가지 건강항목 중복 체크
+3) 영양성분 분석
+4) 장바구니 구성(추천 식품 중 선택, 추천 식품 외 추가 검색)에 따른 건강 점수, 레시피 추천 챗봇
+5) 완성된 장바구니 리스트, e-커머스 연결 링크
+6) 건강 리포트, 다음 장바구니 구성
+
+그 외 :
+1) 다국어 지원 ( 국문, 영문 )
+- 국문, 영문 버전 2가지로 나누어 디자인 제작 필요
+
+페이지 수 :
+- 8~10P
+' AS projectinfo,     
+    '서울특별시 관악구' AS projectlocation,     
+    'NUSEUM NOTE UX/UI 디자인' AS projectname,     
+    STR_TO_DATE('2024-11-08','%Y-%m-%d') AS registrationdate,     
+    'Figma' AS requirement,     
+    STR_TO_DATE('2024-11-12','%Y-%m-%d') AS startdate,     
+    24 AS teamsize,     
+    'myPqVT228' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    100000 AS amount,     
+    STR_TO_DATE('2024-12-01','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '3일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 19일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+아이디어만 있는 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 없음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+관련 기술
+
+Figma
+업무 내용
+프로젝트 개요 :
+- 제가 이전에 소개팅 앱 관련 4~5장의 샘플 페이지 디자인을 진행 했었는데 더 받아보고 싶어서 의뢰하게 되었습니다
+
+필요 요소 :
+- 소개팅 어플 샘플 이미지 디자인
+
+디자인 툴 :
+- Figma
+
+주요 작업 범위 :
+- 서비스 소개 : 소개팅 어플에 사용 할 페이지이고 그 디자인은 주로 20~30대가 주 타겟팅으로 할 생각입니다.
+- 업무 범위 : 채팅 내부에서의 페이지 디자인 하나, 어플 배너 디자인 하나
+
+참고 사이트/앱 :
+- 틴더처럼 스토어에 흔하게 나오는 소개팅 어플을 참고합니다.
+
+지원 시 참고 사항 :
+- 기간 준수하고 저렴했으면 좋겠어요. 그리고 미팅 진행 시 온라인으로 하고 싶습니다.
+
+' AS projectinfo,     
+    '경기도 부천시 원미구' AS projectlocation,     
+    '소개팅 어플 샘플 이미지 디자인' AS projectname,     
+    STR_TO_DATE('2024-11-13','%Y-%m-%d') AS registrationdate,     
+    'Figma' AS requirement,     
+    STR_TO_DATE('2024-11-18','%Y-%m-%d') AS startdate,     
+    7 AS teamsize,     
+    'jdzTo229' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    4800000 AS amount,     
+    STR_TO_DATE('2024-11-23','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '60일' AS duration,     
+     0 AS is_completed,     
+    'CANCELED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 19일
+
+지원자 수
+
+5명
+
+구인 배경
+
+신규 프로젝트에 필요한 작업자를 구인하고 있습니다.
+
+구인 유형
+
+사내 프로젝트에 필요한 인력을 구인합니다.
+
+프로젝트 산업 분야
+
+IT•정보통신업
+
+협업 예정 인력
+
+백엔드 개발자 1명, UI/UX 디자이너 2명
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 일정 준수
+[3순위] 금액
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개:
+- 개발 완료 된 앱의 화면 리뉴얼 및 일부 개발이 필요한 상황입니다.
+
+프로젝트 진행 상황:
+- Figma 기반으로 제작된 UI/UX 리뉴얼 문서가 있습니다.
+
+전체 시스템 구성:
+- Android 및 iOS 앱
+
+전체 프로젝트 일정:
+- 전체 프로젝트 일정:2개월
+- 인터뷰 및 계약 일정:지원자 발생 후 인터뷰 진행, 2~3일 이내 계약 여부 공유드릴 예정입니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 실무진 및 임원진 인터뷰 1회 (코딩 테스트 x) > 계약 결정
+
+
+<상세 업무 내용>
+
+모집 인원:
+- 경력 3~5년 차 1명 (월 400~480만 원)
+
+상세 업무:
+- Flutter 기반 화상 미팅 앱 리뉴얼 및 개발
+- 런칭 및 배포는 완료된 화상조문 앱 기존 페이지 유지보수 및 고도화 작업
+
+필수 기술:
+- Flutter
+
+우대 사항:
+- 화상 미팅 앱 경험자 우대
+' AS projectinfo,     
+    '서울특별시 서초구' AS projectlocation,     
+    'Flutter 기반 화상 미팅 앱 고도화' AS projectname,     
+    STR_TO_DATE('2024-11-05','%Y-%m-%d') AS registrationdate,     
+    'Flutter · 경력 무관,Figma · 경력 무관' AS requirement,     
+    STR_TO_DATE('2024-11-08','%Y-%m-%d') AS startdate,     
+    5 AS teamsize,     
+    'gKbpwS230' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    5000000 AS amount,     
+    STR_TO_DATE('2024-11-29','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '30일' AS duration,     
+     0 AS is_completed,     
+    'ON_GOING' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 19일
+
+지원자 수
+
+0명
+
+구인 배경
+
+신규 프로젝트에 필요한 작업자를 구인하고 있습니다.
+
+구인 유형
+
+발주처에게서 수주한 프로젝트에 필요한 인력을 구인합니다. • 계약 체결 완료
+
+프로젝트 산업 분야
+
+IT•정보통신업
+
+협업 예정 인력
+
+PM 1명, 개발자 1명, 디자이너 1명
+
+우선 순위
+
+[1순위] 업무 능력
+[2순위] 근무 시작일
+[3순위] 예산 범위
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개:
+- 고객사 내부 장비 대여 보관 서비스의 키오스크 UI 개발
+
+프로젝트 진행 상황:
+- 서비스 기획 마무리 단계
+- 디자인 진행 중, 퍼블리싱 예정
+
+전체 시스템 구성:
+- Web
+- 백엔드 : Node.js
+- DB : MySQL
+- Front : C# winform or WPF
+
+전체 프로젝트 일정:
+- 전체 프로젝트 일정:
+- 12/13 : 개발 완료
+- 12월 말 : 테스트 완료
+- 인터뷰 및 계약 일정: 지원자 발생 후 인터뷰 진행, 2~3일 이내 계약 여부 공유드릴 예정입니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 실무진 인터뷰 1회 (코딩 테스트 x) > 계약 결정
+
+
+<상세 업무 내용>
+
+모집 인원:
+- 경력 4~5년 차 1명 (월 500만 원)
+
+상세 업무:
+- 고객사 내부 장비 대여 보관 서비스의 키오스크 UI 개발
+
+필수 기술:
+- C#, WPF, winform
+' AS projectinfo,     
+    '서울특별시 강남구' AS projectlocation,     
+    '고객사 내부 장비 대여 보관 서비스 키오스크 UI 개발' AS projectname,     
+    STR_TO_DATE('2024-11-15','%Y-%m-%d') AS registrationdate,     
+    'C# · 5년 이하,WPF · 5년 이하,winform · 5년 이하' AS requirement,     
+    STR_TO_DATE('2024-11-19','%Y-%m-%d') AS startdate,     
+    0 AS teamsize,     
+    'uvLOLm231' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    1000000 AS amount,     
+    STR_TO_DATE('2024-11-29','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '4일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 19일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+상세한 기획 문서가 존재요구사항 정의서, 현재 만들어진 어플리케이션에 개발 환경 편리하게 하는 기능 추가
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+전문가 대기
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 일정 준수
+[3순위] 금액
+업무 내용
+프로젝트 개요 :
+- 기능 테스트를 위한 WireMock 을 연계하려고 합니다.
+
+프로젝트의 현재 상황 :
+- 어플리케이션은 개발 완료되어 있는 상황입니다.
+
+필요 요소 :
+- Spring Boot 에 WireMock 연계
+
+산출물 :
+- 동작하는 어플리케이션만 확인되면 됩니다.
+
+지원 시 참고 사항 :
+- 연계해주시면 시나리오는 저희쪽에서 추가할 예정입니다.
+' AS projectinfo,     
+    '서울특별시 성동구' AS projectlocation,     
+    'spring boot 기반 wiremock연계' AS projectname,     
+    STR_TO_DATE('2024-11-14','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-17','%Y-%m-%d') AS startdate,     
+    3 AS teamsize,     
+    'GtEQS232' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    3750000 AS amount,     
+    STR_TO_DATE('2024-11-24','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '180일' AS duration,     
+     0 AS is_completed,     
+    'ON_GOING' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 19일
+
+지원자 수
+
+5명
+
+구인 배경
+
+신규 프로젝트에 필요한 작업자를 구인하고 있습니다.
+
+구인 유형
+
+사내 프로젝트에 필요한 인력을 구인합니다.
+
+프로젝트 산업 분야
+
+IT•정보통신업
+
+협업 예정 인력
+
+기획자, 디자이너, 백엔드 개발자, PM
+
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개 :
+- 통신 요금제 추천/설계 모바일 앱 서비스
+
+프로젝트 진행 상황 :
+- 초기 팀 구성 단계입니다.
+- 1차 완료된 기획/디자인이 있습니다.( 계속 디벨롭 예정 )
+
+전체 시스템 구성 :
+- php 기반 백엔드
+- react native 기반 모바일 프런트엔드
+
+전체 프로젝트 일정:
+- 계약 일정 : 6개월
+- 투입 일정 : ASAP
+- 인터뷰 및 계약 일정 : 면접 진행 후 1~2일 이내 계약 여부 결정 가능합니다.
+- 계약 진행 프로세스 : 프로젝트 지원 > 실무진 인터뷰 > 계약 결정
+
+
+<상세 업무 내용>
+
+모집 인원 :
+- 1~2명
+- 경력 무관
+- 월 급여 : 300 ~ 450만 원( 경력/이력/업무 역량에 따라 미팅 시 조율 예정입니다. )
+
+상세 업무 :
+- 통신 요금제 추천/설계 모바일 앱 UI/UX 디자인
+
+필수 기술:
+- Figma
+
+우대 사항 :
+- BI 디자인까지 가능하신 분이면 우대 예정입니다.
+- 통신사 대고객 모바일앱 디자인 경험이 있다면 우대 예정입니다.
+
+
+<기타 유의 사항>
+
+- 서비스 런칭 시점에 초기 맴버로 참여할 수 있는 기회가 제공됩니다.
+- 큰 꿈을 가지고 계신 역량있는 분을 모십니다.
+- 주 1일 재택 근무 가능합니다. ( 협의 )
+' AS projectinfo,     
+    '서울특별시 중구' AS projectlocation,     
+    '통신 요금제 추천/설계 모바일 앱 Figma 디자인' AS projectname,     
+    STR_TO_DATE('2024-11-06','%Y-%m-%d') AS registrationdate,     
+    'Figma · 경력 무관' AS requirement,     
+    STR_TO_DATE('2024-11-07','%Y-%m-%d') AS startdate,     
+    5 AS teamsize,     
+    'HzQsN233' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    5000000 AS amount,     
+    STR_TO_DATE('2024-11-29','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '90일' AS duration,     
+     0 AS is_completed,     
+    'CANCELED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 18일
+
+지원자 수
+
+3명
+
+구인 배경
+
+결원이 발생하여 작업자를 구인하고 있습니다.
+
+구인 유형
+
+사내 프로젝트에 필요한 인력을 구인합니다.
+
+프로젝트 산업 분야
+
+제조•생산•화학업
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+업무 내용
+<프로젝트 개요>
+
+프로젝트 개요 :
+- 기 개발된 인사관리 앱 유지보수
+
+프로젝트의 현재 상황 :
+- 내부 앱 개발자가 없어 신규로 구인하고 있습니다.
+- API 담당 개발자는 사내에 있습니다.
+
+전체 시스템 구성 :
+1. 서버
+(1) Backend (API) 연계 : Linux 서버에 PHP 언어로 개발된 API 연계
+(2) Frontend (Web) : Angular
+2. DB
+(1) MySQL
+3. 개발 언어 및 프레임워크
+(1) React native
+
+전체 프로젝트 일정:
+- 전체 프로젝트 일정: 3개월 간 진행 희망합니다.
+- 투입 예정일: ASAP
+- 인터뷰 및 계약 일정: 인터뷰 진행 후 1~2 일 내 계약 여부 결정 가능합니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 1차 실무진 인터뷰 > 2차 임원진 면접 > 계약 결정
+
+
+<상세 업무 내용>
+
+모집 인원:
+- 경력 4~5년 차 1명 (월 450 ~ 500만 원)
+
+담당 업무 :
+(1) 사용자 로그인 후에 소속회사 별로 3개의 회사 API호출하도록 분배하는 작업
+(2) 2024년 달력 하드코딩 부분 수정
+(3) 코드 리펙토링(코드 정리) : 급하게 코딩해서 코드 정리하는게 필요하다는 의견 전달 받았습니다.
+(4) React native 앱 배포(iOS/Andriod)
+(5) 기타 오류 수정 : 오류 항목 난이도에 다라 개발 기간 개발자와 협의해서 진행.
+(6) 업무 지원(다른 직원에 현재 개발 환경 설명)
+
+앱 내용 :
+- 직원들 위치 기반 출퇴근 체크/급여 명세서/연차 신청/야근 신청/조직도/사내 게시판/수당 계산/공지 사항/근태 현황 등이 가능한 내부용 인사관리 앱입니다.
+
+필수 기술 :
+- React Native
+
+' AS projectinfo,     
+    '서울특별시 중구' AS projectlocation,     
+    'React Native 인사관리 앱 유지보수' AS projectname,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS registrationdate,     
+    'React Native · 경력 무관' AS requirement,     
+    STR_TO_DATE('2024-11-10','%Y-%m-%d') AS startdate,     
+    3 AS teamsize,     
+    'laRT234' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    500000 AS amount,     
+    STR_TO_DATE('2024-11-23','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '3일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 18일
+
+예상 시작일
+
+2024년 11월 11일
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+PM1명
+
+우선 순위
+
+[1순위] 금액
+[2순위] 산출물 완성도
+[3순위] 일정 준수
+관련 기술
+
+PHPWordPress
+업무 내용
+프로젝트 개요 :
+- PG사 제공 결제 기능 연동
+
+현재 준비 상황 :
+- 워드프레스 기반으로 개발 중인 사이트가 있습니다.
+- 인피티소프트 사의 PG를 사용할 예정입니다.
+
+필요 요소 :
+- PG사 제공 결제 기능 연동
+
+개발환경/언어/방식 :
+- 워드프레스
+
+주요 기능List/주요 화면List/메뉴 구성/요구 사항 등 :
+1) PG사에서 제공하는 결제 화면과 API 연동이 필요합니다.
+2) 결제 금액 연동은 필요하지 않습니다. (수기 금액 입력, 결제)
+
+' AS projectinfo,     
+    '경기도 성남시 분당구' AS projectlocation,     
+    'PG사 제공 결제 기능 연동' AS projectname,     
+    STR_TO_DATE('2024-11-05','%Y-%m-%d') AS registrationdate,     
+    'PHP,WordPress' AS requirement,     
+    STR_TO_DATE('2024-11-08','%Y-%m-%d') AS startdate,     
+    6 AS teamsize,     
+    'DQjpKl235' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    7000000 AS amount,     
+    STR_TO_DATE('2024-11-23','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '30일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 18일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+아이디어만 있는 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 없음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 일정 준수
+[3순위] 금액
+업무 내용
+프로젝트 개요 :
+동물용 X-ray 제품을 출시하여 판매하고 있습니다.
+- X-ray 기반의 영상 판독 및 프로세싱 개발이 완료된 상태입니다. 이를 구성할 수 있는 UX 적 UI 를 구성하고 싶습니다.
+- 추가로, 사용자 중심의 시장 조사 및 기획 / 동물 병원에서 사용할 수 있는 EMR 차트의 조사, 벤치마킹 및 기획이 필요합니다.
+
+진행 일정 :
+- 30일 이내
+
+프로젝트의 현재 상황 :
+- 영상 진단 쪽 기능 정의가 완료되어 있습니다.
+- EMR 쪽은 기능 정의가 되어 있지 않습니다.
+- 시장 조사를 통하여 EMR 쪽 작업 범위를 확정하고자 합니다.
+
+필요 요소 :
+- 시장 조사 및 밴치마킹 리서치
+- 기능 상세 정의
+- 화면 설계
+
+주요 기능 :
+- 사용자 로그인 (회원가입) / Database (환자 기록 관리 및 신규 환자 등록) / Examination (신규 촬영, 기존 촬영물 분석, X-ray 조절 / control) / EMR 차트 (환자 관리 시스템)
+
+과업 분량 :
+- 30일 이내 마무리할 수 있는 업무량으로 조율할 예정
+
+참고 사이트/앱 :
+- Dr. Pallette 및 최근 출시되는 인체용 EMR 차트를 참고. 영상 진단 소프트웨어는 계약시 내부자료 제공 예정.
+
+' AS projectinfo,     
+    '경기도 남양주시' AS projectlocation,     
+    '동물 병원용 EMR 차트 및 영상 진단 SW 기획' AS projectname,     
+    STR_TO_DATE('2024-11-05','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-08','%Y-%m-%d') AS startdate,     
+    12 AS teamsize,     
+    'yLApHl236' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    1500000 AS amount,     
+    STR_TO_DATE('2024-11-30','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '5일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 18일
+
+예상 시작일
+
+2024년 11월 13일
+
+진행 분류
+
+운영 중인 서비스의 리뉴얼 또는 유지보수를 하려 합니다.
+
+기획 상태
+
+상세한 기획 문서가 존재요구사항 정의서, 화면설계서 (스토리보드, 와이어프레임)
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+자사 기획자 2명, 자사 개발자 1명
+
+우선 순위
+
+[1순위] 일정 준수
+[2순위] 산출물 완성도
+[3순위] 금액
+관련 기술
+
+ApachecubridJBOSS전자정부프레임워크
+업무 내용
+프로젝트 개요 :
+- 유형별 집계 통계 페이지 개발
+
+프로젝트의 현재 상황 :
+- 기획/디자인/퍼블리싱은 모두 완료되어 있습니다.
+
+필요 요소 :
+- 프런트 화면 및 백엔드 개발
+
+개발 환경/언어 :
+- WEB: Apache 2.4
+- WAS: JBOSS 7.4
+- DBMS: CUBRID 11.2
+- 기반 : 전자정부프레임워크
+
+주요 기능 :
+- 유형별 집계 통계 페이지 개발
+
+과업 분량 :
+- 총 6페이지에 대한 개발입니다.
+- 항목별로 페이지 레이아웃이 조금씩 다릅니다.
+- 데이터 테이블과 그래프로 구성됩니다.
+- 페이지 당 많게는 12개 항목의 데이터, 적게는 4개 항목의 데이터를 출력합니다.
+' AS projectinfo,     
+    '서울특별시 금천구' AS projectlocation,     
+    '통계 페이지 6P 프런트 화면 및 백엔드 개발' AS projectname,     
+    STR_TO_DATE('2024-11-12','%Y-%m-%d') AS registrationdate,     
+    'Apache,cubrid,JBOSS,전자정부프레임워크' AS requirement,     
+    STR_TO_DATE('2024-11-14','%Y-%m-%d') AS startdate,     
+    13 AS teamsize,     
+    'liJtEC237' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    6500000 AS amount,     
+    STR_TO_DATE('2024-12-01','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '360일' AS duration,     
+     0 AS is_completed,     
+    'ON_GOING' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 18일
+
+지원자 수
+
+6명
+
+구인 배경
+
+신규 프로젝트에 필요한 작업자를 구인하고 있습니다.
+
+구인 유형
+
+사내 프로젝트에 필요한 인력을 구인합니다.
+
+프로젝트 산업 분야
+
+서비스업
+
+협업 예정 인력
+
+운영팀
+
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개 :
+- 운영/유지보수(SM) 사업
+
+프로젝트의 현재 상황 :
+- 25년 부터 1년 간 참여가 가능한 개발자분을 모시고 있습니다.
+
+전체 프로젝트 일정 :
+- 투입 기간 : 25년 1/2 ~ 12개월 간
+- 1년단위 계약
+- 인터뷰 및 계약 일정 : 면접 진행 후 7일 이내 계약 여부 결정 가능합니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 1차 인터뷰 > 2차 고객사 인터뷰 > 계약 결정
+
+
+<상세 업무 내용>
+
+모집 인원 :
+- 2명
+
+경력 및 월 급여 :
+- 고급/600~650만 원
+
+담덩 업무 :
+- 오라클 튜닝
+- 홈페이지 유지보수
+
+필수 기술 :
+- C#, .Net, JAVA, MS-SQL, ORACLE
+' AS projectinfo,     
+    '경기도 성남시 분당구' AS projectlocation,     
+    'C#.NET 운영/유지보수(SM)' AS projectname,     
+    STR_TO_DATE('2024-11-13','%Y-%m-%d') AS registrationdate,     
+    'C# · 경력 무관,.Net · 경력 무관,Java · 경력 무관,MSSQL · 경력 무관,Oracle · 경력 무관' AS requirement,     
+    STR_TO_DATE('2024-11-15','%Y-%m-%d') AS startdate,     
+    6 AS teamsize,     
+    'qdDoh238' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    3500000 AS amount,     
+    STR_TO_DATE('2024-11-29','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '9일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 18일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+개발자 1명
+
+우선 순위
+
+[1순위] 금액
+[2순위] 산출물 완성도
+[3순위] 일정 준수
+관련 기술
+
+FigmaHTMLTailwindCSS
+업무 내용
+프로젝트 개요 :
+- 당사는 의사와 환자를 연결해 주는 모바일 앱을 운영 중입니다.
+- 현재의 모바일 기능을 그대로 웹으로 확장하여, 의사와 환자 간의 연결 및 관련 기능을 웹에서도 손쉽게 이용할 수 있도록 하고자 합니다.
+- 웹과 모바일 모두에서 원활하게 서비스되도록 디자인 및 퍼블리싱 작업이 필요합니다.
+
+현재 준비 상황 :
+- 운영 중인 앱이 있으며 아래 링크 참고 부탁드립니다.
+
+필요 요소 :
+- 운영 중인 앱의 웹 버전 UI/UX 기획, 디자인, 퍼블리싱
+
+개발환경/언어/방식 :
+- Figma, TailwindCSS, HTML
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+- 작업 시 모바일 피그마 파일을 공유드릴 예정이며, 해당 기능을 그대로 옮기고 추가로 웹의 특성에 따른 필터 및 컴포넌트가 추가되면 됩니다.
+- 퍼블리싱보다는 디자인 능력에 중점을 두었으면 합니다.
+- 퍼블리싱 후 개발은 내부에서 진행할 예정입니다.
+
+산출물 :
+- 화면 등 기획/설계 문서 일체
+- UI/UX 및 리소스 디자인 원본 파일
+- 퍼블리싱 소스 코드 원본 파일
+
+작업 분량 :
+- 모바일 앱 기준 약 20P
+' AS projectinfo,     
+    '서울특별시 동작구' AS projectlocation,     
+    '운영 중인 앱의 웹 버전 UI/UX 기획' AS projectname,     
+    STR_TO_DATE('2024-11-11','%Y-%m-%d') AS registrationdate,     
+    'Figma,HTML,TailwindCSS' AS requirement,     
+    STR_TO_DATE('2024-11-14','%Y-%m-%d') AS startdate,     
+    11 AS teamsize,     
+    'iXLtm239' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    5000000 AS amount,     
+    STR_TO_DATE('2024-11-24','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '30일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 18일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 금액
+[3순위] 일정 준수
+업무 내용
+프로젝트 개요 :
+- 아파트 하자점검을 위한 전용 모바일앱을 개발하고자 합니다.
+
+프로젝트의 현재 상황 :
+- 현재는 엑셀로 정리하고 보고서로 만들어 고객에게 제공하고 있습니다.
+
+필요 요소 :
+- 아파트 사전점검 모바일 웹 또는 앱 개발
+- 일부 기획 및 디자인이 필요할 수 있습니다.
+
+개발 환경/언어/방식 등 :
+- 모바일 웹 또는 앱으로 개발하고자 합니다. 제안 요청드립니다.
+- 사진 저장을 위한 서버 관련 제안도 같이 요청드립니다.
+
+주요 기능 및 요구 사항 :
+- 현장에서 사진을 찍고 하자 내용을 입력하면 자동으로 결과보고서가 만들어지고 고객들이 보고서를 볼 수 있도록 하고자 합니다.
+- 현재는 직원들이 현장에서 사진을 약 200여 개 촬영 후 회사로 복귀하여 수작업으로 분류하고 결과 보고서를 작성하고 있으나 프로그램에서 사진을 찍고 저장 시 카테고리(방 1,2,3, 화장실, 베란다 등)와 수리가 필요한 내용을 선택하여 저장하고 자동으로 정해진 결과보고서가 만들어지는 프로그램 개발이 필요합니다.
+- 고객 별로 약 200장 정도의 이미지가 업로드됩니다. 이 이미지는 업로드한 순서대로 다운할 수만 있으면 됩니다.
+- 관리자 페이지에서 메일 발송 내역을 관리하거나 고객정보, 메일 등을 확인할 수 있는 등에 기능이 필요할지에 대한 확정이 되지 않아 미팅 시 관리자 페이지 개발 여부도 제안 및 협의가 필요합니다.
+
+산출물 :
+- (필요시) 기획 및 디자인 파일
+- 개발 : 개발 원본 소스 코드
+
+기타 참고 사항/유의 사항 :프로젝트 개요 :
+- 내부 직원이 사용할 앱이기 때문에 디자인이 화려하지 않아도 되며 기능은 사전점검 쪽 기능만 개발하면 됩니다.
+' AS projectinfo,     
+    '울산광역시 중구' AS projectlocation,     
+    '아파트 사전점검 모바일 웹 또는 앱 개발' AS projectname,     
+    STR_TO_DATE('2024-11-06','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-10','%Y-%m-%d') AS startdate,     
+    39 AS teamsize,     
+    'uBkEiR240' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    50000000 AS amount,     
+    STR_TO_DATE('2024-11-25','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '90일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 18일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+내부 개발자
+
+업무 내용
+프로젝트 개요 :
+- 플랫폼 앨범 서비스 구축
+- 플랫폼 앨범 소유 경험을 제공하기 위해 웹 기반 플랫폼을 개발하고, 이를 웹앱으로 감싸서 앱 마켓에 배포가 필요합니다.
+
+현재 준비 상황 :
+- 요구 사항이 정리되었으며 첨부 파일 참고 부탁드립니다.
+
+진행 계획 :
+- 내년 2월까지 테스트 및 배포가 완료되어 3월 3일에 런칭이 되어야 합니다.
+
+필요 요소 :
+- 플랫폼 앨범 서비스 웹 및 앱 기획
+- 플랫폼 앨범 서비스 웹 및 앱 디자인
+- 플랫폼 앨범 서비스 웹 및 앱 퍼블리싱 및 개발
+- 앱 패키징
+- 서버 구축 및 관리자 웹 개발
+
+개발환경/언어/방식 :
+- 웹 및 앱 개발이 필요하며 상세 기술 요구 사항은 첨부 파일 참고 부탁드립니다.
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+1. 아티스트의 디지털 콘텐츠(음악, 사진, 영상 등)를 수집하고 소장하고자 하는 팬들이 사용할 수 있는 플랫폼이며 상세 기능은 첨부 파일 참고 부탁드립니다.
+2. 런칭일이 정해져 있어 기간 내 개발을 완료하는 것이 제일 중요합니다.
+
+' AS projectinfo,     
+    '서울특별시 강남구' AS projectlocation,     
+    '플랫폼 앨범 서비스 웹 및 앱 구축' AS projectname,     
+    STR_TO_DATE('2024-11-07','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-10','%Y-%m-%d') AS startdate,     
+    27 AS teamsize,     
+    'vfLZaf241' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    7500000 AS amount,     
+    STR_TO_DATE('2024-11-29','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '60일' AS duration,     
+     0 AS is_completed,     
+    'ON_GOING' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 18일
+
+지원자 수
+
+10명
+
+구인 배경
+
+아직 프로젝트 기획 단계, Framework는 셋업 중
+
+구인 유형
+
+사내 프로젝트에 필요한 인력을 구인합니다.
+
+프로젝트 산업 분야
+
+서비스업
+
+협업 예정 인력
+
+기획자, 개발자
+
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개:
+- Payroll 구축 프로젝트
+
+프로젝트 진행 상황:
+- 프로젝트 기획 단계
+
+전체 시스템 구성:
+- 서비스: Web
+- java spring boot, thymeleaf(or nextjs but thymeleaf로 결정할 가능성 높음)
+
+전체 프로젝트 일정:
+- 전체 프로젝트 일정:24년 12월 ~ 26년 11월 (약 1년 6개월 ~ 2년)
+- 인터뷰 및 계약 일정:지원자 발생 후 인터뷰 진행, 7일 이내 계약 여부 공유드릴 예정입니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 실무진 인터뷰 1회 (코딩 테스트 x) > 계약 결정
+
+
+<상세 업무 내용>
+
+모집 인원:
+- 경력 8~10년 차 1명 (월 680~750만 원)
+
+상세 업무:
+- Bootstrap 템플릿(구매예정)으로 MDI 탭 화면 구성 작업(AJAX, 스크립트 작업 예상)
+- 기존 layout 화면에서 동작하는 스크립트 이외에 동적으로 생성된 화면에 대해서도 스크립트가 동작하며 Bootstrap 내 그리드를 사용하지 않고 상용그리드 툴(realgrid 예정)을 구성 작업 필요.
+
+담당 업무:
+- 탭으로 화면
+
+개발 범위:
+1) MDI 탭화면 구성 작업
+2) 사용자별 대시보드 5개
+3) Template 20~25개 예상
+4) 추가로 전체 화면 layout의 css 작업 예상(ex. font 변경, 대표색상 3~4개, margin/padding)
+
+필수 기술:
+- jQuery, Vanilla JS, HTML, CSS, SCSS, Bootstrap
+
+자격 요건:
+- jQuery 나 Vanilla JS 숙련자
+
+우대 사항:
+- MDI 탭 화면 구성 경험
+' AS projectinfo,     
+    '서울특별시 영등포구' AS projectlocation,     
+    'Payroll 시스템 Frontend 개발자' AS projectname,     
+    STR_TO_DATE('2024-11-12','%Y-%m-%d') AS registrationdate,     
+    'Bootstrap · 경력 무관,jQuery · 경력 무관,JavaScript · 경력 무관,Vanilla JS · 경력 무관,HTML · 경력 무관,SCSS · 경력 무관,CSS · 경력 무관' AS requirement,     
+    STR_TO_DATE('2024-11-14','%Y-%m-%d') AS startdate,     
+    10 AS teamsize,     
+    'DjrdY242' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    3000000 AS amount,     
+    STR_TO_DATE('2024-11-24','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '25일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 18일
+
+예상 시작일
+
+2024년 11월 15일
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+상세한 기획 문서가 존재화면설계서 (스토리보드, 와이어프레임)
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+백엔드 1명 협업필요
+
+우선 순위
+
+[1순위] 산출물 완성도
+관련 기술
+
+AWSJavaMySQLSpring BootSwagger
+업무 내용
+프로젝트 개요 :
+- 앱 개발 백엔드 1인 추가 구인 합니다.
+- 출시 일정을 앞당기기 위해 일부 페이지 백엔드 개발 필요합니다.
+
+현재 준비 상황 :
+- 현재 프로젝트 구성, 인프라 세팅 시작한 상황입니다.
+- 기획 완료입니다.
+
+진행 계획 :
+- 대략 11월 15일~12월 10일 일정으로 보고 있습니다.
+
+필요 요소 :
+- 커뮤니티 모바일 앱 Backend 개발
+
+개발환경/언어/방식 :
+- Spring Boot, JAVA, MySQL, Swagger, Slack, AWS
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+1. 주요 기능은 아래와 같습니다.
+- 커뮤니티 (사진, 투표, 댓글, 대댓글, 검색필터, 내용/제목으로 검색, 스크랩, 신고하기)
+- 마이페이지 (고객센터, 이벤트, 비밀번호 로그인, 문의하기(이메일로 회신/사진첨부가능), 로그아웃, 탈퇴하기, 내 정보 수정, 내 게시물확인)
+- 알림 (PUSH 알림, 알림 페이지에서 해당페이지로 이동)
+- 검색 (앱 내 전체검색, 검색순위, 최근검색어)
+2. 내부에 개발자가 있어 위 기능 중 어느 정도까지 가능 및 개발을 요청드릴지 미팅 시 협의 후 진행을 요청드릴 예정입니다.
+' AS projectinfo,     
+    '경기도 성남시 분당구' AS projectlocation,     
+    '커뮤니티 모바일 앱 Backend 개발' AS projectname,     
+    STR_TO_DATE('2024-11-06','%Y-%m-%d') AS registrationdate,     
+    'AWS,Java,MySQL,Spring Boot,Swagger' AS requirement,     
+    STR_TO_DATE('2024-11-08','%Y-%m-%d') AS startdate,     
+    20 AS teamsize,     
+    'XWSQw243' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    3000000 AS amount,     
+    STR_TO_DATE('2024-11-30','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '14일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 17일
+
+예상 시작일
+
+2024년 11월 25일
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+PM 1명
+
+우선 순위
+
+[1순위] 금액
+[2순위] 산출물 완성도
+[3순위] 일정 준수
+업무 내용
+프로젝트 개요 :
+- 게시글 크롤링 후 자동 업로드
+
+필요 요소 :
+- 웹 또는 윈도우 프로그램 개발
+
+개발 환경/언어 :
+- 제안해주시기 바랍니다.
+
+주요 기능 :
+1. 제공하는 공공기관 홈페이지 리스트에서 지정하는 단어가 포함된 게시글 크롤링
+2. 첨부파일( 보통 hwp 혹은 pdf ) 다운로드 후 내용 분석 후 양식에 맞게 요약(AI - ChatGPT 혹은 타 플랫폼 사용)
+3. 게시글 자동 업로드 (selenium 등)
+' AS projectinfo,     
+    '서울특별시 강서구' AS projectlocation,     
+    '크롤링/내용 요약 및 자동 게시물 업로드 개발' AS projectname,     
+    STR_TO_DATE('2024-11-12','%Y-%m-%d') AS registrationdate,     
+    'React,TypeScript' AS requirement,     
+    STR_TO_DATE('2024-11-14','%Y-%m-%d') AS startdate,     
+    17 AS teamsize,     
+    'HKTl244' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    2500000 AS amount,     
+    STR_TO_DATE('2024-12-01','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '14일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 17일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+운영 중인 서비스의 리뉴얼 또는 유지보수를 하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+자사 PM 2명
+
+우선 순위
+
+[1순위] 일정 준수
+[2순위] 산출물 완성도
+[3순위] 금액
+관련 기술
+
+Cafe24CSSHTML
+업무 내용
+프로젝트 개요 :
+- 자사몰 개선이 필요합니다.
+- CAFE 24 디자인 템플릿으로 할 수 없는 간단한 수정 사항 및 개선 개발이 필요합니다.
+
+현재 준비 상황 :
+- 개선 사항이 정리된 문서는 있으나 해당 정리 내용 중 의뢰할 항목을 고민하고 있는 상황이며 미팅 시 Figma 파일 전달 후 수정 가능한 업무 범위를 협의할 예정입니다.
+
+필요 요소 :
+- CAFE 24 기반 자사몰 개선 및 수정 개발
+
+개발환경/언어/방식 :
+- CAFE 24 호스팅 업체로 홈페이지 구축하여 사용 중입니다.
+- HTML, CSS
+
+주요 기능List/주요 화면List/메뉴 구성/요구 사항 등 :
+- 사용자 로그인 / 회원가입 로직 개선 (버튼 및 문구, 회원가입 UI/UX 페이지 등)
+- 제품 상세 페이지 UI 개선
+- 퍼블리싱(코드)으로 수정할 수 있는 문구 수정
+' AS projectinfo,     
+    '서울특별시 광진구' AS projectlocation,     
+    'CAFE 24 기반 자사몰 개선 및 수정 개발' AS projectname,     
+    STR_TO_DATE('2024-11-13','%Y-%m-%d') AS registrationdate,     
+    'Cafe24,CSS,HTML' AS requirement,     
+    STR_TO_DATE('2024-11-14','%Y-%m-%d') AS startdate,     
+    8 AS teamsize,     
+    'ypXTbB245' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    4000000 AS amount,     
+    STR_TO_DATE('2024-12-02','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '30일' AS duration,     
+     0 AS is_completed,     
+    'ON_GOING' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 17일
+
+지원자 수
+
+2명
+
+구인 배경
+
+신규 프로젝트에 필요한 작업자를 구인하고 있습니다.
+
+구인 유형
+
+사내 프로젝트에 필요한 인력을 구인합니다.
+
+프로젝트 산업 분야
+
+IT•정보통신업
+
+협업 예정 인력
+
+자사 PM, 디자이너, 퍼블리셔
+
+우선 순위
+
+[1순위] 일정 준수
+[2순위] 산출물 완성도
+[3순위] 금액
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개:
+- 정부과제입니다.
+- 디자인이 메인인 프로젝트이라, 개발에서는 "통합 검색 기능 개선" 이 메인 요건입니다.
+
+프로젝트 진행 상황:
+- 개발자는 본인 1인입니다.
+- 개발 부분 책임져주실 수 있는 분을 찾고 있습니다.
+- 프로젝트 진행 시 저희 회사 소속으로 진행하셔야 합니다 (4대 보험가입필수)
+
+전체 시스템 구성:
+- 웹 프로그램 구축 언어 : JAVA, JSP(전자정부표준프레임워크 적용) openjdk version 1.8 이상
+- 데이터베이스(DB) : Cubrid 최신버전
+- 웹 서버 : Apach 최신버전
+- 웹 어플리케이션 서버(WAS) : Jboss 최신버전
+
+전체 프로젝트 일정:
+- 전체 프로젝트 일정:1개월 (12월 한달간)
+- 인터뷰 및 계약 일정:지원자 발생 후 인터뷰 진행, 2~3일 이내 계약 여부 공유드릴 예정입니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 실무진 인터뷰 1회 (코딩 테스트 x) > 계약 결정
+
+
+<상세 업무 내용>
+
+상세 업무:
+1) 통합검색 기능 강화
+- DB화 된 메뉴, 콘텐츠, 게시판, 직원 정보 등 통합 검색
+- 시스템 정상 상태에서 사용자 요청 사항을 3초 이내 처리
+- 검색 결과가 없는 경우 사용자가 설정한 내용 게시
+- 발생할 수 있는 모든 오류에 대한 오류 메시지 3초 이내 제시
+
+2) 보안 취약점 개선
+- 소프트웨어 보안약점 진단 가이드에 따라 웹 취약점 점검
+- 기존 보안환경을 활용한 종합적 보안체계 마련
+- 사업 종료 전 보안 약점 진단
+- ‘정보보호시스템 평가‧인증 지침’에 따라 국가보안기술연구소장이 인증한 보안약점 진단도구 사용
+
+필수 기술:
+- JAVA, JSP
+
+
+<기타 유의사항>
+-근무 시간은 협의 가능하며 산출물이 중요합니다.
+
+자격 요건:
+- 포트폴리오 제공 가능하신 분
+
+우대 사항:
+- 정부 프로젝트를 진행 경험하신 분
+- 관련 전공자 / 관련 자격증 소지하신 분
+' AS projectinfo,     
+    '지역정보 없음' AS projectlocation,     
+    '기존 사이트 통합검색 기능 고도화 개발(재택근무)' AS projectname,     
+    STR_TO_DATE('2024-11-14','%Y-%m-%d') AS registrationdate,     
+    'JSP · 경력 무관,Java · 경력 무관' AS requirement,     
+    STR_TO_DATE('2024-11-16','%Y-%m-%d') AS startdate,     
+    2 AS teamsize,     
+    'JWczW246' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    5000000 AS amount,     
+    STR_TO_DATE('2024-11-26','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '30일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 12월 31일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+운영 중인 서비스의 리뉴얼 또는 유지보수를 하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 없음
+
+협업 예정 인력
+
+자사 PO 1명, Front-end 개발자 2명
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 일정 준수
+[3순위] 금액
+관련 기술
+
+Figma
+업무 내용
+프로젝트 개요 :
+- 선정산 서비스 리뉴얼 UI/UX 기획 및 디자인
+- admin 화면이 아닌 대고객 화면이 과업 범위입니다.
+- 신규 화면이 아닌 기존 화면에 대한 리뉴얼입니다.
+
+프로젝트의 현재 상황 :
+- 유저맵을 figma로 정리하였습니다.
+
+필요 요소 :
+- 기능 상세 정의
+- UI/UX 설계
+- 디자인
+
+지원 플랫폼 :
+- Mobile Web
+
+대표 기능 :
+- 회원가입/로그인
+- 회원가입 시 쇼핑몰 계정 연동 플로우
+- 선정산 한도 확인하는 플로우
+- 선정산 신청하는 플로우
+- 선정산 상환 내역 확인 및 정산 플로우
+
+사용툴 :
+- Figma
+
+산출물 :
+- 기능 명세서
+- 화면 설계서(SB)
+- 디자인 원본
+
+지원 시 참고 사항 :
+- Admin 은 이미 구축되어 있어 과업 범위에서 제외됩니다.
+' AS projectinfo,     
+    '서울특별시 성동구' AS projectlocation,     
+    '선정산 서비스 리뉴얼 UI/UX 기획 및 디자인' AS projectname,     
+    STR_TO_DATE('2024-11-08','%Y-%m-%d') AS registrationdate,     
+    'Figma' AS requirement,     
+    STR_TO_DATE('2024-11-12','%Y-%m-%d') AS startdate,     
+    28 AS teamsize,     
+    'Mdmx247' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    15000000 AS amount,     
+    STR_TO_DATE('2024-11-29','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '60일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+아이디어만 있는 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 없음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+업무 내용
+프로젝트 개요 :
+- 저희 기관은 국가유산청 산하의 한국전통문화대학교 K-Heritage 국제센터입니다.
+- 학교 내에서 국제업무를 담당하는 부서로 영문으로 된 홈페이지를 구성하려 합니다.
+
+현재 준비 상황 :
+- 아이디어 단계이며 미팅 시 기능 협의 및 확정이 필요합니다.
+- 영문으로 개발이 필요하며 번역본은 제공해 드릴 예정입니다.
+
+필요 요소 :
+- K-Heritage 국제센터 소개 및 신청 반응형 웹 기획 및 디자인
+- K-Heritage 국제센터 소개 및 신청 반응형 웹 퍼블리싱 및 개발
+- 서버 구축 및 관리자 웹 개발
+
+개발환경/언어/방식 :
+- 반응형 웹으로 개발이 필요하며 개발 언어 및 환경은 정해진 것이 없어 제안 부탁드립니다.
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+- 저희가 현재 진행하고 있는 업무는 크게 국제교육업무, 국제교류업무로 나뉘어 있으며, 이에 따른 각각의 게시판과 페이지가 만들어졌으면 합니다.
+- 저희의 자세한 업무내용에 대해서는 한국전통문화대학교 홈페이지 접속 후 대학생활 > 부속기관 탭 > K-Heritage 국제센터를 통해 보실 수 있습니다.
+- 게시판성 페이지, 관리자 페이지, 모바일 홈페이지 등을 전부 함께 구성하고자 하며, 추가로 저희가 진행하는 프로그램(K-Heritage Academy, 한국어학당 등 홈페이지에서 자세히 확인하실 수 있습니다)을 신청할 수 있는 탭과 그에 따른 신청 페이지도 추가로 구상하고 싶습니다.
+- 이에 따른 구축비용 및 유지보수 비용에 대한 견적을 받아보고 싶습니다.
+' AS projectinfo,     
+    '서울특별시 중구' AS projectlocation,     
+    'K-Heritage 국제센터 소개 및 신청 반응형 웹 구축' AS projectname,     
+    STR_TO_DATE('2024-11-12','%Y-%m-%d') AS registrationdate,     
+    '서울특별시 중구' AS requirement,     
+    STR_TO_DATE('2024-11-14','%Y-%m-%d') AS startdate,     
+    53 AS teamsize,     
+    'zbYIjc248' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    1200000 AS amount,     
+    STR_TO_DATE('2024-12-02','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '5일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 없음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 일정 준수
+[3순위] 금액
+업무 내용
+프로젝트 개요 :
+- 팝업 대기하는 동안 이용할 이벤트 페이지의 기능 개발을 요청드립니다.
+
+현재 준비 상황 :
+- 기획 및 디자인 진행 중이며, 내일(11월 15일)~ 다음 주 초(11월 18~19일) 중 완료 예정입니다.
+- 이벤트 페이지 내 이상형 월드컵 기능 개발(퍼블리싱 포함)
+
+진행 계획 :
+- 11/21까지 납기 필요합니다.
+
+필요 요소 :
+- 이상형 월드컵 이벤트 페이지 개발(퍼블리싱 포함)
+
+개발 환경/언어/방식 등 :
+- 카페 24 사용 중인 자사몰에서 사용될 페이지로, 카페 24로 작업 가능한 업체면 좋을 것 같습니다. 그 외의 아이디어가 있다면 제안해 주셔도 좋습니다.
+' AS projectinfo,     
+    '서울특별시 강남구' AS projectlocation,     
+    '이상형 월드컵 이벤트 페이지 개발' AS projectname,     
+    STR_TO_DATE('2024-11-14','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-16','%Y-%m-%d') AS startdate,     
+    6 AS teamsize,     
+    'vIJf249' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    30000000 AS amount,     
+    STR_TO_DATE('2024-11-19','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '90일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+아이디어만 있는 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+PM 1명, 기획자1명
+
+우선 순위
+
+[1순위] 일정 준수
+[2순위] 산출물 완성도
+[3순위] 금액
+업무 내용
+프로젝트 개요 :
+- AI 인공지능 기반 구독 플랫폼을 구축하고자 합니다.
+
+프로젝트의 현재 상황 :
+- AI는 내부에서 개발되었고, API 형태로 제공해드릴 예정입니다.
+- 아이디어와 기획 요약으로 정리해둔 상태입니다.
+- 기능 정의와 서비스 내용은 구두로 설명 가능합니다.
+
+진행 계획 :
+- 올해 말까지 개발 완료를 목표로 하나, 내년 초까지 협의 가능합니다.
+
+필요 요소 :
+- 상세 기획( 요구 사항 정의, 기능 정의, 화면 설계 등 )
+- UI/UX 디자인 및 퍼블리싱 (반응형)
+- 프런트엔드 및 백엔드 개발
+- 관리자페이지 개발
+- 서버/DB/인프라 구성
+
+지원 플랫폼 :
+- 관련 개발에 대한 전반적인 사항을 제안해주셔서 좋습니다.
+- PC/Mobile 반응형
+
+개발 환경/언어 :
+- 개발사에서 제안해주시기 바랍니다.
+- 기간 단축을 위해 로우코드, 노코드 툴 사용도 가능합니다.
+
+핵심 기능 :
+1. 구독 결제 시스템 필요
+- AI를 통해 웹툰 내 선화(인물 얼굴의 외곽선)를 생성해주는 서비스입니다.
+* 회원제로 운영할 예정이며 맴버십 형태의 월결제입니다.
+2. 커뮤니티 소통 공간
+3. 간편 회원 가입
+4. 채널톡 연동
+5. 회원등급 부여
+6. 광고 연동
+' AS projectinfo,     
+    '서울특별시 강서구' AS projectlocation,     
+    'AI 인공지능 기반 구독 플랫폼 반응형 웹 구축' AS projectname,     
+    STR_TO_DATE('2024-11-01','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS startdate,     
+    35 AS teamsize,     
+    'LaqctV250' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    20000000 AS amount,     
+    STR_TO_DATE('2024-11-19','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '60일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+운영 중인 서비스의 리뉴얼 또는 유지보수를 하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+기획자, 디저이너, 퍼블리셔
+
+업무 내용
+프로젝트 개요 :
+- 여행사 사이트입니다. 기존 운영 중인 사이트가 있으나, 오래된 작업이라 전면 리뉴얼이 필요합니다.
+- 최근 디자인만 개편하였으나, 내부 모든 시스템을 개편하고, 전면 변경하려고 합니다.
+
+현재 준비 상황 :
+- 기획, 디자인, 퍼블리싱은 내부에서 진행하여 전달드릴 예정이며 개발을 진행해주시면 됩니다.
+
+필요 요소 :
+- 기존 레거시 검토
+- 여행사 소개 및 예약 반응형 웹 개발
+- 서버 구축 및 관리자 웹 개발
+
+개발환경/언어/방식 :
+- 기존 웹은 그누보드로 되어 있으며 신규 리뉴얼 시 사용할 개발 언어 및 환경은 정해지지 않아 제안 부탁드립니다.
+- 웹 개발 후 패키징 앱 등 앱도 개발할 계획이 있어 참고하여 제안 부탁드립니다.
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+1. 주요 기능
+- 회원가입, 로그인, 상품 검색, 예약 (날짜별로 금액이 다름), 결제, 리뷰 남기기, 공지사항, 게시판, 소개 사진 및 영상 등
+2. 상세하게 어느 정도까지 리뉴얼을 진행할지 확정되지 않아 미팅 시 범위 협의 및 진행을 요청드릴 예정입니다.
+
+산출물 :
+- 소스 코드 원본 파일
+
+작업 분량 :
+- 퍼블리싱 진행할 페이지 수는 대략 20페이지 정도 될 것으로 예상됩니다.
+
+기타 참고 사항/유의 사항 :
+- 디자인&퍼블은 우리 쪽에서 작업해도 무방하여 개발만 가능해도 될 것 같습니다.
+- 개발했던 경험이 풍부하신 분이 같이 프로젝트를 진행했으면 합니다.
+' AS projectinfo,     
+    '서울특별시 강남구' AS projectlocation,     
+    '여행사 소개 및 예약 반응형 웹 리뉴얼 개발' AS projectname,     
+    STR_TO_DATE('2024-11-01','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS startdate,     
+    71 AS teamsize,     
+    'Cmwj251' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    6000000 AS amount,     
+    STR_TO_DATE('2024-11-19','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '180일' AS duration,     
+     0 AS is_completed,     
+    'ON_GOING' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+지원자 수
+
+6명
+
+구인 배경
+
+결원이 발생하여 작업자를 구인하고 있습니다.
+
+구인 유형
+
+발주처에게서 수주한 프로젝트에 필요한 인력을 구인합니다. • 계약 체결 완료
+
+프로젝트 산업 분야
+
+제조•생산•화학업
+
+협업 예정 인력
+
+운영팀
+
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개 :
+- 내부 업무 시스템 유지보수/운영(SM)
+
+프로젝트의 현재 상황 :
+- 유지보수 사업 진행 간 인원 충원입니다.
+
+전체 프로젝트 일정 :
+- 투입 기간 : 최소 6개월 (이후 계약 연장 협의 )
+- 투입 시점 : 11월 내 ( ASAP )
+- 인터뷰 및 계약 일정 : 면접 진행 후 7일 이내 계약 여부 결정 가능합니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 1차 인터뷰 > 2차 고객사 인터뷰 > 계약 결정
+
+
+<상세 업무 내용>
+
+모집 인원 :
+- 5년 이상, 1명, 월 450-600만 원
+* 경력/이력/업무 역량에 따라 월 급여 조정 예정입니다.
+
+상세 업무 :
+- 내부 업무 시스템 유지보수/운영(SM)
+
+필수 기술 :
+- Java, Oracle( 혹은 MSSQL 혹은 MySQL ), Spring Boot/Spring
+
+자격 요건 :
+- 대졸 이상
+- 건강보험 득실여부 확인서 제출
+
+우대 사항 :
+- 대기업 업무 시스템 구축/운영 경험
+
+
+<기타 유의 사항>
+
+- 출근 시간 ( 오전 9시 ) 잘 지켜주셔야 합니다.
+' AS projectinfo,     
+    '경기도 수원시 영통구' AS projectlocation,     
+    'JAVA/ORACLE 내부 업무 시스템 유지보수/운영(SM)' AS projectname,     
+    STR_TO_DATE('2024-11-01','%Y-%m-%d') AS registrationdate,     
+    'Java · 경력 무관,Oracle · 경력 무관,Spring · 경력 무관,Spring Boot · 경력 무관' AS requirement,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS startdate,     
+    6 AS teamsize,     
+    'xoIz252' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    3500000 AS amount,     
+    STR_TO_DATE('2024-11-19','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '30일' AS duration,     
+     0 AS is_completed,     
+    'ON_GOING' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 15일
+
+지원자 수
+
+7명
+
+구인 배경
+
+신규 프로젝트에 필요한 작업자를 구인하고 있습니다.
+
+구인 유형
+
+사내 프로젝트에 필요한 인력을 구인합니다.
+
+프로젝트 산업 분야
+
+IT•정보통신업
+
+협업 예정 인력
+
+개발자, 기획자, PM
+
+우선 순위
+
+[1순위] 근무 시작일
+[2순위] 업무 능력
+[3순위] 예산 범위
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개:
+- 백오피스(어드민) UI 디자이너를 구합니다.
+
+프로젝트 진행 상황:
+- 화면설계서 작성은 대부분 완료되었고, 개발 착수 예정입니다.
+
+전체 시스템 구성:
+- PC/MO 반응형
+
+전체 프로젝트 일정:
+- 전체 프로젝트 일정: 1개월 정도 투입 필요합니다.
+- 인터뷰 및 계약 일정: 적합 지원자 발생 시 바로 인터뷰 진행하며, 인터뷰 후 1~2일 내 결과 발표 가능합니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 실무진 인터뷰 (코딩테스트 X) > 계약 결정
+
+
+<상세 업무 내용>
+
+모집 인원 :
+- 경력 1~3년 차 1명, 월 300~350만 원
+* 경력 및 업무 역량에 따라 급여 조정 예정입니다.
+
+상세 업무 :
+- 화면설계 기반 백오피스(어드민 UI/UX 디자인
+
+필수 기술:
+- 피그마, 포토샵, 일러스트
+
+자격 요건 :
+- 3년 차 이하 초급 디자이너
+
+우대 사항 :
+- 유사한 프로젝트 수행 경험이 있는 분
+' AS projectinfo,     
+    '서울특별시 광진구' AS projectlocation,     
+    '백오피스(어드민) UI 디자인' AS projectname,     
+    STR_TO_DATE('2024-11-01','%Y-%m-%d') AS registrationdate,     
+    'Illustrator · 3년 이하,Photoshop · 3년 이하,Figma · 3년 이하' AS requirement,     
+    STR_TO_DATE('2024-11-03','%Y-%m-%d') AS startdate,     
+    7 AS teamsize,     
+    'XMPKXP253' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    150000000 AS amount,     
+    STR_TO_DATE('2024-11-19','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '180일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+아이디어만 있는 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+관련 기술
+
+C#DevExpress.NetWindows Server
+업무 내용
+프로젝트 개요:
+- 자동차 후방카메라 제조 기업입니다.
+- MRP 를 자사에 맞도록 개발하고자 의뢰합니다.
+
+프로젝트의 현재 상황 :
+- 자체 개발한 MES 는 운영하고 있습니다. (MRP와 별도로 운영할 예정이고, 데이터만 연동시킬 예정입니다.)
+- 내부에 설계 가능한 인력이 없어서 컨설팅부터 받아봐야 합니다.
+
+진행 일정 :
+- 개발 시작은 25년 초반에 이뤄지길 희망합니다.
+- 업체측에서 컨설팅 후 제안해주시기 바랍니다.
+
+진행 예산 :
+- 1~2억원이나, 컨설팅 결과에 따라 협의 가능합니다.
+
+필요 요소 :
+- 도입을 위한 컨설팅
+- 분석/설계
+- UI/UX
+- 시스템 구축
+- Test 및 안정화
+- 이관 및 인수인계
+
+개발 환경/언어 :
+- Windows 기반 응용 프로그램으로 개발 희망합니다.
+- MSSQL, C#, .Net, DevExpress 사용 필수
+- 사내 서버에 설치되어야 합니다. ( Windows Server )
+
+핵심 기능 :
+- 생산 계획 관리
+- BOM 관리
+- 소요량 관리
+- 재고 및 자재 관리
+- MES 데이터 실시간 연동
+
+옵션 사항 :
+- 실적 데이터를 모바일에서 확인할 수 있으면 좋을 것 같습니다. ( 경영진이 사용할 용도 )
+' AS projectinfo,     
+    '경기도 평택시' AS projectlocation,     
+    '제조기업 MRP 구축' AS projectname,     
+    STR_TO_DATE('2024-11-01','%Y-%m-%d') AS registrationdate,     
+    'C#,DevExpress,.Net,Windows Server' AS requirement,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS startdate,     
+    21 AS teamsize,     
+    'lCrGmK254' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    50000000 AS amount,     
+    STR_TO_DATE('2024-11-19','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '180일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+아이디어만 있는 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 없음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 금액
+[3순위] 일정 준수
+업무 내용
+프로젝트 개요 :
+- 해외 배송대행지를 운영중인데 기존보다 한 단계 업그레이드된 프로그램을 제작하려고 합니다.
+- 고객이 사용하는 배송대행 서비스 + 작업자가 사용하는 WMS를 신규로 개발해야 합니다.
+
+프로젝트의 현재 상황 :
+- 업무 프로세스를 상세히 알려드릴 수 있습니다.
+- 내부에 IT 관련 인력이 없으며 개발을 위한 상세 기획은 준비되어 있지 않습니다.
+
+진행 예산 :
+- 5,000 ~ 1억 사이로 진행 희망합니다.
+
+기간 :
+- 6개월 가량 예상하나, 미팅 시 제안주시는 일정으로 진행 가능합니다.
+
+필요 요소 :
+- 업무 분석 / 개발 설계
+- UI/UX 디자인
+- 사용자 반응형웹 개발
+- 관리자페이지 개발(WMS)
+- 모바일 스캔을 위한 모바일앱 개발(안드로이드)
+- 서버/DB/인프라 구성
+
+개발 환경/언어 :
+- 모두 제안해주세요.
+
+주요 기능 :
+- 모바일 스캔 입출고 기능
+- 쉬운 신청서 작성
+- 재고 관리 기능
+- 새로운 작업 알림
+- 다국어 지원
+- PG 결제
+- 소셜 로그인(네이버, 카카오, 구글, 페이스북)
+- 인보이스, 메니페스트 등 관련 서류 엑셀 다운로드
+- 묶음 배송, 나눔 배송 등 대응
+- 고객에게 알림톡/SMS 등 입출고 현황 자동 알림
+- 환율 자동 적용
+* 그 외 내용들은 설계 단계에서 협의 예정
+' AS projectinfo,     
+    '서울특별시 강서구' AS projectlocation,     
+    '배송대행/구매대행/결제대행 서비스 및 관리자(WMS) 구축' AS projectname,     
+    STR_TO_DATE('2024-11-01','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS startdate,     
+    41 AS teamsize,     
+    'NIexwJ255' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    7500000 AS amount,     
+    STR_TO_DATE('2024-11-19','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '30일' AS duration,     
+     0 AS is_completed,     
+    'ON_GOING' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 15일
+
+지원자 수
+
+6명
+
+구인 배경
+
+신규 프로젝트에 필요한 작업자를 구인하고 있습니다.
+
+구인 유형
+
+사내 프로젝트에 필요한 인력을 구인합니다.
+
+프로젝트 산업 분야
+
+IT•정보통신업
+
+협업 예정 인력
+
+내부 개발팀
+
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개:
+- 다국어를 지원하는 거래소 사이트입니다.
+- 웹으로 서비스할 예정입니다.
+
+프로젝트 진행 상황:
+- 개발을 진행중인 상황입니다.
+
+전체 시스템 구성:
+- Web
+
+전체 프로젝트 일정:
+- 전체 프로젝트 일정:1개월 (연장 계약 가능)
+- 인터뷰 및 계약 일정:지원자 발생 후 인터뷰 진행, 2~3일 이내 계약 여부 공유드릴 예정입니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 실무진 및 임원진 인터뷰 1회 > 계약 결정
+
+
+<상세 업무 내용>
+
+모집 인원: (총 2명)
+- 경력 4~7년 차 1명 (월 400~650만 원)
+- 경력 8~10년 차 1명 (월 680~750만 원)
+
+상세 업무:
+- 화면 웹 퍼블리싱
+- 웹 프런트엔드 개발( rest API 연동 포함, 소캣 미포함 )
+- API 연동 개발
+
+필수 기술:
+- CSS, TailwindCSS
+- React
+- Next.js
+- Typescript
+
+우대 사항:
+- mobx
+- tailwind
+- css module
+- MVC + Next.js
+- 스프린트 단위로 일해보신 분
+
+
+' AS projectinfo,     
+    '서울특별시 강남구' AS projectlocation,     
+    '거래소 소개 및 홍보 웹 Frontend 개발' AS projectname,     
+    STR_TO_DATE('2024-11-01','%Y-%m-%d') AS registrationdate,     
+    'TailwindCSS · 경력 무관,CSS · 경력 무관,next.js · 경력 무관,React · 경력 무관,TypeScript · 경력 무관' AS requirement,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS startdate,     
+    6 AS teamsize,     
+    'rzIS256' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    50000000 AS amount,     
+    STR_TO_DATE('2024-11-19','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '120일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 없음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 금액
+[3순위] 일정 준수
+관련 기술
+
+AndroidiOS
+업무 내용
+프로젝트 개요 :
+- 안전을 위한 작업 점검 및 안전 관리를 위한 앱을 배포 운영 하기 위해 외주 의뢰드립니다.
+
+현재 준비 상황 :
+- 아이디어 단계이며 상세 기능 협의 및 확정이 필요한 상황입니다.
+- 레퍼런스를 참고하여 예산 내 어느 정도까지 개발이 가능할지 제안 부탁드립니다.
+
+필요 요소 :
+- 현장 작업 점검 및 안전 관리 앱 및 웹 구축
+
+개발환경/언어/방식 :
+- 개발 언어 및 방식과 회원 형태에 따른 웹 및 앱 개발 등 정해진 것이 없어 제안이 필요합니다.
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+1. 회원 형태
+- 본사
+- 현장
+- 협력사
+- 근로자
+
+2. 주요 기능 :
+- 관리자, 근로자 별도로 개발
+- 관리자 (사업장 별 맞춤 tbm 활동 및 교육자료 등 설정 등)
+- 근로자 (사업장 공통 교육, 개인별 tbm활동 등 이수 및 체크 등)
+- 상세하게 정해진 것은 없어 협의가 필요합니다.
+
+3. 래퍼런스에 위험성 평가, TBM 관리, 안전 교육 및 수료 확인, 위험 상황 공유, 모바일 사이렌, 모니터링 등의 기능이 있어 예산 내 어느 정도 기능까지 개발이 가능할지 협의가 필요합니다.
+- 다국어는 필요하지 않습니다.
+' AS projectinfo,     
+    '경기도 화성시' AS projectlocation,     
+    '현장 작업 점검 및 안전 관리 앱 및 웹 구축' AS projectname,     
+    STR_TO_DATE('2024-11-01','%Y-%m-%d') AS registrationdate,     
+    'Android,iOS' AS requirement,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS startdate,     
+    59 AS teamsize,     
+    'dHMBJp257' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    2000000 AS amount,     
+    STR_TO_DATE('2024-11-19','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '14일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+운영 중인 서비스의 리뉴얼 또는 유지보수를 하려 합니다.
+
+기획 상태
+
+상세한 기획 문서가 존재요구사항 정의서
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+외부 프론트엔드 유니티 개발자 1명
+
+업무 내용
+프로젝트 개요 :
+- C#, Unity, AWS 기반 게임 결제 불가 이슈 해결
+- 서버 안정화 (앱 튕김 혹은 끊김 현상이 있다는 지속적인 유저 의견이 있음)
+
+프로젝트 진행 상황:
+- 기 개발된 게임 소스 및 개발 관련 계정은 모두 보유하고 있습니다.
+- 게임을 단독 개발한 프로그래머가 갑작스레 퇴사 후 잠적하여 코드를 설명한 기술문서가 없습니다.
+
+필요 요소 :
+- C#, Unity, AWS 기반 게임 결제 불가 이슈 해결
+
+개발 환경/언어 등 :
+- C#, Unity 로 개발된 2D 게임입니다.
+- 게임 서버는 aws로 자체구축 했습니다. c# 서버입니다.
+- AWS 에 많은 기능이 붙어있어, AWS 에 경험이 많은 개발자님이 봐주셔야할 것 같습니다.
+- 결제 불가 오류 해결을 위해 영수증 검증을 빼보려고 했으나, 검증 자체가 DB랑 연동되어 있어 내부에서 처리하지 못했습니다. .net ASP 을 쓰시는 개발자님이 봐주시는 게 좋을 것 같습니다.
+
+결제 불가 이슈 설명 :
+- 결제는 진행되나 결제 진행시 아이템 지급 안됨 & null 이 뜨는 문제.
+- 안드로이드 유저에게만 발생하는 오류임. 애플 유저는 정상적으로 결제 진행됨
+- 24년 8월 20일부터 발생
+- 회사에서 별도 환불 처리를 하지 않아도, 구글에서 2~3일 후 자동으로 환불 처리되고 있음.
+- [1. 자세한 이슈 히스토리 2. 오류 사항 설명 3. 오류 해결을 위해 현재까지 내부에서 진행해본 내용] 은 모두 첨부 문서로 갈음합니다.
+' AS projectinfo,     
+    '서울특별시 마포구' AS projectlocation,     
+    'C#, Unity, AWS 기반 게임 결제 불가 이슈 해결' AS projectname,     
+    STR_TO_DATE('2024-11-01','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS startdate,     
+    11 AS teamsize,     
+    'fRWWec258' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    18000000 AS amount,     
+    STR_TO_DATE('2024-11-22','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '60일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+상세한 기획 문서가 존재
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 금액
+[3순위] 일정 준수
+업무 내용
+프로젝트 개요 :
+- 퀵 배송 서비스를 진행하기 위하여 서울시 내를 한정으로 하여 배달 대행 어플리케이션을 만들고자 합니다.
+
+의뢰 목표 :
+- 시장의 반응을 보기 위한 프로토타입 앱 개발이 필요합니다.
+
+현재 준비 상황 :
+- 아이디어 단계이며 첨부된 요구사항 정의 문서 참고 부탁드립니다.
+
+필요 요소 :
+- 배달 대행 프로토타입 앱 기획 및 디자인
+- 배달 대행 프로토타입 앱 퍼블리싱 및 개발
+- 서버 구축 및 관리자 웹 개발
+
+개발환경/언어/방식 :
+- 배달 기사용 앱과 관리자 웹 개발이 필요하며 개발 언어 및 방식 등은 정해진 것이 없어 제안 부탁드립니다.
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+1. 중개/매칭 대상 :
+- 온라인 구매 상품을 배달기사들을 통해 배송하고자 합니다.
+
+2. 중개/매칭 방식 :
+- 서울시 배송지 주소 기준 지역별로 계약한 가장 가까운 배달대행사무실 소속 기사분들에게 콜을 보냅니다.
+
+3. 주요 기능 :
+- WMS 및 카카오 맵과 API 연동
+- 창고관리시스템과 연동하여 실시간 주문정보를 배달 기사분들에게 전달하고 배송지 주소와 배달대행사무실 주소를 직선거리 기준으로 가장 가까운 곳끼리 매칭합니다.
+- 각각의 배달 사무실 위치는 관리자가 미리 설정할 수 있습니다.
+* 상품은 미리 사무실에 위탁할 예정이고 배달기 사는 사무실에서 상품을 픽업하여 배달합니다.
+
+4. 예산이 정해져 있는 상황이기 때문에 미팅 시 어느 정도 기능까지 개발이 가능한지 협의 후 진행을 요청드릴 예정입니다.
+' AS projectinfo,     
+    '서울특별시 중구' AS projectlocation,     
+    '배달 대행 프로토타입 앱 구축' AS projectname,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-10','%Y-%m-%d') AS startdate,     
+    32 AS teamsize,     
+    'ORyE259' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    1500000 AS amount,     
+    STR_TO_DATE('2024-11-22','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '10일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+운영 중인 서비스의 리뉴얼 또는 유지보수를 하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 없음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+우선 순위
+
+[1순위] 금액
+[2순위] 산출물 완성도
+[3순위] 일정 준수
+관련 기술
+
+iOS
+업무 내용
+프로젝트 개요:
+- 현재 판매 중인 전자책 리더 앱에서 iOS 18 업데이트 이후 오류가 발생하여 전자책이 열리지 않는 문제가 있습니다. 이를 위해 현재 판매중인 전자책과 호환될 수 있는 전자책 리더앱(iOS 버전) 개발이 필요합니다.
+- 현재 사용하고 있는 어플은 Flip PDF Reader 이고 flipbuilder.com 에서 개발한 어플입니다. 작업 시작하실 때 저희 전자책 파일을 보내드리겠습니다.
+
+필요 요소 :
+- iOS 전자책 리더앱 개발
+* 화면은 개발자님이 구성해주시기 바랍니다.
+
+개발 환경/언어 :
+- iOS 18 버전에서 오류없이 동작해야 합니다.
+- 오픈 소스 사용 가능합니다.
+- 사용 기술은 모두 제안해주세요.
+
+주요 기능 :
+- 전자책 열람 (다른 기능 없이 단순히 열람이 되면 됩니다.)
+* 페이지 넘기기, 목차, 첫/끝페이지 이동
+- 전자책 파일은 html, css, js 으로 구성됩니다.
+- 전자책을 html 파일로 생성하는 기능은 flip pdf 프로그램을 그대로 사용할 예정입니다.
+- 고객에게 html 파일 다운로드 링크를 전달하면 고객은 링크를 통해 파일을 다운로드 받습니다. 앱에서는 다운로드한 파일을 import 할 수 있습니다.
+' AS projectinfo,     
+    '서울특별시 강남구' AS projectlocation,     
+    '단순 열람만 가능한 전자책 리더 iOS 앱 개발' AS projectname,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS registrationdate,     
+    'iOS' AS requirement,     
+    STR_TO_DATE('2024-11-09','%Y-%m-%d') AS startdate,     
+    6 AS teamsize,     
+    'kqFlEf260' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    80000000 AS amount,     
+    STR_TO_DATE('2024-11-23','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '180일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+상세한 기획 문서가 존재요구사항 정의서
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+PM
+
+업무 내용
+프로젝트 개요 :
+- 개별 맞춤 인쇄 Water bottle 벤딩 머신 개발
+
+진행 일정 :
+- 25년 상반기에 필드 테스트 진행 목표
+
+프로젝트의 현재 상황 :
+- 첨부된 문서보다 구체적인 요구 정의서가 존재합니다.
+
+요구 사항 :
+- 첨부된 문서를 확인해주세요.
+
+산출물 :
+- 시제품 1대
+- 개발 자료 일체
+
+지원 시 참고 사항 :
+- 미팅 시 보다 상세한 내용을 공유드릴 예정입니다.
+- 첨부된 문서를 확인하시고 지원 부탁드립니다.
+' AS projectinfo,     
+    '서울특별시 서초구' AS projectlocation,     
+    '개별 맞춤 인쇄 Water bottle 벤딩 머신 개발' AS projectname,     
+    STR_TO_DATE('2024-11-05','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-08','%Y-%m-%d') AS startdate,     
+    5 AS teamsize,     
+    'eoVe261' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    9000000 AS amount,     
+    STR_TO_DATE('2024-11-24','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '30일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+의약품 영업 관련 인력, 마케팅 관련 인력 등
+
+업무 내용
+프로젝트 개요 :
+- 오프라인 최저가 비교 앱 서비스
+
+진행 단계 :
+- MVP 제작 단계
+
+프로젝트의 현재 상황 :
+- 제품 DB는 일정부분 확보가 되어 있습니다. 제품, 가격 DB는 계속 업데이트하고 있습니다.
+
+필요 요소 :
+- 상세 기획( 기능 정의, 화면 설계 등 )
+- UI/UX 디자인
+- 모바일앱 개발
+- 백엔드 개발
+- 관리자페이지 개발
+- 서버/DB/인프라 구성
+
+지원 플랫폼 :
+- 안드로이드, iOS
+
+개발 환경/언어 :
+- 제안해주시기 바랍니다.
+
+회원용 앱 기능 :
+- 회원가입/로그인
+- 제품/가격 등의 정보를 관리자에서 업로드하면 가격을 비교(구체적은 기능, UI는 기획 단계에서 협의)
+* 의약품, 의약외품, 건강기능식품 등입니다.
+- 자체 배너 광고
+
+관리자페이지 :
+- 가격 비교할 제품 정보 업로드
+- 배너 광고 관리
+
+' AS projectinfo,     
+    '세종특별자치시 세종시' AS projectlocation,     
+    '관리자에서 업로드한 가격 정보를 비교하는 모바일 앱' AS projectname,     
+    STR_TO_DATE('2024-11-06','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-09','%Y-%m-%d') AS startdate,     
+    27 AS teamsize,     
+    'ztyR262' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    60000000 AS amount,     
+    STR_TO_DATE('2024-11-26','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '130일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+2024년 11월 20일
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+상세한 기획 문서가 존재요구사항 정의서, 화면설계서 (스토리보드, 와이어프레임), 제안요청서
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 없음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 일정 준수
+[3순위] 금액
+업무 내용
+프로젝트 개요 :
+- 건설/시공 관리 역량이 부족한 발주처를 위해 진행 간 정보를 투명하게 공개하는 플랫폼입니다.
+
+프로젝트의 현재 상황 :
+- 관련업에 대해 이해도가 깊으며 전반적인 건설/시공 공정에 대한 안내 및 중요한 관리 포인트를 알려드릴 수 있습니다.
+- 필요한 기능에 대해 아이디어를 구상한 상태이며 화면을 러프하게 구성하였습니다. 비전문가가 작성한 문서로 상세 기획 과정을 포함하여 의뢰해야 합니다.
+
+필요 요소 :
+- 상세 기획( 요구 사항 정의, 기능 정의, 화면 설계 등 )
+- UX/UI 디자인
+- 웹 프런트엔드 개발
+- Android/iOS 앱 프런트엔드 개발
+- 백엔드 개발
+- 관리자페이지 개발
+- 서버/DB/인프라 구성
+
+사용자 타입 및 지원 플랫폼 :
+1. 발주처 : PC Web, Android/iOS 스마트폰
+2. 시공사 : Android/iOS 스마트폰 및 태블릿
+3. admin : PC Web
+
+주요 기능 :
+1. 현장(공사) 관리
+- 현장(공사) 생성/수정/삭제
+- 현장별 사용자 초대
+- 계약서, 계약 내역서, 시방서, 도면 등 파일 업로드 및 열람
+2. 공정 관리
+- 공정 계획 입력
+- 공사일지 작성 ( 매일 작성하는 내용으로 일일 작업, 인력 및 장비 투입 내역 등을 입력 )
+* 작성한 공사일지는 엑셀 포맷의 문서로 생성 후 다운로드 가능
+- 공사일지 데이터 기반으로 공정률 계산
+- 공정표(보할 공정표) 대시보드
+* 공정표는 엑셀 포맷의 문서로 생성 후 다운로드 가능( 문서 내 그래프 포함 )
+3. 공사 사진 관리
+- 공정별 사진 촬영 및 서버 저장 : 스마트폰에 저장된 사진 가져오기 불가능/애플리케이션 내에서 촬영한 사진만 등록/날짜, 촬영자 정보 파일명으로 지정
+- 사진 갤러리 : 외부 사진첩과 연동되지 않으며 서버에 저장된 사진들만 불러옵니다.
+- 사진 보드 구성 및 업로드 : 공정별 다수의 사진으로 구성된 작업 보고(미팅 시 상세 설명)
+4. 누락 알람
+- 업무 누락 시 카카오톡 알림톡 발송 (예시: 공사일지가 오전 10시까지 등록되지 않은 경우, 알림톡 발송)
+* 알림톡 발송 조건은 관리자가 설정 가능
+5. 외부 공개용 페이지
+- QR을 스캔하여 접속합니다. 비회원 상태에서 공사 정보 및 공사 일지, 이미지를 열람할 수 있습니다.(범위 제한적)
+6. 그 외
+- 생체인증 : 일지를 작성하거나, 사진을 업로드하는 등 사용 간 생체인증을 도입( 데이터 신뢰도 향상 )
+- 이미지, 문서, 파일 등을 관리하는 UI는 윈도우 탐색기와 유사한 형태로 구성 필요
+
+' AS projectinfo,     
+    '부산광역시 해운대구' AS projectlocation,     
+    '건설현장 시공/공정 관리 SaaS 구축' AS projectname,     
+    STR_TO_DATE('2024-11-08','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-10','%Y-%m-%d') AS startdate,     
+    30 AS teamsize,     
+    'oZtrq263' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    300000 AS amount,     
+    STR_TO_DATE('2024-11-30','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '1일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+운영 중인 서비스의 리뉴얼 또는 유지보수를 하려 합니다.
+
+기획 상태
+
+필요한 내용을 간단히 정리한 상태
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+파트너와 협업 가능한 인력이 없습니다.
+
+관련 기술
+
+AndroidiOSJavaSwiftXcode
+업무 내용
+프로젝트 개요 :
+- 업무에 사용 중인 운영 중인 앱인데 갑자기 지도 기능에서 오류가 발생하였습니다.
+
+현재 준비 상황 :
+- 카카오지도 SDK 버전 변경에 의해 지도 관련 기능이 오류가 발생하는 것으로 추측되는 상황입니다.
+* 해당 기능에서 API 인증오류가 발생함을 디버깅하여 확인한 상태임
+- 기존 앱 개발자가 없고 당사의 앱 개발 관련 지식이 낮기에 외주 의뢰합니다.
+
+필요 요소 :
+- 기존 소스 코드 검토
+- 운영 중인 Android 및 iOS 네이티브 앱 오류 수정
+
+개발환경/언어/방식 :
+1. 개발 환경
+- 앱은 iOS, Android 네이티브 앱을 지원하고 있습니다.
+- 소스와 환경만 세팅되어 있는 상황임(구동 상태 확인 가능함)
+- 기존에 iOS는 Xcode로 Android는 안드로이드 스튜디오로 작업했었던 환경입니다.
+- 개발언어는 iOS는 Xcode, Swift, Android는 JAVA로 되어있습니다.
+
+2. 배포환경 :
+- iOS 앱은 ipa 파일 빌드하여 배포하여 서버에 업로드
+- Android 앱은 apk 파일 빌드하여 배포하여 서버에 업로드
+- 사용자에게 서버의 앱 파일 경로 제공하여 다운로드하여 설치하여 사용하고 있음
+
+주요 기능 List/주요 화면 List/메뉴 구성/요구 사항 등 :
+- 지도 기능 오류 조치 (배경지도, 주소정보 표출)
+- 배경지도는 카카오 지도를 사용하며 주소 정보를 가져오는 경우 주소값이 없는 경우 서울형 지도 API가 쓰이는 방식입니다.
+- 상세 내용은 미팅 시 소스 코드 공유 및 검토를 진행해야 합니다.
+
+' AS projectinfo,     
+    '서울특별시 영등포구' AS projectlocation,     
+    '운영 중인 Android 및 iOS 네이티브 앱 오류 수정' AS projectname,     
+    STR_TO_DATE('2024-11-12','%Y-%m-%d') AS registrationdate,     
+    'Android,iOS,Java,Swift,Xcode' AS requirement,     
+    STR_TO_DATE('2024-11-14','%Y-%m-%d') AS startdate,     
+    8 AS teamsize,     
+    'wXNl264' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    1000000 AS amount,     
+    STR_TO_DATE('2024-12-02','%Y-%m-%d') AS closingdate,     
+    'PERIOD' AS construction,     
+    '4일' AS duration,     
+     1 AS is_completed,     
+    'COMPLETED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+예상 시작일
+
+계약 체결 이후, 즉시 시작
+
+진행 분류
+
+신규 프로젝트를 진행하려 합니다.
+
+기획 상태
+
+상세한 기획 문서가 존재요구사항 정의서
+
+프로젝트 경험
+
+IT 프로젝트 관리 경험 있음
+
+협업 예정 인력
+
+전문가 대기중
+
+우선 순위
+
+[1순위] 산출물 완성도
+[2순위] 일정 준수
+[3순위] 금액
+업무 내용
+프로젝트 개요 :
+- 부하테스트를 위해 스크립트를 작성하고 있는 상황입니다.
+
+필요 요소 :
+- 와이어목에 저장되어 있는 데이터를 기반 스크립트를 자동 생성
+- 생성된 스크립트 실행( 검증 )
+
+산출물 :
+- 동작하는 어플리케이션만 확인되면 됩니다.
+
+지원 시 참고 사항 :
+- 실행까지 검증되면 스크립트는 저희쪽에서 추가해 나갈 예정입니다.
+' AS projectinfo,     
+    '서울특별시 성동구' AS projectlocation,     
+    'jmeter 등을 이용한 성능테스트 스크립트 자동 생성' AS projectname,     
+    STR_TO_DATE('2024-11-14','%Y-%m-%d') AS registrationdate,     
+    '요구사항 없음' AS requirement,     
+    STR_TO_DATE('2024-11-18','%Y-%m-%d') AS startdate,     
+    1 AS teamsize,     
+    'hDHgq265' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
+
+INSERT INTO project (
+  amount, closingdate, construction, duration, is_completed, prostatement, project_id, projectinfo, 
+  projectlocation, projectname, registrationdate, requirement, startdate, teamsize, client_idx)
+SELECT
+  p.amount, p.closingdate, p.construction, p.duration, p.is_completed, p.prostatement, UUID() AS project_id,
+  p.projectinfo, p.projectlocation, p.projectname, p.registrationdate, p.requirement, p.startdate, p.teamsize,
+  c.client_idx
+  FROM (
+  SELECT      
+    5500000 AS amount,     
+    STR_TO_DATE('2024-11-19','%Y-%m-%d') AS closingdate,     
+    'OUTSOURCE' AS construction,     
+    '75일' AS duration,     
+     0 AS is_completed,     
+    'CANCELED' AS prostatement,     
+    '
+
+
+모집 마감일
+
+2024년 11월 15일
+
+지원자 수
+
+11명
+
+구인 배경
+
+기존 팀에 작업자를 추가 증원하려 합니다.
+
+구인 유형
+
+발주처에게서 수주한 프로젝트에 필요한 인력을 구인합니다. • 계약 체결 완료
+
+프로젝트 산업 분야
+
+금융•은행업
+
+협업 예정 인력
+
+PM, 기획자, 디자이너, 개발자
+
+업무 내용
+<프로젝트 개요>
+
+프로젝트 소개:
+- React 기반 보험사 서비스 프런트엔드 개발
+
+프로젝트 진행 상황:
+- 개발 진행 중입니다.
+
+전체 시스템 구성:
+- React
+
+전체 프로젝트 일정:
+- 전체 프로젝트 일정: 2개월 반 정도 투입 필요합니다.
+- 인터뷰 및 계약 일정: 적합 지원자 발생 시 바로 인터뷰 진행하며, 인터뷰 후 1~2일 내 결과 발표 가능합니다.
+- 계약 진행 프로세스: 프로젝트 지원 > 실무진 인터뷰 > 2차 인터뷰 (상황에 따라 2차 인터뷰 여부 결정 예정) > 계약 결정
+* 코딩테스트는 없으며, 인터뷰는 상황에 따라 온라인으로 진행될 수 있습니다.
+
+
+<상세 업무 내용>
+
+상세 업무:
+- 보험사 서비스 프런트엔드 개발
+
+필수 기술:
+- React, JavaScript
+
+자격 요건:
+- 실무 개발 경력 3년 이상
+
+우대 사항:
+- 보험사 쪽 React 프런트엔드 개발 경험
+' AS projectinfo,     
+    '서울특별시 종로구' AS projectlocation,     
+    'React 기반 보험사 서비스 프런트엔드 개발' AS projectname,     
+    STR_TO_DATE('2024-11-01','%Y-%m-%d') AS registrationdate,     
+    'React · 3~7년,JavaScript · 3~7년' AS requirement,     
+    STR_TO_DATE('2024-11-04','%Y-%m-%d') AS startdate,     
+    11 AS teamsize,     
+    'ArDQiw266' AS client_id  
+) p
+JOIN member m ON m.id = p.client_id
+JOIN client c ON c.member_idx = m.member_idx;
