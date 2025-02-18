@@ -116,6 +116,7 @@ CREATE TABLE `contract` (
   `constatus` enum('CANCELED','PENDING','SIGNED') NOT NULL,
   `partner_idx` int NOT NULL,
   `project_idx` int NOT NULL,
+  `apicode` varchar(200) null,
   PRIMARY KEY (`contract_idx`),
   UNIQUE KEY `uk_contract_id` (`contract_id`),
   KEY `fk_contract_partner` (`partner_idx`),
