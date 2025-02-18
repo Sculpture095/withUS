@@ -13,6 +13,16 @@ FROM (
   SELECT 'LG전자', '4년', '2020-09-01', '2016-09-01', 'qFNK10'
   UNION ALL
   SELECT 'SK hynix', '5년', '2020-07-15', '2015-07-15', 'zUIeB11'
+  UNION ALL
+  SELECT '현대자동차', '2년 3개월', '2020-02-28', '2017-12-01', 'gFBy17'
+  UNION ALL
+  SELECT '한화그룹', '3년 6개월', '2019-12-01', '2016-06-01', 'lEKv18'
+  UNION ALL
+  SELECT '카카오뱅크', '1년 2개월', '2020-06-30', '2019-05-01', 'gCyJ19'
+  UNION ALL
+  SELECT '롯데백화점', '4년 5개월', '2020-02-01', '2015-10-01', 'oaDNb20'
+  UNION ALL
+  SELECT '현대모비스', '3년', '2017-04-01', '2014-04-01', 'xBpBHF21'
 ) t
 JOIN member m ON m.id = t.partner_member_id
 JOIN partner p ON p.member_idx = m.member_idx;
