@@ -58,13 +58,13 @@
                             </a>
                         </li>
                         <li class="current-page">
-                            <a th:href="@{/p_history}" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/history}" class="flex justify-between items-center textdeco">
                                 <span>경력 관리</span>
                                 <span>&gt;</span>
                             </a>
                         </li>
                         <li>
-                            <a th:href="@{/p_education}" class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/education}" class="flex justify-between items-center textdeco">
                                 <span>학력 관리</span>
                                 <span>&gt;</span>
                             </a>
@@ -90,7 +90,7 @@
                                     <th>근무일자</th>
                                     <th>주요업무</th>
                                 </tr>
-                            <tr th:each="history : ${historyList}">
+                            <tr th:each="history : ${histories}">
                                 <td th:text="${history.companyName}"></td>
                                 <td th:text="${history.joinDate} + ' - ' + ${history.exitDate}"></td>
                                 <td th:text="${history.work}"></td>
@@ -104,28 +104,30 @@
             </div>
         </div>
     </div> <!-- wrapper -->
-   <!-- 모달 -->
-   <div id="myModal" class="modal">
+
+
+
+<!-- 모달 -->
+<div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <div class="experience-container">
-          
             <form id="experienceForm">
                 <div class="form-group">
                     <label for="companyName">회사명</label>
                     <input type="text" id="companyName" name="companyName" required placeholder="회사명을 입력하세요">
                 </div>
                 <div class="form-group">
-                    <label for="employmentPeriod">근무일자</label>
-                    <div class="date-inputs">
-                        <input type="date" id="startDate" name="startDate" required >
-                        <span class="date-separator"> - </span>
-                        <input type="date" id="endDate" name="endDate" required>
-                    </div>
+                    <label for="joinDate">근무 시작일</label>
+                    <input type="date" id="joinDate" name="joinDate" required>
                 </div>
                 <div class="form-group">
-                    <label for="techStack">주요업무</label>
-                    <input type="text" id="techStack" name="techStack" required placeholder="기술스택을 입력하세요">
+                    <label for="exitDate">퇴사일</label>
+                    <input type="date" id="exitDate" name="exitDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="work">주요업무</label>
+                    <input type="text" id="work" name="work" required placeholder="주요업무를 입력하세요">
                 </div>
                 <div class="button-group">
                     <button type="submit" class="submit-btn">추가</button>
@@ -140,65 +142,77 @@
 <div  th:replace="~{footer :: footer}"></div>
 
 
-<script src="/js/header_footer.js"></script>
-<script src="/js/script.js"></script>
-  <script>
-    // 모달 열기
-    const modal = document.getElementById("myModal");
-    const openModalButton = document.getElementById("openModal");
-    const closeModalButton = document.getElementsByClassName("close")[0];
 
-    openModalButton.onclick = function() {
-        modal.style.display = "block"; // 모달 열기
-    }
+<script>
+    // 모달 요소 가져오기
+    let modal = document.getElementById("myModal");
 
-    closeModalButton.onclick = function() {
-        modal.style.display = "none"; // 모달 닫기
-    }
+    // 모달 열기 버튼
+    let openModalBtn = document.getElementById("openModal");
 
-    // 모달 외부 클릭 시 닫기
-    window.onclick = function(event) {
+    // 모달 닫기 버튼 (X 버튼)
+    let closeModalBtn = document.getElementsByClassName("close")[0];
+
+    // "경력 추가하기" 버튼 클릭 시 모달 열기
+    openModalBtn.addEventListener("click", function() {
+        modal.style.display = "block";
+    });
+
+    // 닫기 버튼(X) 클릭 시 모달 닫기
+    closeModalBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+
+    // 모달 바깥 영역 클릭 시 닫기
+    window.addEventListener("click", function(event) {
         if (event.target == modal) {
-            modal.style.display = "none"; // 모달 닫기
+            modal.style.display = "none";
         }
-    }
+    });
 
-    // 취소 버튼 클릭 시 모달 닫기
-    function closeModal() {
-        modal.style.display = "none"; // 모달 닫기
-    }
-
-
-    document.getElementById("experienceForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // 폼 기본 제출 방지
-
-        const formData = {
-            companyName: document.getElementById("companyName").value,
-            joinDate: document.getElementById("joinDate").value,  // ✅ 변경: startDate → joinDate
-            exitDate: document.getElementById("exitDate").value,  // ✅ 변경: endDate → exitDate
-            work: document.getElementById("work").value  // ✅ 추가: 주요업무 (work)
-
-        };
-
-        fetch("/api/addCareer", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("경력이 추가되었습니다!");
-                    location.reload(); // 새로고침하여 변경사항 반영
+    function deleteHistory(historyId) {
+        fetch(`/partner/history/delete/${historyId}`, { method: "DELETE" })
+            .then(response => {
+                if (response.ok) {
+                    alert("경력이 삭제되었습니다.");
+                    location.reload();
                 } else {
-                    alert("경력 추가에 실패했습니다.");
+                    response.text().then(text => alert("삭제 실패: " + text));
                 }
             })
+            .catch(error => console.error("경력 삭제 중 오류 발생:", error));
+    }
+
+    document.getElementById("experienceForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const formData = new URLSearchParams();
+        formData.append("companyName", document.getElementById("companyName").value);
+        formData.append("joinDate", document.getElementById("joinDate").value);
+        formData.append("exitDate", document.getElementById("exitDate").value);
+        formData.append("work", document.getElementById("work").value);
+
+        fetch("/partner/history/add", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => { throw new Error(text); });
+                }
+                return response.text();
+            })
+            .then(() => {
+                alert("경력이 추가되었습니다!");
+                location.reload();
+            })
             .catch(error => {
-                console.error("Error:", error);
-                alert("서버 요청 중 오류가 발생했습니다.");
+                console.error("경력 추가 중 오류 발생:", error);
+                alert("경력 추가 실패: " + error.message);
             });
     });
+
 </script>
 
 </body>

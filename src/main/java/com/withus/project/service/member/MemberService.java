@@ -242,6 +242,10 @@ public class MemberService {
         return memberRepository.findClientById(id);
     }
 
+    public MemberEntity findByMemberId(String memberId) {
+        return memberRepository.findById(memberId).orElse(null);
+    }
+
 
 
 

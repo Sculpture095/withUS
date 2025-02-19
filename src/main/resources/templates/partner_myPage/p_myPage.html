@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li>
-                            <a th:href="@{/p_history}"  class="flex justify-between items-center textdeco">
+                            <a th:href="@{/partner/history}" class="flex justify-between items-center textdeco">
                                 <span>경력 관리</span>
                                 <span>&gt;</span>
                             </a>
@@ -133,9 +133,6 @@
 <!-- Footer -->
 <div  th:replace="~{footer :: footer}"></div>
 
-
-<script src="/js/header_footer.js"></script>
-<script src="/js/script.js"></script>
     <script>
         // 수정 버튼 클릭 시 텍스트 영역으로 전환
         const editButton = document.getElementById("editButton");

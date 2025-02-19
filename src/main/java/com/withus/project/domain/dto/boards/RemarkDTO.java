@@ -18,4 +18,5 @@ public class RemarkDTO {
     private String remarks; // 댓글 내용 (요청 및 응답용)
     private String createDate; // 작성일 (응답용, String으로 변환)
     private Integer likeCount; // 추천수 (응답용)
+    private String parentRemarkId; // 부모 댓글 ID (요청 및 응답용)
 }

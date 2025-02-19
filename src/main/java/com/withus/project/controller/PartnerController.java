@@ -20,6 +20,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.time.LocalDate;
@@ -39,7 +41,7 @@ public class PartnerController {
 
     @GetMapping("/skills")
     public String getPartnerSkills(HttpSession session, Model model){
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
 
         if (member == null) {
             return "redirect:/login";
@@ -56,7 +58,7 @@ public class PartnerController {
 
     @PostMapping("/add-skill")
     public ResponseEntity<String> addSkill(@RequestBody Map<String, Object> requestData, HttpSession session) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
 
         if (member == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
@@ -76,7 +78,7 @@ public class PartnerController {
 
     @GetMapping("/portfolio")
     public String getPartnerPortfolio(HttpSession session, Model model) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
 
         if (member == null) {
             return "redirect:/login";
@@ -92,7 +94,7 @@ public class PartnerController {
 
     @GetMapping("/portfolio/detail/{portfolioId}")
     public String getPortfolioDetail(@PathVariable String portfolioId, HttpSession session, Model model) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
 
         if (member == null) {
             return "redirect:/login";
@@ -118,7 +120,7 @@ public class PartnerController {
 
     @GetMapping("/portfolio/add")
     public String showPortfolioAddPage(HttpSession session, Model model) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
 
         if (member == null) {
             return "redirect:/login";
@@ -130,13 +132,13 @@ public class PartnerController {
     }
 
     @PostMapping("/portfolio/add")
-    public ResponseEntity<?> savePortfolio(HttpServletRequest request,
+    public ResponseEntity<?> savePortfolio(
                                            @RequestParam("portfolioTitle") String portfolioTitle,
                                            @RequestParam("portfolioContext") String portfolioContext,
                                            @RequestParam("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
                                            @RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate,
                                            @RequestParam("publicOk") Boolean publicOk,
-                                           @RequestParam(value = "portfolioImg", required = false) MultipartFile[] portfolioImg) {
+                                           @RequestParam(value = "portfolioImg", required = false) MultipartFile[] portfolioImg, HttpSession session) {
 
         // 🔍 Spring Security를 통한 로그인 체크
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -146,10 +148,10 @@ public class PartnerController {
         }
 
         // ✅ 로그인된 사용자 ID 가져오기
-        String memberId = authentication.getName();
+        MemberDTO member = getMemberId(session);
 
         // ✅ 포트폴리오 저장 로직 실행
-        partnerService.savePortfolio(memberId, portfolioTitle, portfolioContext, startDate, endDate, publicOk, portfolioImg);
+        partnerService.savePortfolio(member.getId(), portfolioTitle, portfolioContext, startDate, endDate, publicOk, portfolioImg);
 
         return ResponseEntity.ok("포트폴리오 저장 성공");
     }
@@ -158,7 +160,7 @@ public class PartnerController {
     @PostMapping("/portfolio/update")
     @ResponseBody
     public ResponseEntity<?> updatePortfolio(@RequestBody PortfolioDTO portfolioDTO, HttpSession session) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
 
         if (member == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
@@ -181,14 +183,14 @@ public class PartnerController {
     @DeleteMapping("/portfolio/delete/{portfolioId}")
     @ResponseBody
     public ResponseEntity<?> deletePortfolio(@PathVariable String portfolioId, HttpSession session) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
 
         if (member == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
         }
 
         System.out.println("🗑 삭제 요청 수신 - Portfolio ID: " + portfolioId);
-        System.out.println("🗑 사용자 ID: " + member.getId());
+        System.out.println("🗑 사용자 ID: " + member);
 
         try {
             partnerService.deletePortfolio(member.getId(), portfolioId);
@@ -202,7 +204,7 @@ public class PartnerController {
     //자격증 페이지
     @GetMapping("/certificate")
     public String getCertificatePage(HttpSession session, Model model) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
 
         if (member == null) {
             return "redirect:/login";
@@ -223,7 +225,7 @@ public class PartnerController {
             @RequestParam String issueDate,
             HttpSession session) {
 
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
         if (member == null) {
             return ResponseEntity.status(401).body("로그인이 필요합니다.");
         }
@@ -239,7 +241,7 @@ public class PartnerController {
     //자격증 삭제
     @DeleteMapping("/certificate/delete/{certificateId}")
     public ResponseEntity<String> deleteCertificate(@PathVariable String certificateId, HttpSession session) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
         if (member == null) {
             return ResponseEntity.status(401).body("로그인이 필요합니다.");
         }
@@ -255,7 +257,7 @@ public class PartnerController {
     //---------------------------학력--------------------------------
     @GetMapping("/education")
     public String getEducationPage(HttpSession session, Model model) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
 
         if (member == null) {
             return "redirect:/login";
@@ -275,7 +277,7 @@ public class PartnerController {
             @RequestParam String graduationDate,
             HttpSession session) {
 
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
         if (member == null) {
             return ResponseEntity.status(401).body("로그인이 필요합니다.");
         }
@@ -290,7 +292,7 @@ public class PartnerController {
 
     @DeleteMapping("/education/delete")
     public ResponseEntity<String> deleteEducation(HttpSession session) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        MemberDTO member = getMemberId(session);
         if (member == null) {
             return ResponseEntity.status(401).body("로그인이 필요합니다.");
         }
@@ -302,6 +304,60 @@ public class PartnerController {
             return ResponseEntity.badRequest().body("삭제 실패: " + e.getMessage());
         }
     }
+
+    //---------------------경력
+    @GetMapping("/history")
+    public String getHistory(HttpSession session, Model model) {
+        MemberDTO member = getMemberId(session);
+        if (member == null) {
+            return "redirect:/login";
+        }
+        List<HistoryEntity> histories = partnerService.getPartnerHistories(member.getId());
+        model.addAttribute("member", member);
+        model.addAttribute("histories", histories);
+        return "partner_myPage/p_history";
+
+    }
+
+    @PostMapping("/history/add")
+    public ResponseEntity<String> addHistory(
+            @RequestParam String companyName,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate joinDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate exitDate,
+            @RequestParam String work,
+            HttpSession session) {
+
+        MemberDTO member = getMemberId(session);
+        if (member == null) {
+            return ResponseEntity.status(401).body("로그인이 필요합니다.");
+        }
+
+        try {
+            partnerService.addHistory(member.getId(), companyName, joinDate, exitDate, work);
+            return ResponseEntity.ok("경력이 추가되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("추가 실패: " + e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/history/delete/{historyId}")
+    public ResponseEntity<String> deleteHistory(@PathVariable String historyId, HttpSession session) {
+        MemberDTO member = getMemberId(session);  // ✅ 따로 분리하여 호출
+
+        try {
+            partnerService.deleteHistory(member.getId(), historyId);
+            return ResponseEntity.ok("경력이 성공적으로 삭제되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("경력 삭제 실패: " + e.getMessage());
+        }
+    }
+
+    // ✅ Member ID 가져오는 로직을 별도 메서드로 분리
+    private MemberDTO getMemberId(HttpSession session) {
+        return (MemberDTO) session.getAttribute("member");
+    }
+
+
 
 
 

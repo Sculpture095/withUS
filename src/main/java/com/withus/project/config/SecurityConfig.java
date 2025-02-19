@@ -1,5 +1,7 @@
 package com.withus.project.config;
 
+import com.withus.project.repository.members.MemberRepositoryImpl;
+import com.withus.project.service.CustomUserDetailsService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -44,7 +47,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // ✅ CSRF 비활성화
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/check-login","/uploads/**","/css/**","/js/**","/images/**").permitAll() // ✅ 로그인 여부 확인 API는 인증 없이 호출 가능
-                        .requestMatchers("/partner/portfolio/add", "/p_myPage/**", "/c_myPage/**").hasRole("USER") // ✅ 마이페이지는 ROLE_USER 필요
+                        .requestMatchers("/partner/**","/p_myPage/**", "/c_myPage/**").hasRole("USER") // ✅ 마이페이지는 ROLE_USER 필요
                         .anyRequest().permitAll() // ✅ 그 외 요청은 허용
                 )
 
@@ -61,6 +64,9 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS) // ✅ 세션을 항상 유지
                         .maximumSessions(1)
                         .maxSessionsPreventsLogin(true)
+                )
+                .headers(headers -> headers
+                        .cacheControl(cache -> cache.disable()) // 캐시 비활성화
                 )
 
                 .logout(logout -> logout
@@ -89,7 +95,7 @@ public class SecurityConfig {
      * @return InMemoryUserDetailsManager
      */
     @Bean
-    public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
+    public InMemoryUserDetailsManager userDetailsServices(PasswordEncoder passwordEncoder) {
         UserDetails user = User.withUsername("admin")
                 .password(passwordEncoder.encode("admin123")) // 비밀번호 암호화
                 .roles("USER")
@@ -108,6 +114,10 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
+    }
+    @Bean
+    public UserDetailsService userDetailsService(MemberRepositoryImpl memberRepository) {
+        return new CustomUserDetailsService(memberRepository);
     }
 
 

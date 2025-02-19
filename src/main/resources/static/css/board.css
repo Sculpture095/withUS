@@ -1,3 +1,4 @@
+/* Global Reset */
 * {
   margin: 0;
   padding: 0;
@@ -16,18 +17,19 @@ body {
   min-height: 100vh; /* 최소 높이를 화면 높이로 설정 */
 }
 
+/* Footer */
 #footer {
   text-align: center;
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   left: 0;
 }
 
+/* Board 관련 */
 .board_container {
   width: 1080px; /* 최대 너비 설정 */
   flex-grow: 1; /* 컨텐츠가 차지할 공간을 확장 */
-  /* display: flex; */
   flex-direction: column;
   padding: 20px; /* 내부 여백 */
   border-radius: 8px; /* 둥근 모서리 */
@@ -41,85 +43,577 @@ body {
   margin-bottom: 20px; /* 아래 여백 */
 }
 
-
-
 .myboard {
   margin-bottom: 20px; /* 아래 여백 */
 }
 
+/* 테이블 스타일 */
 table {
-  width: 100%; /* 너비 100% */
-  border-collapse: collapse; /* 테두리 겹치기 */
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* 열 너비 고정 */
 }
 
 th, td {
   padding: 12px; /* 내부 여백 */
   text-align: left; /* 왼쪽 정렬 */
   border-bottom: 1px solid #ddd; /* 아래 테두리 */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 내용이 넘치면 ... 처리 */
 }
+
+th:nth-child(1), td:nth-child(1) { width: 10%; } /* No */
+th:nth-child(2), td:nth-child(2) { width: 60%; } /* 제목 */
+th:nth-child(3), td:nth-child(3) { width: 20%; } /* 글쓴이 */
+th:nth-child(4), td:nth-child(4) { width: 20%; } /* 날짜 */
+th:nth-child(5), td:nth-child(5) { width: 10%; } /* 추천 */
 
 th {
   background-color: #f1f1f1; /* 헤더 배경색 */
-  font-weight: bold; /* 글씨 두껍게 */
+  font-weight: bold; /* 글씨 굵게 */
 }
 
 tbody tr:hover {
   background-color: #f9f9f9; /* 마우스 오버 시 배경색 */
 }
 
+/* 글쓰기 목록 버튼 */
 .write-btn {
-display: block; /* 블록 요소로 설정 */
-margin: 20px 0; /* 위아래 여백 */
-padding: 10px 20px; /* 내부 여백 */
-background-color: #007bff; /* 버튼 배경색 */
-color: white; /* 버튼 텍스트 색상 */
-border: none; /* 테두리 제거 */
-border-radius: 4px; /* 둥근 모서리 */
-cursor: pointer; /* 포인터 커서 */
-text-align: center; /* 텍스트 중앙 정렬 */
-float: right; /* 오른쪽 정렬 */
+  display: block; /* 블록 요소 */
+  margin: 20px 0; /* 위아래 여백 */
+  padding: 10px 20px; /* 내부 여백 */
+  background-color: #4C3DF2; /* 버튼 배경색 */
+  color: white; /* 텍스트 색상 */
+  border: none; /* 테두리 제거 */
+  border-radius: 4px; /* 둥근 모서리 */
+  cursor: pointer; /* 포인터 커서 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  float: right; /* 오른쪽 정렬 */
 }
 
 .write-btn:hover {
-  background-color: #0056b3; /* 호버 시 배경색 */
+  background-color: #372cac; /* 호버 시 배경색 변경 */
 }
 
-/* 검색창 스타일 추가 */
+/* 검색창 스타일 */
 .search-container {
-display: flex; /* Flexbox 사용 */
-justify-content: flex-end; /* 오른쪽 정렬 */
-margin-bottom: 20px; /* 아래 여백 */
+  display: flex; /* Flexbox 사용 */
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  margin-bottom: 20px; /* 아래 여백 */
 }
 
 .search-input {
-position: relative; /* 자식 요소의 절대 위치를 위해 설정 */
-width: 280px; /* 너비 설정 */
-height: 40px; /* 높이 설정 */
-border: 1px solid #ccc; /* 회색 테두리 */
-border-radius: 4px; /* 둥근 모서리 */
-overflow: hidden; /* 내용이 넘치지 않도록 */
+  position: relative; /* 자식 요소의 절대 위치 위해 */
+  width: 280px; /* 너비 */
+  height: 40px; /* 높이 */
+  border: 1px solid #ccc; /* 회색 테두리 */
+  border-radius: 4px; /* 둥근 모서리 */
+  overflow: hidden; /* 내용 넘침 방지 */
 }
 
 .search-input input {
-width: 100%; /* 너비 100% */
-height: 100%; /* 높이 100% */
-padding: 10px; /* 내부 여백 */
-border: none; /* 테두리 제거 */
-outline: none; /* 포커스 시 테두리 제거 */
+  width: 100%; /* 전체 너비 */
+  height: 100%; /* 전체 높이 */
+  padding: 10px; /* 내부 여백 */
+  border: none; /* 테두리 제거 */
+  outline: none; /* 포커스 시 테두리 제거 */
 }
 
 .search-button {
-position: absolute; /* 절대 위치 설정 */
-right: 0; /* 오른쪽 정렬 */
-top: 50%; /* 수직 중앙 정렬 */
-transform: translateY(-50%); /* 수직 중앙 정렬 보정 */
-background-color: transparent; /* 배경색 없음 */
-border: none; /* 테두리 제거 */
-color: gray; /* 회색 텍스트 색상 */
-cursor: pointer; /* 포인터 커서 */
-padding: 0 10px; /* 좌우 여백 */
+  position: absolute; /* 절대 위치 */
+  right: 0; /* 오른쪽 정렬 */
+  top: 50%; /* 수직 중앙 정렬 */
+  transform: translateY(-50%); /* 중앙 정렬 보정 */
+  background-color: transparent; /* 배경 없음 */
+  border: none; /* 테두리 제거 */
+  color: gray; /* 텍스트 색상 */
+  cursor: pointer; /* 포인터 커서 */
+  padding: 0 10px; /* 좌우 여백 */
 }
 
 .search-button:hover {
-color: darkgray; /* 호버 시 색상 변경 */
+  color: darkgray; /* 호버 시 색상 변경 */
+}
+
+/* 글쓰기 페이지 스타일 */
+/* 전체 컨테이너 */
+.post-container {
+  width: 800px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+/* 제목 */
+.post-container h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #333;
+  margin-top: 150px;
+}
+
+/* 폼 요소 */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* 입력 필드 */
+.form-group input[type="text"],
+.form-group textarea,
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+/* 포커스 효과 */
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  border-color: #4C3DF2;
+  outline: none;
+}
+
+/* 텍스트 에어리어 크기 */
+.form-group textarea {
+  height: 500px;
+  resize: vertical;
+}
+
+/* 버튼 그룹 */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  margin-bottom: 100px;
+}
+
+/* 작성 완료 버튼 */
+.submit-btn {
+  width: 120px;
+  padding: 12px;
+  background-color: #4C3DF2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #392DD9;
+}
+
+/* 취소 버튼 */
+.cancel-btn {
+  width: 120px;
+  padding: 12px;
+  background-color: #ccc;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.cancel-btn:hover {
+  background-color: #b3b3b3;
+}
+
+/* 게시글 상세보기 (post-view) */
+/* 게시물 컨테이너 */
+.post-view-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  font-family: 'REM', sans-serif;
+  margin-top: 150px;
+}
+
+.post-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.post-table th, .post-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.post-table th {
+  background-color: #f8f9fa;
+  width: 20%;
+  font-weight: normal;
+}
+
+/* 테이블 hover 효과 (없음) */
+.post-table tbody tr:hover {
+  background-color: transparent !important;
+}
+
+.post-view-container h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.post-view-container p {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.post-view-container hr {
+  border: 0;
+  height: 3px;
+  background: #717171;
+  margin: 15px 0;
+}
+
+.post-content {
+  margin-bottom: 50px;
+}
+
+/* 버튼 그룹 스타일 */
+.post-button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.post-button-group button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+
+}
+
+/* 수정 버튼 */
+.post-edit-btn {
+  background: #989898;
+  color: white;
+}
+
+.post-edit-btn:hover {
+  background:  #5b5b5b;
+}
+
+/* 삭제 버튼 */
+.post-delete-btn {
+  color: white;
+  background: #989898;
+}
+
+.post-delete-btn:hover {
+  background: #5b5b5b;
+}
+
+/* 취소버튼 */
+.post-cancel-btn {
+  background: #4C3DF2;
+  color: white;
+}
+
+
+
+.post-cancel-btn:hover {
+  background: #464646;
+  color: white;
+}
+
+/* 추천 박스 스타일 */
+.like-container {
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  margin: 20px 0; /* 위아래 여백 */
+}
+
+.like-box {
+  width: 60px;
+  height: 70px;
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  user-select: none;
+  transition: 0.3s;
+  padding: 10px;
+}
+
+.like-box {
+  font-size: 13px;
+  color: #696969;
+}
+
+.like-img img {
+  width: 15px;
+  height: 15px;
+  margin: 5px 0;
+}
+
+/* 댓글 스타일 */
+.comment-section {
+  width: 100%;
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 2px solid #ddd;
+}
+
+.comment-section h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.comment-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment-input textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+  font-size: 14px;
+}
+
+.comment-submit {
+  align-self: flex-end;
+  padding: 8px 15px;
+  background-color: #616161;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment-submit:hover {
+  background-color: #464646;
+}
+
+.comment-list {
+  margin-top: 20px;
+}
+
+.comment {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment-author {
+  font-weight: bold;
+  color: #333;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: gray;
+  margin-left: 10px;
+}
+
+.comment-content {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+
+
+/* 수정/삭제 버튼과 추천 버튼을 한 줄에 배치하는 컨테이너 */
+.comment-actions-like-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+/* 수정/삭제 버튼 그룹 (왼쪽 정렬) */
+.comment-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* 수정 버튼 스타일 */
+.comment-edit-btn {
+  background-color: #989898;
+  color: #fff;
+  width: 50px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+
+/* 삭제 버튼 스타일 */
+.comment-delete-btn {
+  background-color: #989898;
+  color: #fff;
+  width: 50px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+
+.comment-like-btn {
+  border: 1px solid #b3b3b3;
+  background-color: #fff;
+  width: 80px;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+
+
+
+/* edit-post 스타일 */
+#postTitleInput {
+  width: 960px;
+  height: 50px;
+  border: 1px solid #ddd;
+}
+
+#postContentInput {
+  width: 960px;
+  height: 500px;
+  border: 1px solid #ddd;
+}
+
+/* 이미지 업로드 및 미리보기 영역 */
+/* 원래 사용하던 #portfolioImageContainer도 복구 */
+#portfolioImageContainer,
+#postImageContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row; /* 가로 배치 */
+  gap: 10px;
+  margin-top: 10px;
+  overflow-x: auto; /* 가로 스크롤 */
+  white-space: nowrap;
+  max-width: 100%;
+  padding: 10px 0;
+  border-radius: 8px;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+}
+
+.portfolio_image {
+  text-align: center;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column; /* 기본: 세로 배치 */
+  gap: 10px;
+  justify-content: center;
+}
+
+.save_btn {
+  background: #4C3DF2;
+  color: #fff;
+}
+
+.save_btn:hover {
+  background: #3e32c5;
+  color: #fff;
+}
+
+/* 개별 이미지 박스 */
+.image_item {
+  position: relative;
+  display: flex;
+}
+
+/* 수정 전: 큰 이미지 */
+.image_item img {
+  width: 400px;
+  max-width: 800px;
+  height: auto;
+  object-fit: contain;  /* 이미지가 잘리지 않도록 */
+  display: block;
+}
+
+/* 수정 후: 여러 장 나란히 배치 (편집 모드용) */
+.portfolio_image.editing {
+  flex-direction: row; /* 한 줄에 나열 */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 수정 후: 작은 이미지 (편집 모드용) */
+.portfolio_image.editing .image_item img {
+  width: 250px;
+  height: auto;
+  border-radius: 5px;
+  object-fit: contain;
+}
+
+/* #postImageContainer 내 이미지 크기 조정 (가로 배치용) */
+#postImageContainer .image_item img {
+  width: 250px;
+  height: auto;
+  border-radius: 5px;
+  object-fit: contain;
+}
+
+/* 개별 이미지 삭제 버튼 (오른쪽 상단 X 버튼) */
+.delete_img_btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 25px;
+  height: 25px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete_img_btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +24,7 @@ public class PartnerService {
     private final FileUploadService fileUploadService;
     private final CertificateRepositoryImpl certificateRepository;
     private final EducationRepositoryImpl educationRepository;
+    private final HistoryRepositoryImpl historyRepository;
 
 
     //**
@@ -146,5 +148,41 @@ public class PartnerService {
     public void deleteEducation(String memberId) {
         educationRepository.deleteEducation(memberId);
     }
+
+    //-------------------------------경력
+    public List<HistoryEntity> getPartnerHistories(String memberId) {
+        return historyRepository.findAllHistoryByMemberId(memberId);
+    }
+
+    // 경력 추가
+    @Transactional
+    public void addHistory(String memberId, String companyName, LocalDate joinDate, LocalDate exitDate, String work) {
+        Integer partnerIdx = memberRepository.findPartnerIdxByMemberId(memberId);
+        if (partnerIdx == null) {
+            throw new IllegalArgumentException("파트너 정보를 찾을 수 없습니다.");
+        }
+
+        PartnerEntity partner = partnerRepository.findPartnerById(memberId);
+        if (partner == null) {
+            throw new IllegalArgumentException("파트너 엔터티를 찾을 수 없습니다.");
+        }
+
+        HistoryEntity history = new HistoryEntity();
+        history.setPartner(partner);
+        history.setCompanyName(companyName);
+        history.setJoinDate(joinDate);
+        history.setExitDate(exitDate);
+        history.setWork(work);
+
+        historyRepository.saveHistory(history);
+    }
+
+    @Transactional
+    public void deleteHistory(String memberId, String historyId) {
+        historyRepository.deleteHistoryByMemberId(memberId, historyId);
+    }
+
+
+
 
 }

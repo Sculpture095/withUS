@@ -2,6 +2,8 @@ package com.withus.project.domain.dto.boards;
 
 import lombok.*;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -18,7 +20,14 @@ public class BoardDTO {
     private String subject; // 제목
     private String content; // 내용
     private String filePath; // 첨부파일 경로
-    private String createDate; // 작성일 (응답용, String으로 변환)
-    private Integer viewCount; // 조회수 (응답용)
-    private Integer likeCount; // 추천수 (응답용)
+    private String createDate; // 🕒 String으로 변환하여 yyyy-MM-dd HH:mm 형식으로 전달
+
+    @Builder.Default
+    private Integer viewCount = 0; // 조회수 (기본값)
+
+    @Builder.Default
+    private Integer likeCount = 0; // 추천수 (기본값)
+
+    // ✅ 댓글 목록 추가 (응답용)
+    private List<RemarkDTO> remarks;
 }

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome, Bootstrap Icons, Google Fonts 등 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap) -->
+  <link href="../../css/main.css" rel="stylesheet" />
+  <link href="../../css/board.css" rel="stylesheet" />
+  <title>게시물 수정 페이지</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
+
+<div class="post-view-container">
+  <h2>게시글 수정</h2>
+<!-- ✅ 게시글 수정 폼 -->
+<form th:action="@{/board/edit/{boardId}(boardId=${board.boardId})}" method="post" enctype="multipart/form-data">
+  <table class="post-table">
+    <!-- 제목 입력 -->
+    <tr>
+      <th>제목</th>
+      <td>
+        <input type="text" name="subject" class="input_field" th:value="${board.subject}" required>
+      </td>
+    </tr>
+    <!-- 작성자 정보 (수정 불가) -->
+    <tr>
+      <th>작성자</th>
+      <td class="post-author" th:text="${board.member.nickname}"></td>
+    </tr>
+    <tr>
+      <th>작성일</th>
+      <td class="post-date" th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+    </tr>
+    <tr>
+      <th>조회수</th>
+      <td class="post-views" th:text="${board.viewCount}"></td>
+    </tr>
+  </table>
+
+  <div class="post-content">
+    <label for="postContentInput">내용</label>
+    <textarea id="postContentInput" name="content" class="input_field" rows="8" th:text="${board.content}" required></textarea>
+  </div>
+
+  <!-- ✅ 이미지 업로드 -->
+  <div class="image-upload-section">
+    <label for="file">이미지 업로드</label>
+    <input type="file" id="file" name="file" class="file-input" accept="image/*">
+
+    <!-- 이미지 삭제 여부를 서버로 전달하는 hidden input 추가 -->
+    <input type="hidden" id="deleteImage" name="deleteImage" value="false">
+
+    <!-- 기존 이미지 표시 (filePath가 존재할 때만 렌더링) -->
+    <div id="imagePreviewContainer">
+      <th:block th:if="${board.filePath}">
+        <div class="image-item" id="existingImageContainer">
+          <img th:src="@{${board.filePath}}" class="preview-image" id="existingImage">
+          <button type="button" class="delete-img-btn" th:data-url="@{${board.filePath}}" onclick="deleteImage(this)">X</button>
+        </div>
+      </th:block>
+    </div>
+
+
+
+
+
+  <!-- 버튼 그룹 -->
+  <div class="post-button-group">
+    <button type="submit" class="btn save_btn">저장</button>
+    <button type="button" class="btn post-cancel-btn" onclick="history.back()">취소</button>
+  </div>
+</form>
+</div>
+
+    <!-- 댓글 부분 (기존 코드 유지) -->
+    <div class="comment-section">
+      <h3>댓글 2개</h3>
+    
+      <!-- 댓글 작성 영역 -->
+      <div class="comment-input">
+        <textarea id="commentText" placeholder="댓글을 입력하세요"></textarea>
+        <button class="comment-submit" onclick="addComment()">등록</button>
+      </div>
+    
+      <!-- 기존 댓글 목록 -->
+      <div class="comment-list">
+        <div class="comment">
+          <span class="comment-author">작성자1</span>
+          <span class="comment-date">2025-02-12</span>
+          <p class="comment-content">이것은 첫 번째 댓글입니다.</p>
+        </div>
+        <div class="comment">
+          <span class="comment-author">작성자2</span>
+          <span class="comment-date">2025-02-11</span>
+          <p class="comment-content">이것은 두 번째 댓글입니다.</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<!-- Footer -->
+<div  th:replace="~{footer :: footer}"></div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("imagePreviewContainer").addEventListener("click", function (event) {
+      if (event.target.classList.contains("delete-img-btn")) {
+        deleteImage(event.target);
+      }
+    });
+  });
+
+
+  document.getElementById("file").addEventListener("change", function(event) {
+    let imagePreviewContainer = document.getElementById("imagePreviewContainer");
+    imagePreviewContainer.innerHTML = ""; // 기존 미리보기 초기화
+
+    Array.from(event.target.files).forEach((file) => {
+      let reader = new FileReader();
+      reader.onload = function(e) {
+        let imageItem = document.createElement("div");
+        imageItem.classList.add("image-item");
+        imageItem.innerHTML = `
+                <img src="${e.target.result}" class="preview-image">
+                <button type="button" class="delete-img-btn">X</button>
+            `;
+        imagePreviewContainer.appendChild(imageItem);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+
+  // ✅ 개별 이미지 삭제 기능 (서버에서도 삭제)
+  // ✅ 이미지 삭제 기능
+  // ✅ 개별 이미지 삭제 기능
+  // ✅ 이미지 삭제 기능을 전역에서 접근 가능하게 등록
+  window.deleteImage = function(button) {
+    const imageUrl = button.getAttribute("data-url");
+    console.log("📌 삭제 버튼 클릭됨 - URL:", imageUrl);
+
+    if (!imageUrl || imageUrl.includes("@{")) {
+      console.error("🚨 오류: data-url 값이 올바르지 않습니다.", imageUrl);
+      alert("이미지 삭제 오류: 잘못된 이미지 경로입니다.");
+      return;
+    }
+
+    if (!confirm("정말 삭제하시겠습니까?")) return;
+
+    console.log("📌 삭제 요청 URL: /image/delete");
+    console.log("📌 삭제 요청 데이터: ", { imageUrl: imageUrl });
+
+    fetch("/image/delete", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ imageUrl: imageUrl })
+    })
+            .then(response => response.text())
+            .then(message => {
+              console.log("📌 서버 응답: ", message);
+              if (message.includes("성공") || message.includes("삭제할 필요가 없습니다.")) {
+                alert("이미지가 삭제되었습니다.");
+                const imageContainer = document.getElementById("existingImageContainer");
+                if (imageContainer) {
+                  imageContainer.remove();  // ✅ UI에서 이미지 완전히 제거
+                }
+                document.getElementById("deleteImage").value = "true"; // ✅ 서버로 삭제 요청 전달
+              } else {
+                alert("이미지 삭제 실패: " + message);
+              }
+            })
+            .catch(error => console.error("🚨 이미지 삭제 오류:", error));
+  };
+
+
+
+
+
+
+</script>
+</body>
+</html>

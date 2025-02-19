@@ -119,22 +119,7 @@ public class MyPageController {
 
         return Map.of("success", true);
     }
-    @GetMapping("/p_history")
-    public String partnerCareerPage(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
-        MemberDTO member = (MemberDTO) session.getAttribute("member");
 
-        if (member == null) {
-            redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
-            return "redirect:/login";
-        }
-
-        // ✅ 사용자 경력 목록 가져오기
-        List<HistoryEntity> historyList = historyRepository.findAllByMemberId(member.getId());
-        model.addAttribute("historyList", historyList);
-        model.addAttribute("member", member);
-
-        return "partner_myPage/p_history";  // p_history.html 템플릿으로 이동
-    }
 
 //    @GetMapping("/c_project")
 //    public String clientProjectPage(HttpSession session, Model model, RedirectAttributes redirectAttributes) {

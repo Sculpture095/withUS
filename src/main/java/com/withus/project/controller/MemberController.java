@@ -1,5 +1,6 @@
 package com.withus.project.controller;
 
+import com.withus.project.config.CustomUserDetails;
 import com.withus.project.domain.dto.members.MemberDTO;
 import com.withus.project.service.member.AuthService;
 import com.withus.project.service.member.MemberService;
@@ -51,40 +52,62 @@ public class MemberController {
         }
     }
 
+    // 로그인 처리
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody MemberDTO dto, HttpServletResponse response, HttpSession session) {
-        System.out.println("로그인 요청 - 아이디: " + dto.getId());
+        log.info("로그인 요청 - 아이디: {}", dto.getId());
 
         try {
+            // DB에서 해당 아이디의 회원 정보를 조회
+            MemberDTO loggedInMember = memberService.getMemberById(dto.getId());
+            if (loggedInMember == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body("로그인 실패: 존재하지 않는 사용자입니다.");
+            }
+
+            // 입력된 비밀번호와 DB에 저장된 암호화된 비밀번호 비교
+            if (!passwordService.checkPassword(dto.getPassword(), loggedInMember.getPassword())) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body("로그인 실패: 비밀번호가 올바르지 않습니다.");
+            }
+
+            // 비밀번호 일치 시, 토큰 발급 및 세션에 정보 저장
             String token = memberService.loginWithOAuthById(dto.getId(), "LOCAL");
             session.setAttribute("userToken", token);
-
-            MemberDTO loggedInMember = memberService.getMemberById(dto.getId());
             session.setAttribute("nickname", loggedInMember.getNickname());
             session.setAttribute("member", loggedInMember);
-            session.setAttribute("pcaType", loggedInMember.getPcaType()); // ✅ pcaType 저장
+            session.setAttribute("pcaType", loggedInMember.getPcaType());
 
-            // ✅ 사용자 권한 부여
-            List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_USER"));
+            // CustomUserDetails 객체 생성 (ROLE_USER 권한 및 닉네임 포함)
+            CustomUserDetails customUserDetails = CustomUserDetails.builder()
+                    .username(loggedInMember.getId())
+                    .password(loggedInMember.getPassword())
+                    .authorities(List.of(new SimpleGrantedAuthority("ROLE_USER")))
+                    .nickname(loggedInMember.getNickname())
+                    .build();
+
+            // Authentication 객체 생성 및 SecurityContext에 저장
             Authentication authentication = new UsernamePasswordAuthenticationToken(
-                    loggedInMember.getId(), null, authorities);
+                    customUserDetails, null, customUserDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
             session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
 
-            // ✅ JSESSIONID 쿠키 설정 추가
+            // JSESSIONID 쿠키 설정
             Cookie cookie = new Cookie("JSESSIONID", session.getId());
             cookie.setPath("/");
             cookie.setHttpOnly(true);
             cookie.setMaxAge(60 * 60); // 1시간 유지
             response.addCookie(cookie);
 
-            System.out.println("✅ 로그인 성공 - 세션 저장 완료: " + loggedInMember);
+            log.info("로그인 성공 - 세션 저장 완료: {}", loggedInMember);
             return ResponseEntity.ok("로그인 성공");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body("로그인 실패: " + e.getMessage());
         }
     }
+
+
 
 
 

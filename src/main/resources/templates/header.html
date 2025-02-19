@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <!-- Bootstrap icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 
@@ -35,9 +38,9 @@
                         게시판
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        <li><a class="dropdown-item" th:href="@{/board/it}">IT 게시판</a></li>
-                        <li><a class="dropdown-item" th:href="@{/board/free}">자유 게시판</a></li>
-                        <li><a class="dropdown-item" th:href="@{/board/notice}">공지 게시판</a></li>
+                        <li><a class="dropdown-item" th:href="@{/board/it_board}">IT 게시판</a></li>
+                        <li><a class="dropdown-item" th:href="@{/board/free_board}">자유 게시판</a></li>
+                        <li><a class="dropdown-item" th:href="@{/board/notice_board}">공지 게시판</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -54,9 +57,9 @@
                 </li>
             </ul>
 
-            <!-- 로그인 버튼: 세션에 nickname이 없으면 표시 -->
+            <!-- 로그인 버튼: ROLE_USER가 없는 경우에만 표시 -->
             <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 bg-gradient-primary-to-secondary"
-                    th:if="${session.nickname == null}"
+                    sec:authorize="!hasRole('USER')"
                     th:onclick="|location.href='@{/login}'|">
     <span class="d-flex align-items-center">
         <i class="bi-chat-text-fill me-2"></i>
@@ -64,19 +67,23 @@
     </span>
             </button>
 
-            <!-- 로그인 후 환영 메시지와 로그아웃 버튼 -->
-            <!--/*@thymesVar id="getAttribute" type=""*/-->
-            <div th:if="${session.nickname != null}" style="display: flex; gap: 10px; align-items: center;">
+            <!-- 로그인 후 환영 메시지와 로그아웃 버튼: ROLE_USER가 있는 경우에만 표시 -->
+            <div sec:authorize="hasRole('USER')" style="display: flex; gap: 10px; align-items: center;">
     <span class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
         <span class="d-flex align-items-center">
             <i class="bi-person-fill me-2"></i>
-            <span class="small" th:text="${session.nickname + '님 환영합니다'}"></span>
+            <span class="small" th:text="${#authentication.principal.nickname + '님 환영합니다'}"></span>
         </span>
     </span>
                 <button class="btn btn-secondary rounded-pill px-3 mb-2 mb-lg-0" id="logoutBtn">
                     로그아웃
                 </button>
             </div>
+
+            <script th:inline="javascript">
+                var isAuthenticated = /*[[${#authorization.expression('isAuthenticated()')}]]*/ false;
+            </script>
+
 
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
@@ -111,6 +118,7 @@
                     }
                 }
             </script>
+
 
 
         </div>

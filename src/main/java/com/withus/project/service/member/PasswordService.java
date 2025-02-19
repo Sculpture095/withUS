@@ -37,4 +37,9 @@ public class PasswordService {
         member.setPassword(passwordEncoder.encode(newPassword));
         memberRepository.save(member);
     }
+
+    // 입력받은 비밀번호가 DB에 저장된 암호화된 비밀번호와 일치하는지 확인
+    public boolean checkPassword(String rawPassword, String encodedPassword) {
+        return passwordEncoder.matches(rawPassword, encodedPassword);
+    }
 }
