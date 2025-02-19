@@ -3567,7 +3567,7 @@ SELECT
   'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   'Nestjs · 8년 이상,Node.js · 경력 무관,TypeScript · 경력 무관,MySQL · 경력 무관,PostgreSQL · 경력 무관', 
-  STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-06', '%Y-%m-%d'), 
   11, 
   'MAlD90'
 UNION ALL  
@@ -3627,7 +3627,7 @@ SELECT
   '기존 사이트 소스 검토 및 배포를 위한 오류 해결', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   'Firebase,nuxt.js,Vue.js', 
-  STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-06', '%Y-%m-%d'), 
   15, 
   'KUyVjP91'
 UNION ALL  
@@ -3694,7 +3694,7 @@ SELECT
   '중소기업 홈페이지 리뉴얼 반응형 웹 구축', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   '요구사항 없음', 
-  STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-06', '%Y-%m-%d'), 
   39, 
   'tojpCa92'
 UNION ALL  
@@ -3761,7 +3761,7 @@ SELECT
   'React 기반 항공사 사내 시스템 프론트엔드 개발자 구인', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   'React · 경력 무관', 
-  STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-06', '%Y-%m-%d'), 
   10, 
   'aianiZ93'
 UNION ALL  
@@ -3854,7 +3854,7 @@ SELECT
   '수입차 브랜드 통합 시승 신청 웹 및 어드민 디자인, 개발', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   '요구사항 없음', 
-  STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-06', '%Y-%m-%d'), 
   24, 
   'piDooe94'
 UNION ALL  
@@ -3937,7 +3937,7 @@ c. 공통
   'B2B 차량 호출 서비스 추가 기능 개발', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   'AWS,JavaScript,MySQL,next.js,Node.js,prisma,React Native,TypeScript', 
-  STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-06', '%Y-%m-%d'), 
   10, 
   'wCgz95'
 UNION ALL  
@@ -3991,7 +3991,7 @@ SELECT
   '쇼핑몰 관리자 웹 프런트엔드 개발', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   '요구사항 없음', 
-  STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-06', '%Y-%m-%d'), 
   47, 
   'retC96'
   UNION ALL
@@ -4066,7 +4066,7 @@ SELECT
     '웹(React) 프런트엔드 개발' AS projectname,
     STR_TO_DATE('2024-12-19', '%Y-%m-%d') AS registrationdate,
     'React · 10년 이상,JavaScript · 경력 무관,TypeScript · 경력 무관' AS requirement,
-    STR_TO_DATE('2024-12-19', '%Y-%m-%d') AS startdate,
+    STR_TO_DATE('2025-01-16', '%Y-%m-%d'),  AS startdate,
     4 AS teamsize,
     'VSTd97' AS client_idx
   UNION ALL
@@ -4140,7 +4140,7 @@ SELECT
     'Flutter 기반 AI 의료 애플리케이션 기능 고도화(재택근무)' AS projectname,
     STR_TO_DATE('2024-12-23', '%Y-%m-%d') AS registrationdate,
     'Flutter · 경력 무관' AS requirement,
-    STR_TO_DATE('2024-12-23', '%Y-%m-%d') AS startdate,
+    STR_TO_DATE('2025-01-10', '%Y-%m-%d') AS startdate,
     9 AS teamsize,
     'iWxc98' AS client_idx
   UNION ALL
@@ -4213,7 +4213,7 @@ SELECT
     'TypeScript(Express or Nest) 기반 백엔드 개발' AS projectname,
     STR_TO_DATE('2024-12-24', '%Y-%m-%d') AS registrationdate,
 	'Node.js · 경력 무관,TypeScript · 경력 무관,Express · 경력 무관,Nestjs · 경력 무관' AS requirement,
-    STR_TO_DATE('2024-12-24', '%Y-%m-%d') AS startdate,
+    STR_TO_DATE('2025-01-11', '%Y-%m-%d') AS startdate,
     5 AS teamsize,
     'WvObw99' AS client_idx
   UNION ALL
@@ -4259,7 +4259,7 @@ SELECT
     '축구장에서 사용할 제품 디자인' AS projectname,
     STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS registrationdate,
 	'요구사항 없음' AS requirement,
-    STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate,
+    STR_TO_DATE('2025-01-05', '%Y-%m-%d') AS startdate,
     8 AS teamsize,
     'BSpqRg100' AS client_idx
   UNION ALL
@@ -4329,7 +4329,7 @@ SELECT
     'React 프론트엔드 개발자 구인 (주 2일 근무 / 재택근무)' AS projectname,
     STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS registrationdate,
     'React · 4년 이상,HTML · 4년 이상,JavaScript · 4년 이상,CSS · 4년 이상' AS requirement,
-    STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate,
+    STR_TO_DATE('2025-01-05', '%Y-%m-%d') AS startdate,
     10 AS teamsize,
     'VKvT101' AS client_idx
   UNION ALL
@@ -4390,7 +4390,7 @@ SELECT
 	'PHP/MySQL 기반 CRM 백엔드 개발자 구인' AS projectname,
     STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS registrationdate,
 	'PHP · 1~3년,MySQL · 1~3년' AS requirement,
-    STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate,
+    STR_TO_DATE('2025-01-05', '%Y-%m-%d') AS startdate,
     6 AS teamsize,
     'YBVr102' AS client_idx
   UNION ALL
@@ -4467,7 +4467,7 @@ d. 사용자 경험(UX/UI)
     'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발' AS projectname, 
     STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS registrationdate, 
 	'AWS,CSS,HTML,JavaScript,Python,React' AS requirement, 
-    STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate, 
+    STR_TO_DATE('2025-01-05', '%Y-%m-%d') AS startdate, 
     20 AS teamsize, 
     'RYEa103' AS client_idx
   UNION ALL
@@ -4534,7 +4534,7 @@ d. 사용자 경험(UX/UI)
 	'React 기반 시니어 프론트엔드 개발자 추가 증원' AS projectname, 
     STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS registrationdate, 
 	'React · 7년 이상' AS requirement, 
-    STR_TO_DATE('2024-12-18', '%Y-%m-%d') AS startdate, 
+    STR_TO_DATE('2025-01-05', '%Y-%m-%d') AS startdate, 
     4 AS teamsize, 
     'SLMM104' AS client_idx
   UNION ALL
@@ -4583,7 +4583,7 @@ d. 사용자 경험(UX/UI)
     '치과전문 차팅 자동화 PowerPoint 매크로 개발' AS projectname, 
     STR_TO_DATE('2024-12-19', '%Y-%m-%d') AS registrationdate, 
 	'요구사항 없음' AS requirement, 
-    STR_TO_DATE('2024-12-19', '%Y-%m-%d') AS startdate, 
+    STR_TO_DATE('2025-01-06', '%Y-%m-%d') AS startdate, 
     24 AS teamsize, 
     'RyAdh105' AS client_idx
   UNION ALL
@@ -4650,7 +4650,7 @@ d. 사용자 경험(UX/UI)
     '투썸플레이스 LMS 플랫폼 구축' AS projectname, 
     STR_TO_DATE('2024-12-17', '%Y-%m-%d') AS registrationdate, 
 	'Android,iOS' AS requirement, 
-    STR_TO_DATE('2024-12-17', '%Y-%m-%d') AS startdate, 
+    STR_TO_DATE('2025-01-04', '%Y-%m-%d') AS startdate, 
     55 AS teamsize, 
 	'prEZ106' AS client_idx
    UNION ALL
@@ -4703,7 +4703,7 @@ d. 사용자 경험(UX/UI)
   'Windows OS 기반 당사 PC 프로그램 오류 수정 및 개선',
   STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
   'C#,JavaScript,next.js,React,winform',
-  STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
+  STR_TO_DATE('2025-01-04', '%Y-%m-%d'),
   12,
   'LfQW166'
   UNION ALL
@@ -4754,7 +4754,7 @@ d. 사용자 경험(UX/UI)
   '모바일 유언장 웹 추가 기능 개발',
   STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
   'AWS Amplify,dynamodb,lambda,TypeScript',
-  STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
+  STR_TO_DATE('2025-01-04', '%Y-%m-%d'),
   28,
   'DmSUv167'
 
@@ -4835,7 +4835,7 @@ UNION ALL
   '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택, 1일 상주)',
   STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
   'Django · 3년 이하,restful api · 3년 이하',
-  STR_TO_DATE('2024-12-17', '%Y-%m-%d'),
+  STR_TO_DATE('2025-01-04', '%Y-%m-%d'),
   4,
   'GivybI169'
 
@@ -4909,7 +4909,7 @@ SELECT
   '사내 ERP 솔루션 백엔드 Go/SQL 개발(상주/원격 여부 협의)' AS projectname, 
   STR_TO_DATE('2024-12-20', '%Y-%m-%d') AS registrationdate, 
   'Go · 3년 이하,SQL Server · 3년 이하' AS requirement, 
-  STR_TO_DATE('2024-12-20', '%Y-%m-%d') AS startdate, 
+  STR_TO_DATE('2025-01-07', '%Y-%m-%d') AS startdate, 
   4 AS teamsize, 
   'rvUm175' AS client_idx
 UNION ALL
