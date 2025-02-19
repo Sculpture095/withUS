@@ -18,11 +18,352 @@ FROM (
   UNION ALL
   SELECT 'lEKv18', '암호화폐 거래소 Next.js 프론트엔드 개발자 구인'
   UNION ALL
-  SELECT 'gCyJ19', '내부에서 사용할 웹 빌더 시스템 구축'
+  SELECT 'oaDNb20', 'iOS 사용자 인증 보완 개발'
   UNION ALL
-  SELECT 'zUIeB11', '차량관제 서비스 UI/UX 기획자'
+  SELECT 'xBpBHF21', '운영 업무리더 구인 (SAP BW/RPA 등)'
+  UNION ALL
+  SELECT 'gdtL22', '워드프레스 플러그인 결제 모듈 수정'
+  UNION ALL
+  SELECT 'wuXP23', '금융권 차세대 프로젝트 내 UMS 구축 React 프론트 개발'
+  UNION ALL
+  SELECT 'llthYa24', '학습 콘텐츠 개발 및 양산 프로젝트 진행 관리(PMO)'
+  UNION ALL
+  SELECT 'yLOtF26', 'Python 기반 음식 배달 POS 유지보수 (재택근무)'
+  UNION ALL
+  SELECT 'wGIM27', '이동서비스 예약 중개 플랫폼 구축'
+  UNION ALL
+  SELECT 'pRwAS38', '안전점검 플랫폼 웹 및 앱 UI/UX 리뉴얼 디자인'
+  UNION ALL
+  SELECT 'wrMHO39', 'WebRTC 서버 구성 및 네트워크 최적화 방향 자문'
+  UNION ALL
+  SELECT 'hvskdw40', '자격증 LMS 시스템 내 자동 문자 연동 오류 수정'
+  UNION ALL
+  SELECT 'XWzilz41', '협회 자격 시험접수 및 자격증 발급 사이트 리뉴얼 구축'
+  UNION ALL
+  SELECT 'NZuY42', '중고차 거래 플랫폼 React 웹 통합 개발'
+  UNION ALL
+  SELECT 'UZyUXo43', '외국어 교육서비스 반응형 웹 퍼블리싱 및 컴포넌트 개발'
+  UNION ALL
+  SELECT 'jdvix44', '고도몰 기반 쇼핑몰 기능 개발 및 유지보수 PHP 개발자 (재택근무)'
+  UNION ALL
+  SELECT 'VbZzOv45', '웹 서비스 플랫폼 콘텐츠 디자이너 구인 (일 4시간/재택근무)'
+  UNION ALL
+  SELECT 'idRe46', '안드로이드 앱 디컴파일 및 코드 획득 및 통신 방식 분석'
+  UNION ALL
+  SELECT 'tCCDn47', 'JAKA ROBOT 과 Vision 을 이용한 Pick 데모 개발'
+  UNION ALL
+  SELECT 'xcUUYI68', '[정규직] Deep Learning Engineer(딥러닝 개발자)'
+  UNION ALL
+  SELECT 'odLm69', '[정규직] Deep Learning Inference Optimization Engineer(딥러닝 추론 최적화 개발자)'
+  UNION ALL
+  SELECT 'UUtFlh70', '[정규직] Application Engineer(어플리케이션 개발자)'
+  UNION ALL
+  SELECT 'DueLN71', '[정규직] Perception Engineer(자율주행 인지 개발자)'
+  UNION ALL
+  SELECT 'fRCzU72', 'Vue.js 프론트엔드 개발자 추가 증원 (주 10시간 재택근무)'
+  UNION ALL
+  SELECT 'KEdz73', 'Flutter 기반 소개팅 앱 개발'
+  UNION ALL
+  SELECT 'Exnh74', '정규직 UI/UX 디자이너'
+  UNION ALL
+  SELECT 'lIgRk75', 'NFT P2P 거래 플랫폼을 구축'
+  UNION ALL
+  SELECT 'PMrjqT76', 'POS 주문 입력 매크로(자동화) 윈도우 프로그램 개발'
+  UNION ALL
+  SELECT 'GGLI77', '자사 고객센터 반응형 웹 구축'
+  UNION ALL
+  SELECT 'mkSME78', '사진 영상 공모전 웹 디자인'
+  UNION ALL
+  SELECT 'XWTmIz79', '구글 스프레드시트 기반 데이터 연동 및 문자 자동 발송 기능 설계 및 개발'
+  UNION ALL
+  SELECT 'ERDXZ80', '진동센서 데이터 수집을 위한 DAQ 및 서버 구축'
+  UNION ALL
+  SELECT 'SZkh81', 'React 컴포넌트 업데이트'
+  UNION ALL
+  SELECT 'yEzC82', '산업용품 중개 플랫폼 웹 구축'
+  UNION ALL
+  SELECT 'yaSn83', 'Node.js 기반 프리미엄 모임 앱 서비스 백엔드 개발'
+  UNION ALL
+  SELECT 'LXTgk84', 'VanillaJS 기반 사이트의 추가 기능 개발'
+  UNION ALL
+  SELECT 'snHC85', '건강식품 쇼핑몰 반응형 웹 기획 및 개발'
+  UNION ALL
+  SELECT 'aWlJX86', '교육 훈련 모델 유지보수 및 운영'
+  UNION ALL
+  SELECT 'NbsEa107', '역사 관련 Android 및 iOS 앱 구축'
+  UNION ALL
+  SELECT 'RdeCU108', '데이터 기반 이커머스 인텔리전스 플랫폼 PM 구인(주 3일 재택근무)'
+  UNION ALL
+  SELECT 'EBAJ109', '키움증권 API 연동 해외선물 차트를 구현한 웹 구축'
+  UNION ALL
+  SELECT 'lMTLbg110', '상품 기획 및 광고 홍보 디자인'
+  UNION ALL
+  SELECT 'zdovg111', '상품기획 및 광고 홍보 기획'
+  UNION ALL
+  SELECT 'EDTadf112', 'Windows 용 업데이터 프로그램 개발'
+  UNION ALL
+  SELECT 'hOlYzU113', '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)'
+  UNION ALL
+  SELECT 'dIZakP114', 'CAFE24 기반 사이트 이벤트 접수 페이지 개발'
+  UNION ALL
+  SELECT 'ieRWF115', '방문요양 관리 시스템 기획/디자인/웹 퍼블리싱'
+  UNION ALL
+  SELECT 'SwMUt116', '가전제품 설명서 제작/홈페이지 제작 디자인'
+  UNION ALL
+  SELECT 'WycQ117', '레거시 PHP 기반 ERP 운영/유지보수'
+  UNION ALL
+  SELECT 'xMBcy118', '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)'
+  UNION ALL
+  SELECT 'QrwBem119', 'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인'
+  UNION ALL
+  SELECT 'sDSm120', '기존 사이트 소스 검토 및 배포를 위한 오류 해결'
+  UNION ALL
+  SELECT 'eEfwH121', '중소기업 홈페이지 리뉴얼 반응형 웹 구축'
+  UNION ALL
+  SELECT 'LGbD122', 'React 기반 항공사 사내 시스템 프론트엔드 개발자 구인'
+  UNION ALL
+  SELECT 'qJrmgY123', '수입차 브랜드 통합 시승 신청 웹 및 어드민 디자인 개발'
+  UNION ALL
+  SELECT 'FuXv124', 'B2B 차량 호출 서비스 추가 기능 개발'
+  UNION ALL
+  SELECT 'ahtNgS125', '쇼핑몰 관리자 웹 프런트엔드 개발'
+  UNION ALL
+  SELECT 'hDSo126', '웹(React) 프런트엔드 개발'
+  UNION ALL
+  SELECT 'PXIUZM127', 'Flutter 기반 AI 의료 애플리케이션 기능 고도화(재택근무)'
+  UNION ALL
+  SELECT 'KvzfMg128', 'TypeScript(Express or Nest) 기반 백엔드 개발'
+  UNION ALL
+  SELECT 'FyDlnM129', '축구장에서 사용할 제품 디자인'
+  UNION ALL
+  SELECT 'cuerq130', 'React 프론트엔드 개발자 구인 (주 2일 근무 / 재택근무)'
+  UNION ALL
+  SELECT 'MCahD131', 'PHP/MySQL 기반 CRM 백엔드 개발자 구인'
+  UNION ALL
+  SELECT 'ecyX132', 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발'
+  UNION ALL
+  SELECT 'UtEidV133', 'React 기반 시니어 프론트엔드 개발자 추가 증원'
+  UNION ALL
+  SELECT 'aOsTG134', '치과전문 차팅 자동화 PowerPoint 매크로 개발'
+  UNION ALL
+  SELECT 'Zckab135', '투썸플레이스 LMS 플랫폼 구축'
+  UNION ALL
+  SELECT 'KbOlaI136', 'Windows OS 기반 당사 PC 프로그램 오류 수정 및 개선'
+  UNION ALL
+  SELECT 'VDdx137', '모바일 유언장 웹 추가 기능 개발'
+  UNION ALL
+  SELECT 'CwphfH138', '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택 1일 상주)'
+  UNION ALL
+  SELECT 'vexm139', '사내 ERP 솔루션 백엔드 Go/SQL 개발(상주/원격 여부 협의)'
+  UNION ALL
+  SELECT 'UfPqys140', '워드프레스 사이트 디자인 변경을 위한 퍼블리싱/웹 개발'
+  UNION ALL
+  SELECT 'opOhv141', 'HRIS 유지보수 및 추가 개발 (2주 상주/ 2주 재택)'
+  UNION ALL
+  SELECT 'mygeh142', '신발 제조 기업 MES 전자정부/JAVA 개발'
+  UNION ALL
+  SELECT 'qvYWGs143', '해외 자재관리 시스템 구축'
+  UNION ALL
+  SELECT 'pHwFgm144', 'LG전자 EDI 모듈 백엔드 개발'
+  UNION ALL
+  SELECT 'kRhx145', '의료용 웨어러블 로봇 제어 및 모니터링 Android 개발'
+  UNION ALL
+  SELECT 'IYNvWg146', '운영 중인 서비스 Backend 개발'
+  UNION ALL
+  SELECT 'CzIA147', 'React 기반 운영 중인 솔루션의 고도화 프론트 개발'
+  UNION ALL
+  SELECT 'Lboqqm148', '건설기술인 매칭 플랫폼 웹 및 앱 기획'
+  UNION ALL
+  SELECT 'yVRwmf149', '청소년 유해 사이트 자체 차단 앱 구축'
+  UNION ALL
+  SELECT 'xBEr150', 'PC/iOS/안드로이드 태블릿/전자칠판 앱의 디자인'
+  UNION ALL
+  SELECT 'czmrKZ151', '성격특성 검사도구 제공 및 판매 서비스 구축'
+  UNION ALL
+  SELECT 'CAHAQ152', '노코드기반 웹 빌더 솔루션 구축'
+  UNION ALL
+  SELECT 'gWET153', '자사 서비스 초등 서비스 퍼블리싱 및 프론트 개발'
+  UNION ALL
+  SELECT 'ufOIJy154', '여행 커뮤니티 반응형 웹 서비스 MVP 개발'
+  UNION ALL
+  SELECT 'OnMoS155', '기 개발된 모바일/웹 앱 소스 검토 및 오류 수정'
+  UNION ALL
+  SELECT 'HZIcdN156', '쇼피(SHOPEE) 연동 상품 관리 솔루션 구축'
+  UNION ALL
+  SELECT 'rEZd157', '증권사 MTS HTS WTS 고도화 서비스 기획'
+  UNION ALL
+  SELECT 'DfuNV158', '서베이 솔루션 시스템 개발'
+  UNION ALL
+  SELECT 'DUUhr159', '주간 학습관리 중개 서비스 추가 기능 기획'
+  UNION ALL
+  SELECT 'PRGWqk160', '수액 모니터링 웹 시스템 추가 개발 및 보수'
+  UNION ALL
+  SELECT 'VKvvW161', '.net 기반의 프로그램 수정을 위한 자문'
+  UNION ALL
+  SELECT 'vIlguh162', '글로벌향 SPA 웹앱 시니어 PM 구인(재택근무)'
+  UNION ALL
+  SELECT 'TpxT163', 'React 기반 노코드 솔루션 프론트엔드 개발(재택근무)'
+  UNION ALL
+  SELECT 'oDvfI164', '서비스 오류수정 및 관리자/프런트 고도화'
+  UNION ALL
+  SELECT 'kAXVx165', '사내 학생 관리 웹 서비스 UI/UX 기획 및 디자인'
+  UNION ALL
+  SELECT 'RgAa196', 'Flutter 기반 피부관리 솔루션 Frontend 마무리 개발'
+  UNION ALL
+  SELECT 'jeMhE197', '이벤트 페이지 및 어드민 추가 개발'
+  UNION ALL
+  SELECT 'XCZvwT198', 'OpenCV 비전검사 장비 프로그램 개발'
+  UNION ALL
+  SELECT 'Zvvw199', '증권사 MTS HTS WTS 고도화 서비스 기획    '
+  UNION ALL
+  SELECT 'PoqT200', '오픈마켓 주문처리 API 연동 개발'
+  UNION ALL
+  SELECT 'qcTSwd201', '운영 중인 체험단 사이트 홈페이지 디자인 리뉴얼'
+  UNION ALL
+  SELECT 'fiVed202', '카페24 기반 자사몰 내 필터 기능 추가 개발'
+  UNION ALL
+  SELECT 'SDqVIr203', '하수관로 관련 프로그램의 추가 기능 개발'
+  UNION ALL
+  SELECT 'ypWlHs204', '업무지원시스템 차세대 PostgreSQL DBA'
+  UNION ALL
+  SELECT 'vPQz205', 'R형 화재수신기 원격제어 시스템 개발'
+  UNION ALL
+  SELECT 'KFjtyk206', '내부 PC 모니터링 프로그램 개발'
+  UNION ALL
+  SELECT 'xHJtoa207', '워드프레스 기반 목업 서비스 개발'
+  UNION ALL
+  SELECT 'KqudU208', '디지털 피아노 컨트롤 앱 개발'
+  UNION ALL
+  SELECT 'bkBch209', '대기업 증권사 Java 개발자 구인'
+  UNION ALL
+  SELECT 'MFyv210', '신발 제조 기업 MES 전자정부/JAVA 개발'
+  UNION ALL
+  SELECT 'wqArYM211', '카카오톡 상담 봇 개발'
+  UNION ALL
+  SELECT 'CyrGD212', '한국중부발전 생성형 AI 업무서비스 구축'
+  UNION ALL
+  SELECT 'mrAq213', 'JAVA/Spring Boot/Spring/REACT 기반 ERP 및 광고 솔루션 구축'
+  UNION ALL
+  SELECT 'fDcqTI214', '워드프레스 기반 구글 SEO (영어) 한국 방문 해외 고객 대상 SIM 상품 판매 쇼핑몰 웹사이트 개발'
+  UNION ALL
+  SELECT 'tiTYh215', '교육 및 서비스 소개 및 게시판 홈페이지 구축'
+  UNION ALL
+  SELECT 'NHLHj216', '커피머신/주변기기 역경매 플랫폼 구축'
+  UNION ALL
+  SELECT 'mmvUT217', '향수 취향 설문에 따른 맞춤 향수 추천 서비스의 초기 버전 구축'
+  UNION ALL
+  SELECT 'xyoxkv218', '포토부스 말레이시아 QR 결제 모듈 연동'
+  UNION ALL
+  SELECT 'ebDZU219', '노무 법인 CTI연동 CRM 시스템 구축'
+  UNION ALL
+  SELECT 'CsCzV220', '기존 윈도우 SW의 일부 내용을 웹으로 전환'
+  UNION ALL
+  SELECT 'pdLAp221', '깃헙의 node.js-puppeteer의 arm 포팅'
+  UNION ALL
+  SELECT 'iYcGnu222', '기업 홈페이지 2개 구축'
+  UNION ALL
+  SELECT 'tZCJWO223', '문서 스캔 및 관리 프로그램 개발'
+  UNION ALL
+  SELECT 'BtFyJ224', '기업 또는 단체에서 교육이나 정보 공유를 위한 앱'
+  UNION ALL
+  SELECT 'HvaExN225', 'O2O 배달 플랫폼 구축'
+  UNION ALL
+  SELECT 'ZBVN326', '글쓰기 에디터 기능에 대한 자문'
+  UNION ALL
+  SELECT 'PerHZ327', '운영 중인 서비스 Backend 개발'
+  UNION ALL
+  SELECT 'RGkRZ328', '브라우저 개발자 도구를 활용한 로그 기록 조사'
+  UNION ALL
+  SELECT 'YXYCW329', '증권사 MTS HTS WTS 개선 UI/UX 디자인'
+  UNION ALL
+  SELECT 'VTKv330', '금융권 대고객 사이트 운영 웹 기획'
+  UNION ALL
+  SELECT 'pNFKK331', '행사 이벤트용 투표 웹 구축'
+  UNION ALL
+  SELECT 'NwcUN332', '위치추적 시스템 DBA SM 프로젝트'
+  UNION ALL
+  SELECT 'dxufQj333', '구인 구직 반응형 웹 구축'
+  UNION ALL
+  SELECT 'Fffr334', '해외 쇼핑몰 상품정보 크롤링 프로그램 개발'
+  UNION ALL
+  SELECT 'urfe335', 'PHP 기반 웹 서비스의 관리자 웹 화면 개선 및 추가 기능 개발'
+  UNION ALL
+  SELECT 'neTq336', 'GCP Cloud Program Manager'
+  UNION ALL
+  SELECT 'iPPGRI337', '부동산 중개업 내부 업무 시스템 구축'
+  UNION ALL
+  SELECT 'TUSR338', '인사/영업조직 업무운영 시스템 Java/XPLATFORM 개발'
+  UNION ALL
+  SELECT 'RdSTB339', '워드프레스 기반 목업 서비스 개발'
+  UNION ALL
+  SELECT 'AoIu340', '디지털 피아노 컨트롤 앱 개발'
+  UNION ALL
+  SELECT 'jStrW341', '자율운항 제품 UI React 프론트엔드 개발'
+  UNION ALL
+  SELECT 'ubuSoR342', 'React Native 안드로이드 앱 오류 수정'
+  UNION ALL
+  SELECT 'cYBsKj343', 'ASP.Net 기반 대기업 사내 웹앱 교육 및 개발 (주2일 재택)'
+  UNION ALL
+  SELECT 'QUCKTx344', '가맹점 및 사용자 서비스 제공 하이브리드 앱 구축'
+  UNION ALL
+  SELECT 'LNJbp345', '자동 입찰/계약 및 입출고 관리 프로그램 구축(구매ERP)'
+  UNION ALL
+  SELECT 'eMZcMZ346', '크루즈객실 스마트 체크인 및 부대시설 예약앱/어드민'
+  UNION ALL
+  SELECT 'uxcin348', '아임웹 기반 랜딩페이지 구축'
+  UNION ALL
+  SELECT 'HsFSA349', '건축물대장 엑셀데이터 파싱'
+  UNION ALL
+  SELECT 'thMCB350', 'Windows/Android 프로그램 신규 개발'
+  UNION ALL
+  SELECT 'TlDf351', 'Next.js 기반 어드민 Frontend 개발 (주 20시간 재택 근무)'
+  UNION ALL
+  SELECT 'dAqo352', '선교사 훈련 센터 홈페이지 재구축'
+  UNION ALL
+  SELECT 'PKBAPb353', '사내에서 사용할 SW 의 UI/UX 디자인'
+  UNION ALL
+  SELECT 'vCyma354', 'Nextjs 기반 웹 채팅 개발 (재택/출근 선택)'
+  UNION ALL
+  SELECT 'emzf355', '솔루션 소개 사이트 디자인/개발'
+  UNION ALL
+  SELECT 'IWsST356', '다양한 커머스 플랫폼에서 특정 제품들의 최저가 추적 웹 프로그램'
+  UNION ALL
+  SELECT 'pSWx357', '전기차 충전 인프라 리눅스 시스템 운영 및 유지보수'
+  UNION ALL
+  SELECT 'gIVBZZ358', '차량 정보 제공 모바일 웹 구축'
+  UNION ALL
+  SELECT 'cLqj359', '카페 24 포인트몰 연계 기능 개발'
+  UNION ALL
+  SELECT 'Svdn360', 'QR 기반 주문 및 결제 관리 플랫폼 MVP 앱 개발'
+  UNION ALL
+  SELECT 'tWdMN361', '주식매매시스템 운영 프로젝트 PM'
+  UNION ALL
+  SELECT 'TOPNn362', '교육 서비스 반응형 랜딩 페이지 구축'
+  UNION ALL
+  SELECT 'milM363', '날씨날씨 기존/신규 기능 UI 디자인( 재택 근무 일 4시간 내외 근무 )'
+  UNION ALL
+  SELECT 'VWTDAr364', '모빌리티 서비스 백엔드 운영 유지보수'
+  UNION ALL
+  SELECT 'jRUfV365', 'OCR 관련 Python 개발자 구인'
+  UNION ALL
+  SELECT 'revaSG366', '블루투스 연동 iOS 개발'
+  UNION ALL
+  SELECT 'ZSWh367', '보험 청구 시스템 UI/UX 디자인'
+  UNION ALL
+  SELECT 'rSjY368', '나만의 닥터 앱/웹 UX UI 개선 디자인'
+  UNION ALL
+  SELECT 'YxmMu369', '건설 관련 정보 제공 반응형 웹 전면 개편'
+  UNION ALL
+  SELECT 'uhintx370', 'Android 기반 AI 시연용 앱 설계 및 개발'
+  
+  
+  
+  
+  
+  
+  
+  
 ) t
 JOIN member m ON m.id = t.partner_member_id
 JOIN partner p ON p.member_idx = m.member_idx
 JOIN project pr ON pr.projectname = t.project_name;
-

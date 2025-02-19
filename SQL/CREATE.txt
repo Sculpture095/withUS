@@ -1,6 +1,7 @@
 create database main;
 use main;
-drop database main;
+
+
 
 -- member
 CREATE TABLE `member` (
@@ -116,6 +117,7 @@ CREATE TABLE `contract` (
   `constatus` enum('CANCELED','PENDING','SIGNED') NOT NULL,
   `partner_idx` int NOT NULL,
   `project_idx` int NOT NULL,
+  `apicode` varchar(200) null,
   PRIMARY KEY (`contract_idx`),
   UNIQUE KEY `uk_contract_id` (`contract_id`),
   KEY `fk_contract_partner` (`partner_idx`),
@@ -273,5 +275,18 @@ CREATE TABLE `selectskill` (
   CONSTRAINT `fk_selectskill_case` FOREIGN KEY (`case_idx`) REFERENCES `case_table` (`case_idx`),
   CONSTRAINT `fk_selectskill_partner` FOREIGN KEY (`partner_idx`) REFERENCES `partner` (`partner_idx`),
   CONSTRAINT `fk_selectskill_project` FOREIGN KEY (`project_idx`) REFERENCES `project` (`project_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `ucansign_webhook` (
+  `ucansign_webhook_idx` INT NOT NULL AUTO_INCREMENT,
+  `document_id` VARCHAR(100) NOT NULL,
+   `ucansign_webhook_id` char(36) NOT NULL,
+  `event_type` VARCHAR(50) NOT NULL,
+  `payload` TEXT NOT NULL,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `contract_idx` int NOT NULL,
+  CONSTRAINT `fk_webhook_contract_idx` FOREIGN KEY (`contract_idx`) REFERENCES contract(`contract_idx`),
+  PRIMARY KEY (`ucansign_webhook_idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
