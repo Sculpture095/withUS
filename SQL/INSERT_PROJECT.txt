@@ -75,7 +75,7 @@ SELECT
     '.Net 기반 키오스크 및 포스 유지보수' AS projectname,     
     STR_TO_DATE('2024-12-17','%Y-%m-%d') AS registrationdate,     
     '.Net · 4년 이상,C# · 4년 이상' AS requirement,     
-    STR_TO_DATE('2024-12-17','%Y-%m-%d') AS startdate,     
+    STR_TO_DATE('2025-01-04','%Y-%m-%d') AS startdate,     
     5 AS teamsize,     
     'puZP22341' AS client_id  
 
@@ -146,7 +146,7 @@ SELECT
     '암호화폐 거래소 인프라/DB 최적화 백엔드 개발자 구인',     
     STR_TO_DATE('2024-12-26','%Y-%m-%d'),     
     'Node.js · 8년 이상,MongoDB · 8년 이상,AWS EC2 · 3년 이상,terraform · 3년 이상,Kubernetes · 3년 이상,Docker · 3년 이상,GitHub Actions · 3년 이상,argo cd · 3년 이상,TypeScript · 3년 이상',     
-    STR_TO_DATE('2024-12-26','%Y-%m-%d'),     
+    STR_TO_DATE('2025-01-13','%Y-%m-%d'),     
     2,     
     'uLUh5832'   
   UNION ALL   
@@ -219,7 +219,7 @@ SELECT
     '암호화폐 거래소 Next.js 프론트엔드 개발자 구인',     
     STR_TO_DATE('2024-12-26','%Y-%m-%d'),     
     'next.js · 4~7년,TypeScript · 4~7년',     
-    STR_TO_DATE('2024-12-26','%Y-%m-%d'),     
+    STR_TO_DATE('2025-01-13','%Y-%m-%d'),     
     1,     
     'xpdoV7'   
   UNION ALL   
@@ -280,7 +280,7 @@ SELECT
     '내부에서 사용할 웹 빌더 시스템 구축',     
     STR_TO_DATE('2024-12-26','%Y-%m-%d'),     
     '요구사항 없음',     
-    STR_TO_DATE('2024-12-26','%Y-%m-%d'),     
+    STR_TO_DATE('2025-01-13','%Y-%m-%d'),     
     13,     
     'qmsNLR3132'   
   UNION ALL   
@@ -348,7 +348,7 @@ SELECT
     '차량관제 서비스 UI/UX 기획자',     
     STR_TO_DATE('2024-12-26','%Y-%m-%d'),     
     'PowerPoint · 경력 무관',     
-    STR_TO_DATE('2024-12-26','%Y-%m-%d'),
+    STR_TO_DATE('2025-01-13','%Y-%m-%d'),
     2,     
     'mOnnf9'  
 	UNION ALL
@@ -409,7 +409,7 @@ SELECT
 	  'iOS 사용자 인증 보완 개발',
 	  STR_TO_DATE('2024-12-26', '%Y-%m-%d'),
 	  'Figma,GCP,IOS app,React Native,Spring Boot',
-	  STR_TO_DATE('2024-12-26', '%Y-%m-%d'),  
+	  STR_TO_DATE('2025-01-14', '%Y-%m-%d'),  
 	  1,
 	  'wXkJ12'
   UNION ALL
@@ -482,7 +482,7 @@ SELECT
 	  '운영 업무리더 구인 (SAP BW/RPA 등)',
 	  STR_TO_DATE('2024-12-26', '%Y-%m-%d'),
 	  'SAP HANA · 경력 무관',
-	  STR_TO_DATE('2024-12-26', '%Y-%m-%d'),  
+	  STR_TO_DATE('2025-01-14', '%Y-%m-%d'),  
 	  0,
 	  'zhGjc13'
   UNION ALL
@@ -540,7 +540,7 @@ SELECT
 	  '워드프레스 플러그인 결제 모듈 수정',
 	  STR_TO_DATE('2024-12-26', '%Y-%m-%d'),
 	  'WordPress',
-	  STR_TO_DATE('2024-12-26', '%Y-%m-%d'),  
+	  STR_TO_DATE('2025-01-16', '%Y-%m-%d'),  
 	  4,
 	  'xRSVX14'
   UNION ALL
@@ -610,7 +610,7 @@ SELECT
 	  '금융권 차세대 프로젝트 내 UMS 구축 React 프론트 개발',
 	  STR_TO_DATE('2024-12-11', '%Y-%m-%d'),
 	  'React · 3년 이상,TypeScript · 3년 이상,JavaScript · 3년 이상,CSS · 3년 이상,HTML · 3년 이상',
-	  STR_TO_DATE('2024-12-11', '%Y-%m-%d'),  
+	  STR_TO_DATE('2024-12-30', '%Y-%m-%d'),  
 	  17,
 	  'dQQyE15'
   UNION ALL
@@ -746,7 +746,7 @@ SELECT
 	  'Python 기반 음식 배달 POS 유지보수 (재택근무)',
 	  STR_TO_DATE('2024-12-24', '%Y-%m-%d'),
 	  'Python · 4년 이상,Windows · 4년 이상',
-	  STR_TO_DATE('2024-12-24', '%Y-%m-%d'),
+	  STR_TO_DATE('2025-01-11', '%Y-%m-%d'),
 	  2,
 	  'uLUh5832'
 	UNION ALL
@@ -821,7 +821,7 @@ SELECT
 	  '이동서비스 예약 중개 플랫폼 구축',
 	  STR_TO_DATE('2024-12-24', '%Y-%m-%d'),
 	  'Android,iOS',
-	  STR_TO_DATE('2024-12-24', '%Y-%m-%d'),
+	  STR_TO_DATE('2025-01-11', '%Y-%m-%d'),
 	  39,
 	  'qmsNLR3132'
 	UNION ALL
@@ -889,7 +889,7 @@ SELECT
 	  '안전점검 플랫폼 웹 및 앱 UI/UX 리뉴얼 디자인',
 	  STR_TO_DATE('2024-12-24', '%Y-%m-%d'),
 	  'Figma',
-	  STR_TO_DATE('2024-12-24', '%Y-%m-%d'),
+	  STR_TO_DATE('2025-01-14', '%Y-%m-%d'),
 	  22,
 	  'wXkJ12'
 	UNION ALL
@@ -956,7 +956,7 @@ SELECT
 	  'WebRTC 서버 구성 및 네트워크 최적화 방향 자문',
 	  STR_TO_DATE('2024-12-24', '%Y-%m-%d'),
 	  'mediasoup,Node.js,React Native,Spring Boot,WebRTC',
-	  STR_TO_DATE('2024-12-24', '%Y-%m-%d'),
+	  STR_TO_DATE('2025-01-15', '%Y-%m-%d'),
 	  0,
 	  'puZP22341'
 	UNION ALL
@@ -1016,7 +1016,7 @@ SELECT
 	  '자격증 LMS 시스템 내 자동 문자 연동 오류 수정',
 	  STR_TO_DATE('2024-12-24', '%Y-%m-%d'),
 	  'ASP',
-	  STR_TO_DATE('2024-12-24', '%Y-%m-%d'),
+	  STR_TO_DATE('2025-01-17', '%Y-%m-%d'),
 	  7,
 	  'xpdoV7'
 	UNION ALL
@@ -1082,7 +1082,7 @@ SELECT
 		'협회 자격 시험접수 및 자격증 발급 사이트 리뉴얼 구축' ,
 		STR_TO_DATE('2024-12-24','%Y-%m-%d'),
 		'요구사항 없음',
-		STR_TO_DATE('2024-12-24','%Y-%m-%d'),
+		STR_TO_DATE('2025-01-17', '%Y-%m-%d'),
 		27,
 		'awNnS16' 
   UNION ALL
@@ -1139,7 +1139,7 @@ SELECT
     '중고차 거래 플랫폼 React 웹 통합 개발',
     STR_TO_DATE('2024-12-24','%Y-%m-%d'),
     'React · 5~7년,React Native · 5~7년',
-    STR_TO_DATE('1900-01-01','%Y-%m-%d'),
+    STR_TO_DATE('2025-01-19', '%Y-%m-%d'),
     4,
     'dQQyE15' 
   UNION ALL
@@ -1208,7 +1208,7 @@ SELECT
     '외국어 교육서비스 반응형 웹 퍼블리싱 및 컴포넌트 개발',
     STR_TO_DATE('2024-12-24','%Y-%m-%d'),
     'CSS,HTML,JavaScript',
-    STR_TO_DATE('2024-12-24','%Y-%m-%d'),
+    STR_TO_DATE('2025-01-20', '%Y-%m-%d'),
     28,
     'xRSVX14' 
   UNION ALL
@@ -1289,7 +1289,7 @@ SELECT
     '고도몰 기반 쇼핑몰 기능 개발 및 유지보수 PHP 개발자 (재택근무)',
     STR_TO_DATE('2024-12-24','%Y-%m-%d'),
     'CSS · 경력 무관,Git · 경력 무관,HTML · 경력 무관,PHP · 경력 무관',
-    STR_TO_DATE('2024-12-24','%Y-%m-%d'),
+    STR_TO_DATE('2025-01-21','%Y-%m-%d'),
     6,
     'zhGjc13' 
   UNION ALL
@@ -1360,7 +1360,7 @@ SELECT
     '웹 서비스 플랫폼 콘텐츠 디자이너 구인 (일 4시간/재택근무)',
     STR_TO_DATE('2024-12-26','%Y-%m-%d'),
     'Figma · 경력 무관',
-    STR_TO_DATE('2024-12-26','%Y-%m-%d'),
+    STR_TO_DATE('2025-01-14','%Y-%m-%d'),
     3,
     'wXkJ12' 
     UNION ALL
@@ -1419,7 +1419,7 @@ SELECT
     '안드로이드 앱 디컴파일 및 코드 획득 및 통신 방식 분석',     
     STR_TO_DATE('2024-12-26', '%Y-%m-%d'),     
     'Android',     
-    STR_TO_DATE('2024-12-26', '%Y-%m-%d'),     
+    STR_TO_DATE('2025-01-15', '%Y-%m-%d'), 
     0,     
     'szoeDO28'  
     UNION ALL
@@ -1472,7 +1472,7 @@ SELECT
     'JAKA ROBOT 과 Vision 을 이용한 Pick 데모 개발', 
     STR_TO_DATE('2024-12-26', '%Y-%m-%d'), 
     '요구사항 없음', 
-    STR_TO_DATE('2024-12-26', '%Y-%m-%d'), 
+    STR_TO_DATE('2025-01-14', '%Y-%m-%d'), 
     0, 
     'SdoTD29'
   UNION ALL
@@ -1543,7 +1543,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     '[정규직] Deep Learning Engineer(딥러닝 개발자)', 
     STR_TO_DATE('2024-10-14', '%Y-%m-%d'),
     '요구사항 없음', 
-    STR_TO_DATE('2024-10-14', '%Y-%m-%d'), 
+    STR_TO_DATE('2024-11-01', '%Y-%m-%d'), 
     4, 
     'YrKB30'
   UNION ALL
@@ -1614,7 +1614,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     '[정규직] Deep Learning Inference Optimization Engineer(딥러닝 추론 최적화 개발자)', 
     STR_TO_DATE('2024-10-14', '%Y-%m-%d'), 
     '요구사항 없음', 
-    STR_TO_DATE('2024-10-14', '%Y-%m-%d'), 
+    STR_TO_DATE('2024-11-02', '%Y-%m-%d'),  
     1, 
     'GCjcw31'
   UNION ALL
@@ -1682,7 +1682,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     '[정규직] Application Engineer(어플리케이션 개발자)', 
     STR_TO_DATE('2024-10-14', '%Y-%m-%d'),
     '요구사항 없음', 
-    STR_TO_DATE('2024-10-14', '%Y-%m-%d'), 
+    STR_TO_DATE('2024-11-05', '%Y-%m-%d'), 
     4, 
     'PkGlsi32'
   UNION ALL
@@ -1751,7 +1751,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     '[정규직] Perception Engineer(자율주행 인지 개발자)', 
     STR_TO_DATE('2024-10-14', '%Y-%m-%d'),
     '요구사항 없음', 
-    STR_TO_DATE('2024-10-14', '%Y-%m-%d'), 
+    STR_TO_DATE('2024-11-07', '%Y-%m-%d'),  
     5, 
     'rZxp33'
   UNION ALL
@@ -1830,7 +1830,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     'Vue.js 프론트엔드 개발자 추가 증원 (주 10시간 재택근무)', 
     STR_TO_DATE('2024-12-23', '%Y-%m-%d'),
     'Vue.js · 경력 무관,GitHub · 경력 무관,restful api · 경력 무관', 
-    STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
+    STR_TO_DATE('2025-01-15', '%Y-%m-%d'), 
     27, 
     'ANPK34'
   UNION ALL
@@ -1895,7 +1895,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     'Flutter 기반 소개팅 앱 개발', 
     STR_TO_DATE('2024-12-23', '%Y-%m-%d'),
     'Android,Flutter,iOS', 
-    STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
+    STR_TO_DATE('2025-01-17', '%Y-%m-%d'), 
     19, 
     'gnCtj35'
   UNION ALL
@@ -1962,7 +1962,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     '정규직 UI/UX 디자이너', 
     STR_TO_DATE('2024-12-23', '%Y-%m-%d'),
     '요구사항 없음', 
-    STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
+    STR_TO_DATE('2025-01-20', '%Y-%m-%d'), 
     0, 
     'uXeP36'
   UNION ALL
@@ -2020,7 +2020,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
     'NFT P2P 거래 플랫폼을 구축', 
     STR_TO_DATE('2024-12-23', '%Y-%m-%d'),
     '요구사항 없음', 
-    STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
+    STR_TO_DATE('2025-01-15', '%Y-%m-%d'), 
     14, 
     'gpBf37'
   UNION ALL
@@ -2085,7 +2085,7 @@ DL팀에게 딥러닝은 단순한 Operation의 조합을 통한 네트워크 �
   'POS 주문 입력 매크로(자동화) 윈도우 프로그램 개발', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   '요구사항 없음', 
-  STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-17', '%Y-%m-%d'), 
   8, 
   'QGhj48'
 UNION ALL
@@ -2144,7 +2144,7 @@ SELECT
   '자사 고객센터 반응형 웹 구축', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   '요구사항 없음', 
-  STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-18', '%Y-%m-%d'), 
   33, 
   'mybXVx49'
 UNION ALL
@@ -2206,7 +2206,7 @@ SELECT
   '사진 영상 공모전 웹 디자인', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   'Figma', 
-  STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-11', '%Y-%m-%d'),  
   15, 
   'xbAYqJ50'
 UNION ALL
@@ -2258,7 +2258,7 @@ SELECT
   '구글 스프레드시트 기반 데이터 연동 및 문자 자동 발송 기능 설계 및 개발', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   '스프레드시트', 
-  STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-19', '%Y-%m-%d'), 
   38, 
   'DyIgxm51'
 UNION ALL
@@ -2320,7 +2320,7 @@ SELECT
   '진동센서 데이터 수집을 위한 DAQ 및 서버 구축', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   'MariaDB, Python, Ubuntu, 오드로이드', 
-  STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-20', '%Y-%m-%d'), 
   10, 
   'FFORbx52'
 UNION ALL
@@ -2372,7 +2372,7 @@ SELECT
   'React 컴포넌트 업데이트', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   'React, Storybook, TypeScript', 
-  STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-12', '%Y-%m-%d'), 
   12, 
   'vVOnv53'
 UNION ALL
@@ -2437,7 +2437,7 @@ SELECT
   '산업용품 중개 플랫폼 웹 구축', 
   STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   'Python, TensorFlow, BigQuery', 
-  STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-15', '%Y-%m-%d'), 
   20, 
   'JrCZ54'
 UNION ALL
@@ -2512,7 +2512,7 @@ SELECT
   'Node.js 기반 프리미엄 모임 앱 서비스 백엔드 개발', 
   STR_TO_DATE('2024-12-17', '%Y-%m-%d'), 
   'Node.js · 10년 이하,MySQL · 10년 이하,AWS · 8년 이하,RDBMS · 8년 이하', 
-  STR_TO_DATE('2024-12-17', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-06', '%Y-%m-%d'), 
   11, 
   'BOdkWf55'
 UNION ALL
@@ -2567,7 +2567,7 @@ SELECT
   'VanillaJS 기반 사이트의 추가 기능 개발', 
   STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
   'Vanilla JS', 
-  STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-09', '%Y-%m-%d'), 
   22, 
   'XQZgBK56'
 UNION ALL
@@ -2641,7 +2641,7 @@ SELECT
   '건강식품 쇼핑몰 반응형 웹 기획 및 개발', 
   STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
   '요구사항 없음', 
-  STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-17', '%Y-%m-%d'), 
   44, 
   'TujJWb57'
 UNION ALL 
@@ -2703,7 +2703,7 @@ SELECT
   '교육 훈련 모델 유지보수 및 운영',     
   STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
   'C# · 경력 무관,C++ · 경력 무관',     
-  STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
+  STR_TO_DATE('2025-01-07', '%Y-%m-%d'),  
   0,     
   'towNF58'  
 UNION ALL   
@@ -2772,7 +2772,7 @@ SELECT
   '역사 관련 Android 및 iOS 앱 구축',     
   STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
   'Android,iOS',     
-  STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
+  STR_TO_DATE('2025-01-07', '%Y-%m-%d'), 
   61,     
   'pEmNC59'  
 UNION ALL   
@@ -2832,7 +2832,7 @@ SELECT
   '데이터 기반 이커머스 인텔리전스 플랫폼 PM 구인(주 3일 재택근무)',     
   STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
   '요구사항 없음',     
-  STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
+  STR_TO_DATE('2025-01-09', '%Y-%m-%d'), 
   5,     
   'RpWP60'  
 UNION ALL   
@@ -2889,7 +2889,7 @@ SELECT
   '키움증권 API 연동 해외선물 차트를 구현한 웹 구축',     
   STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
   '요구사항 없음',     
-  STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
+  STR_TO_DATE('2025-01-07', '%Y-%m-%d'), 
   12,     
  'kTYS61'  
 UNION ALL   
@@ -2948,7 +2948,7 @@ SELECT
   '상품 기획 및 광고 홍보 디자인',     
   STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
   '어도비 · 경력 무관',     
-  STR_TO_DATE('2024-12-20','%Y-%m-%d'),     
+  STR_TO_DATE('2025-01-07', '%Y-%m-%d'), 
   6,     
   'ZvSxN62'
 UNION ALL
@@ -3007,7 +3007,7 @@ SELECT
   '상품기획 및 광고 홍보 기획', 
   STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
   '어도비 · 경력 무관', 
-  STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-07', '%Y-%m-%d'), 
   0, 
   'OGWCFY63'  
 UNION ALL  
@@ -3064,7 +3064,7 @@ SELECT
   'Windows 용 업데이터 프로그램 개발', 
   STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
   'Windows,Windows Service', 
-  STR_TO_DATE('2024-12-20', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-07', '%Y-%m-%d'), 
   23, 
    'wajKpc64'
 UNION ALL  
@@ -3168,7 +3168,7 @@ SELECT
   '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)', 
   STR_TO_DATE('2024-12-24', '%Y-%m-%d'), 
   'AWS,Linux,MySQL,Spring Boot,Tomcat,Vue.js', 
-  STR_TO_DATE('2024-12-24', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-11', '%Y-%m-%d'), 
   3, 
   'JKxL65'
 UNION ALL  
@@ -3229,7 +3229,7 @@ SELECT
   'CAFE24 기반 사이트 이벤트 접수 페이지 개발', 
   STR_TO_DATE('2024-12-24', '%Y-%m-%d'), 
   'Cafe24', 
-  STR_TO_DATE('2024-12-24', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-11', '%Y-%m-%d'), 
   6, 
   'wWXwg66'
 UNION ALL  
@@ -3286,7 +3286,7 @@ SELECT
   '방문요양 관리 시스템 기획/디자인/웹 퍼블리싱', 
   STR_TO_DATE('2024-12-24', '%Y-%m-%d'), 
   '요구사항 없음', 
-  STR_TO_DATE('2024-12-24', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-11', '%Y-%m-%d'), 
   24, 
   'jtPrKY67'
 UNION ALL  
@@ -3345,7 +3345,7 @@ SELECT
   '가전제품 설명서 제작/홈페이지 제작 디자인', 
   STR_TO_DATE('2024-12-05', '%Y-%m-%d'), 
   'Photoshop · 경력 무관,Illustrator · 경력 무관', 
-  STR_TO_DATE('2024-12-05', '%Y-%m-%d'), 
+  STR_TO_DATE('2024-12-23', '%Y-%m-%d'), 
   8, 
   'eAZFXj87'
 UNION ALL  
@@ -3408,7 +3408,7 @@ SELECT
   '레거시 PHP 기반 ERP 운영/유지보수', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   'PHP · 4~12년,Legacy PHP · 4~12년', 
-  STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-06', '%Y-%m-%d'), 
   14, 
   'WKoc88'
 UNION ALL  
@@ -3492,7 +3492,7 @@ SELECT
   '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)', 
   STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
   'Kafka · 경력 무관,Airflow · 경력 무관,PostgreSQL · 경력 무관,tableau · 경력 무관,Kubernetes · 경력 무관', 
-  STR_TO_DATE('2024-12-19', '%Y-%m-%d'), 
+  STR_TO_DATE('2025-01-06', '%Y-%m-%d'), 
   3, 
   'yrDPzg89'
 UNION ALL  
