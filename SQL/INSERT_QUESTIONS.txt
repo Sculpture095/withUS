@@ -5,35 +5,40 @@ SELECT
   t.attachment, t.content, t.is_answered, UUID(), t.subject, m.member_idx
 FROM (
   SELECT 
-    'gkdg123' AS id, 'attachment1.jpg' AS attachment, '이벤트가 언제 시작되나요?' AS subject, '이벤트 시작 날짜를 알고 싶습니다.' AS content , 0 AS is_answered
-  UNION ALL
-  SELECT 
-    'sycc3456', 
-    'attachment2.jpg', 
-    '회원 가입이 안됩니다.', 
-    '회원 가입 시 오류가 발생하는데 해결 방법을 알려주세요.',
-    0
-  UNION ALL
-  SELECT 
-    'zlwU4377', 
-    'attachment3.png', 
-    '비밀번호를 잊어버렸습니다.', 
-    '비밀번호를 재설정하고 싶습니다. 방법을 알려주세요.',
-    0
-  UNION ALL
-  SELECT 
-    'qFNK10', 
-    'attachment4.png', 
-    '아이디 찾기가 안됩니다.', 
-    '아이디 찾기 서비스가 작동하지 않습니다.',
-    1
-  UNION ALL
-  SELECT 
-    'zUIeB11', 
-    'attachment5.png', 
-    '메일이 오지 않습니다.', 
-    '가입 확인 메일이 도착하지 않았습니다.',
-    1
+    'puZP22341' AS id, NULL AS attachment, 
+    '로그인 시도 시, 예상치 못한 오류 메시지가 나타나 로그인이 되지 않습니다. 비밀번호 재입력 후에도 같은 오류가 발생하며, 여러 브라우저에서도 동일한 결과를 보이고 있습니다. 이로 인해 업무에 지장이 발생하고 있으니 원인 파악 및 신속한 수정 부탁드립니다.' AS content, 
+    0 AS is_answered, 
+    '로그인 실패 및 오류 메시지 문제' AS subject
+	UNION ALL SELECT 'cuerq130', NULL, '데이터 저장 기능 사용 중, 입력한 정보가 정상적으로 저장되지 않는 현상이 발생하고 있습니다. 저장 후 새로고침 시 데이터가 사라지며, 로그에서도 저장 오류가 반복적으로 기록되고 있습니다. 확인 후 조치 부탁드립니다.', 0, '데이터 저장 기능 오류'
+	UNION ALL SELECT 'dIZakP114', NULL, '시스템 응답 속도가 최근 급격하게 느려져 페이지 로딩과 요청 처리에 지연이 발생하고 있습니다. 이로 인해 사용자 경험에 큰 불편을 주고 있으며, 서버 상태 점검과 원인 분석이 시급해 보입니다.', 0, '시스템 응답 지연 문제'
+	UNION ALL SELECT 'XCyxp519', NULL, '특정 요청을 보낼 때마다 서버에서 오류 코드 500이 발생하고 있습니다. 이로 인해 정상적인 서비스 제공이 어려운 상황이며, 신속한 원인 파악 및 수정 조치가 필요합니다.', 1, '서버 오류 코드 500 발생'
+	UNION ALL SELECT 'vexm139', NULL, '시스템 설정 변경 후 일부 기능에서 예기치 못한 동작이 발생하여 사용자 인터페이스 혼란과 기능 접근에 문제가 있습니다. 이전 설정으로의 복구 또는 문제 해결 방안 제시를 요청드립니다.', 1, '시스템 설정 변경 후 기능 이상'
+	UNION ALL SELECT 'hvskdw40', NULL, '결제 시스템 오류가 발생하여 주문이 정상적으로 처리되지 않습니다. 결제 과정에서 에러 메시지가 발생하니 빠른 점검 부탁드립니다.', 0, '결제 시스템 오류 문의'
+	UNION ALL SELECT 'cuerq130', NULL, '회원 가입 후 확인 이메일이 수신되지 않아 계정 활성화가 진행되지 않고 있습니다. 스팸 폴더 확인 후 재발송 부탁드립니다.', 0, '회원 가입 이메일 미수신 문의'
+	UNION ALL SELECT 'ypWlHs204', NULL, '파일 다운로드 기능 사용 중, 첨부 파일이 정상적으로 내려받아지지 않는 문제가 발생하고 있습니다. 여러 브라우저에서도 동일한 현상이 나타나고 있으니 점검 바랍니다.', 1, '첨부 파일 다운로드 문제'
+	UNION ALL SELECT 'uVxA518', NULL, '비밀번호 변경 요청 후 오류 메시지가 반복되어 변경이 완료되지 않고 있습니다. 기존 비밀번호 입력 및 신규 비밀번호 설정 시 오류가 발생하는 점을 확인 부탁드립니다.', 0, '비밀번호 변경 오류 문의'
+	UNION ALL SELECT 'Fffr334', NULL, '게시판 검색 기능이 작동하지 않아 원하는 정보를 찾을 수 없습니다. 검색어 입력 시 오류가 발생하며, 관련 로그를 확인 부탁드립니다.', 1, '게시판 검색 기능 오류 문의'
+	UNION ALL SELECT 'iSsvy688', NULL, '로그인할 때 계속 오류가 나요. 확인 부탁드려요.', 0, '로그인 오류 문의'
+	UNION ALL SELECT 'PGuYY503', NULL, '회원가입 후 확인 이메일을 못 받았어요. 다시 보내주세요.', 0, '이메일 미수신 문의'
+	UNION ALL SELECT 'CAHAQ152', NULL, '파일 업로드가 잘 안돼요. 파일 확인 부탁드려요.', 0, '파일 업로드 문제'
+	UNION ALL SELECT 'ahtNgS125', NULL, '사이트가 너무 느려서 사용하기 불편해요. 속도 개선 부탁드려요.', 1, '사이트 속도 문제'
+	UNION ALL SELECT 'gCTtt347', NULL, '서비스 이용 중 자주 오류가 발생해요. 문제 해결 부탁드려요.', 0, '서비스 오류 문의'
+	UNION ALL SELECT 'czmrKZ151', NULL, '비밀번호 변경할 때 오류가 나요. 확인 부탁드려요.', 1, '비밀번호 변경 문제'
+	UNION ALL SELECT 'qEnsa435', NULL, '사이트 이용 중 갑자기 연결이 끊겨요. 오류 메시지는 나타나지 않아요.', 0, '연결 끊김 문제'
+	UNION ALL SELECT 'GpxqBr308', NULL, '검색 기능이 제대로 작동하지 않아요. 원하는 정보를 못 찾겠어요.', 0, '검색 기능 문제'
+	UNION ALL SELECT 'hDHgq265', NULL, '서비스 사용 중 연결이 자주 끊겨요. 네트워크 문제인가요?', 1, '연결 끊김 문의'
+	UNION ALL SELECT 'UwJajM172', NULL, '사이트 이용 중 오류 메시지가 나오는데 원인을 잘 모르겠어요. 확인 부탁드려요.', 0, '오류 메시지 문의'
+	UNION ALL SELECT 'JKxL65', NULL, '프로필 수정 후 변경한 내용이 저장되지 않아요. 내 정보가 업데이트되지 않아 불편합니다.', 0, '프로필 수정 문제'
+	UNION ALL SELECT 'kqFlEf260', NULL, '게시판 글 작성 후 저장되지 않아 내용이 사라졌어요. 다시 작성해야 해서 불편합니다.', 0, '게시판 글 작성 오류'
+	UNION ALL SELECT 'GivybI169', NULL, '비밀번호 찾기 기능 사용 시 오류가 발생하여 재설정 메일을 받을 수 없어요.', 0, '비밀번호 찾기 오류'
+	UNION ALL SELECT 'ZGCNe560', NULL, '댓글 작성 시 시스템 오류가 발생해 댓글이 등록되지 않아요. 불편합니다.', 0, '댓글 작성 오류'
+	UNION ALL SELECT 'rZfBF614', NULL, '내가 작성한 글이 갑자기 사라져서 확인 부탁드립니다.', 0, '게시글 삭제 문제'
+	UNION ALL SELECT 'bmCbqR663', NULL, '로그아웃 후 다시 로그인하려고 하면 오류가 발생해 접속이 어렵습니다.', 0, '로그아웃/재로그인 문제'
+	UNION ALL SELECT 'ykDus558', NULL, '문의 페이지가 정상적으로 로드되지 않아 문의 등록이 안됩니다. 확인 부탁드립니다.', 0, '문의 페이지 로드 오류'
+	UNION ALL SELECT 'RGqVwk375', NULL, '사이트 내 검색 결과가 부정확해서 원하는 정보를 찾기 어려워요.', 0, '검색 결과 오류'
+	UNION ALL SELECT 'qycs581', NULL, '회원 정보 수정 후 변경 사항이 반영되지 않아요. 다시 확인 부탁드립니다.', 0, '회원 정보 수정 오류'
+	UNION ALL SELECT 'LNJbp345', NULL, '사이트 이용 중 알 수 없는 오류 메시지가 자주 나타나서 불편합니다. 원인 확인 부탁드립니다.', 0, '알 수 없는 오류 문의'
+
+
 ) t
 JOIN member m ON m.id = t.id;
-
