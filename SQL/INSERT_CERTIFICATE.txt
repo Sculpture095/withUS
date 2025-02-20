@@ -6,7 +6,7 @@ SELECT
 FROM partner p
 JOIN member m ON p.member_idx = m.member_idx
 JOIN (
-  SELECT 'gkdg123' AS id, '2020-05-01' AS certificatedate, '정보처리기사' AS certificatename, '한국산업인력공단' AS institutionalname
+  SELECT 'uyop719' AS id, '2020-05-01' AS certificatedate, '정보처리기사' AS certificatename, '한국산업인력공단' AS institutionalname
   UNION ALL SELECT 'sycc3456', '2023-05-02', '빅데이터분석기사', '한국데이터산업진흥원'
   UNION ALL SELECT 'zlwU4377', '2022-05-03', '정보보안기사', '한국인터넷진흥원'
   UNION ALL SELECT 'qFNK10', '2021-05-04', '리눅스마스터', '한국정보통신진흥협회'
@@ -151,6 +151,7 @@ JOIN (
   UNION ALL SELECT 'iPPGRI337', '2018-10-10', 'AWS 공인 개발자-어소시에이트', 'Amazon Web Services'
   UNION ALL SELECT 'TUSR338', '2018-11-15', '정보처리기사', '한국산업인력공단'
   UNION ALL SELECT 'RdSTB339', '2018-10-22', '리눅스마스터', '한국정보통신진흥협회'
+  
 
 
 
