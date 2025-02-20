@@ -4,7 +4,7 @@ INSERT INTO selectproject (selectproject_id, yn, partner_idx, project_idx)
 SELECT
   UUID(), b'0', p.partner_idx, pr.project_idx
 FROM (
-  SELECT 'gkdg123' AS partner_member_id, '.Net 기반 키오스크 및 포스 유지보수' AS project_name
+  SELECT 'uyop719' AS partner_member_id, '.Net 기반 키오스크 및 포스 유지보수' AS project_name
   UNION ALL
   SELECT 'sycc3456', '암호화폐 거래소 인프라/DB 최적화 백엔드 개발자 구인'
   UNION ALL
