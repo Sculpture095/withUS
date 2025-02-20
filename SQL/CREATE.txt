@@ -216,7 +216,7 @@ CREATE TABLE `portfolio` (
   `portfoliocontext` varchar(2000) DEFAULT NULL,
   `portfolio_id` char(36) NOT NULL,
   `portfolioimg` varchar(500) DEFAULT NULL,
-  `portfoliotitle` varchar(30) DEFAULT NULL,
+  `portfoliotitle` varchar(50) DEFAULT NULL,
   `publicok` bit(1) NOT NULL,
   `portfoliourl` varchar(100) DEFAULT NULL,
   `startdate` date NOT NULL,
