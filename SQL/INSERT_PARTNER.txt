@@ -4,7 +4,7 @@ INSERT INTO partner (admission, degree, graduation, location, major, schoolname,
 SELECT t.admission, t.degree, t.graduation, t.location, t.major, t.schoolname, m.member_idx
 FROM member m
 LEFT JOIN (
-    SELECT 'gkdg123' AS id, '2009' AS admission, '석사' AS degree, '2015' AS graduation, '인천광역시 강남구' AS location, '전자공학' AS major, '한양대학교' AS schoolname
+    SELECT 'uyop719' AS id, '2009' AS admission, '석사' AS degree, '2015' AS graduation, '인천광역시 강남구' AS location, '전자공학' AS major, '한양대학교' AS schoolname
     UNION ALL
     SELECT 'sycc3456', '2015', '학사', '2019', '서울특별시 양천구', '컴퓨터공학', '고려대학교'
     UNION ALL
