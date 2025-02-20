@@ -77,7 +77,7 @@ SELECT
     '.Net · 4년 이상,C# · 4년 이상' AS requirement,     
     STR_TO_DATE('2025-01-04','%Y-%m-%d') AS startdate,     
     5 AS teamsize,     
-    'puZP22341' AS client_id  
+    'uyop011221' AS client_id  
 
   UNION ALL   
   SELECT      
@@ -958,7 +958,7 @@ SELECT
 	  'mediasoup,Node.js,React Native,Spring Boot,WebRTC',
 	  STR_TO_DATE('2025-01-15', '%Y-%m-%d'),
 	  0,
-	  'puZP22341'
+	  'uyop011221'
 	UNION ALL
 	SELECT 	
 	  250000,
@@ -25877,7 +25877,7 @@ PM/기획자 1명, 내부 백엔드 개발자 1명
     '요구사항 없음' AS requirement,     
     STR_TO_DATE('2024-11-28','%Y-%m-%d') AS startdate,     
     14 AS teamsize,     
-    'puZP22341' AS client_id  
+    'uyop011221' AS client_id  
 ) p
 JOIN member m ON m.id = p.client_id
 JOIN client c ON c.member_idx = m.member_idx;
