@@ -4066,7 +4066,7 @@ SELECT
     '웹(React) 프런트엔드 개발' AS projectname,
     STR_TO_DATE('2024-12-19', '%Y-%m-%d') AS registrationdate,
     'React · 10년 이상,JavaScript · 경력 무관,TypeScript · 경력 무관' AS requirement,
-    STR_TO_DATE('2025-01-16', '%Y-%m-%d'),  AS startdate,
+    STR_TO_DATE('2025-01-16', '%Y-%m-%d')  AS startdate,
     4 AS teamsize,
     'VSTd97' AS client_idx
   UNION ALL
