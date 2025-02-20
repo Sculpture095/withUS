@@ -4,7 +4,7 @@ INSERT INTO history (companyname, duration, exitdate, history_id, joindate, part
 SELECT 
   t.companyname, t.duration, STR_TO_DATE(t.exitdate, '%Y-%m-%d'), UUID(), STR_TO_DATE(t.joindate, '%Y-%m-%d'), p.partner_idx
 FROM (
-  SELECT '삼성전자' AS companyname, '2년' AS duration, '2021-05-01' AS exitdate, '2019-05-01' AS joindate, 'gkdg123' AS partner_member_id
+  SELECT '삼성전자' AS companyname, '2년' AS duration, '2021-05-01' AS exitdate, '2019-05-01' AS joindate, 'uyop719' AS partner_member_id
   UNION ALL SELECT '카카오', '3년', '2021-03-15', '2018-03-15', 'sycc3456'
   UNION ALL SELECT '네이버', '1년 6개월', '2021-06-30', '2020-01-01', 'zlwU4377'
   UNION ALL SELECT 'LG전자', '4년', '2020-09-01', '2016-09-01', 'qFNK10'
