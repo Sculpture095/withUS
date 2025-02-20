@@ -302,12 +302,6 @@ FROM (
     'TypeScript', '모바일 유언장 웹 추가 기능 개발', '모바일 유언장 웹 추가 기능 개발'
   UNION ALL
   SELECT 
-    'Django', '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택 1일 상주)', '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택 1일 상주)'
-  UNION ALL
-  SELECT 
-    'Python', '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택 1일 상주)', '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택 1일 상주)'
-  UNION ALL
-  SELECT 
     'Go', '사내 ERP 솔루션 백엔드 Go/SQL 개발(상주/원격 여부 협의)', '사내 ERP 솔루션 백엔드 Go/SQL 개발(상주/원격 여부 협의)'  
   UNION ALL
   SELECT 
