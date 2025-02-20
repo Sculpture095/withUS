@@ -3,7 +3,7 @@ select * from remark;
 -- 첫 번째 댓글
 INSERT INTO remark (remark_id, board_id, member_idx, createdate, depth, likecount, remarks, parent_idx)
 SELECT 
-    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'puZP22341'),
+    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'uyop719'),
     DATE('2024-01-05 10:30:15'), 0, 10, 'Python 활용 사례가 특히 눈에 띕니다. 좋은 글 감사드려요.', 
     NULL
 FROM board
@@ -109,7 +109,7 @@ LIMIT 1;
 INSERT INTO remark (remark_id, board_id, member_idx, createdate, depth, likecount, remarks, parent_idx)
 SELECT 
     UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'IIfiio556'),
-    DATE('2024-01-05 10:30:15'), 0, 12, 
+    DATE('2024-01-05 10:40:15'), 0, 12, 
     '다가오는 2025년에는 AI 통합과 클라우드 네이티브 애플리케이션 등 다양한 변화가 예상됩니다. 웹 개발의 미래에 대한 여러분의 전망과 준비 전략을 공유해 주시면 좋겠습니다.', 
     NULL
 FROM board
@@ -120,7 +120,7 @@ LIMIT 1;
 INSERT INTO remark (remark_id, board_id, member_idx, createdate, depth, likecount, remarks, parent_idx)
 SELECT 
     UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'tbor475'),
-    DATE('2024-01-05 10:30:15'), 0, 10, 
+    DATE('2024-01-05 11:30:15'), 0, 10, 
     '웹 개발의 패러다임이 급변하는 2025년을 맞아, 성능 최적화와 사용자 경험 강화가 핵심이 될 것으로 보입니다. 여러분이 생각하는 주요 트렌드와 도전 과제는 무엇인지 궁금합니다.', 
     NULL
 FROM board
@@ -790,7 +790,7 @@ LIMIT 1;
 -- 댓글 3/5
 INSERT INTO remark (remark_id, board_id, member_idx, createdate, depth, likecount, remarks, parent_idx)
 SELECT 
-    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'gkdg123'),
+    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'uyop719'),
     DATE('2024-10-02 09:15:00'), 0, 7,
     '자동화 배포와 CI/CD 구축에 대해 토론해보고 싶습니다. 각 기업의 성공 사례와 문제점이 궁금해요.',
     NULL
@@ -823,7 +823,7 @@ LIMIT 1;
 -- 댓글 1/3
 INSERT INTO remark (remark_id, board_id, member_idx, createdate, depth, likecount, remarks, parent_idx)
 SELECT 
-    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'puZP22341'),
+    UUID(), board_idx, (SELECT member_idx FROM member WHERE id = 'uyop011221'),
     DATE('2024-09-21 14:00:00'), 0, 5,
     '주말 피크닉 후기를 보니 정말 행복한 시간이었을 것 같습니다. 자연 속에서 느낀 소소한 감동과 추억을 공유해주셔서 감사합니다.',
     NULL
