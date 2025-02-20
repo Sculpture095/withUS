@@ -5,7 +5,7 @@ SELECT
   t.attachment, t.content, t.is_answered, UUID(), t.subject, m.member_idx
 FROM (
   SELECT 
-    'puZP22341' AS id, NULL AS attachment, 
+    'uyop011221' AS id, NULL AS attachment, 
     '로그인 시도 시, 예상치 못한 오류 메시지가 나타나 로그인이 되지 않습니다. 비밀번호 재입력 후에도 같은 오류가 발생하며, 여러 브라우저에서도 동일한 결과를 보이고 있습니다. 이로 인해 업무에 지장이 발생하고 있으니 원인 파악 및 신속한 수정 부탁드립니다.' AS content, 
     0 AS is_answered, 
     '로그인 실패 및 오류 메시지 문제' AS subject
