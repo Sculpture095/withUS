@@ -1,0 +1,162 @@
+select * from contract;
+
+INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, constatus, partner_idx, project_idx, apicode)
+SELECT
+  5000000,
+  STR_TO_DATE('2025-01-04','%Y-%m-%d'),
+  UUID(),
+  '.Net 기반 키오스크 및 포스 유지보수',
+  '계약 목적: .Net 기반 키오스크 및 포스 시스템의 정기 유지보수 및 관리. 서비스: 정기 점검, 소프트웨어 업데이트, 긴급 장애 대응. 기간: 1년(연장 가능). 비용: 월 정액 요금, 청구서 발행 후 15일 이내 지급. 기밀 유지 및 계약 해지 가능.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_idx,
+  '8392047561234737'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 1 LIMIT 1) AS p,
+  (SELECT project_idx FROM project WHERE project_idx = 1 LIMIT 1) AS pr;
+  
+ INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, constatus, partner_idx, project_idx, apicode)
+SELECT
+  7500000,
+  STR_TO_DATE('2025-01-13','%Y-%m-%d'),
+  UUID(),
+  '암호화폐 거래소 인프라/DB 최적화 백엔드 개발자 구인',
+  '계약 목적: 암호화폐 거래소 인프라 및 DB 최적화를 위한 백엔드 개발자 구인. 업무: 인프라 안정성 확보, DB 성능 튜닝, 시스템 모니터링, 장애 대응 및 긴급 복구. 기간: 1년(상호 협의에 따라 연장 가능). 비용: 월 정액 요금 및 프로젝트 성과 기반 보너스 지급, 청구서 발행 후 15일 이내 지급. 기밀 유지 및 계약 해지 가능.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_idx,
+  '8392046745295637'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 2 LIMIT 1) AS p,
+  (SELECT project_idx FROM project WHERE project_idx = 2 LIMIT 1) AS pr; 
+  
+  INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, constatus, partner_idx, project_idx, apicode)
+SELECT
+  6000000,
+  STR_TO_DATE('2025-01-13','%Y-%m-%d'),
+  UUID(),
+  '암호화폐 거래소 Next.js 프론트엔드 개발자 구인',
+  '계약 목적: 암호화폐 거래소의 사용자 인터페이스 개선 및 최신 웹 기술 도입을 위한 Next.js 기반 프론트엔드 개발자 구인. 업무: 신규 기능 개발, 반응형 UI 구현, 성능 최적화 및 버그 수정. 기간: 1년(성과에 따라 연장 가능). 비용: 월 정액 및 성과 보너스 지급, 청구서 발행 후 15일 이내 지급. 기밀 유지 및 보안 유지 필수.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_idx,
+  '8392047561235637'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 3 LIMIT 1) AS p,
+  (SELECT project_idx FROM project WHERE project_idx = 3 LIMIT 1) AS pr;
+  
+  INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, constatus, partner_idx, project_idx, apicode)
+SELECT
+  30000000,
+  STR_TO_DATE('2025-01-13','%Y-%m-%d'),
+  UUID(),
+  '내부에서 사용할 웹 빌더 시스템 구축',
+  '계약 목적: 사내 전용 웹 빌더 시스템 구축으로 비전문가도 손쉽게 웹사이트를 제작할 수 있도록 지원. 업무: 시스템 전체 설계, 사용자 인터페이스 개발, 백엔드 API 구현, 템플릿 및 모듈 관리 기능 개발. 기간: 1년(파일럿 테스트 후 유지보수 계약 전환 가능). 비용: 선급금 및 마일스톤 달성 시 단계별 지급. 기밀 유지 및 지적 재산권 보호 조항 포함.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_idx,
+  '8392047561285638'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 4 LIMIT 1) AS p,
+  (SELECT project_idx FROM project WHERE project_idx = 4 LIMIT 1) AS pr;
+
+INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, constatus, partner_idx, project_idx, apicode)
+SELECT
+  6000000,
+  STR_TO_DATE('2025-01-13','%Y-%m-%d'),
+  UUID(),
+  '차량관제 서비스 UI/UX 기획자',
+  '계약 목적: 차량관제 서비스의 사용자 경험 개선 및 직관적 UI/UX 설계를 위한 기획 프로젝트. 업무: 사용성 분석, 와이어프레임 제작, 프로토타입 개발 및 최종 디자인 산출물 제공. 기간: 6개월(필요시 연장 협의). 비용: 월 정액 지급 및 프로젝트 완료 시 성과 보너스 지급. 기밀 유지 및 기밀 정보 보호 조건 포함.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_idx,
+  '8392047567895639'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 5 LIMIT 1) AS p,
+  (SELECT project_idx FROM project WHERE project_idx = 5 LIMIT 1) AS pr;
+
+INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, constatus, partner_idx, project_idx, apicode)
+SELECT
+  5000000,
+  STR_TO_DATE('2025-01-13','%Y-%m-%d'),
+  UUID(),
+  'iOS 사용자 인증 보완 개발',
+  '계약 목적: iOS 앱의 사용자 인증 보안 강화 및 보완 개발을 통한 안정성 확보. 업무: 기존 인증 시스템 분석, 보안 취약점 개선, 최신 인증 메커니즘 도입 및 통합 테스트 수행. 기간: 6개월(성과에 따라 연장 검토 가능). 비용: 선급금 지급 후 마일스톤별 잔액 지급, 청구서 발행 후 15일 이내 지급. 기밀 유지 및 보안 규정 준수 필수.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_idx,
+  '8392047547895640'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 6 LIMIT 1) AS p,
+  (SELECT project_idx FROM project WHERE project_idx = 6 LIMIT 1) AS pr;
+
+INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, constatus, partner_idx, project_idx, apicode)
+SELECT
+  10000000,
+  STR_TO_DATE('2025-01-13','%Y-%m-%d'),
+  UUID(),
+  '운영 업무리더 구인 (SAP BW/RPA 등)',
+  '계약 목적: SAP BW, RPA 등 운영 업무 전반을 관리하는 업무리더를 구인. 업무: 프로젝트 운영 관리, 프로세스 최적화, 시스템 통합 및 업무 자동화 전략 수립. 기간: 1년(성과에 따라 연장 가능). 비용: 월 정액 및 성과 기반 보너스 지급, 청구서 발행 후 15일 이내 지급. 기밀 유지 및 보안 유지 필수.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_idx,
+  '8392047561235641'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 7 LIMIT 1) AS p,
+  (SELECT project_idx FROM project WHERE project_idx = 7 LIMIT 1) AS pr;
+
+INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, constatus, partner_idx, project_idx, apicode)
+SELECT
+  1250000,
+  STR_TO_DATE('2025-01-13','%Y-%m-%d'),
+  UUID(),
+  '워드프레스 플러그인 결제 모듈 수정',
+  '계약 목적: 워드프레스 플러그인 내 결제 모듈의 기능 개선 및 오류 수정을 통한 결제 안정성 확보. 업무: 결제 시스템 검증, 코드 최적화, 보안 취약점 개선 및 기능 확장. 기간: 6개월(필요시 연장 가능). 비용: 프로젝트 완료 시 일시금 지급 및 성과 기반 인센티브 지급. 기밀 유지 및 기술 정보 보호.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_idx,
+  '8392047561895642'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 8 LIMIT 1) AS p,
+  (SELECT project_idx FROM project WHERE project_idx = 8 LIMIT 1) AS pr;
+  
+  INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, constatus, partner_idx, project_idx, apicode)
+SELECT
+  7500000,
+  STR_TO_DATE('2024-12-29','%Y-%m-%d'),
+  UUID(),
+  '금융권 차세대 프로젝트 내 UMS 구축 React 프론트 개발',
+  '계약 목적: 금융권 차세대 프로젝트의 UMS 구축을 위한 React 기반 프론트엔드 개발. 업무: 사용자 인터페이스 설계, 반응형 디자인 구현, 성능 최적화 및 보안 강화. 기간: 1년(필요시 연장 가능). 비용: 월 정액 및 마일스톤 완료 시 보너스 지급. 기밀 유지 및 업무 협의 필수.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_idx,
+  '8392047561895643'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 9 LIMIT 1) AS p,
+  (SELECT project_idx FROM project WHERE project_idx = 9 LIMIT 1) AS pr;
+  
+  INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, constatus, partner_idx, project_idx, apicode)
+SELECT
+  4500000,
+  STR_TO_DATE('2025-01-11','%Y-%m-%d'),
+  UUID(),
+  '학습 콘텐츠 개발 및 양산 프로젝트 진행 관리 (PMO)',
+  '계약 목적: 학습 콘텐츠 개발 및 양산 프로젝트의 효율적 진행 관리를 위한 PMO 역할 수행. 업무: 프로젝트 일정 관리, 자원 배분, 품질 관리 및 결과 보고. 기간: 1년(프로젝트 진행 상황에 따라 조정 가능). 비용: 고정 계약금 및 성과 기반 인센티브 지급. 기밀 유지 및 기밀 정보 보호 조항 적용.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_idx,
+  '8392047567895644'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 10 LIMIT 1) AS p,
+  (SELECT project_idx FROM project WHERE project_idx = 10 LIMIT 1) AS pr;
+
