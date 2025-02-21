@@ -1,5 +1,7 @@
 select * from `member`;
-
+-- select * from member where pcatype_idx like 'client';
+-- select * from member where pcatype_idx like 'partner';
+-- select * from member where pcatype_idx like 'admin';
 -- admin
 insert into `member`(`email`, `id`, `name`, `nickname`, `password`, `pcatype_idx`, `phone`, `rank_idx`, `usertype_idx`) values 
 ('uyop@gmail.com', 'admin11', '곽호범', 'ㄱㄱ', '12345', 'ADMIN', '01030050681', 'PRIME', 'INDIVIDUAL');
@@ -700,4 +702,35 @@ insert into `member`(`email`, `id`, `name`, `nickname`, `password`, `pcatype_idx
 ('bQ661@gmail.com', 'pWPZbQ661', '강하준', '킹강붕', 'k8CJLe@icPk', 'PARTNER', '01034392408','PLUS', 'TEAM'),
 ('eq662@gmail.com', 'RHoEeq662', '김민준', '최김히', 'GsFUpK3aUK0', 'PARTNER', '01056747334','BASIC', 'TEAM'),
 ('qR663@gmail.com', 'bmCbqR663', '강수아', '강강빵', 'uSzvUh6wd', 'PARTNER', '01083455810','PLUS', 'TEAM'),
-('Mr664@gmail.com', 'nEMMr664', '임지민', '킹임구', 'NUpj4dXZhslgl', 'PARTNER', '01098922618','BASIC', 'TEAM');
+('Mr664@gmail.com', 'nEMMr664', '임지민', '킹임구', 'NUpj4dXZhslgl', 'PARTNER', '01098922618','BASIC', 'TEAM'),
+('ip665@gmail.com', 'yKsip6651', '박민준', '최박대길', 'LuJx234Ko2C8', 'PARTNER', '01029239603','PLUS', 'INDIVIDUAL'),
+('UH666@gmail.com', 'EyyeUH6661', '김지민', '김호군', 'teEtb23W32b', 'PARTNER', '01028781447','BASIC', 'TEAM'),
+('LF667@gmail.com', 'uHZaLF6671', '임서현', '작임사', 'kXTF23406Zi', 'PARTNER', '01020712148','PLUS', 'TEAM'),
+('tZ668@gmail.com', 'WlXntZ6681', '윤하늘', '윤붕', 'I8b7vMD34Xi', 'PARTNER', '01000490827','BASIC', 'INDIVIDUAL'),
+('Mq669@gmail.com', 'nTMq6691', '장하늘', '장빵이', 'J2qyPf348p', 'PARTNER', '01064891695','PRIME', 'TEAM'),
+('GC670@gmail.com', 'uYdGC6701', '김지민', '오김구', 'gaugF34jw', 'PARTNER', '01017861631','PLUS', 'INDIVIDUAL'),
+('yX671@gmail.com', 'EBBxyX6711', '장민준', '장호', 'XYOh2353bH0', 'PARTNER', '01025670410','BASIC', 'TEAM'),
+('xe672@gmail.com', 'ewAdxe6721', '임서준', '임마', 'ezK343mTa', 'PARTNER', '01099565924','PLUS', 'INDIVIDUAL'),
+('JN673@gmail.com', 'weiJN6731', '장민준', '장돌', 'RZZG3DvS', 'PARTNER', '01002074543','PRIME', 'TEAM'),
+('NX674@gmail.com', 'zyTNX6741', '이서준', '이호', 'tPXrQh523bT', 'PARTNER', '01073441055','BASIC', 'INDIVIDUAL'),
+('qn675@gmail.com', 'ibxvqn6751', '강지민', '강용기', 'Zb563M4bLxa', 'PARTNER', '01072306247','PLUS', 'TEAM'),
+('YS676@gmail.com', 'QepYS6761', '정수아', '김정도', 'bZaRo4hkxs', 'PARTNER', '01071237226','PLUS', 'TEAM'),
+('us677@gmail.com', 'yHus6771', '박서현', '박구', 'eCHgAX5435V', 'PARTNER', '01017665240','BASIC', 'INDIVIDUAL'),
+('Ns678@gmail.com', 'AHpNs6781', '이서현', '홀이둘', 'nBe62onl94V', 'PARTNER', '01040653651','PLUS', 'TEAM'),
+('NP679@gmail.com', 'tjyNP6791', '강민준', '강붕', 'NKTXp43aAX', 'PARTNER', '01062456295','PLUS', 'TEAM'),
+('ZW680@gmail.com', 'cWnZZW6801', '박민준', '작박', 'zfwNr3Qly6Q', 'PARTNER', '01034607728','PRIME', 'INDIVIDUAL'),
+('Uu681@gmail.com', 'lCUu6811', '정서준', '정돌', 'iUyiTrq4v', 'PARTNER', '01035245690','PLUS', 'TEAM'),
+('rf682@gmail.com', 'srpxrf6821', '장수아', '군멋장용', 'saMjCb34WUr', 'PARTNER', '01036773167','PLUS', 'TEAM'),
+('fk683@gmail.com', 'hdbfk6831', '임예준', '최마증', 'OEWOT4KL34Zq', 'PARTNER', '01072485857','BASIC', 'TEAM'),
+('mQ684@gmail.com', 'rABNmQ6841', '조하준', '조대군', 'jLjGY62dgE', 'PARTNER', '01009892405','PRIME', 'TEAM'),
+('qh685@gmail.com', 'SiSkqh6851', '강지우', '강대길', 'UGeQ66vVJ', 'PARTNER', '01045760619','BASIC', 'INDIVIDUAL'),
+('NC686@gmail.com', 'rhCuNC6861', '강예준', '잘강', 'C1oyrc23w4Q', 'PARTNER', '01042636832','PLUS', 'TEAM'),
+('hA687@gmail.com', 'SuXhA6871', '정예준', '정히', 'OTK1mOS412i', 'PARTNER', '01048543072','PLUS', 'TEAM'),
+('vy688@gmail.com', 'iSsvy6881', '윤수아', '큰윤', 'AXeav53KtI3F', 'PARTNER', '01043430137','PRIME', 'INDIVIDUAL'),
+('gk689@gmail.com', 'pfSgk6891', '조지우', '잘조', 'Q98K9JIp', 'PARTNER', '01057595999','BASIC', 'TEAM'),
+('oU690@gmail.com', 'dZoU6901', '김서현', '귀김', 'bmisFQp34Yv3', 'PARTNER', '01002695080','PLUS', 'TEAM'),
+('tE691@gmail.com', 'uleItE6911', '임서준', '작임', 'cv5h4LPmAa', 'PARTNER', '01001047744','BASIC', 'TEAM'),
+('EG692@gmail.com', 'sXEG6921', '강서준', '강대', 'mYwP4BF5c9', 'PARTNER', '01003529320','PLUS', 'INDIVIDUAL'),
+('gK693@gmail.com', 'RvKagK6931', '정지민', '정용하', 'C2lf74nM', 'PARTNER', '01027020458','BASIC', 'TEAM'),
+('oA694@gmail.com', 'YGoA6941', '장예준', '귀장도', 'rRMdq4mBj', 'PARTNER', '01025433744','BASIC', 'TEAM');
+
