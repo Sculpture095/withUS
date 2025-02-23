@@ -51,6 +51,10 @@ dependencies {
     implementation 'ch.qos.logback:logback-classic:1.4.11' // 기본 로그 구현체 (Logback 사용 시)
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'com.theokanning.openai-gpt3-java:service:0.18.2'
+
+
+
 
 }
 

@@ -35,20 +35,20 @@ public class RemarkEntity {
     private String remarkId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "board_id", nullable = false,foreignKey = @ForeignKey(name = "fk_remark_board"))
+    @JoinColumn(name = "board_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_remark_board"))
     @OnDelete(action = OnDeleteAction.CASCADE) // 게시글 삭제 시 댓글 자동 삭제
     @JsonIgnore //순환 참조 방지
     private BoardEntity board; // BoardEntity를 참조하는 외래키
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_remark_member"))
     private MemberEntity member; // MemberEntity를 참조하는 외래키
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_idx", foreignKey = @ForeignKey(name = "fk_remark_parent"))
     private RemarkEntity parentRemark; // 부모 댓글 참조
 
-    @OneToMany(mappedBy = "parentRemark", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "parentRemark", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference //자식 댓글 직력화 허용
     private List<RemarkEntity> childRemarks = new ArrayList<>(); // 자식 댓글 목록
 

@@ -33,9 +33,17 @@ public class RemarkService {
     }
 
     // ✅ 특정 게시글의 댓글 조회 (대댓글 포함)
+    @Transactional(readOnly = true)
     public List<RemarkEntity> getRemarksByBoardId(String boardId) {
-        return remarkRepository.findAllByBoardId(boardId);
+        // 1) boardUuid(=외부 공개용 UUID)로 BoardEntity 찾기
+        BoardEntity board = boardRepository.findByBoardId(boardId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "해당 boardId를 가진 게시글이 존재하지 않습니다: " + boardId));
+
+        // 2) 그 board 엔티티로 remark 검색
+        return remarkRepository.findAllByBoard(board);
     }
+
 
     // ✅ 특정 회원이 작성한 댓글 조회
     public List<RemarkEntity> getRemarksByMember(String memberId) {

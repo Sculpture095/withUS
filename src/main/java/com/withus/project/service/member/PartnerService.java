@@ -1,5 +1,6 @@
 package com.withus.project.service.member;
 
+import com.withus.project.domain.dto.PageResponse;
 import com.withus.project.domain.members.*;
 import com.withus.project.repository.members.*;
 import com.withus.project.repository.projects.SelectSkillRepositoryImpl;
@@ -182,6 +183,63 @@ public class PartnerService {
         historyRepository.deleteHistoryByMemberId(memberId, historyId);
     }
 
+    @Transactional(readOnly = true)
+    public PageResponse<PartnerEntity> getAllPartners(int page, int size) {
+        int offset = page*size;
+        List<PartnerEntity> content = partnerRepository.findAllPartners(offset, size);
+        long totalElements = partnerRepository.countAllPartners();
+        int totalPages = (int)Math.ceil((double)totalElements/size);
+        return new PageResponse<>(content,page,totalPages,totalElements);
+    }
+
+    @Transactional(readOnly = true)
+    public PageResponse<PartnerEntity> getAllPartners(String keyword,String sort, int page, int size) {
+        int offset = page * size;
+        List<PartnerEntity> content;
+        long totalElements;
+
+        if (keyword == null || keyword.trim().isEmpty()) {
+            if ("portfolio".equals(sort)) {
+                content = partnerRepository.findAllPartnersOrderByPortfolioCount(offset, size);
+            } else if ("rank".equals(sort)) {
+                content = partnerRepository.findAllPartnersOrderByRank(offset, size);
+            } else {
+                content = partnerRepository.findAllPartners(offset, size);
+            }
+            totalElements = partnerRepository.countAllPartners();
+        } else {
+            if ("portfolio".equals(sort)) {
+                content = partnerRepository.findAllPartnersByKeywordOrderByPortfolioCount(keyword, offset, size);
+            } else if ("rank".equals(sort)) {
+                content = partnerRepository.findAllPartnersByKeywordOrderByRank(keyword, offset, size);
+            } else {
+                content = partnerRepository.findAllPartners(keyword, offset, size);
+            }
+            totalElements = partnerRepository.countAllPartners(keyword);
+        }
+
+        int totalPages = (int) Math.ceil((double) totalElements / size);
+        return new PageResponse<>(content, page, totalPages, totalElements);
+    }
+
+    @Transactional(readOnly = true)
+    public PageResponse<PartnerEntity> getFilteredPartners(
+            List<String> ranks,
+            List<String> types,
+            String sort,
+            int page,
+            int size
+    ) {
+        int offset = page * size;
+
+        // 레포지토리에서 동적으로 JPQL을 만들어 조회
+        List<PartnerEntity> content = partnerRepository.findPartnersByFilter(ranks, types, sort, offset, size);
+        long totalElements = partnerRepository.countPartnersByFilter(ranks, types);
+
+        int totalPages = (int) Math.ceil((double) totalElements / size);
+
+        return new PageResponse<>(content, page, totalPages, totalElements);
+    }
 
 
 

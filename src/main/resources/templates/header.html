@@ -15,7 +15,6 @@
 
     <!-- Core theme CSS -->
     <link rel="stylesheet" th:href="@{/css/header_footer.css}">
-    <script th:src="@{/js/header_footer.js}"></script>
 </head>
 <body>
 <!-- Thymeleaf fragment for header -->
@@ -30,7 +29,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                <li class="nav-item"><a class="nav-link me-lg-3" th:href="@{/registerProject}">프로젝트 등록</a></li>
+                <li class="nav-item" th:if="${session.member != null and session.member.pcaType == 'CLIENT'}">
+                    <a class="nav-link me-lg-3" th:href="@{/findProject/registerProject}">프로젝트 등록</a>
+                </li>
                 <li class="nav-item"><a class="nav-link me-lg-3" th:href="@{/findProject}">프로젝트 찾기</a></li>
                 <li class="nav-item"><a class="nav-link me-lg-3" th:href="@{/findPartner}">파트너스 찾기</a></li>
                 <li class="nav-item dropdown">
@@ -80,9 +81,35 @@
                 </button>
             </div>
 
+            <!--
+       [중요] 자바스크립트로 로그인 여부, 사용자 아이디(PK or username)를 세팅
+       - 로그인된 경우(#authentication.principal != null)라면 isAuthenticated = true
+       - currentUserId = 인증 객체에서 원하는 필드(예: name, username, id 등)를 가져와 세팅
+   -->
             <script th:inline="javascript">
-                var isAuthenticated = /*[[${#authorization.expression('isAuthenticated()')}]]*/ false;
+                /*<![CDATA[*/
+                var principalName = '[[${#authentication.name}]]';
+                // 로그인이 안 된 상태면, #authentication.name == "anonymousUser"
+                // 로그인이 된 상태면, #authentication.name == "로그인ID" (예: "user01")
+
+                console.log("principalName =>", principalName);
+                console.log("type =>", typeof principalName);
+
+                // 혹은 trim()으로 주변 공백 제거
+                principalName = principalName.replace(/^['"]+|['"]+$/g, '');
+                // ↑ 필요시, 문자열에서 불필요한 따옴표를 잘라내는 정규식 예시
+
+                if (principalName === 'anonymousUser') {
+                    isAuthenticated = false;
+                    currentUserId   = "";
+                } else {
+                    isAuthenticated = true;
+                    currentUserId   = principalName;
+                }
+                /*]]>*/
             </script>
+
+
 
 
             <script>

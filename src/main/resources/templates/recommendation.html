@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>파트너 추천 결과</title>
+    <!-- 인라인 스타일 정의 -->
+    <style>
+        /* 전체 페이지 기본 스타일 */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        /* 중앙 정렬된 컨테이너 스타일 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        /* 제목 스타일 */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        /* 추천 결과 영역 스타일 */
+        .recommendation {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            color: #444;
+            line-height: 1.8;
+            white-space: pre-wrap; /* 줄바꿈과 공백 보존 */
+        }
+        /* 버튼 스타일 */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <!-- 인라인 스크립트 (필요 없다면 제거 가능) -->
+    <script>
+        // 페이지 로딩 시 콘솔에 메시지를 찍어보는 예시
+        console.log('recommendation.html loaded successfully');
+
+        // 추가로 필요한 JavaScript가 있다면 여기에 작성
+        // 예: DOM 조작, 이벤트 처리 등
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>파트너 추천 결과</h1>
+    <!--
+        th:text를 사용하면, 컨트롤러에서 전달된 'recommendation' 모델 데이터를
+        HTML 이스케이프 없이 그대로 출력합니다.
+        또한 <pre> 태그와 white-space: pre-wrap으로 인해 줄바꿈이 유지됩니다.
+    -->
+    <pre class="recommendation" th:text="${recommendation}"></pre>
+    <a href="/" class="btn">홈으로</a>
+</div>
+</body>
+</html>

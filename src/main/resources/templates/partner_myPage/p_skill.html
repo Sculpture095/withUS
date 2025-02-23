@@ -116,7 +116,7 @@
                         <label for="skillSelect">기술명</label>
                         <select id="skillSelect" name="skillType" required>
                             <option value="">기술을 선택하세요</option>
-                            <option th:each="skill : ${skillList}" th:value="${skill.name}" th:text="${skill.name}"></option>
+                            <option th:each="skill : ${skillList}" th:value="${skill.name()}" th:text="${skill.getName()}"></option>
                         </select>
                     </div>
 

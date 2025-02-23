@@ -48,9 +48,10 @@ public class RemarkController {
             map.put("author", remark.getMember().getNickname());
             map.put("createdDate", remark.getCreateDate());
             map.put("likeCount", remark.getLikeCount());
+            map.put("memberId",remark.getMember().getId());
             map.put("parentId",
                     remark.getParentRemark() != null
-                            ? remark.getParentRemark().getRemarkId()  // 여기도 remarkId(문자열)로!
+                            ? remark.getParentRemark().getRemarkId()  // 여기도 remarkId(문자열)로
                             : null
             );
             return map;
@@ -65,11 +66,14 @@ public class RemarkController {
             @RequestParam String boardId,
             @RequestParam String content,
             @RequestParam(required = false) String parentRemarkId,
-            @AuthenticationPrincipal String memberId) {
+            @AuthenticationPrincipal CustomUserDetails userDetails) {
 
-        if (memberId == null) {
+        if (userDetails == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
         }
+        String memberId = userDetails.getUsername();  // == 실제로는 member의 "id" (예: user01)
+        System.out.println("현재 로그인 사용자: " + memberId);
+
         if ("null".equals(parentRemarkId)) {
             parentRemarkId = null;
         }

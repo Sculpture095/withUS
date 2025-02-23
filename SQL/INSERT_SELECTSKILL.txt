@@ -302,52 +302,46 @@ FROM (
     'TypeScript', '모바일 유언장 웹 추가 기능 개발', '모바일 유언장 웹 추가 기능 개발'
   UNION ALL
   SELECT 
-    'Django', '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택 1일 상주)', '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택 1일 상주)'
+    'Go', '사내 ERP 솔루션 백엔드 Go/SQL 개발(상주/원격 여부 협의)', '사내 ERP 솔루션 백엔드 Go/SQL 개발(상주/원격 여부 협의)'
   UNION ALL
-  SELECT 
-    'Python', '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택 1일 상주)', '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택 1일 상주)'
-  UNION ALL
-  SELECT 
-    'Go', '사내 ERP 솔루션 백엔드 Go/SQL 개발(상주/원격 여부 협의)', '사내 ERP 솔루션 백엔드 Go/SQL 개발(상주/원격 여부 협의)'  
-  UNION ALL
-  SELECT 
+  SELECT
     'TypeScript', 'HRIS 유지보수 및 추가 개발 (2주 상주/ 2주 재택)', 'HRIS 유지보수 및 추가 개발 (2주 상주/ 2주 재택)'
   UNION ALL
-  SELECT 
+  SELECT
     'React', 'HRIS 유지보수 및 추가 개발 (2주 상주/ 2주 재택)', 'HRIS 유지보수 및 추가 개발 (2주 상주/ 2주 재택)'
   UNION ALL
-  SELECT 
+  SELECT
     'PostgreSQL', 'HRIS 유지보수 및 추가 개발 (2주 상주/ 2주 재택)', 'HRIS 유지보수 및 추가 개발 (2주 상주/ 2주 재택)'
   UNION ALL
-  SELECT 
+  SELECT
     'Java', '신발 제조 기업 MES 전자정부/JAVA 개발', '신발 제조 기업 MES 전자정부/JAVA 개발'
   UNION ALL
-  SELECT 
+  SELECT
     'Oracle', '신발 제조 기업 MES 전자정부/JAVA 개발', '신발 제조 기업 MES 전자정부/JAVA 개발'
   UNION ALL
-  SELECT 
+  SELECT
     'TypeScript', '해외 자재관리 시스템 구축', '해외 자재관리 시스템 구축'
   UNION ALL
-  SELECT 
+  SELECT
     'React', '해외 자재관리 시스템 구축', '해외 자재관리 시스템 구축'
   UNION ALL
-  SELECT 
+  SELECT
     'CSHARP', '해외 자재관리 시스템 구축', '해외 자재관리 시스템 구축'
   UNION ALL
-  SELECT 
+  SELECT
     'MySQL', '해외 자재관리 시스템 구축', '해외 자재관리 시스템 구축'
   UNION ALL
-  SELECT 
-    'Java', 'LG전자 EDI 모듈 백엔드 개발', 'LG전자 EDI 모듈 백엔드 개발'  
+  SELECT
+    'Java', 'LG전자 EDI 모듈 백엔드 개발', 'LG전자 EDI 모듈 백엔드 개발'
 
-    
-    
-    
- 
-    
-    
-    
-    
+
+
+
+
+
+
+
+
 ) t
 LEFT JOIN case_table c ON c.title = t.case_title
 LEFT JOIN project pr ON pr.projectname = t.project_name;

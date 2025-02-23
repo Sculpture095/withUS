@@ -504,6 +504,7 @@ tbody tr:hover {
   align-items: center;
   justify-content: center;
   font-size: 12px;
+  margin-left: auto;
 }
 
 
@@ -616,4 +617,105 @@ tbody tr:hover {
 
 .delete_img_btn:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 답글 버튼 스타일 */
+.comment-add-btn{
+  background-color: #989898;
+  color: #fff;
+  width: 50px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+
+}
+/* 대댓글 내용 작성칸 */
+.comment-textarea{
+  resize: none;
+  width: 100%;
+  height: 80px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* 대댓글 등록 버튼  */
+.comment-submit-btn {
+  display: block;         /* block 요소로 설정 */
+  margin: 10px 0 0 auto;   /* 위쪽 여백 10px, 나머지는 0, 왼쪽 마진 auto로 오른쪽 정렬 */
+  padding: 8px 15px;
+  background-color: #616161;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment-submit-btn:hover {
+  background-color: #464646;
+}
+
+.custom-textarea{
+  resize: none;
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.custom-save-btn {
+  order: 2;
+  padding: 8px 15px;
+  background-color: #616161;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-cancel-btn {
+  order: 1;
+  padding: 8px 15px;
+  background-color: #616161;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.reply-button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* .comment-submit-btn 의 기존 스타일 중 오른쪽 정렬을 위한 margin은 제거 */
+.reply-button-group .comment-submit-btn {
+  display: inline-block;
+  margin: 0; /* auto 제거 */
+  padding: 8px 15px;
+  background-color: #616161;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-container {
+  text-align: right; /* 내부의 인라인 요소(버튼들)를 오른쪽 정렬 */
+  margin-top: 10px;
+}
+.edit-button-group {
+  margin-top: 10px; /* 원하는 여백 값으로 조정 */
+}
+
+.edit-container > textarea {
+  text-align: left;  /* 텍스트 입력은 왼쪽 정렬 */
+  width: 100%;
+
 }

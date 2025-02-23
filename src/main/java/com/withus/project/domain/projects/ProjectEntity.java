@@ -39,7 +39,7 @@ public class ProjectEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "prostatement", nullable = false)
-    private ProjectStatus proStatement; // 프로젝트 상태
+    private ProjectStatus proStatement = ProjectStatus.ON_GOING; // 프로젝트 상태 기본:모집중
 
     @Column(name = "amount", nullable = false)
     private Double amount; // 금액
@@ -54,19 +54,17 @@ public class ProjectEntity {
     @Column(name = "construction", nullable = false)
     private Construction construction;
 
-    @Column(name = "requirement", length = 300, nullable = false)
-    private String requirement; // 자격 요건
 
     @Column(name = "projectlocation", length = 20)
     private String projectLocation; // 프로젝트 위치
 
     @Column(name = "registrationdate", nullable = false,updatable = false)
-    private LocalDate registrationDate; //등록일자
+    private LocalDate registrationDate = LocalDate.now(); //등록일자
 
     @Column(name = "teamsize", nullable = false, length = 3)
     private Integer teamSize; // 모집 인원
 
-    @Column(name = "projectinfo", length = 200, nullable = false)
+    @Column(name = "projectinfo", length = 5000, nullable = false)
     private String projectInfo; // 프로젝트 소개
 
     @Column(name = "is_completed", nullable = false, columnDefinition = "TINYINT(1) DEFAULT 0")
@@ -76,7 +74,7 @@ public class ProjectEntity {
     private LocalDate closingDate; // 프로젝트 마감일
 
     // 🟢 프로젝트에서 선택한 기술들 (OneToMany)
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<SelectSkillEntity> selectedSkills;
 
     // ✅ Enum의 description을 바로 반환하는 메서드 추가
@@ -94,6 +92,9 @@ public class ProjectEntity {
     public void prePersist() {
         if (this.projectId == null){
             this.projectId = UUID.randomUUID();
+        }
+        if (this.isCompleted == null) {
+            this.isCompleted = false;
         }
     }
 

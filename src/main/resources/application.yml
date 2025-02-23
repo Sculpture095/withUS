@@ -26,3 +26,7 @@ server:
   servlet:
     session:
       timeout: 30m
+
+openai:
+  api-key: "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
+"

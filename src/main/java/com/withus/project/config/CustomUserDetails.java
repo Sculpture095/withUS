@@ -13,7 +13,7 @@ import java.util.Collection;
 @Builder
 public class CustomUserDetails implements UserDetails {
 
-    private String username;
+    private String username; //id
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
     private String nickname; // ✅ 사용자 닉네임 추가

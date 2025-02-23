@@ -1,9 +1,12 @@
 package com.withus.project.controller;
 
+import com.withus.project.domain.dto.PageResponse;
 import com.withus.project.domain.dto.members.MemberDTO;
 import com.withus.project.domain.dto.projects.ProjectDTO;
 import com.withus.project.domain.members.ClientEntity;
 import com.withus.project.domain.members.PcaType;
+import com.withus.project.domain.members.SkillType;
+import com.withus.project.domain.projects.ProjectEntity;
 import com.withus.project.domain.projects.ProjectStatus;
 import com.withus.project.service.ProjectService;
 import com.withus.project.service.member.MemberService;
@@ -29,16 +32,19 @@ public class ProjectController {
     private final ProjectService projectService;
 
 
-
     @GetMapping
-    public String getProjects(@RequestParam(defaultValue = "0") int page,
-                              @RequestParam(defaultValue = "10") int size,
-                              Model model) {
-        var pageResponse = projectService.getPagedProjects(page, size);
+    public String getProjects(Model model,
+                              @RequestParam(value = "page", defaultValue = "0") int page) {
+        int size = 5;
+        PageResponse<ProjectDTO> projects = projectService.getAllProjectsDTO(page, size); // DTO 버전
 
-        model.addAttribute("projects", pageResponse.getContent());
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPages", pageResponse.getTotalPages());
+        int blockSize = 10;
+        int startPage = (page / blockSize) * blockSize;
+        int endPage = Math.min(startPage + blockSize - 1, projects.getTotalPages() - 1);
+
+        model.addAttribute("projects", projects);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
 
         return "findProject";
     }
@@ -80,64 +86,112 @@ public class ProjectController {
     @GetMapping("/filter")
     public String filterProjects(@RequestParam(required = false) ProjectStatus status,
                                  @RequestParam(required = false) String sortType,
+                                 @RequestParam(value = "page", defaultValue = "0") int page,
                                  Model model) {
-        List<ProjectDTO> projects;
+        List<ProjectDTO> projectList;
 
         if (status != null) {
-            projects = projectService.getProjectsByStatus(status);
+            projectList = projectService.getProjectsByStatus(status);
         } else {
-            projects = projectService.getAllProjects();
+            projectList = projectService.getAllProjects();
         }
 
         if (sortType != null) {
             switch (sortType) {
                 case "amount_asc":
-                    projects = projects.stream()
+                    projectList = projectList.stream()
                             .sorted(Comparator.comparing(ProjectDTO::getAmount))
                             .collect(Collectors.toList());
                     break;
                 case "amount_desc":
-                    projects = projects.stream()
+                    projectList = projectList.stream()
                             .sorted(Comparator.comparing(ProjectDTO::getAmount).reversed())
                             .collect(Collectors.toList());
                     break;
                 case "teamSize":
-                    projects = projects.stream()
+                    projectList = projectList.stream()
                             .sorted(Comparator.comparing(ProjectDTO::getTeamSize))
                             .collect(Collectors.toList());
                     break;
                 case "startDate_asc":
-                    projects = projects.stream()
+                    projectList = projectList.stream()
                             .sorted(Comparator.comparing(ProjectDTO::getStartDate))
                             .collect(Collectors.toList());
                     break;
                 case "startDate_desc":
-                    projects = projects.stream()
+                    projectList = projectList.stream()
                             .sorted(Comparator.comparing(ProjectDTO::getStartDate).reversed())
                             .collect(Collectors.toList());
                     break;
             }
         }
 
-        int totalPages = (projects.size() + 9) / 10; // 10개 단위로 페이지 계산
-        model.addAttribute("projects", projects);
-        model.addAttribute("totalPages", totalPages);
-        model.addAttribute("currentPage", 0);
+        int size = 5;
+        int totalElements = projectList.size();
+        int totalPages = (int) Math.ceil((double) totalElements / size);
 
+        int offset = page * size;
+        int end = Math.min(offset + size, totalElements);
+        List<ProjectDTO> content = projectList.subList(offset, end);
+
+        // 4) PageResponse로 감싸기
+        PageResponse<ProjectDTO> projects = PageResponse.<ProjectDTO>builder()
+                .content(content)
+                .page(page)
+                .size(size)
+                .totalElements(totalElements)
+                .totalPages(totalPages)
+                .build();
+
+        // 5) 블록 계산
+        int blockSize = 10;
+        int startPage = (page / blockSize) * blockSize;
+        int endPage = Math.min(startPage + blockSize - 1, totalPages - 1);
+
+        // 6) 모델에 담기
+        model.addAttribute("projects", projects);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
         return "findProject";
     }
+
 
     @GetMapping("/search")
     public String searchProjects(@RequestParam(required = false) String keyword,
                                  @RequestParam(required = false) ProjectStatus status,
                                  @RequestParam(required = false) Double minAmount,
                                  @RequestParam(required = false) Double maxAmount,
+                                 @RequestParam(value = "page", defaultValue = "0") int page,
                                  Model model) {
-        List<ProjectDTO> projects = projectService.searchProjects(keyword, status, minAmount, maxAmount);
+        List<ProjectDTO> projectList = projectService.searchProjects(keyword, status, minAmount, maxAmount);
 
+        // 2) 페이징 처리
+        int size = 5;
+        int totalElements = projectList.size();
+        int totalPages = (int) Math.ceil((double) totalElements / size);
+
+        int offset = page * size;
+        int end = Math.min(offset + size, totalElements);
+        List<ProjectDTO> content = projectList.subList(offset, end);
+
+        // 3) PageResponse 생성
+        PageResponse<ProjectDTO> projects = PageResponse.<ProjectDTO>builder()
+                .content(content)
+                .page(page)
+                .size(size)
+                .totalElements(totalElements)
+                .totalPages(totalPages)
+                .build();
+
+        // 4) 블록 계산
+        int blockSize = 10;
+        int startPage = (page / blockSize) * blockSize;
+        int endPage = Math.min(startPage + blockSize - 1, totalPages - 1);
+
+        // 5) 모델에 담기
         model.addAttribute("projects", projects);
-        model.addAttribute("totalPages", (projects.size() + 9) / 10);
-        model.addAttribute("currentPage", 0);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
 
         return "findProject";
     }
@@ -152,6 +206,26 @@ public class ProjectController {
 
         model.addAttribute("project", project);
         return "findProject_detail";
+    }
+
+    @GetMapping("/registerProject")
+    public String showProjectRegistrationPage(HttpSession session, Model model, RedirectAttributes redirectAttributes){
+        MemberDTO member = (MemberDTO) session.getAttribute( "member");
+        if(member == null){
+            redirectAttributes.addFlashAttribute("alertMessage","로그인이 필요합니다.");
+            return "redirect:/login";
+        }
+        if(!member.getPcaType().equals("CLIENT")){
+            redirectAttributes.addFlashAttribute("alertMessage", "프로젝트 등록 권한이 없습니다.");
+            return "redirect:/";
+        }
+        //기술스택 선택을 위한 SkillType 목록을 뷰에 전달
+        model.addAttribute("skillTypes", SkillType.values());
+        //폼 바인딩을 위한 빈 ProjectDTO 객체 생성
+        model.addAttribute("project", new ProjectDTO());
+
+        //Thymeleaf 탬플릿 registerProject.html에 반환
+        return "registerProject";
     }
 
 

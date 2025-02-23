@@ -134,19 +134,18 @@ public class ProjectRepositoryImpl extends AbstractRepository<ProjectEntity> {
         return query.getResultList();
     }
 
-    /**
-     * 페이징 처리된 프로젝트 조회 (리스트로 반환)
-     *
-     * @param page 페이지 번호
-     * @param size 페이지 크기
-     * @return 페이징된 프로젝트 리스트
-     */
-    public List<ProjectEntity> findPagedProjects(int page, int size) {
-        return entityManager.createQuery(
-                        "SELECT p FROM ProjectEntity p ORDER BY p.startDate DESC", ProjectEntity.class)
-                .setFirstResult(page * size)
-                .setMaxResults(size)
-                .getResultList();
+
+    public List<ProjectEntity> findAllProjects(int offset, int limit) {
+        String jpql = "SELECT p FROM ProjectEntity p ORDER BY p.projectIdx";
+        TypedQuery<ProjectEntity> query = entityManager.createQuery(jpql, ProjectEntity.class);
+        query.setFirstResult(offset);
+        query.setMaxResults(limit);
+        return query.getResultList();
+    }
+    public long countAllPartners(){
+        String jpql = "SELECT COUNT(p) FROM ProjectEntity p";
+        return entityManager.createQuery(jpql, Long.class)
+                .getSingleResult();
     }
 
     /**
@@ -315,6 +314,24 @@ public class ProjectRepositoryImpl extends AbstractRepository<ProjectEntity> {
                 .setParameter("projectId", UUID.fromString(projectId))
                 .getResultList();
     }
+
+    public Optional<ProjectEntity> findByUUIDToString(String uuidString) {
+        try {
+            UUID uuid = UUID.fromString(uuidString);
+            String jpql = "SELECT p FROM ProjectEntity p WHERE p.projectId = :uuid";
+            TypedQuery<ProjectEntity> query = entityManager.createQuery(jpql, ProjectEntity.class);
+            query.setParameter("uuid", uuid);
+            List<ProjectEntity> results = query.getResultList();
+            if (results.isEmpty()) return Optional.empty();
+            return Optional.of(results.get(0));
+        } catch (IllegalArgumentException e) {
+            // 잘못된 UUID 형식일 때
+            return Optional.empty();
+        }
+    }
+
+
+
 
 
 

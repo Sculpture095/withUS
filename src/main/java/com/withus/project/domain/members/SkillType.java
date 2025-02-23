@@ -162,7 +162,7 @@ public enum SkillType {
 
     public static SkillType fromName(String name) {
         for (SkillType skill : values()) {
-            if (skill.name.equalsIgnoreCase(name)) {
+            if (skill.name().equalsIgnoreCase(name)) {
                 return skill;
             }
         }

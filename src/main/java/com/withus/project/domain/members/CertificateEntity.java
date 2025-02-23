@@ -29,13 +29,13 @@ public class CertificateEntity {
     @JoinColumn(name = "partner_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_certificate_partner"))
     private PartnerEntity partner; // PartnerEntity와의 연관 관계
 
-    @Column(name = "certificatename", nullable = false, length = 20)
+    @Column(name = "certificatename", nullable = false, length = 100)
     private String certificateName; // 자격증 이름
 
     @Column(name = "certificatedate", length = 10)
     private String certificateDate; // 취득일
 
-    @Column(name = "institutionalname", nullable = false, length = 20)
+    @Column(name = "institutionalname", nullable = false, length = 100)
     private String institutionalName; // 발급기관 이름
 
     @PrePersist

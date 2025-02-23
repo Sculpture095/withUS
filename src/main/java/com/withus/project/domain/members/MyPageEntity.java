@@ -44,7 +44,7 @@ public class MyPageEntity {
 
 
 
-    @Column(name = "introduce")
+    @Column(name = "introduce", length = 1000)
     private String introduce; // 자기소개
 
     @Column(name = "zipcode")

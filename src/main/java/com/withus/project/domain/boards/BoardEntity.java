@@ -33,7 +33,7 @@ public class BoardEntity {
     @Column(name = "board_id", columnDefinition = "CHAR(36)", unique = true, nullable = false, updatable = false)
     private String boardId ; // UUID 고유 식별자
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_board_member"))
     private MemberEntity member; // MemberEntity를 참조하는 외래키
 
@@ -60,7 +60,7 @@ public class BoardEntity {
     private Integer likeCount = 0; // 추천수 (기본값)
 
     // ✅ 댓글과 연관관계 추가 (1:N)
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.LAZY)
     @JsonBackReference // 🚨 순환 참조 방지
     private List<RemarkEntity> remarks = new ArrayList<>();
 

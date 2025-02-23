@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 외부 CSS, 폰트, 아이콘 등 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap"
+            rel="stylesheet"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/register.css" />
+
+    <title>프로젝트 등록</title>
+</head>
+<body id="page-top">
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
+
+<div class="project-container">
+    <h2>프로젝트 등록</h2>
+    <!-- form의 id="project"와 name 속성을 JS에서 그대로 참조 -->
+    <form id="project" class="board-form">
+        <table class="board-table">
+            <tbody>
+            <!-- 1. 프로젝트 종류 (Construction Enum) -->
+            <tr>
+                <th><label>프로젝트 종류</label></th>
+                <td>
+                    <div class="radio-group">
+                        <label th:each="type : ${T(com.withus.project.domain.projects.Construction).values()}">
+                            <input type="radio" name="construction" th:value="${type.name()}" required />
+                            <span th:text="${type.description}"></span>
+                        </label>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 2. 기술 스택 선택 (SkillType Enum) -->
+            <tr>
+                <th><label>기술 스택</label></th>
+                <td>
+                    <div class="skill_container">
+                        <div class="custom-select">
+                            <div class="select-box">
+                                <input type="text" class="tags_input" name="tags" hidden />
+                                <div class="selected-options"></div>
+                                <div class="arrow">
+                                    <i class="fa fa-angle-down"></i>
+                                </div>
+                            </div>
+                            <div class="options">
+                                <div class="option-search-tags">
+                                    <input type="text" class="search-tags" placeholder="검색어를 입력하세요" />
+                                    <button type="button" class="clear"></button>
+                                </div>
+                                <!-- 'Select All' 옵션 (필요하다면 활성화) -->
+                                <div class="option all-tags" data-value="All" style="display: none;">Select All</div>
+                                <!-- SkillType Enum 반복 -->
+                                <div class="option"
+                                     th:each="skill : ${T(com.withus.project.domain.members.SkillType).values()}"
+                                     th:attr="data-value=${skill.name()}"
+                                     th:text="${skill.getName()}">
+                                </div>
+                                <div class="no-result-message">검색결과가 없습니다</div>
+                            </div>
+                            <span class="tag_error_msg error"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 3. 프로젝트 시작일 -->
+            <tr>
+                <th><label>프로젝트 시작일</label></th>
+                <td>
+                    <div class="date-range">
+                        <input type="date" id="projectStartDate" name="startDate" required />
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 4. 프로젝트 예상 기간 -->
+            <tr>
+                <th><label>예상 기간</label></th>
+                <td>
+                    <div class="date-range">
+                        <input type="number" id="duration" name="duration" min="1" required />
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 5. 마감일자 -->
+            <tr>
+                <th><label>모집 마감일</label></th>
+                <td>
+                    <div class="date-range">
+                        <input type="date" id="closingdate" name="closingDate" required />
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 6. 프로젝트명 -->
+            <tr>
+                <th><label>프로젝트명</label></th>
+                <td>
+                    <input type="text" id="projectName" name="projectName" required />
+                </td>
+            </tr>
+
+            <!-- 7. 프로젝트 소개 -->
+            <tr>
+                <th><label>프로젝트 소개</label></th>
+                <td>
+                    <textarea id="projectInfo" name="projectInfo" rows="5" required placeholder="프로젝트 개요와 관련된 내용을 작성해주세요."></textarea>
+                </td>
+            </tr>
+
+            <!-- 8. 필요 인원 -->
+            <tr>
+                <th><label>필요 인원</label></th>
+                <td>
+                    <input type="number" id="teamSize" name="teamSize" min="1" required />
+                </td>
+            </tr>
+
+            <!-- 9. 금액 -->
+            <tr>
+                <th><label>예상 금액</label></th>
+                <td>
+                    <input type="number" id="amount" name="amount" min="0" required />
+                </td>
+            </tr>
+
+            <!-- 10. 위치 -->
+            <tr>
+                <th><label>위치</label></th>
+                <td>
+                    <input type="text" id="projectLocation" name="projectLocation" required />
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="button-group">
+            <button type="submit" class="reg_btn">프로젝트 등록</button>
+            <button type="button" class="cancel_btn" onclick="history.back()">취소</button>
+        </div>
+    </form>
+</div>
+<!-- Footer -->
+<div th:replace="~{footer :: footer}"></div>
+<!--<script th:src="@{/js/script.js}"></script>-->
+
+<script>
+    /**
+     * 1) 드롭다운 열기/닫기
+     * 2) 옵션 클릭 -> <span data-value="..."> 생성
+     * 3) Submit -> 해당 <span>들의 data-value 수집
+     */
+    document.addEventListener("DOMContentLoaded", function(){
+
+        // (1) .select-box 클릭 시 드롭다운(.options) 열고 닫기
+        const selectBox = document.querySelector(".select-box");
+        if(selectBox){
+            selectBox.addEventListener("click", function(){
+                const optionsDiv = document.querySelector(".options");
+                if(optionsDiv){
+                    optionsDiv.classList.toggle("show");
+                }
+            });
+        }
+
+        // (2) 옵션 클릭 시 <span> 생성
+        // 멀티 선택 가능. 동일 항목을 여러 번 누르면 중복 태그가 생긴다는 점에 주의!
+        // (중복 방지 로직이 필요하다면 별도 처리)
+        document.querySelectorAll(".options .option").forEach(option => {
+            option.addEventListener("click", function() {
+                const value = this.getAttribute("data-value");
+                const text  = this.textContent.trim();
+                console.log("클릭한 옵션의 data-value:", value);
+
+                // <span data-value="...">
+                const span = document.createElement("span");
+                span.setAttribute("data-value", value);
+                span.textContent = text;
+
+                // .selected-options에 추가
+                const selectedOptions = document.querySelector(".selected-options");
+                if(selectedOptions){
+                    selectedOptions.appendChild(span);
+                }
+
+                // 클릭 후 드롭다운 닫기 (원하면 주석 해제)
+                // document.querySelector(".options").classList.remove("show");
+            });
+        });
+
+        // (3) 폼 submit 시, <span> 들을 순회하여 data-value 추출
+        document.getElementById("project").addEventListener("submit", function(e){
+            e.preventDefault();
+            const form = e.target;
+
+            // <span data-value="..."> 들의 value를 배열로
+            const selectedSpans = document.querySelectorAll(".selected-options span[data-value]");
+            let selectedSkills = Array.from(selectedSpans).map(span => span.getAttribute("data-value"));
+
+            // 디버그 출력
+            if(selectedSkills.length > 0){
+                console.log(">>> 선택된 기술 스택:", selectedSkills);
+            } else {
+                console.log(">>> selectedSkills가 비어 있습니다.");
+            }
+
+            // 나머지 폼 데이터
+            const projectData = {
+                construction: form.construction.value,
+                startDate: form.startDate.value,
+                duration: form.duration.value,
+                closingDate: form.closingDate.value,
+                projectName: form.projectName.value,
+                projectInfo: form.projectInfo.value,
+                teamSize: form.teamSize.value,
+                amount: form.amount.value,
+                projectLocation: form.projectLocation.value,
+                memberId: form.memberId ? form.memberId.value : ""
+            };
+
+            // URL 쿼리 파라미터에 selectedSkills[]를 붙이는 예시
+            // (기존 방식에 맞춰서. JSON 바디로 전송해도 OK)
+            const url = new URL("/api/projects", window.location.origin);
+            selectedSkills.forEach(skill => {
+                if(skill && skill.trim() !== ""){
+                    url.searchParams.append("selectedSkills", skill);
+                }
+            });
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(projectData)
+            })
+                .then(response => {
+                    if(response.ok){
+                        return response.json();
+                    }
+                    throw new Error("프로젝트 등록에 실패했습니다.");
+                })
+                .then(data => {
+                    alert("프로젝트를 등록하였습니다.");
+                    window.location.href = "/findProject";
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        });
+    });
+
+</script>
+</body>
+</html>

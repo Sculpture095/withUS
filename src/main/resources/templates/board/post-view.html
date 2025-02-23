@@ -21,7 +21,7 @@
 <!-- Header -->
 <div th:replace="~{header :: header}"></div>
 
- <div class="post-view-container">
+<div class="post-view-container">
 
     <table class="post-table">
         <h2 class="post-title" th:text="${board.subject}"></h2>
@@ -45,51 +45,54 @@
     </div>
 
 
-     <!-- 추천 버튼 -->
-     <div class="like-container">
-         <div class="like-box" onclick="likePost()">
-             <i class="like-img"><img src="../../img/like-icon.png" alt=""></i>
-             <span>추천</span>
-             <span id="likeCount" th:text="${board.likeCount}"></span>
-         </div>
-     </div>
+    <!-- 추천 버튼 -->
+    <div class="like-container">
+        <div class="like-box" onclick="likePost()">
+            <i class="like-img"><img src="../../img/like-icon.png" alt=""></i>
+            <span>추천</span>
+            <span id="likeCount" th:text="${board.likeCount}"></span>
+        </div>
+    </div>
 
 
-     <div class="post-button-group">
-         <th:block th:if="${board != null}">
-             <!-- ✅ 작성자만 수정 버튼을 볼 수 있도록 설정 -->
-             <th:block th:if="${#authentication.name == board.member.id}">
-                 <button class="post-edit-btn" th:data-edit-url="@{/board/edit/{id}(id=${board.boardId})}"
-                         onclick="redirectToEdit(this)">수정</button>
-             </th:block>
+    <div class="post-button-group">
+        <th:block th:if="${board != null}">
+            <!-- ✅ 작성자만 수정 버튼을 볼 수 있도록 설정 -->
+            <th:block th:if="${#authentication.name == board.member.id}">
+                <button class="post-edit-btn" th:data-edit-url="@{/board/edit/{id}(id=${board.boardId})}"
+                        onclick="redirectToEdit(this)">수정</button>
+            </th:block>
 
-             <!-- ✅ 작성자만 삭제 버튼을 볼 수 있도록 설정 -->
-             <th:block th:if="${#authentication.name == board.member.id}">
-                 <form th:action="@{/board/delete/{id}(id=${board.boardId})}" method="post"
-                       onsubmit="return confirm('정말 삭제하시겠습니까?');">
-                     <button type="submit" class="post-delete-btn">삭제</button>
-                 </form>
-             </th:block>
-         </th:block>
-         <button class="post-cancel-btn" onclick="history.back()">목록보기</button>
-     </div>
+            <!-- ✅ 작성자만 삭제 버튼을 볼 수 있도록 설정 -->
+            <th:block th:if="${#authentication.name == board.member.id}">
+                <form th:action="@{/board/delete/{id}(id=${board.boardId})}" method="post"
+                      onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                    <button type="submit" class="post-delete-btn">삭제</button>
+                </form>
+            </th:block>
+        </th:block>
+        <button class="post-cancel-btn" onclick="history.back()">목록보기</button>
+    </div>
 
 
-        <!-- 댓글 영역 -->
-     <div class="comment-section">
-         <h3 id="commentCount">댓글</h3>
+    <!-- 댓글 영역 -->
+    <div class="comment-section">
 
-         <!-- 댓글 작성 영역 -->
-         <div class="comment-input">
-             <textarea id="commentText" placeholder="댓글을 입력하세요"></textarea>
-             <button class="comment-submit" onclick="addComment()">등록</button>
-         </div>
+        <h3 id="commentCount">댓글</h3>
 
-         <!-- 기존 댓글 목록 -->
-         <div class="comment-list" id="commentList">
-             <!-- 댓글이 여기에 동적으로 추가될 예정 -->
-         </div>
-     </div>
+        <!-- 댓글 작성 영역 -->
+        <div class="comment-input">
+            <textarea id="commentText" placeholder="댓글을 입력하세요"></textarea>
+            <button class="comment-submit" onclick="addComment()">등록</button>
+        </div>
+    </div>
+
+
+        <!-- 기존 댓글 목록 -->
+        <div class="comment-list" id="commentList">
+            <!-- 댓글이 여기에 동적으로 추가될 예정 -->
+        </div>
+    </div>
 
 </div>
 
@@ -126,95 +129,118 @@
 
 
 
-    // ✅ 게시글 삭제
+   // ✅ 게시글 삭제
     function deletePost(button) {
-        const url = button.getAttribute('data-delete-url');
-        if (confirm("정말 삭제하시겠습니까?")) {
-            fetch(url, { method: 'DELETE' })
-                .then(response => {
-                    if (response.ok) {
-                        alert("삭제되었습니다.");
-                        window.location.href = "/board"; // 삭제 후 목록으로 이동
-                    } else {
-                        alert("삭제 실패.");
-                    }
-                })
-                .catch(error => console.error("🚨 게시글 삭제 오류:", error));
-        }
-    }
+       const url = button.getAttribute('data-delete-url');
+       if (confirm("정말 삭제하시겠습니까?")) {
+           fetch(url, { method: 'DELETE' })
+               .then(response => {
+                   if (response.ok) {
+                       alert("삭제되었습니다.");
+                       window.location.href = "/board"; // 삭제 후 목록으로 이동
+                   } else {
+                       alert("삭제 실패.");
+                   }
+               })
+               .catch(error => console.error("🚨 게시글 삭제 오류:", error));
+       }
+   }
 
-    // ✅ 댓글 불러오기
-    function loadComments() {
-        const boardId = window.location.pathname.split("/").pop();
 
-        fetch(`/api/remarks/${boardId}`)
-            .then(response => response.json())
-            .then(comments => {
-                // 1) 부모 댓글과 자식 댓글 분리
-                const parents = comments.filter(c => c.parentId === null);
-                const children = comments.filter(c => c.parentId !== null);
+   // ✅ 댓글 불러오기
+   function loadComments() {
+       const boardId = window.location.pathname.split("/").pop();
 
-                const commentList = document.getElementById("commentList");
-                commentList.innerHTML = "";
+       fetch(`/api/remarks/${boardId}`)
+           .then(response => response.json())
+           .then(comments => {
+               // 1) 부모 댓글과 자식 댓글 분리
+               const parents = comments.filter(c => c.parentId === null);
+               const children = comments.filter(c => c.parentId !== null);
 
-                // 2) 부모 댓글 그리기
-                parents.forEach(parent => {
-                    commentList.innerHTML += renderComment(parent);
-
-                    // 3) 해당 부모에 연결된 자식들만 골라서
-                    const childComments = children.filter(child => child.parentId === parent.id);
-
-                    // 4) 부모 댓글의 reply-section에 자식(대댓글)을 그린다
-                    const replySection = document.getElementById(`reply-section-${parent.id}`);
-                    childComments.forEach(child => {
-                        replySection.innerHTML += renderChildComment(child);
-                    });
-                });
-            })
-            .catch(error => console.error("🚨 댓글 불러오기 오류:", error));
-    }
+               const commentList = document.getElementById("commentList");
+               commentList.innerHTML = "";// 2) 부모 댓글 그리기
+               parents.forEach(parent => {
+                   commentList.innerHTML += renderComment(parent);// 3) 해당 부모에 연결된 자식들만 골라서
+                   const childComments = children.filter(child => child.parentId === parent.id);// 4) 부모 댓글의 reply-section에 자식(대댓글)을 그린다
+                   const replySection = document.getElementById(`reply-section-${parent.id}`);
+                   childComments.forEach(child => {
+                       replySection.innerHTML += renderChildComment(child);
+                   });
+               });
+           })
+           .catch(error => console.error("🚨 댓글 불러오기 오류:", error));
+   }
 
 
 
 
-    // (1) 기존 부모 댓글 렌더링 함수
-    function renderComment(comment) {
-        return `
-    <div class="comment" id="comment-${comment.id}">
-        <span class="comment-author">${comment.author}</span>
-        <span class="comment-date">${new Date(comment.createdDate).toLocaleString()}</span>
-        <p class="comment-content">${comment.content}</p>
-        <div class="comment-actions">
-            <button onclick="editComment('${comment.id}', '${comment.content}')">수정</button>
-            <button onclick="deleteComment('${comment.id}')">삭제</button>
-            <button onclick="showReplyForm('${comment.id}')">답글</button>
-            <button id="likeButton-${comment.id}" onclick="likeComment('${comment.id}')">추천 (${comment.likeCount ?? 0})</button>
-        </div>
-        <!-- 자식 댓글들이 붙을 위치 -->
-        <div class="reply-section" id="reply-section-${comment.id}"></div>
-    </div>`;
-    }
+
+  // (1) 기존 부모 댓글 렌더링 함수
+  function renderComment(comment) {
+      // comment.memberId === 현재 로그인한 사용자 id
+      const isOwner = (comment.memberId === currentUserId);
+
+      return `
+  <div class="comment" id="comment-${comment.id}">
+      <span class="comment-author">${comment.author}</span>
+      <span class="comment-date">${new Date(comment.createdDate).toLocaleString()}</span>
+      <p class="comment-content">${comment.content}</p>
+      <div class="comment-actions">
+          ${
+          isOwner
+              ? `
+                  <button class="comment-edit-btn" onclick="editComment('${comment.id}', '${comment.content}')">수정</button>
+                  <button class="comment-delete-btn" onclick="deleteComment('${comment.id}')">삭제</button>
+                `
+              : ''
+      }
+
+          <button class="comment-add-btn" onclick="showReplyForm('${comment.id}')">답글</button>
+
+          <button class="comment-like-btn" id="likeButton-${comment.id}" onclick="likeComment('${comment.id}')">
+              추천 (${comment.likeCount ?? 0})
+          </button>
+      </div>
+
+      <div class="reply-section" id="reply-section-${comment.id}"></div>
+  </div>`;
+  }
+
 
 
     // (2) 기존 자식 댓글(대댓글) 렌더링 함수
     function renderChildComment(comment) {
+        const isOwner = (comment.memberId === currentUserId);
+
         return `
     <div class="comment child-comment" id="comment-${comment.id}" style="margin-left: 30px;">
         <span class="comment-author">${comment.author}</span>
         <span class="comment-date">${new Date(comment.createdDate).toLocaleString()}</span>
         <p class="comment-content">${comment.content}</p>
         <div class="comment-actions">
-            <button onclick="editComment('${comment.id}', '${comment.content}')">수정</button>
-            <button onclick="deleteComment('${comment.id}')">삭제</button>
-            <button id="likeButton-${comment.id}" onclick="likeComment('${comment.id}')">추천 (${comment.likeCount ?? 0})</button>
+            ${
+            isOwner
+                ? `
+                    <button class="comment-edit-btn" onclick="editComment('${comment.id}', '${comment.content}')">수정</button>
+                    <button class="comment-delete-btn" onclick="deleteComment('${comment.id}')">삭제</button>
+                  `
+                : ''
+        }
+            <button class="comment-like-btn" id="likeButton-${comment.id}" onclick="likeComment('${comment.id}')">
+                추천 (${comment.likeCount ?? 0})
+            </button>
         </div>
     </div>`;
     }
 
 
 
+
     // ✅ 댓글 작성
     function addComment(parentId = null) {
+        console.log(">>> isAuthenticated in post-view: ", isAuthenticated);
+        console.log(">>> currentUserId in post-view: ", currentUserId);
         if (!isAuthenticated) {
             alert("로그인이 필요합니다.");
             return;
@@ -244,23 +270,39 @@
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: params
         })
-            .then(response => response.text())
+            .then(response => {
+                // 응답 상태 코드가 2xx(성공)가 아니면 에러로 취급
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        // 401이면 "로그인이 필요합니다." 안내
+                        throw new Error("로그인이 필요합니다.");
+                    }
+                    // 그 외 에러 상황
+                    throw new Error("댓글 작성에 실패하였습니다.");
+                }
+                // 정상 응답이면 body를 text()로 변환
+                return response.text();
+            })
             .then(message => {
+                // 여기까지 왔다면 성공
                 alert("댓글이 작성되었습니다.");
                 textArea.value = "";  // 입력창 초기화
                 loadComments();
             })
             .catch(error => console.error("🚨 댓글 등록 오류:", error));
     }
+
     function editComment(remarkId, content) {
         if (!isAuthenticated) {
             alert("로그인이 필요합니다.");
             return;
         }
 
+
         // 현재 댓글 영역 요소 가져오기
         const commentDiv = document.getElementById(`comment-${remarkId}`);
         const contentP = commentDiv.querySelector('.comment-content');
+        const commentActions = commentDiv.querySelector('.comment-actions');
 
         // 이미 편집창이 열려 있으면 중복 생성하지 않음
         if (commentDiv.querySelector('.edit-container')) {
@@ -270,6 +312,10 @@
         // 기존 텍스트 숨기기
         const originalContent = contentP.innerText;
         contentP.style.display = "none";
+        // 버튼 숨김 처리
+        if (commentActions) {
+            commentActions.style.display = 'none';
+        }
 
         // 편집창 컨테이너 생성 (인라인으로 보이도록)
         const editContainer = document.createElement('div');
@@ -281,11 +327,15 @@
         textArea.value = originalContent;
         textArea.style.width = '100%';
         textArea.style.boxSizing = 'border-box';
+        // 클래스 추가
+        textArea.classList.add('custom-textarea');
 
         // 저장 버튼 생성
         const saveButton = document.createElement('button');
         saveButton.innerText = "저장";
         saveButton.style.marginRight = "5px";
+        // 클래스 추가
+        saveButton.classList.add('custom-save-btn');
         saveButton.addEventListener('click', function() {
             const newContent = textArea.value.trim();
             if (newContent === "") {
@@ -306,10 +356,15 @@
         // 취소 버튼 생성
         const cancelButton = document.createElement('button');
         cancelButton.innerText = "취소";
+        // 클래스 추가
+        cancelButton.classList.add('custom-cancel-btn');
         cancelButton.addEventListener('click', function() {
             // 편집창 제거 및 원본 내용 복원
             editContainer.remove();
             contentP.style.display = "block";
+            if (commentActions) {
+                commentActions.style.display = 'block';
+            }
         });
 
         // 편집창에 textarea와 버튼 삽입
@@ -333,6 +388,8 @@
                 .catch(error => console.error("🚨 댓글 삭제 오류:", error));
         }
     }
+
+
 
 
     // ✅ 댓글 좋아요 증가
@@ -373,6 +430,8 @@
 
 
 
+
+
     // ✅ 대댓글 입력 폼
     function showReplyForm(parentId) {
         if (!isAuthenticated) {
@@ -382,9 +441,21 @@
 
         const replySection = document.getElementById(`reply-section-${parentId}`);
         replySection.innerHTML = `
-        <textarea id="replyText-${parentId}" placeholder="답글을 입력하세요"></textarea>
-        <button onclick="addComment('${parentId}')">등록</button>`;
+        <textarea class="comment-textarea" id="replyText-${parentId}" placeholder="답글을 입력하세요"></textarea>
+        <div class="reply-button-group">
+            <button class="comment-submit-btn" onclick="addComment('${parentId}')">등록</button>
+            <button class="comment-submit-btn" onclick="cancelReply('${parentId}')">취소</button>
+        </div>
+    `;
     }
+
+
+    function cancelReply(parentId) {
+        // 답글 입력폼 제거
+        const replySection = document.getElementById(`reply-section-${parentId}`);
+        replySection.innerHTML = "";
+    }
+
 
     // ✅ 대댓글 작성
     function addReply(parentId) {
@@ -395,6 +466,7 @@
             alert("답글을 입력하세요.");
             return;
         }
+
 
         fetch("/api/remarks/write", {
             method: "POST",
@@ -418,5 +490,8 @@
 
 
 </script>
+
+
+
 </body>
 </html>

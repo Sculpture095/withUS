@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 기존 CSS 및 링크 그대로 유지 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet" />
+    <link href="../css/findPartner.css" rel="stylesheet" />
+    <title>파트너스 찾기</title>
+</head>
+<body>
+<!-- Header (Thymeleaf fragment 사용) -->
+<div th:replace="~{header :: header}"></div>
+
+<div class="container project-list-view">
+    <h2>파트너스 찾기</h2>
+
+    <!-- 검색 폼은 제거하고, 대신 필터 폼을 추가 -->
+    <form th:action="@{/findPartner}" method="get" class="filter-form">
+
+        <!-- 파트너 등급 필터링 -->
+        <div>
+            <p>파트너 등급</p>
+            <label>
+                <input type="checkbox" name="ranks" value="BASIC"
+                       th:checked="${#lists.contains(ranks, 'BASIC')}">
+                BASIC
+            </label>
+            <label>
+                <input type="checkbox" name="ranks" value="PLUS"
+                       th:checked="${#lists.contains(ranks, 'PLUS')}">
+                PLUS
+            </label>
+            <label>
+                <input type="checkbox" name="ranks" value="PRIME"
+                       th:checked="${#lists.contains(ranks, 'PRIME')}">
+                PRIME
+            </label>
+        </div>
+
+        <!-- 파트너 형태 필터링 -->
+        <div>
+            <p>파트너 형태</p>
+            <label>
+                <input type="checkbox" name="types" value="CORPORATION"
+                       th:checked="${#lists.contains(types, 'CORPORATION')}">
+                법인사업자
+            </label>
+            <label>
+                <input type="checkbox" name="types" value="SOLE_PROPRIETOR"
+                       th:checked="${#lists.contains(types, 'SOLE_PROPRIETOR')}">
+                개인사업자
+            </label>
+            <label>
+                <input type="checkbox" name="types" value="TEAM"
+                       th:checked="${#lists.contains(types, 'TEAM')}">
+                팀
+            </label>
+            <label>
+                <input type="checkbox" name="types" value="INDIVIDUAL"
+                       th:checked="${#lists.contains(types, 'INDIVIDUAL')}">
+                개인
+            </label>
+        </div>
+
+        <!-- 정렬 옵션 -->
+        <div>
+            <p>정렬</p>
+            <select name="sort">
+                <option value="default" th:selected="${sort == 'default'}">기본 정렬순</option>
+                <option value="score"   th:selected="${sort == 'score'}">평점 높은순</option>
+                <option value="portfolio" th:selected="${sort == 'portfolio'}">포트폴리오 많은순</option>
+            </select>
+        </div>
+
+        <button type="submit">필터 적용</button>
+    </form>
+
+    <div class="partner-container">
+        <!-- 각 파트너 정보를 반복 -->
+        <div th:each="partner : ${partnerPage.content}">
+            <div class="partner-card">
+                <div class="partner-info">
+                    <div class="partner-profile">
+                        <div class="profile-image">
+                            <!-- 이미지가 있다면 동적 출력 -->
+                            <img th:if="${partner.member.myPage.profile != null}" th:src="@{${partner.member.myPage.getProfile}}" alt="Profile Image"/>
+                        </div>
+                        <div class="profile-stats">
+                            <!-- 계약한 프로젝트는 데이터가 없으므로 출력하지 않음 -->
+                            <!-- <p>계약한 프로젝트 <span>25개</span></p> -->
+                            <p>포트폴리오 <span th:text="${partner.portfolios != null ? partner.portfolios.size() : 0} + '개'">0개</span></p>
+                        </div>
+                    </div>
+                    <div class="partner-details">
+                        <div class="status-mark" th:text="${partner.member.rankType}">등급</div>
+                        <h3>
+                            <!-- 예시로 파트너의 닉네임을 출력하고 상세보기 링크 연결 -->
+                            <a th:href="@{'/findPartner/detail/' + ${partner.member.id}}"
+                               th:text="${partner.member.id}">파트너스 아이디 및 회사명</a>
+                        </h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                        <p class="description" th:text="${partner.member.myPage.introduce != null ? partner.member.myPage.introduce : '간단한 소개글을 입력해주세요'}">
+                            간단한 소개가 들어가는 자리입니다. <br/>이곳에 간단한 소개글을 입력해주세요
+                        </p>
+                        <div class="skills">
+                            <!-- 파트너가 보유한 기술을 반복하여 출력 -->
+                            <span th:each="skill : ${partner.ownedSkills}"
+                                  th:text="${skill.skillType}">기술명</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- th:each 종료 -->
+    </div><!-- partner-container -->
+</div>
+
+<!--페이징 처리-->
+<div class="pagination">
+    <ul>
+        <!-- 이전 블록으로 이동 (startPage가 0보다 큰 경우) -->
+        <li th:if="${startPage > 0}">
+            <a th:href="@{/findPartner(page=${startPage -1})}">이전</a>
+        </li>
+        <!-- 실제 페이지 번호 반복 -->
+        <li th:each="i : ${#numbers.sequence(startPage, endPage)}"
+            th:classappend="${i == partnerPage.page} ? 'active'">
+            <a th:href="@{/findPartner(page=${i})}" th:text="${i + 1}">1</a>
+        </li>
+        <!-- 다음 블록으로 이동 (endPage가 totalPages - 1보다 작은 경우) -->
+        <li th:if="${endPage < partnerPage.totalPages - 1}">
+            <!-- 다음 블록의 첫 페이지로 이동 -->
+            <a th:href="@{/findPartner(page=${endPage + 1})}">다음</a>
+        </li>
+    </ul>
+</div>
+
+<!-- Footer (Thymeleaf fragment 사용) -->
+<div th:replace="~{footer :: footer}"></div>
+</body>
+</html>

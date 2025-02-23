@@ -25,7 +25,6 @@ public class ProjectDTO {
     private String closingDate; // 프로젝트 마감일 (요청 및 응답용)
     private String construction; // 프로젝트 종류 (요청 및 응답용)
     private String constructionDescription; // 🔥 ENUM 한글 값 (ex: 외주)
-    private String requirement; // 프로젝트 자격요건 (요청 및 응답용)
     private String projectLocation; // 프로젝트 위치 (요청 및 응답용)
     private Integer teamSize; // 프로젝트 모집 인원 (요청 및 응답용)
     private String projectInfo; // 프로젝트 소개 (요청 및 응답용)

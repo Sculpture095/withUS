@@ -1,5 +1,6 @@
 package com.withus.project.repository.boards;
 
+import com.withus.project.domain.boards.BoardEntity;
 import com.withus.project.domain.boards.RemarkEntity;
 import com.withus.project.repository.AbstractRepository;
 import jakarta.persistence.EntityManager;
@@ -23,11 +24,11 @@ public class RemarkRepositoryImpl extends AbstractRepository<RemarkEntity> {
     }
 
     // ✅ 특정 게시글의 모든 댓글 조회
-    public List<RemarkEntity> findAllByBoardId(String boardId) {
+    public List<RemarkEntity> findAllByBoard(BoardEntity board) {
         return entityManager.createQuery(
-                        "SELECT r FROM RemarkEntity r WHERE r.board.boardId = :boardId ORDER BY r.depth, r.createDate",
+                        "SELECT r FROM RemarkEntity r WHERE r.board = :board ORDER BY r.depth, r.createDate",
                         RemarkEntity.class)
-                .setParameter("boardId", boardId)
+                .setParameter("board", board)
                 .getResultList();
     }
 

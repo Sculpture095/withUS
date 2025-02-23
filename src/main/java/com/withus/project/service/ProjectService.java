@@ -34,22 +34,36 @@ public class ProjectService {
     private final SelectProjectRepositoryImpl selectProjectRepository;
     private final SelectSkillRepositoryImpl selectSkillRepository;
 
-    // 프로젝트 생성 (Client만 가능)
-    public ProjectDTO createProject(ProjectDTO dto) {
+    @Transactional
+    public ProjectDTO createProjectWithSkills(ProjectDTO dto, List<String> skillNames) {
+        // 클라이언트 검증
         ClientEntity client = memberRepository.findClientById(dto.getMemberId())
                 .orElseThrow(() -> new IllegalArgumentException("해당 클라이언트를 찾을 수 없습니다. ID: " + dto.getMemberId()));
-
         if (client.getMember().getPcaType() != PcaType.CLIENT) {
             throw new IllegalArgumentException("프로젝트를 등록할 권한이 없습니다.");
         }
-
         validateProjectDates(dto.getClosingDate(), dto.getStartDate());
 
-
-
+        // 프로젝트 저장 (project 테이블)
         ProjectEntity entity = projectMapper.toEntity(dto);
         entity.setClient(client);
         ProjectEntity savedEntity = projectRepository.save(entity);
+
+        // 선택된 스킬 목록 처리 (selectskill 테이블에 한 줄씩 저장)
+        if (skillNames != null && !skillNames.isEmpty()) {
+            // 디버깅용 출력
+            System.out.println(">>> 선택된 기술 스택: " + skillNames);
+            skillNames.stream()
+                    .filter(skillName -> skillName != null
+                            && !skillName.trim().isEmpty()
+                            && !"null".equalsIgnoreCase(skillName.trim()))
+                    .forEach(skillName -> {
+                        System.out.println(">>> skillName = " + skillName);
+                        SkillType skillType = SkillType.fromName(skillName);
+                        // savedEntity.getProjectId()는 UUID이므로 toString()으로 변환
+                        addSkillToProject(savedEntity.getProjectId().toString(), skillType, dto.getMemberId());
+                    });
+        }
         return projectMapper.toDTO(savedEntity);
     }
 
@@ -113,24 +127,33 @@ public class ProjectService {
     }
 
     // 페이징 처리된 프로젝트 조회
-    public PageResponse<ProjectDTO> getPagedProjects(int page, int size) {
-        long totalElements = projectRepository.count();
-        List<ProjectEntity> projects = projectRepository.findPagedProjects(page, size);
-
-        List<ProjectDTO> content = projects.stream()
-                .map(projectMapper::toDTO)
-                .collect(Collectors.toList());
-
+    public PageResponse<ProjectDTO> getAllProjectsDTO(int page, int size) {
+        int offset = page * size;
+        // 1) 엔티티 페이징 조회
+        List<ProjectEntity> entities = projectRepository.findAllProjects(offset, size);
+        long totalElements = projectRepository.countAllPartners();
         int totalPages = (int) Math.ceil((double) totalElements / size);
+
+        // 2) 엔티티 → DTO 변환
+        List<ProjectDTO> content = entities.stream()
+                .map(projectMapper::toDTO) // 여기서 proStatementDescription 등 DTO 필드를 세팅
+                .collect(Collectors.toList());
 
         return PageResponse.<ProjectDTO>builder()
                 .content(content)
                 .page(page)
-                .size(size)
-                .totalElements(totalElements)
                 .totalPages(totalPages)
+                .totalElements(totalElements)
                 .build();
     }
+    public List<ProjectDTO> getAllProjectsDTO() {
+        // ProjectEntity → ProjectDTO 변환
+        return projectRepository.findAllProjects()
+                .stream()
+                .map(projectMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
 
     // 프로젝트 검색
     public List<ProjectDTO> searchProjects(String keyword, ProjectStatus status, Double minAmount, Double maxAmount) {
@@ -281,18 +304,17 @@ public class ProjectService {
     }
 
     //프로젝트에 특정 기술 추가
-    @Transactional
-    public void addSkillToProject(String projectId, SkillType skillType, String memberId) {
-        ProjectEntity project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new EntityNotFoundException("프로젝트를 찾을 수 없습니다: " + projectId));
 
+    // 프로젝트에 특정 기술 추가 (selectskill 테이블에 한 줄씩 삽입)
+    public void addSkillToProject(String projectId, SkillType skillType, String memberId) {
+        ProjectEntity project = projectRepository.findByUUIDToString(projectId)
+                .orElseThrow(() -> new EntityNotFoundException("프로젝트를 찾을 수 없습니다: " + projectId));
+        // MemberEntity 조회 (필요한 경우)
         MemberEntity member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new EntityNotFoundException("사용자를 찾을 수 없습니다: " + memberId));
-
         SelectSkillEntity selectSkill = new SelectSkillEntity();
         selectSkill.setProject(project);
         selectSkill.setSkillType(skillType);
-
         selectSkillRepository.save(selectSkill);
     }
 
