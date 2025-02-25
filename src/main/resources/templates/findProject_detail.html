@@ -53,12 +53,54 @@
             <p th:text="${project.projectInfo}">
             </p>
         </div>
-        <button class="apply-btn">지원하기</button>
+        <button type="button" class="apply-btn" th:data-project-id="${project.projectId}">지원하기</button>
+
+
+
+
+
+    </ul>
 </div>
 
 
 <!-- Footer -->
 <div  th:replace="~{footer :: footer}"></div>
+
+<script th:inline="javascript">
+    document.querySelectorAll('.apply-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var projectId = this.getAttribute('data-project-id');
+            if (confirm("정말 해당 프로젝트에 지원하시겠습니까?")) {
+                fetch('/findProject/apply/' + projectId, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(err => { throw new Error(err.message); });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        alert(data.message);
+                        // 지원 완료 후 메인 페이지로 이동
+                        window.location.href = "/findProject";
+                    })
+                    .catch(error => {
+                        alert("오류: " + error.message);
+                    });
+            }
+        });
+    });
+
+</script>
+
+
+
+
 
 </body>
 </html>

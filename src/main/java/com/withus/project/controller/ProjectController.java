@@ -12,6 +12,7 @@ import com.withus.project.service.ProjectService;
 import com.withus.project.service.member.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -227,6 +228,49 @@ public class ProjectController {
         //Thymeleaf 탬플릿 registerProject.html에 반환
         return "registerProject";
     }
+
+    @PostMapping("/apply/{projectId}")
+    public ResponseEntity<Map<String, String>> applyProjectAjax(
+            @PathVariable("projectId") UUID projectId,  // UUID 타입으로 받기
+            HttpSession session
+    ){
+        MemberDTO member = (MemberDTO) session.getAttribute("member");
+
+        if (member == null || !member.getPcaType().equals("PARTNER")) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body(Map.of("message", "지원 권한이 없습니다."));
+        }
+
+        // UUID를 문자열로 변환해서 서비스에 전달
+        projectService.applyToProject(projectId.toString(), member.getId());
+
+        return ResponseEntity.ok(Map.of("message", "프로젝트에 지원하였습니다."));
+    }
+
+
+    @GetMapping("/applicants/{projectId}")
+    public ResponseEntity<List<String>> getApplicants(
+            @PathVariable("projectId") String projectId,
+            HttpSession session) {
+
+        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        if (member == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        try {
+            // 서비스에서 '지원자 ID' 리스트를 반환해야 함
+            List<String> applicantIds = projectService.getApplicantsForProject(projectId, member.getId());
+            return ResponseEntity.ok(applicantIds);
+
+        } catch(Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(List.of(e.getMessage()));
+        }
+    }
+
+
+
 
 
 

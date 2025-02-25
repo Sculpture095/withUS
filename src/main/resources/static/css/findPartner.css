@@ -36,8 +36,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    padding: 2rem;
-    margin-top: 100px;
+
+
 }
 
 .partner-card {
@@ -153,6 +153,64 @@ body {
     font-size: 0.8rem;
     color: #333;
 }
+
+/* 필터링 스타일 추가 */
+/* 필터 전체 폼 스타일 */
+.filter-form {
+    display: flex;
+    flex-direction: column;  /* 세 줄: 1) 파트너 등급, 2) 파트너 형태, 3) 정렬 */
+    gap: 1rem;
+
+     margin-top: 100px;
+    width: 1080px;
+
+}
+
+/* 각 줄(파트너 등급, 파트너 형태, 정렬) */
+.filter-form > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* 정렬 텍스트(p)와 select+버튼을 수직 배치하는 컨테이너 */
+.sort-column {
+    display: flex;
+    flex-direction: column; /* 세로로 쌓이도록 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+    gap: 0.5rem;            /* select와 버튼 간 간격 */
+}
+
+/* 작은 제목(파트너 등급, 파트너 형태, 정렬 등) */
+.filter-form p {
+    margin: 0;
+    font-weight: bold;
+}
+
+/* 체크박스 라벨 간격 조정 */
+.filter-form label {
+
+    white-space: nowrap;
+}
+
+/* 버튼 스타일 */
+.filter-form button[type="submit"] {
+    width: 60px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #666;
+    color: #fff;
+    transition: background-color 0.2s;
+    font-size: 13px;
+}
+
+.filter-form button[type="submit"]:hover {
+    background-color: #ddd;
+}
+
+
 
 
 /* 검색창 스타일 추가 */

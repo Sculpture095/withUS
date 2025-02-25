@@ -72,9 +72,12 @@
                 <div class="profile-info">
                     <div class="profile-header">
                         <!-- 파트너의 아이디 -->
-                        <h2 th:text="${partner.member.id}">user1</h2>
-                        <span class="user-type"
-                              th:text="${partner.member.userType.description}"></span>
+                        <div class="partner-info-text">
+                            <h2 th:text="${partner.member.id}">user1</h2>
+                            <div class="divider"></div>
+                            <span class="user-type"
+                                 th:text="${partner.member.userType.description}"></span>
+                        </div>
                         <button class="apply-button">지원 요청하기</button>
                     </div>
                     <div class="bio">
@@ -97,7 +100,10 @@
 </div>
 
 <!-- Footer -->
-<div th:replace="footer :: footer"></div>
+<div class="footer">
+    <div th:replace="footer :: footer"></div>
+</div>
+
 
 </body>
 </html>

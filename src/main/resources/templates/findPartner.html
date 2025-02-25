@@ -15,6 +15,7 @@
 
 <div class="container project-list-view">
     <h2>파트너스 찾기</h2>
+    <div class="partner-container">
 
     <!-- 검색 폼은 제거하고, 대신 필터 폼을 추가 -->
     <form th:action="@{/findPartner}" method="get" class="filter-form">
@@ -72,9 +73,10 @@
                 <option value="score"   th:selected="${sort == 'score'}">평점 높은순</option>
                 <option value="portfolio" th:selected="${sort == 'portfolio'}">포트폴리오 많은순</option>
             </select>
+            <button type="submit">검색</button>
         </div>
 
-        <button type="submit">필터 적용</button>
+
     </form>
 
     <div class="partner-container">
@@ -122,6 +124,7 @@
         </div><!-- th:each 종료 -->
     </div><!-- partner-container -->
 </div>
+</div>
 
 <!--페이징 처리-->
 <div class="pagination">
@@ -145,5 +148,6 @@
 
 <!-- Footer (Thymeleaf fragment 사용) -->
 <div th:replace="~{footer :: footer}"></div>
+
 </body>
 </html>

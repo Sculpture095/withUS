@@ -10,20 +10,29 @@ body {
     display: flex;
     flex-direction: column; /* 세로 방향으로 정렬 */
     min-height: 100vh; /* 최소 높이를 100vh로 설정 */
-    justify-content: center; /* 수직 중앙 정렬 */
+    justify-content: center; 
     align-items: center;
 }
 
 .wrapper {
+    position: relative;
     width: 1080px; /* 너비 설정 */
     background: #fff; /* 배경색 */
     border-radius: 8px; /* 둥근 모서리 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
     padding: 20px; /* 내부 여백 */
     overflow: auto; /* 내용이 넘치지 않도록 */
-    margin: 200px 0;
-    align-content: center;
-    justify-content: center;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    height: 1100px;
+  
+}
+.section:nth-of-type(2) {
+    margin-top: 80px; /* 원하는 값으로 변경 */
+  }
+
+.content{
+    width: 800px;
 }
 
 .mypage_container {
@@ -134,6 +143,7 @@ body {
 
 
 .section {
+    position: relative; 
     flex: 2; /* 비율 설정 */
     border-radius: 8px; /* 둥근 모서리 */
     padding: 50px; /* 내부 여백 */
@@ -149,7 +159,7 @@ body {
 
 .section textarea {
     width: 100%; /* 너비 100% */
-    height: 180px; /* 높이 설정 */
+    height: 200px; /* 높이 설정 */
     padding: 10px; /* 내부 여백 */
     border-radius: 4px; /* 둥근 모서리 */
     resize: none; /* 크기 조절 비활성화 */
@@ -195,6 +205,7 @@ body {
 }
 
 /* Footer 스타일 추가 */
+
 #footer-container {
     /*background-color: #f1f1f1; !* 배경색 *!*/
     /*text-align: center; !* 가운데 정렬 *!*/
@@ -207,470 +218,12 @@ footer {
 }
 
 
-/* 경력 페이지 스타일 */
-.info-table {
-    width: 100%; /* 너비 100% */
-    border-collapse: collapse; /* 테두리 겹치기 */
-    margin: 20px 0; /* 위아래 여백 */
-    resize: none;
-}
-
-.info-table th, .info-table td {
-    width: 700px;
-    padding: 12px; /* 내부 여백 */
-    text-align: left; /* 왼쪽 정렬 */
-    border-bottom: 1px solid #ddd; /* 아래 테두리 */
-}
-
-.info-table th {
-    color: #949494;
-    font-size: 13px;
-    font-weight: bold; /* 글씨 두껍게 */
-}
-
-
-
-/* 모달 스타일 */
-
-.modal {
-    display: none; /* 기본적으로 숨김 */
-    position: fixed; /* 고정 위치 */
-    z-index: 1; /* 최상위 */
-    left: 0;
-    top: 0;
-    width: 100%; /* 전체 너비 */
-    height: 100%; /* 전체 높이 */
-    overflow: auto; /* 스크롤 가능 */
-    background-color: rgba(0, 0, 0, 0.5); /* 투명한 배경 */
-}
-
-.modal-content {
-    background-color: #fff; /* 배경색 */
-    margin: 10% auto; /* 중앙 정렬 */
-    padding: 20px; /* 내부 여백 */
-    border: 1px solid #888; /* 테두리 */
-    width: 80%; /* 너비 설정 */
-    max-width: 500px; /* 최대 너비 설정 */
-    border-radius: 8px; /* 둥근 모서리 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-    position: relative; /* 상대 위치 */
-}
-
-.close {
-    color: #aaa; /* 닫기 버튼 색상 */
-    position: absolute; /* 절대 위치 */
-    right: 20px; /* 오른쪽 여백 */
-    top: 20px; /* 위쪽 여백 */
-    font-size: 28px; /* 폰트 크기 */
-}
-
-.close:hover,
-.close:focus {
-    color: black; /* 호버 시 색상 변경 */
-    text-decoration: none; /* 밑줄 제거 */
-    cursor: pointer; /* 포인터 커서 */
-}
-
-.experience-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-}
-
-#experienceForm{
-    margin-top: 25px;
-}
-
-h2 {
-    text-align: center;
-    color: #333;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.button-group {
-    text-align: center; /* 버튼 중앙 정렬 */
-    margin-top: 20px;
-}
-
-.submit-btn,
-.cancel-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 0 10px; /* 버튼 간격 조정 */
-}
-
-.submit-btn {
-    background-color: #4C3DF2;
-    color: white;
-}
-
-.submit-btn:hover {
-    background-color: #3b30bd; /* hover 시 배경색 */
-}
-
-.cancel-btn {
-    background-color: #ccc; /* 취소 버튼 색상 */
-    color: black;
-}
-
-.cancel-btn:hover {
-    background-color: #bbb; /* hover 시 배경색 */
-}
-
-.date-input {
-    width: 100%; /* 너비 100% */
-    padding: 10px; /* 내부 여백 */
-    border: 1px solid #ddd; /* 테두리 */
-    border-radius: 4px; /* 둥근 모서리 */
-    margin: 0 5px; /* 좌우 여백 */
-}
-
-.date-separator {
-    margin: 0 10px; /* 좌우 여백 */
-    font-weight: bold; /* 두껍게 */
-}
-
-
 /* 개인정보 관리 페이지 */
 .input_text{
     font-size: 15px;
     color: rgb(196, 196, 196);
 }
 
-
-
-/* 포트폴리오 관리 페이지 */
-.portfolio_grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.card-item {
-    background-color: #fff; /* 카드 배경색 */
-    border-radius: 8px; /* 둥근 모서리 */
-    border: 1px solid #ededed;
-    overflow: hidden; /* 내용이 넘치지 않도록 */
-}
-
-.card-item img {
-    width: 100%; /* 이미지 너비 100% */
-    height: auto; /* 높이는 자동으로 조정 */
-}
-
-.card-item a {
-    text-decoration: none; /* 밑줄 제거 */
-}
-
-.card-text {
-    padding: 5px; /* 내부 여백 줄임 */
-}
-
-.card_title {
-    font-size: 15px; /* 제목 크기 줄임 */
-    margin-top: 10px;
-    margin-bottom: 15px; /* 아래 여백 줄임 */
-    color: #4a4a4b;
-    text-align: left; /* 텍스트 왼쪽 정렬 */
-}
-
-
-.card-text p {
-    margin-bottom: 5px; /* 아래 여백 줄임 */
-    color: #6c757d; /* 텍스트 색상 */
-}
-
-.moreview {
-    cursor: pointer; /* 포인터 커서 */
-    float: right;
-    font-size: 13px;
-}
-
-
-/* 프로젝트 관리 페이지 */
-
-.project-table {
-    width: 100%; /* 너비 100% */
-    border-collapse: collapse; /* 테두리 겹치기 */
-    margin: 20px 0; /* 위아래 여백 */
-    resize: none;
-}
-
-.project-table table{
-    width: 700px;
-}
-
-.project-table table a{
-    text-decoration: none;
-    color: #3a3a3a;
-}
-
-.project-table table a:hover{
-    color: #a5a5a5;
-}
-
-.project-table th, .project-table td {
-    padding: 12px; /* 내부 여백 */
-    text-align: left; /* 기본 왼쪽 정렬 */
-    border-bottom: 1px solid #ddd; /* 아래 테두리 */
-}
-
-.project-table th:last-child, .project-table td:last-child {
-    text-align: right; /* 마지막 열 오른쪽 정렬 */
-}
-
-.project-table th {
-    color: #949494;
-    font-size: 13px;
-    font-weight: bold; /* 글씨 두껍게 */
-}
-
-
-/* 보유기술 관리 페이지 */
-/* 모달창 스킬 선택 */
-/* 기술 스택 선택 스타일링 */
-.custom-select {
-    position: relative;
-    width: 100%;
-}
-
-.select-box {
-    background-color: #ffffff;
-    border: 1px solid #ced4da;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 38px;
-    padding: 0 10px;
-    cursor: pointer;
-}
-
-/* 버튼 그룹 스타일링 */
-.button-group {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.reg_btn,
-.cancel_btn {
-    padding: 0.8rem 2rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.reg_btn {
-    background-color: #4C3DF2;
-    color: white;
-}
-
-.cancel_btn {
-    background-color: #6c757d;
-    color: white;
-}
-
-.reg_btn:hover {
-    background-color: #3b30bd;
-}
-
-.cancel_btn:hover {
-    background-color: #5a6268;
-}
-
-/* 기존 기술 스택 관련 스타일 유지 */
-.container{
-    align-items: flex-start;
-    gap: 20px;
-}
-
-.custom-select{
-    position: relative;
-    width: 100%;
-}
-
-.select-box{
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 56px;
-    padding: 0 10px;
-    cursor: pointer;  
-}
-
-.selected-options{
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 0;
-}
-
-.tag{
-    background-color: #f2f2f2;
-    color: #000000;
-    border-radius: 5px;
-    margin-right: 5px;
-    padding: 6px 14px;
-    display: flex;
-    align-items: center;
-}
-
-.remove-tag{
-    margin-left: 6px;
-    cursor: pointer;
-}
-
-.arrow{
-    margin: 0 10px;
-}
-
-.fa-angle-down{
-    color: #404040;
-    font-size: 15px;
-}
-
-.options {
-    display: none;
-    position: absolute;
-    width: 100%;
-    background-color: #ffffff;
-    border: 1px solid #ced4da;
-    border-top: none;
-    max-height: 225px;
-    overflow-y: auto;
-    z-index: 1;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.1)
-}
-
-.open .options{
-    display: block;
-    }
-
-.option-search-tags {
-    background-color: #ffffff;
-    /* border: 1px solid #ced4da; */
-    padding: 8px 0px;
-    margin: 8px;
-}
-
-.search-tags {
-    width: 100%;
-    border: none;
-    outline: none;
-    padding: 8px;
-    font-size: 14px;
-}
-
-.clear{
-    position: absolute;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 0;
-    color:#000;
-    top: 26px;
-    left: auto;
-    right: 15px;
-    }
-
-.option.active{
-    color: #000;
-    background-color: #f2f2f2;
-    border-bottom: 1px solid #eaeaea;
-}
-
-.tag:hover,
-.option:hover{
-    background-color:#eaeaea;
-}
-
-.option {
-    padding: 12px;
-    cursor: pointer;
-}
-
-
-.option:hover {
-    background-color: #f8f9fa;
-}
-
-.selected-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.no-result-message{
-    padding: 0px 0px 12px 12px;
-    display: none;
-    
-}
-
-.board-table textarea {
-    height: 400px;  /* 높이 설정 */
-}
-
-select{
-    appearance: none;
-}
-
-.select_box {
-    position: relative; /* 상대 위치 설정 */
-    display: flex; /* Flexbox 사용 */
-    align-items: center; /* 수직 중앙 정렬 */
-}
-
-.select_box select {
-    width: 100%; /* select 요소가 가득 차도록 설정 */
-    padding-right: 30px; /* 화살표와 텍스트 간격 조정 */
-    border: 1px solid #ddd; /* 테두리 스타일 */
-    border-radius: 4px; /* 둥근 모서리 */
-    appearance: none; /* 기본 화살표 제거 */
-    -webkit-appearance: none; /* Safari에서 기본 화살표 제거 */
-    -moz-appearance: none; /* Firefox에서 기본 화살표 제거 */
-}
-
-.arrow {
-    position: absolute; /* 절대 위치 설정 */
-    right: 8px; /* 오른쪽에서 10px 떨어진 위치 */
-    pointer-events: none; /* 화살표 클릭 방지 */
-}
-
-.arrow i {
-    color: #404040; /* 화살표 색상 */
-    font-size: 15px; /* 화살표 크기 */
-}
-
-
-/* 기존에 주셨던 CSS 내용 전부 (생략 없이 그대로) */
-
-/* ... 중간 생략 ... */
 
 /* 프로젝트 관리 페이지 */
 .project-table {
@@ -714,10 +267,10 @@ select{
 /* "지원자 목록보기" 버튼 스타일 */
 .project-table .applicant-btn {
     background-color: #fff;
-    color: #828282;
+    color: #4C3DF2;
     border: none;
     padding: 8px 16px;
-    border: 1px solid #bdbdbd;
+    border: 1px solid #4C3DF2;
     border-radius: 50px;
     cursor: pointer;
     font-size: 13px;
@@ -734,9 +287,8 @@ select{
     margin-right: 5px; /* 아이콘과 텍스트 사이 간격 */
 }
 
-/* ========================= */
+
 /*  모달창 관련 스타일 추가  */
-/* ========================= */
 .modal {
     display: none; 
     position: fixed; 
@@ -754,11 +306,12 @@ select{
     margin: 10% auto;
     padding: 50px;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
+    width: 100%;
+    max-width: 700px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
+    height: 700px;
 }
 
 /* 닫기(X) 버튼 */
@@ -788,6 +341,7 @@ select{
     text-align: left;       /* 기본은 왼쪽 정렬 */
     vertical-align: middle; /* 수직 가운데 정렬 */
 }
+
 /* 두 번째 열(= "선택" 열)만 수평 가운데 정렬 */
 .applicant-table th:nth-child(2),
 .applicant-table td:nth-child(2) {
@@ -811,32 +365,406 @@ select{
 }
 
 .applicant-count {
-    font-size: 15px;       /* 폰트 크기 16px */
-    text-align: left;      /* 왼쪽 정렬 */
-    margin: 0;             /* 기본 h2 여백 제거 */
-    display: flex;         /* 아이콘과 텍스트를 수평 배치 */
-    align-items: center;   /* 수직 정렬 중앙 */
+    font-size: 15px;      
+    text-align: left;     
+    margin: 0;        
+    display: flex;         
+    align-items: center;   
 }
   
 .applicant-count i {
-    margin-right: 6px;     /* 아이콘과 글자 사이 간격 */
-    font-size: 15px;       /* 아이콘 크기도 16px로 맞춤(선택) */
+    margin-right: 6px;   
+    font-size: 15px;       
     margin-bottom: 5px;
 }
 
-/* 하단 "지원자 선택" 버튼 */
+/* 지원서 확인 버튼 */
+.applicant_btn{
+    font-size: 13px;
+    border-style: none;
+    padding: 5px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #555555;
+}
+.applicant_btn:hover{
+    color: #4C3DF2;
+    font-weight: bold;
+}
+
+
+/* 지원자 선택 버튼 */
 .submit-applicant-btn {
     background-color: #4C3DF2;
     color: #fff;
     border: none;
     padding: 10px 20px;
     width: 150px;
-    margin: 20px auto 0;   /* 상단 20px, 좌우 auto, 하단 0 -> 수평 중앙 */
     border-radius: 4px;
     cursor: pointer;
-    display: block;        /* 블록 요소로 만들어야 margin: auto가 적용 */
+    position: absolute;
+    bottom: 50px;         /* 모달 하단에서 20px 위 */
+    left: 50%;
+    transform: translateX(-50%);  /* 수평 가운데 정렬 */
 }
+  
   
 .submit-applicant-btn:hover {
     background-color: #372cac;
 }
+
+
+/* 평가하기 모달창 스타일 */
+.review-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.review-modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+
+.review-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.review-close:hover {
+    color: red;
+}
+
+.review-modal-content textarea {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+}
+
+.review-modal-content select {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.submit-review-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background: #4C3DF2;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-review-btn:hover {
+    background: #3629d2;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* 지원서 페이지 스타일 */
+
+#applicationContent {
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .info-table {
+    width: 100%;
+    border-collapse: collapse; /* 테두리 겹침 처리 */
+    margin-top: 30px;
+    table-layout: fixed;
+  }
+
+  .info-table tr th{
+    font-size: 13px;
+  }
+
+  .info-table th,
+  .info-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .info-table th {
+    background-color: #f7f7f7;
+    text-align: left;
+    width: 100px;
+    text-align: center;
+  }
+
+  /* 지원 금액, 지원 기간 행 */
+.info-table tr:nth-child(1) th,
+.info-table tr:nth-child(1) td,
+.info-table tr:nth-child(2) th,
+.info-table tr:nth-child(2) td,
+.info-table tr:nth-child(3) th,
+.info-table tr:nth-child(3) td  {
+  padding: 5px 10px;
+  height: 40px; 
+}
+
+/* 지원 내용 행 */
+.info-table tr:nth-child(4) th,
+.info-table tr:nth-child(4) td {
+  padding: 10px;
+  height: 300px; 
+}
+
+/* 지원 내용의 스크롤 영역 */
+.info-table tr:nth-child(4) .scrollable-content {
+  max-height: 300px; 
+  overflow-y: auto;
+  display: block;
+  width: 100%;
+}
+
+  
+#backToListBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0; 
+    background-color: #4C3DF2;
+    border-radius: 4px;
+    border-style: none;
+    color: white;
+    font-size: 13px;
+}
+
+  .application-h1{
+    font-size: 25px;
+    text-align: center;
+  }
+  
+  .scrollable-content {
+    max-height: 150px; /* 원하는 높이로 조절 */
+    overflow-y: auto;  /* 내용이 많을 경우 세로 스크롤 생성 */
+    display: block;    /* div가 블록 요소임을 확실히 함 */
+    width: 100%;
+    border-style: none;
+  }
+
+  /* Webkit 기반 브라우저용 (Chrome, Safari 등) */
+.scrollable-content::-webkit-scrollbar {
+    width: 8px; /* 스크롤바 너비 */
+  }
+  
+  .scrollable-content::-webkit-scrollbar-track {
+    background: #f1f1f1; /* 트랙 배경색 */
+    border-radius: 10px;
+  }
+  
+  .scrollable-content::-webkit-scrollbar-thumb {
+    background: #cccccc; /* 스크롤바 thumb 색상 */
+    border-radius: 10px;
+  }
+
+  .icon-img{
+    width: 15px;
+  }
+
+  .applicant-table td:nth-child(3) {
+    padding-left: 17px; 
+}
+
+
+/* AI한테 파트너스 추천받기 부분 스타일 */
+/* AI 버튼 스타일 */
+
+.ai-partner-btn {
+    background-color: #4C3DF2;
+    border: 1px solid #ffffff;
+    width: 280px;
+    height: 50px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 7px;
+    cursor: pointer;
+   
+}
+
+.ai-partner-btn-con {
+    position: absolute;
+    top: 10px; 
+    right: 40px;   
+  }
+
+
+.ai-partner-btn img{
+    width: 28px;
+    height: auto;
+    margin-bottom: 8px;  
+}
+
+.ai-partner-btn:hover{
+    background-color: #4437d8;
+}
+.ai-modal {
+    display: none;
+    position: fixed;
+    z-index: 1100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); 
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ai-modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 10% auto; /* 수직, 수평 중앙 정렬 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 600px;
+    height: 500px;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 15px;
+  }
+  
+/* 닫기 버튼 위치 및 스타일 */
+.ai-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .ai-modal-text {
+    text-align: center;
+    margin-bottom: 20px; /* 필요 시 간격 조절 */
+    margin-top: 100px;
+  }
+  
+  .ai-partner-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  /* select 태그의 너비 지정 */
+  .ai-partner-select select {
+    width: 500px;
+    height: 50px;
+    margin-bottom: 10px;
+    padding: 10px;
+    
+  }
+  
+  /* 추천 받기 버튼: 선택창 바로 아래 위치 */
+  .ai-partner-select button {
+    margin-top: 10px;
+    background-color: #4C3DF2;
+    border-radius: 4px;
+    border-style: none;
+    color: white;
+    font-size: 15px;
+    padding: 10px 40px;
+  }
+
+  /* ai 답변 부분 */
+  #aiAnswerScreen {
+    display: flex;             
+    flex-direction: column;    
+    align-items: center;       
+    justify-content: center;   
+    text-align: center;     
+    height: 100%;
+    padding: 30px;          
+  }
+
+  .select-project {
+    margin-top: 20px;
+  }
+  .select-project p{
+    font-weight: bold;
+  }
+
+  .ai-answer-text{
+    height: 250px;
+  }
+
+  .ai-answer-text h2{
+    font-size: 25px;
+  }
+
+  /* 다시 선택하기 버튼 */
+  #backToSelectionBtn{
+    margin-top: 10px;
+    background-color: #4C3DF2;
+    border-radius: 4px;
+    border-style: none;
+    color: white;
+    font-size: 15px;
+    padding: 10px 30px;
+  }
+
+   /* 자세한 정보보기 버튼 */
+   #requestBtn{
+    margin-top: 10px;
+    background-color: #4C3DF2;
+    border-radius: 4px;
+    border-style: none;
+    color: white;
+    font-size: 15px;
+    padding: 10px 30px;
+  }
+
+    /* 로딩 화면 */
+  #loadingScreen {
+    display: none;             
+    flex-direction: column;    
+    align-items: center;       
+    justify-content: center;   
+    text-align: center;      
+    height: 100%;              
+  }
+  
+
+  #loadingScreen p{
+    margin-top: 20px;
+  }
+
+

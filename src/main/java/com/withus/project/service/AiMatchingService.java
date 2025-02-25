@@ -87,15 +87,15 @@ public class AiMatchingService {
         sb.append("\n");
 
         // (3) 형식 요구사항
-        sb.append("위 정보를 바탕으로, 아래 형식에 맞춰 줄바꿈을 포함해 답변해 주세요:\n\n");
-        sb.append("예시:\n");
-        sb.append("추천하는 파트너:\n<파트너 이름>\n\n");
-        sb.append("이유:\n- 첫 번째 이유\n- 두 번째 이유\n\n");
-        sb.append("파트너의 주요 기술:\n<주요 기술>\n\n");
-        sb.append("파트너의 경력:\n<경력>\n\n");
-        sb.append("각 항목 사이에는 반드시 한 줄 이상 띄워서, 여러 줄로 작성해 주세요.");
+        sb.append("위 정보를 바탕으로, 아래 형식에 맞춰 줄바꿈을 포함해 답변해 주세요 그리고 출력 형식은 반드시 JSON 객체 형태로 해주세요.:\n\n");
+        sb.append("예시 JSON:\n");
+        sb.append("{\n");
+        sb.append("  \"recommendedNickname\": \"홍길동\",\n");
+        sb.append("  \"reason\": \"이유...\",\n");
+        sb.append("  \"skills\": [\"Java\", \"Spring\"],\n");
+        sb.append("  \"career\": \"5년\"}\n");
+        sb.append("JSON 외의 문자는 절대 포함하지 말아 주세요.");
 
         return sb.toString();
     }
 }
-

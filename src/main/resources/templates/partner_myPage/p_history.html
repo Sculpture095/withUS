@@ -94,6 +94,10 @@
                                 <td th:text="${history.companyName}"></td>
                                 <td th:text="${history.joinDate} + ' - ' + ${history.exitDate}"></td>
                                 <td th:text="${history.work}"></td>
+                                <td>
+                                    <button class="delete-btn"
+                                            onclick="deleteHistory()">X</button>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -182,6 +186,7 @@
             })
             .catch(error => console.error("경력 삭제 중 오류 발생:", error));
     }
+
 
     document.getElementById("experienceForm").addEventListener("submit", function(event) {
         event.preventDefault();

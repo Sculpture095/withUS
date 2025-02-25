@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/main.css" rel="stylesheet" />
+    <link href="../css/help.css" rel="stylesheet" />
+    <title>문의 작성</title>
+</head>
+
+<body>
+<!-- 메뉴바 -->
+<div th:replace="~{header :: header}"></div>
+
+ <div class="help_container">
+  <div class="header_text">
+    <h2>문의하기</h2>
+  </div>
+  <div class="inner">
+    <form class="write-form" method="post" action="/guide/new/help" enctype="multipart/form-data">
+        <p class="p-text">* 문의 답변은 메일로 발송됩니다.</p>
+        <input type="text" id="title" name="title" placeholder="제목을 입력하세요" required>
+        <textarea id="content" name="content" rows="6" placeholder="문의 내용을 입력하세요" required></textarea>
+
+        <input type="file" id="portfolioImage" name="portfolioImage" class="file-input" accept="image/*" multiple>
+
+        <!-- 이미지 미리보기 영역 -->
+        <div id="imagePreviewContainer"></div>
+        
+        <div class="form-buttons">
+            <button type="submit" class="submit-btn">보내기</button>
+            <a href="/guide/c_ask" class="cancel-btn">취소</a>
+        </div>
+    </form>
+</div>
+  
+</div>
+
+<!-- Footer -->
+<div class="footer" style="width: 100%">
+    <div  th:replace="~{footer :: footer}"></div>
+</div>
+<script>
+      // 업로드한 파일을 저장하는 배열 (기존 이미지 유지)
+let uploadedFiles = [];
+
+document.getElementById("portfolioImage").addEventListener("change", function(event) {
+    let imagePreviewContainer = document.getElementById("imagePreviewContainer");
+    
+    // 새로운 파일 가져오기
+    let newFiles = Array.from(event.target.files);
+
+    // 기존 파일 + 새로운 파일 추가
+    uploadedFiles = uploadedFiles.concat(newFiles);
+
+    // 기존 미리보기를 유지하면서 새로운 이미지 추가
+    uploadedFiles.forEach((file, index) => {
+        // 중복된 이미지가 추가되지 않도록 기존 미리보기 확인
+        if (!imagePreviewContainer.querySelector(`[data-index="${index}"]`)) {
+            let reader = new FileReader();
+
+            reader.onload = function(e) {
+                let imageItem = document.createElement("div");
+                imageItem.classList.add("image-item");
+                imageItem.setAttribute("data-index", index);
+
+                imageItem.innerHTML = `
+                    <img src="${e.target.result}" class="preview-image">
+                    <button class="delete-img-btn" onclick="removeImage(${index})">X</button>
+                `;
+
+                imagePreviewContainer.appendChild(imageItem);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // input 요소의 파일 리스트 업데이트 (새 FileList 생성 필요)
+    let dataTransfer = new DataTransfer();
+    uploadedFiles.forEach(file => dataTransfer.items.add(file));
+    document.getElementById("portfolioImage").files = dataTransfer.files;
+});
+
+function removeImage(index) {
+    // 이미지 리스트에서 해당 이미지 제거
+    uploadedFiles.splice(index, 1);
+
+    // 미리보기에서 제거
+    let imageItem = document.querySelector(`[data-index="${index}"]`);
+    if (imageItem) {
+        imageItem.remove();
+    }
+
+    // input 요소의 파일 리스트 업데이트 (새 FileList 생성 필요)
+    let dataTransfer = new DataTransfer();
+    uploadedFiles.forEach(file => dataTransfer.items.add(file));
+    document.getElementById("portfolioImage").files = dataTransfer.files;
+}
+
+</script>
+</body>
+</html>

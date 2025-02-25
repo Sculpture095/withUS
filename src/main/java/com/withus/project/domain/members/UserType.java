@@ -25,4 +25,13 @@ public enum UserType {
         throw new IllegalArgumentException("Invalid code for UserType: " + code);
     }
 
+    public static UserType fromName(String name) {
+        for (UserType user : values()) {
+            if (user.name().equalsIgnoreCase(name)) {
+                return user;
+            }
+        }
+        throw new IllegalArgumentException("Invalid userType name: " + name);
+    }
+
 }

@@ -4,6 +4,7 @@ import com.withus.project.domain.dto.members.MemberDTO;
 import com.withus.project.domain.dto.members.MyPageDTO;
 import com.withus.project.domain.dto.projects.ProjectDTO;
 import com.withus.project.domain.members.HistoryEntity;
+import com.withus.project.domain.members.UserType;
 import com.withus.project.repository.members.HistoryRepositoryImpl;
 import com.withus.project.service.ProjectService;
 import com.withus.project.service.member.MyPageService;
@@ -52,6 +53,7 @@ public class MyPageController {
         System.out.println("🔍 [MyPageController] /c_myPage 요청 들어옴");
 
         MemberDTO member = (MemberDTO) session.getAttribute("member");
+        String userTypeName = member.getUserType();
         System.out.println("🛠 [DEBUG] 세션에서 가져온 member: " + member);
 
         if (member == null) {
@@ -63,6 +65,13 @@ public class MyPageController {
         try {
             MyPageDTO myPage = myPageService.getMyPageByUserId(member.getId());
             System.out.println("✅ [MyPageController] 마이페이지 데이터 조회 완료: " + myPage);
+            // 1) enum으로 변환 → .getDescription() 뽑기
+            UserType enumType = UserType.fromName(userTypeName);
+            // fromName("INDIVIDUAL") -> UserType.INDIVIDUAL
+            String userTypeDesc = enumType.getDescription(); // => "개인"
+
+            // 2) 모델에 담기
+            model.addAttribute("userTypeDesc", userTypeDesc);
             model.addAttribute("member", member);
             model.addAttribute("myPage", myPage);
         } catch (EntityNotFoundException e) {
@@ -80,8 +89,10 @@ public class MyPageController {
     public String partnerMyPage(HttpSession session, Model model, RedirectAttributes redirectAttributes){
         System.out.println("🔍 [MyPageController] /p_myPage 요청 들어옴");
 
+
         MemberDTO member = (MemberDTO) session.getAttribute("member");
         System.out.println("🛠 [DEBUG] 세션에서 가져온 member: " + member);
+        String userTypeName = member.getUserType();
 
         if (member == null) {
             System.out.println("⚠ [ERROR] 세션에 member 없음, 로그인 페이지로 이동");
@@ -89,6 +100,13 @@ public class MyPageController {
             return "redirect:/login";
         }
         try {
+            // 1) enum으로 변환 → .getDescription() 뽑기
+            UserType enumType = UserType.fromName(userTypeName);
+            // fromName("INDIVIDUAL") -> UserType.INDIVIDUAL
+            String userTypeDesc = enumType.getDescription(); // => "개인"
+
+            // 2) 모델에 담기
+            model.addAttribute("userTypeDesc", userTypeDesc);
             MyPageDTO myPage = myPageService.getMyPageByUserId(member.getId());
             System.out.println("✅ [MyPageController] 마이페이지 데이터 조회 완료: " + myPage);
             model.addAttribute("member", member);
@@ -120,63 +138,6 @@ public class MyPageController {
         return Map.of("success", true);
     }
 
-
-//    @GetMapping("/c_project")
-//    public String clientProjectPage(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
-//        MemberDTO member = (MemberDTO) session.getAttribute("member");
-//
-//        if (member == null) {
-//            redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
-//            return "redirect:/login";
-//        }
-//
-//        // ✅ 로그 추가: 클라이언트 ID 확인
-//        System.out.println("🔍 [MyPageController] 클라이언트 ID: " + member.getId());
-//
-//        // ✅ 클라이언트가 등록한 프로젝트 목록 조회
-//        List<ProjectDTO> projects = projectService.getClientProjects(member.getId());
-//
-//        // ✅ 로그 추가: 조회된 프로젝트 확인
-//        System.out.println("📌 [MyPageController] 조회된 프로젝트 개수: " + projects.size());
-//        for (ProjectDTO project : projects) {
-//            System.out.println("📌 프로젝트: " + project.getProjectName());
-//        }
-//
-//        // 모델에 데이터 추가
-//        model.addAttribute("projects", projects);
-//        model.addAttribute("member", member);
-//
-//        return "client_myPage/c_project";
-//    }
-//
-//
-//    @GetMapping("/p_project")
-//    public String partnerProjectPage(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
-//        MemberDTO member = (MemberDTO) session.getAttribute("member");
-//
-//        if (member == null) {
-//            redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
-//            return "redirect:/login";
-//        }
-//
-//        // ✅ 로그 추가: 클라이언트 ID 확인
-//        System.out.println("🔍 [MyPageController] 클라이언트 ID: " + member.getId());
-//
-//        // ✅ 클라이언트가 등록한 프로젝트 목록 조회
-//        List<ProjectDTO> projects = projectService.getClientProjects(member.getId());
-//
-//        // ✅ 로그 추가: 조회된 프로젝트 확인
-//        System.out.println("📌 [MyPageController] 조회된 프로젝트 개수: " + projects.size());
-//        for (ProjectDTO project : projects) {
-//            System.out.println("📌 프로젝트: " + project.getProjectName());
-//        }
-//
-//        // 모델에 데이터 추가
-//        model.addAttribute("projects", projects);
-//        model.addAttribute("member", member);
-//
-//        return "client_myPage/c_project";
-//    }
 
 
 

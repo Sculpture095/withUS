@@ -1,12 +1,12 @@
 package com.withus.project.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.withus.project.domain.dto.AiRecommendResponse;
 import com.withus.project.service.AiMatchingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/ai")
@@ -19,12 +19,14 @@ public class AiMatchingController {
      * GET /api/ai/recommend/{projectId}
      * 외부에 노출할 고유 식별자(projectId)를 받아 AI 추천 결과를 반환합니다.
      */
-    @GetMapping("/recommend/{projectId}")
-    public ResponseEntity<String> recommendPartner(@PathVariable String projectId) {
+    @PostMapping("/recommend/{projectId}")
+    public AiRecommendResponse  recommendPartner(@PathVariable String projectId) throws JsonProcessingException {
         String recommendation = aiMatchingService.getPartnerRecommendation(projectId);
-        System.out.println("===== AI Response Start =====");
-        System.out.println(recommendation);
-        System.out.println("===== AI Response End =====");
-        return ResponseEntity.ok(recommendation);
+
+        ObjectMapper mapper = new ObjectMapper();
+        AiRecommendResponse response = mapper.readValue(recommendation,AiRecommendResponse.class);
+
+
+        return response;
     }
 }

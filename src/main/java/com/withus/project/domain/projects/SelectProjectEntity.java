@@ -37,7 +37,7 @@ public class SelectProjectEntity {
     private ProjectEntity project; // 프로젝트 외래키
 
     @Column(name = "yn", nullable = false)
-    private Boolean yn; // 클라이언트 선택 여부
+    private Boolean yn = false; // 클라이언트 선택 여부
 
 
 

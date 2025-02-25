@@ -33,6 +33,7 @@ public class ProjectService {
     private final MemberRepositoryImpl memberRepository;
     private final SelectProjectRepositoryImpl selectProjectRepository;
     private final SelectSkillRepositoryImpl selectSkillRepository;
+    private final EntityManager entityManager;
 
     @Transactional
     public ProjectDTO createProjectWithSkills(ProjectDTO dto, List<String> skillNames) {
@@ -163,28 +164,28 @@ public class ProjectService {
 
     // 파트너가 특정 프로젝트에 지원
     @Transactional
-    public void applyToProject(String projectId, String id) {
-        ProjectEntity project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 프로젝트를 찾을 수 없습니다. projectIdx=" + projectId));
+    public void applyToProject(String projectIdString, String memberId) {
+        // 여기서 직접 UUID 변환 or findByUUIDToString(...) 사용
+        ProjectEntity project = projectRepository.findByUUIDToString(projectIdString)
+                .orElseThrow(() -> new IllegalArgumentException("해당 프로젝트를 찾을 수 없습니다. projectId=" + projectIdString));
 
         if (project.getProStatement() != ProjectStatus.ON_GOING) {
             throw new IllegalArgumentException("현재 프로젝트는 모집 중이 아니므로 지원할 수 없습니다.");
         }
-
-        if (selectProjectRepository.existsByProjectIdAndMemberId(projectId, id)) {
+        if (selectProjectRepository.existsByProjectIdAndMemberId(projectIdString, memberId)) {
             throw new IllegalArgumentException("이미 지원한 프로젝트입니다.");
         }
 
-        PartnerEntity partner = memberRepository.findPartnerById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 파트너를 찾을 수 없습니다. ID: " + id));
+        PartnerEntity partner = memberRepository.findPartnerById(memberId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 파트너를 찾을 수 없습니다. ID: " + memberId));
 
         SelectProjectEntity selectProject = new SelectProjectEntity();
         selectProject.setProject(project);
         selectProject.setPartner(partner);
-        selectProject.setYn(true);
 
         selectProjectRepository.save(selectProject);
     }
+
 
     // 파트너가 자신이 지원한 프로젝트 조회
     public List<ProjectDTO> getAppliedProjectsByPartner(String partnerId) {
@@ -211,13 +212,18 @@ public class ProjectService {
     }
 
     // 클라이언트가 자신의 프로젝트에 지원한 지원자 조회
-    public List<String> getApplicantsForProject(String projectId, String id) {
-        validateClientOwnership(id, projectId);
-        return selectProjectRepository.findByProjectId(projectId).stream()
+    public List<String> getApplicantsForProject(String projectIdString, String clientId) {
+        // 1) 소유권 검증
+        validateClientOwnership(clientId, projectIdString);
+
+        // 2) Repository 이용 -> 2단계 조회
+        List<SelectProjectEntity> spList = selectProjectRepository.findByProjectId(projectIdString);
+
+        // 3) 지원자의 member.id 목록 추출
+        return spList.stream()
                 .map(sp -> sp.getPartner().getMember().getId())
                 .collect(Collectors.toList());
     }
-
 
 
     // 특정 프로젝트와 파트너의 참여 정보 조회
@@ -264,14 +270,22 @@ public class ProjectService {
     }
 
     // 프로젝트 소유권 검증
-    private void validateClientOwnership(String id, String projectId) {
-        ProjectEntity project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new IllegalArgumentException("프로젝트를 찾을 수 없습니다. ID: " + projectId));
+    private void validateClientOwnership(String clientId, String projectUuidString) {
+        // 1) UUID 변환 후 ProjectEntity 조회
+        UUID uuid = UUID.fromString(projectUuidString);
+        ProjectEntity project = entityManager.createQuery(
+                        "SELECT p FROM ProjectEntity p WHERE p.projectId = :uuid",
+                        ProjectEntity.class
+                )
+                .setParameter("uuid", uuid)
+                .getSingleResult();
 
-        if (!project.getClient().getMember().getId().equals(id)) {
-            throw new IllegalArgumentException("프로젝트의 소유자가 아닙니다. ID: " + id);
+        // 2) 소유자 확인
+        if (!project.getClient().getMember().getId().equals(clientId)) {
+            throw new IllegalArgumentException("프로젝트의 소유자가 아닙니다. ID: " + clientId);
         }
     }
+
 
     // 프로젝트 날짜 검증
     private void validateProjectDates(String closingDateStr, String startDateStr) {
@@ -326,6 +340,8 @@ public class ProjectService {
 
         selectSkillRepository.deleteByProjectAndSkillType(project, skillType);
     }
+
+
 
 
 

@@ -18,12 +18,9 @@ body {
 }
 
 /* Footer */
-#footer {
-  text-align: center;
-  width: 100%;
-  /* position: fixed; */
-  bottom: 0;
-  left: 0;
+
+.footer{
+  width: 100% ;
 }
 
 /* Board 관련 */

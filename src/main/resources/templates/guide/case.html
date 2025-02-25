@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 아이콘 및 폰트 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <link rel="stylesheet" href="../../css/case.css" />
+  <!-- 모달 관련 CSS (스크롤 포함) -->
+  <link rel="stylesheet" href="../../css/modal.css" />
+  <title>고객사례</title>
+</head>
+
+<body>
+<!-- Header -->
+<div th:replace="~{header :: header}"></div>
+
+  <div class="case_container">
+    <div class="header_text">
+      <h2>고객사례</h2>
+    </div>
+
+    <div class="inner">
+      <article class="card-item">
+        <a href="javascript:void(0);">
+          <img src="../../img/test_img.png" alt="사례이미지" class="open-modal" />
+          <div class="card-text">
+            <h2 class="card_title">카페 스마트 오더 시스템 구축, 매출 30% 성장한 K기업</h2>
+            <p>30일</p>
+            <p class="moreview">자세히 보기</p>
+          </div>
+        </a>
+      </article>
+
+      <article class="card-item">
+        <a href="javascript:void(0);" class="open-modal">
+          <img src="../../img/test_img.png" alt="사례이미지"  />
+          <div class="card-text">
+            <h2 class="card_title">카페 스마트 오더 시스템 구축, 매출 30% 성장한 K기업</h2>
+            <p>30일</p>
+            <p class="moreview">자세히 보기</p>
+          </div>
+        </a>
+      </article>
+
+      <article class="card-item">
+        <a href="javascript:void(0);">
+          <img src="../../img/test_img.png" alt="사례이미지" class="open-modal" />
+          <div class="card-text">
+            <h2 class="card_title">카페 스마트 오더 시스템 구축, 매출 30% 성장한 K기업</h2>
+            <p>30일</p>
+            <p class="moreview">자세히 보기</p>
+          </div>
+        </a>
+      </article>
+    </div>
+  </div>
+
+  <!-- 모달창 -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span> 
+      <h2>카페 스마트 오더 시스템 구축, 매출 30% 성장한 K기업</h2>
+      <p>
+        이 프로젝트는 카페 매장에 스마트 오더 시스템을 적용하여 빠르고 편리하게 주문할 수 있도록 했으며,<br/>
+        이로 인해 매출이 30% 이상 상승했습니다.<br/>
+        아래는 관련 이미지들입니다.
+        아 <br/>
+        아<br/>
+        아<br/>
+        아<br/>
+        아<br/>
+        아<br/>
+      </p>
+      
+      <!-- 여러 이미지를 세로 스크롤로 볼 수 있는 영역 -->
+      <div class="modal-img-container">
+        <!-- 필요한 만큼 이미지 추가 -->
+        <img src="../../img/test_img.png" alt="자세히 보기 예시 이미지1" />
+        <img src="../../img/test_img.png" alt="자세히 보기 예시 이미지2" />
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div id="footer"></div>
+
+  <!-- 기존 JS 파일들 -->
+  <script src="../../js/header_footer.js"></script>
+  <script src="../../js/script.js"></script>
+
+  <!-- 모달 열고 닫는 스크립트 -->
+  <script>
+    // 모달 요소 가져오기
+    const modal = document.getElementById('myModal');
+    const closeBtn = document.querySelector('.close-btn');
+
+   // 모든 카드(article 태그)를 클릭하면 모달 열기
+  document.querySelectorAll('.card-item').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      // a 태그의 기본 동작 막기
+      e.preventDefault();
+      modal.style.display = 'block';
+    });
+  });
+
+    // 닫기 버튼(X) 클릭 시 모달 닫기
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // 모달 바깥 영역 클릭 시 닫기
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

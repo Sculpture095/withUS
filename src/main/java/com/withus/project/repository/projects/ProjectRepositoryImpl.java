@@ -136,7 +136,7 @@ public class ProjectRepositoryImpl extends AbstractRepository<ProjectEntity> {
 
 
     public List<ProjectEntity> findAllProjects(int offset, int limit) {
-        String jpql = "SELECT p FROM ProjectEntity p ORDER BY p.projectIdx";
+        String jpql = "SELECT p FROM ProjectEntity p ORDER BY p.registrationDate DESC";
         TypedQuery<ProjectEntity> query = entityManager.createQuery(jpql, ProjectEntity.class);
         query.setFirstResult(offset);
         query.setMaxResults(limit);

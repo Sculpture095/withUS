@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+.help_container {
+    max-width: 1080px; /* 최대 너비 설정 */
+    margin: auto; /* 중앙 정렬 */
+    padding: 20px; /* 내부 여백 */
+    border-radius: 8px; /* 둥근 모서리 */
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  그림자 효과 */
+    background-color: #ffffff; /* 배경색 흰색 */
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+
+.header_text {
+    text-align: center; /* 중앙 정렬 */
+    margin-bottom: 50px; /* 아래 여백 */
+  }
+  
+  .write-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.write-form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.write-form input,
+.write-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+textarea {
+    height: 350px; /* textarea 높이 고정 */
+    resize: none; /* 크기 조절 불가능하도록 설정 */
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.form-buttons .submit-btn,
+.form-buttons .cancel-btn {
+    width: 100px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+}
+
+/* 제출 버튼 스타일 */
+.submit-btn {
+    background-color: #4C3DF2;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #392DD9;
+}
+
+/* 취소 버튼 스타일 (링크 스타일링) */
+.cancel-btn {
+    background-color: #ccc;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.cancel-btn:hover {
+    background-color: #b3b3b3;
+}
+
+
+.p-text{
+    color: #818181;
+}
+
+
+
+.file-input {
+    /* display: none; */
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.image_upload{
+    padding-right: 400px;
+}
+
+.file-input.show {
+    display: block;
+}
+/* 파일 선택 버튼 컨테이너 (왼쪽 정렬) */
+.file-input-container {
+    display: flex;
+    justify-content: flex-start; /* 내부 컨텐츠는 왼쪽 정렬 */
+    width: 100%;              /* 전체 너비 차지 */
+    margin-bottom: 10px;
+}
+
+/* 파일 선택 버튼 */
+.file-input-btn {
+    padding: 10px 15px;
+    background-color: #4C3DF2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.file-input-btn:hover {
+    background-color: #372cac;
+}
+
+/* 포트폴리오 상세 - 이미지 미리보기 컨테이너 */
+#portfolioImageContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-top: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    max-width: 100%;
+    padding: 10px 0; 
+    border-radius: 8px;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+}
+
+.portfolio_image {
+    text-align: center;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column; /* 기본적으로 한 줄에 한 장 */
+    gap: 10px;
+    justify-content: center;
+}
+
+/* 개별 이미지 박스 */
+.image_item {
+    position: relative;
+    display: flex;
+    /* justify-content: center; */
+}
+
+/* 수정 전: 큰 이미지 */
+.image_item img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    object-fit: contain;  /* 이미지가 잘리지않도록 함  */
+    display: block;
+}
+
+/* 수정 후: 여러 장 나란히 배치 */
+.portfolio_image.editing {
+    flex-direction: row; /* 여러 장이 한 줄에 나란히 배치됨 */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 수정 후: 작은 이미지 */
+.portfolio_image.editing .image_item img {
+    width: 250px;
+    height: auto;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+/* 개별 이미지 삭제 버튼 (오른쪽 상단 X 버튼) */
+.delete_img_btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 14px;
+    display: none; /* 기본적으로 숨김 */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete_img_btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 수정 후 X 버튼 보이기 */
+.portfolio_image.editing .delete_img_btn {
+    display: flex;
+}
+
+/* 스크롤바 스타일 (웹킷 브라우저용) */
+#portfolioImageContainer::-webkit-scrollbar {
+    height: 8px;
+}
+
+#portfolioImageContainer::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+}
+
+#portfolioImageContainer::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+
+
+/* 포트폴리오 추가 페이지 */
+
+
+/* 업로드 영역 스타일 (클릭 가능) */
+#imageUploadArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#imageUploadArea:hover {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+/* 이미지 미리보기 컨테이너 */
+#imagePreviewContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-top: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    max-width: 100%;
+
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* 개별 이미지 박스 */
+.image-item {
+    position: relative;
+    display: inline-block;
+}
+
+/* 미리보기 이미지 */
+.preview-image {
+    width: 250px;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    object-fit: contain;
+}
+
+
+/* 삭제 버튼 (오른쪽 상단 X 버튼) */
+.delete-img-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.delete-img-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 스크롤바 스타일 (웹킷 브라우저용) */
+#imagePreviewContainer::-webkit-scrollbar {
+    height: 8px; /* 가로 스크롤바 높이 */
+}
+
+#imagePreviewContainer::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+}
+
+#imagePreviewContainer::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer 스타일 추가 */
+#footer {
+    background-color: #f1f1f1; /* 배경색 */
+    text-align: center; /* 가운데 정렬 */
+    width: 100%;
+}

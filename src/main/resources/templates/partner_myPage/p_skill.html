@@ -95,6 +95,9 @@
                             <tr th:each="skill : ${ownSkills}">
                                 <td th:text="${skill.skillType.name}"></td>
                                 <td th:text="${skill.careerDuration}"></td>
+                                <td>
+                                    <button class="delete-btn" th:attr="data-id=${skill.skillType}" onclick="deleteCertificate(this)">X</button>
+                                </td>
                             </tr>
                             </tbody>
                         </table>

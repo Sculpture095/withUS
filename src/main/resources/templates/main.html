@@ -100,5 +100,14 @@
 <!-- footer -->
 <div th:replace="~{footer :: footer}"></div>
 
+<!-- Flash Attribute 경고창 스크립트 추가 -->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var alertMessage = /*[[${alertMessage}]]*/ "";
+    if (alertMessage && alertMessage.trim().length > 0) {
+        alert(alertMessage);
+    }
+    /*]]>*/
+</script>
 </body>
 </html>

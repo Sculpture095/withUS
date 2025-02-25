@@ -151,8 +151,8 @@ CREATE TABLE `certificate` (
   `certificate_idx` int NOT NULL AUTO_INCREMENT,
   `certificatedate` varchar(10) DEFAULT NULL,
   `certificate_id` char(36) NOT NULL,
-  `certificatename` varchar(20) NOT NULL,
-  `institutionalname` varchar(20) NOT NULL,
+  `certificatename` varchar(60) NOT NULL,
+  `institutionalname` varchar(40) NOT NULL,
   `partner_idx` int NOT NULL,
   PRIMARY KEY (`certificate_idx`),
   UNIQUE KEY `uk_certificate_id` (`certificate_id`),
@@ -216,7 +216,7 @@ CREATE TABLE `portfolio` (
   `portfoliocontext` varchar(2000) DEFAULT NULL,
   `portfolio_id` char(36) NOT NULL,
   `portfolioimg` varchar(500) DEFAULT NULL,
-  `portfoliotitle` varchar(30) DEFAULT NULL,
+  `portfoliotitle` varchar(50) DEFAULT NULL,
   `publicok` bit(1) NOT NULL,
   `portfoliourl` varchar(100) DEFAULT NULL,
   `startdate` date NOT NULL,
@@ -289,4 +289,3 @@ CREATE TABLE `ucansign_webhook` (
   CONSTRAINT `fk_webhook_contract_idx` FOREIGN KEY (`contract_idx`) REFERENCES contract(`contract_idx`),
   PRIMARY KEY (`ucansign_webhook_idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-

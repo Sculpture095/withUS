@@ -26,8 +26,8 @@
                 <div class="profile_box items-center">
                     <div class="user_img_box"><a href="img"></a></div>
                     <div class="user_text">
-                        <h2 th:text="${member.email}"></h2>
-                        <p></p>
+                        <h2>유저아이디</h2>
+                        <p th:text="${member.email}"></p>
                     </div>
                 </div>
                 <!-- Sidebar -->
@@ -96,7 +96,7 @@
                        <td th:text="${certificate.institutionalName}"></td>
                        <td th:text="${certificate.certificateDate != null ? certificate.certificateDate.substring(0,7) : ''}"></td>
                        <td>
-                           <button class="delete-btn" th:attr="data-id=${certificate.certificateId}" onclick="deleteCertificate(this)">삭제</button>
+                           <button class="delete-btn" th:attr="data-id=${certificate.certificateId}" onclick="deleteCertificate(this)">X</button>
                        </td>
                    </tr>
                    </tbody>

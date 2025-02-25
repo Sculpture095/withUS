@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <!-- Bootstrap icons-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-  <!-- Google fonts-->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="../../css/main.css" rel="stylesheet" />
-  <link href="../../css/c_myPage.css" rel="stylesheet" />
-  <title>프로젝트 관리</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS & Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+    <!-- Core theme CSS -->
+    <link href="../../css/main.css" rel="stylesheet" />
+    <link href="../../css/c_myPage.css" rel="stylesheet" />
+    <title>프로젝트 관리</title>
 </head>
 <body>
 <!-- Header -->
@@ -39,125 +39,272 @@
                             <span>&gt;</span>
                         </a>
                     </li>
-                    <li  class="current-page">
+                    <li class="current-page">
                         <a th:href="@{/c_project}" class="flex justify-between items-center textdeco">
                             <span>프로젝트 관리</span>
                             <span>&gt;</span>
                         </a>
                     </li>
                     <li>
-                        <a th:href="@{/c_account}" class="flex justify-between items-center textdeco">
-                            <span>계좌 관리</span>
-                            <span>&gt;</span>
-                        </a>
+                        <hr>
+                        <div class="member-exit">
+                            <a href="../member_exit.html" class="flex justify-between items-center textdeco">
+                                <span>회원 탈퇴</span>
+                            </a>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
 
-            <!-- Main Content -->
-            <!-- Main Content -->
-            <div class="content">
-                <div class="section">
-                    <h3>등록한 프로젝트</h3>
-                    <div class="project-table">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>프로젝트명</th>
-                                <th>지원자 목록</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <!-- Thymeleaf를 사용하여 프로젝트 목록 출력 -->
-                            <tr th:each="project : ${projects}">
-                                <td>
-                                    <a th:href="@{/project/detail/{id}(id=${project.projectId})}" th:text="${project.projectName}"></a>
-                                </td>
-                                <td>
-                                    <button class="applicant-btn" th:id="'openModal_' + ${project.projectId}">
-                                        <i class="fas fa-user"></i> 지원자 목록보기
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <!-- Main Content -->
+        <div class="content">
+            <div class="section">
+                <h3>등록한 프로젝트</h3>
+                <div class="ai-partner-btn-con">
+                    <!-- AI 추천 모달을 열기 위한 버튼 -->
+                    <button class="ai-partner-btn">
+                        <img src="../../img/ai-bot.png" alt="" />
+                        <span>AI가 파트너스를 추천드려요!</span>
+                    </button>
+                </div>
+                <div class="project-table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>프로젝트명</th>
+                            <th>지원자 목록</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Thymeleaf로 프로젝트 목록 출력 -->
+                        <tr th:each="project : ${projects}">
+                            <td>
+                                <a th:href="@{/project/detail/{id}(id=${project.projectId})}" th:text="${project.projectName}"></a>
+                            </td>
+                            <td>
+                                <button class="applicant-btn"
+                                        th:id="'openModal_' + ${project.projectId}"
+                                        th:attr="data-project-id=${project.projectId}">
+                                    <i class="fas fa-user"></i> 지원자 목록보기
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div> <!-- wrapper -->
+</div>
 
-
-   <!-- 모달 내부 -->
-<div id="applicantModal" class="modal">
+<!-- Applicant Modal -->
+<div id="applicantModal" class="modal" style="display: none;">
     <div class="modal-content">
-      <!-- 닫기 버튼(X) -->
-      <span class="close" id="closeModal">&times;</span>
-  
-      <!-- 총 지원자 수 -->
-      <!-- h2 -> class="applicant-count" 추가, 아이콘 <i> 추가 -->
-      <h2 class="applicant-count">
-        <i class="fas fa-user"></i> 
-        총 지원자 수&ensp;  3명
-        <!--총 지원자 수 {{applicantCount}}명 -->
-      </h2>
-  
-      <!-- 지원자 테이블 -->
-      <table class="applicant-table">
-        <thead>
-          <tr>
-            <th>지원자명</th>
-            <th>선택</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="../find_detail_partner/findPartner_detail.html">유저1</a></td>
-            <td><input type="checkbox" name="applicant" value="user1"></td>
-          </tr>
-          <tr>
-            <td>유저2</td>
-            <td><input type="checkbox" name="applicant" value="user2"></td>
-          </tr>
-          <tr>
-            <td>유저3</td>
-            <td><input type="checkbox" name="applicant" value="user3"></td>
-          </tr>
-        </tbody>
-      </table>
-  
-      <!-- 지원자 선택 버튼 -->
-      <button class="submit-applicant-btn">지원자 선택</button>
+        <!-- 닫기 버튼(X) -->
+        <span class="close" id="closeModal">&times;</span>
+        <h2 class="applicant-count"><i class="fas fa-user"></i> 총 지원자 수 0명</h2>
+        <table class="applicant-table">
+            <thead>
+            <tr><th>지원자명</th><th>선택</th></tr>
+            </thead>
+            <tbody>
+            <!-- 동적으로 채워짐 -->
+            </tbody>
+        </table>
+        <button class="submit-applicant-btn">지원자 선택</button>
     </div>
-  </div>
+</div>
 
+<!-- AI Partner Modal -->
+<div id="aiPartnerModal" class="ai-modal" style="display: none;">
+    <div class="ai-modal-content">
+        <!-- 닫기 버튼(X) -->
+        <span class="ai-modal-close" onclick="closeAiModal()">&times;</span>
+
+        <div class="ai-modal-text">
+            <h3>AI 챗봇 추천 시스템</h3>
+            <p>
+                프로젝트의 핵심 요구사항을 AI가 분석하여,<br>
+                최적의 파트너스를 빠르게 추천해드립니다.
+            </p>
+        </div>
+
+        <!-- 프로젝트 선택 영역 -->
+        <div class="ai-partner-select" id="selectProjectArea">
+            <select name="project" id="projectSelect">
+                <option value="" disabled selected>프로젝트를 선택하세요</option>
+                <!-- Thymeleaf로 프로젝트 목록 출력 -->
+                <option th:each="p : ${projects}"
+                        th:value="${p.projectId}"
+                        th:text="${p.projectName}"></option>
+            </select>
+            <button id="recommendBtn" onclick="requestRecommendation()">추천 받기</button>
+        </div>
+
+        <!-- 로딩 화면 -->
+        <div id="loadingScreen" style="display: none;">
+            <img src="../../img/loading.gif" alt="Loading" width="100px" />
+            <p>데이터 분석중입니다...</p>
+        </div>
+
+        <!-- AI 답변 영역 (초기엔 숨김) -->
+        <div id="aiAnswerScreen" style="display: none;">
+            <div class="select-project">
+                <p id="selectedProjectName"></p>
+            </div>
+            <hr>
+            <div class="ai-answer-text">
+                <h2><span id="userNickname">User1</span>님을 추천드려요!</h2>
+                <hr>
+                <p id="recommendationContent" style="white-space: pre-wrap;">
+                    <!-- 추천 내용 출력 -->
+                </p>
+            </div>
+            <button id="backToSelectionBtn" onclick="backToSelection()">다시 선택하기</button>
+            <button id="requestBtn" onclick="redirectToPartnerInfo()">정보 보러가기</button>
+        </div>
+    </div>
+</div>
 
 <!-- Footer -->
-<div  th:replace="~{footer :: footer}"></div>
+<div th:replace="~{footer :: footer}"></div>
 
+<!-- JavaScript: 지원자 목록 조회 및 AI 추천 모달 처리 -->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    // 지원자 목록 모달 처리
+    document.addEventListener('DOMContentLoaded', function() {
+        const applicantModal = document.getElementById("applicantModal");
+        const closeModalBtn = document.getElementById("closeModal");
+        const applicantCountElem = document.querySelector(".applicant-count");
+        const applicantTbody = document.querySelector(".applicant-table tbody");
 
-<script>
-const modal = document.getElementById("applicantModal");
-const openModalBtn = document.getElementById("openModal");
-const closeModalBtn = document.getElementById("closeModal");
-  
-// 모달 열기
-openModalBtn.addEventListener("click", () => {
-    modal.style.display = "block";
-});
-  
-// 모달 닫기(X 버튼)
-closeModalBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
-  
-// 모달 영역 밖 클릭 시 닫기
-window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.style.display = "none";
+        // 지원자 목록보기 버튼 클릭 이벤트 등록
+        const openModalBtns = document.querySelectorAll(".applicant-btn");
+        openModalBtns.forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                const projectId = this.getAttribute("data-project-id");
+                // Ajax GET 요청으로 지원자 목록 조회
+                fetch("/findProject/applicants/" + encodeURIComponent(projectId))
+                    .then(response => response.json())
+                    .then(data => {
+                        // data: ["지원자ID1", "지원자ID2", ... ] 형태라고 가정
+                        applicantCountElem.textContent = "총 지원자 수 " + data.length + "명";
+                        applicantTbody.innerHTML = "";
+
+                        data.forEach(function(applicant) {
+                            const tr = document.createElement("tr");
+
+                            // ▼ 여기서 # 대신, '/findPartner/detail/유저아이디' 경로로 이동하도록 수정
+                            const tdName = document.createElement("td");
+                            tdName.innerHTML = "<a href='/findPartner/detail/" + applicant + "'>" + applicant + "</a>";
+
+                            const tdSelect = document.createElement("td");
+                            tdSelect.innerHTML = "<input type='checkbox'>";
+
+                            tr.appendChild(tdName);
+                            tr.appendChild(tdSelect);
+                            applicantTbody.appendChild(tr);
+                        });
+
+                        applicantModal.style.display = "block";
+                    })
+                    .catch(error => {
+                        console.error("지원자 목록 조회 오류:", error);
+                        alert("지원자 목록을 불러오지 못했습니다.");
+                    });
+            });
+        });
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener("click", function() {
+                applicantModal.style.display = "none";
+            });
+        }
+        window.addEventListener("click", function(e) {
+            if (e.target === applicantModal) {
+                applicantModal.style.display = "none";
+            }
+        });
+    });
+
+    // AI 추천 모달 처리
+    function requestRecommendation() {
+        const select = document.getElementById("projectSelect");
+        const projectId = select.value;
+        if (!projectId) {
+            alert("프로젝트를 선택하세요.");
+            return;
+        }
+
+        console.log("requestRecommendation() 호출됨. projectId:", projectId);
+
+        document.getElementById("selectProjectArea").style.display = "none";
+        document.getElementById("loadingScreen").style.display = "block";
+        document.getElementById("aiAnswerScreen").style.display = "none";
+
+        const fetchUrl = "/api/ai/recommend/" + encodeURIComponent(projectId);
+        console.log("fetchUrl:", fetchUrl);
+
+        fetch(fetchUrl, { method: 'POST' })
+            .then(response => {
+                console.log("응답 받음:", response);
+                return response.json();
+            })
+            .then(data => {
+                console.log("AI JSON 데이터:", data);
+                document.getElementById("loadingScreen").style.display = "none";
+
+                let prettyResult =
+                    `추천하는 파트너: "${data.recommendedNickname}"\n` +
+                    `이유: ${data.reason}\n` +
+                    `보유기술: ${JSON.stringify(data.skills)}\n` +
+                    `경력: ${data.career}`;
+
+                document.getElementById("recommendationContent").textContent = prettyResult;
+                if (data.recommendedNickname) {
+                    document.getElementById("userNickname").textContent = data.recommendedNickname;
+                }
+                document.getElementById("selectedProjectName").textContent = "선택된 프로젝트";
+                document.getElementById("aiAnswerScreen").style.display = "block";
+            })
+            .catch(error => {
+                console.error("추천 요청 에러:", error);
+                document.getElementById("loadingScreen").style.display = "none";
+                document.getElementById("selectProjectArea").style.display = "block";
+            });
     }
-});
+
+    function backToSelection() {
+        document.getElementById("selectProjectArea").style.display = "block";
+        document.getElementById("loadingScreen").style.display = "none";
+        document.getElementById("aiAnswerScreen").style.display = "none";
+        document.getElementById("userNickname").textContent = "User1";
+        document.getElementById("recommendationContent").textContent = "";
+        document.getElementById("selectedProjectName").textContent = "";
+    }
+
+    function closeAiModal() {
+        document.getElementById("aiPartnerModal").style.display = "none";
+        backToSelection();
+    }
+
+    function redirectToPartnerInfo() {
+        window.location.href = '/partner-info';
+    }
+
+    // AI 모달 열기 및 Applicant Modal 처리 (추가)
+    document.addEventListener('DOMContentLoaded', function() {
+        const aiPartnerBtn = document.querySelector('.ai-partner-btn');
+        const aiPartnerModal = document.getElementById('aiPartnerModal');
+        if (aiPartnerBtn && aiPartnerModal) {
+            aiPartnerBtn.addEventListener('click', function() {
+                aiPartnerModal.style.display = 'block';
+            });
+        }
+    });
+    /*]]>*/
 </script>
 </body>
 </html>

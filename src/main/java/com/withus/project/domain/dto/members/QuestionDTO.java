@@ -1,9 +1,6 @@
 package com.withus.project.domain.dto.members;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -11,6 +8,7 @@ import java.util.UUID;
 @Setter
 @Builder
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class QuestionDTO {
     private Integer questionIdx; // 문의 ID 기본키 (요청용)
     private String questionId; // UUID 기본키 (응답용)

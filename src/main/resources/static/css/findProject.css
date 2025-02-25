@@ -157,6 +157,7 @@ body {
     font-size: 16px;
 }
 
+
 .search-button {
     position: absolute;
 
@@ -324,10 +325,6 @@ body {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
-}
-
-.filter-container button:hover {
-    background-color: #0056b3;
 }
 
 .filter-container button:hover {
