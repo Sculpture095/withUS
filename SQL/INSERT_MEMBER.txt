@@ -7,8 +7,6 @@ insert into `member`(`email`, `id`, `name`, `nickname`, `password`, `pcatype_idx
 -- 'CLIENT'
 insert into `member`(`email`, `id`, `name`, `nickname`, `password`, `pcatype_idx`, `phone`, `rank_idx`, `usertype_idx`) values 
 ('uyop011221@gmail.com', 'uyop011221', '곽호범클라이언트', '곽호범클라이언트', '1q2w3e4r', 'CLIENT', '01052334153', 'PLUS', 'CORPORATION'),
-('sieunhye170@gmail.com', 'sieunhye170', '으니', '으니삐', 'graceeh0219~!', 'CLIENT', '01076567839', 'PLUS', 'SOLE_PROPRIETOR'),
-('sieunhye17@gmail.com', 'sieunhye17', '으니니', '으니콩', 'rose010219', 'CLIENT', '01076557839', 'PLUS', 'SOLE_PROPRIETOR'),
 ('cDzm6@gmail.com', 'uLUh5832', '최서준', '서준별빛', 'a1b2c3d4q', 'CLIENT', '01099657669', 'PRIME', 'SOLE_PROPRIETOR'),
 ('pdoV7@gmail.com', 'xpdoV7', '이서현', '서현쿨', 'a1b2c3d4w', 'CLIENT', '01031431500', 'BASIC', 'SOLE_PROPRIETOR'),
 ('mMpd8@gmail.com', 'qmsNLR3132', '정서현', '정미솔', 'a1b2c3d4e', 'CLIENT', '01068607846', 'PLUS', 'SOLE_PROPRIETOR'),
