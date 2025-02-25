@@ -35,7 +35,7 @@
         </div>
         <p></p>
         <button type="submit" class="log_btn login-btn">로그인</button>
-        <button type="button" class="log_btn signup-btn" onclick="location.href='signup.html'">회원가입</button>
+        <button type="button" class="log_btn signup-btn" onclick="location.href='/signup'">회원가입</button>
     </form>
     <!-- 구분선 추가 -->
     <div class="divider">
@@ -50,50 +50,45 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const loginForm = document.getElementById('loginForm');
+        const loginForm = document.querySelector('form');
 
-        loginForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // 폼 기본 제출 동작 방지
 
-            const userId = document.getElementById('username').value;
+            const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            try {
-                const response = await fetch('/api/members/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    credentials: 'include', // ✅ JSESSIONID 쿠키 포함
-                    body: JSON.stringify({ id: userId, password: password })
-                });
-
-                const data = await response.text();
-
-                if (response.ok) {
-                    alert('로그인 성공!');
-
-                    // ✅ 로그인 후 check-login을 호출하여 로그인 상태 확인
-                    fetch("/auth/check-login", {
-                        method: "GET",
-                        credentials: "include"
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.loggedIn) {
-                                alert('환영합니다, ' + data.nickname);
-                                window.location.href = '/';
-                            } else {
-                                alert('로그인은 되었지만 인증 정보를 가져오지 못했습니다.');
-                            }
-                        });
-                } else {
-                    alert('로그인 실패: ' + data);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('로그인 중 오류가 발생했습니다.');
-            }
+            // 서버로 로그인 요청을 보내는 함수
+            checkLogin(username, password);
         });
     });
+
+    async function checkLogin(username, password) {
+        try {
+            const response = await fetch('/api/members/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id: username, // JSON 필드는 DTO의 'id'에 매핑
+                    password: password
+                })
+            });
+
+            const data = await response.text(); // 서버에서 String으로 응답
+
+            if (!response.ok) {
+                alert(data);
+                return;
+            }
+
+            // 로그인 성공 시
+            alert('로그인 성공!');
+            window.location.href = '/main';
+        } catch (error) {
+            console.error('Error:', error);
+            alert('로그인 처리 중 오류가 발생했습니다.');
+        }
+    }
 </script>
 
 <!-- footer -->

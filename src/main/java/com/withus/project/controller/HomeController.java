@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Slf4j
 public class HomeController {
-    @GetMapping("/")
+    @GetMapping("/main")
     public String home() {
         log.info("home controller 실행됨");
         return "main";
