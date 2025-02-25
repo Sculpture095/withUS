@@ -17,18 +17,35 @@
 <!-- 로그인 폼 -->
 <div class="login-container">
     <h2>로그인</h2>
-    <form id="loginForm">
+    <form action="#" method="POST">
         <div class="input-group-login">
-            <label for="username">아이디</label>
-            <input type="text" id="username" name="id" required>
+            <img src="../img/user-icon.png" alt="아이콘" class="icon-img">
+            <input type="text" id="username" name="id" placeholder="아이디를 입력하세요" class="icon-input" required>
         </div>
+
         <div class="input-group-login">
-            <label for="password">비밀번호</label>
-            <input type="password" id="password" name="password" required>
+            <img src="../img/lock.png" alt="아이콘" class="icon-img">
+            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" class="icon-input" required>
         </div>
+        <!-- 아이디/비밀번호 찾기 링크 추가 -->
+        <div class="find-links">
+            <a href="find-id.html">아이디 찾기</a>
+            <span>|</span>
+            <a href="find-password.html">비밀번호 찾기</a>
+        </div>
+        <p></p>
         <button type="submit" class="log_btn login-btn">로그인</button>
-        <button type="button" class="log_btn signup-btn" onclick="location.href='/signup'">회원가입</button>
+        <button type="button" class="log_btn signup-btn" onclick="location.href='signup.html'">회원가입</button>
     </form>
+    <!-- 구분선 추가 -->
+    <div class="divider">
+        <span>또는</span>
+    </div>
+
+    <button class="google-login-btn">
+        <img src="../img/google-logo.png" alt="Google Logo" class="google-logo">
+        <span>구글 간편 로그인</span>
+    </button>
 </div>
 
 <script>

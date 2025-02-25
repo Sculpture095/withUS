@@ -5,8 +5,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #fff;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -17,7 +16,6 @@ body {
     background-color: white;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     width: 400px;
     margin: auto; /* 상하 여백을 자동으로 조정 */
     flex: 1;     /* 남은 공간을 차지하도록 설정 */
@@ -26,7 +24,6 @@ body {
     justify-content: center;
     margin-top: 200px;
     margin-bottom: 100px;
-    
 }
 
 /* Footer 스타일링 */
@@ -45,16 +42,15 @@ h2 {
     margin-bottom: 20px;
 }
 
-.input-group-login label {
+/* .input-group-login label {
     display: block;
     margin-bottom: 8px;
     color: #555;
     font-weight: bold;
-}
+} */
 
 .input-group-login input {
     width: 100%;
-    padding: 12px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
@@ -62,17 +58,57 @@ h2 {
 
 .input-group-login input:focus {
     outline: none;
-    border-color: #4CAF50;
+    border-color: #4594d4;
 }
+
+/* 공통 스타일 */
+.input-group-login {
+    position: relative;
+    width: 100%;
+  }
+  
+  /* 아이콘 이미지 위치 및 크기 지정 */
+  .icon-img {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;   /* 아이콘 가로 크기 */
+    height: auto;  /* 아이콘 세로 크기 */
+    pointer-events: none; /* 아이콘을 클릭해도 input에 포커스가 가도록 */
+  }
+  
+  /* 입력창 스타일 */
+  .icon-input {
+    width: 100%;
+    padding: 0.7rem 0.5rem 0.7rem 2rem; /* 왼쪽 패딩은 아이콘과 겹치지 않도록 충분히 확보 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  .icon-input::placeholder {
+    font-size: 0.8rem; /* 원하는 폰트 크기로 설정 */
+  }
+  
+  /* 크로스 브라우저 호환성을 위한 추가 설정 */
+  .icon-input::-webkit-input-placeholder {
+    font-size: 0.8rem;
+  }
+  .icon-input:-ms-input-placeholder {
+    font-size: 0.8rem;
+  }
+
 
 .log_btn {
     width: 100%;
     padding: 12px;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 14px;
     cursor: pointer;
+    font-weight: bold;
     transition: background-color 0.3s;
 }
 
@@ -87,13 +123,13 @@ h2 {
 }
 
 .signup-btn {
-    background-color: #f8f9fa;
+    background-color: #fff;
     color: #333;
     border: 1px solid #ddd;
 }
 
 .signup-btn:hover {
-    background-color: #e9ecef;
+    background-color: #f8f8f8;
 }
 
 /* 구분선 스타일 */
@@ -129,28 +165,163 @@ h2 {
 }
  
 
- /* .google-btn {
+
+.google-login-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background-color: white;
-    color: #333;
+    width: 100%;
+    padding: 12px;
     border: 1px solid #ddd;
-    margin-top: 10px;
-}
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    color: #333;
+  }
 
-.google-btn span {
+  .google-login-btn span{
     font-size: 14px;
-    font-weight: 100;
-}
-
-.google-btn:hover {
+  }
+  
+  .google-login-btn:hover {
     background-color: #f8f8f8;
-}
-
-.google-logo {
+  }
+  
+  .google-logo {
     width: 18px;
     height: 18px;
     object-fit: contain;
-}   */
+  }
+  
+
+
+.find-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.find-links a {
+    text-decoration: none;
+    color: #555;
+    margin: 0 5px;
+}
+
+.find-links a:hover {
+    text-decoration: none;
+    color: #4C3DF2; /* 호버 시 강조 색상 */
+}
+
+.find-links span {
+    margin: 0 5px;
+    color: #ccc; /* 구분선 색상 */
+}
+
+/* 탭 스타일 */
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    margin-bottom: 40px;
+    color: #444;
+}
+
+
+/* 뒤로 가기 버튼 스타일 */
+.back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; /* 버튼 크기를 아이콘에 맞춤 */
+    height: 36px;
+    background-color: #4C3DF2; /* 다른 버튼과 같은 색상 */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px; /* 아이콘 크기 */
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #3b30bd; /* 호버 시 색상 변경 */
+}
+
+h2 a {
+    text-decoration: none;
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+.active-tab {
+    color: #4C3DF2;
+    border-bottom: 2px solid #4C3DF2;
+}
+
+.inactive-tab {
+    color: #ccc;
+}
+
+h2 span {
+    color: #ccc;
+}
+
+/* 폰 인증 그룹 */
+.phone-group {
+    display: flex;
+    gap: 10px;
+}
+
+.phone-group input {
+    flex: 1;
+}
+
+.verify-btn {
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    background-color: #4C3DF2;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.verify-btn:hover {
+    background-color: #3b30bd;
+}
+
+
+
+/* 전화번호 및 인증번호 입력 필드 그룹 */
+.phone-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.phone-group input {
+    flex: 1; /* 입력 필드가 남는 공간을 차지 */
+}
+
+.verify-btn {
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    background-color: #4C3DF2;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 46px; /* 입력 필드 높이와 동일하게 설정 */
+    box-sizing: border-box;
+}
+
+.verify-btn:hover {
+    background-color: #3b30bd;
+}
+
+
