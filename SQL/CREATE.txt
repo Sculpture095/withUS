@@ -57,7 +57,6 @@ CREATE TABLE `project` (
   `projectlocation` varchar(20) DEFAULT NULL,
   `projectname` varchar(70) NOT NULL,
   `registrationdate` date NOT NULL,
-  `requirement` varchar(300) NOT NULL,
   `startdate` date NOT NULL,
   `teamsize` int NOT NULL,
   `client_idx` int NOT NULL,
