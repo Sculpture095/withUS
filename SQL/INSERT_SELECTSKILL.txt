@@ -317,9 +317,667 @@ FROM project pr
 WHERE pr.projectname = 'WebRTC 서버 구성 및 네트워크 최적화 방향 자문';
 
 
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'REACT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '중고차 거래 플랫폼 React 웹 통합 개발';
 
 
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'REACT_NATIVE' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '중고차 거래 플랫폼 React 웹 통합 개발';
 
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'REACT_NATIVE' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '중고차 거래 플랫폼 React 웹 통합 개발';
 
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'JAVASCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '외국어 교육서비스 반응형 웹 퍼블리싱 및 컴포넌트 개발';
 
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'PHP' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '고도몰 기반 쇼핑몰 기능 개발 및 유지보수 PHP 개발자 (재택근무)';
 
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'FIGMA' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '웹 서비스 플랫폼 콘텐츠 디자이너 구인 (일 4시간/재택근무)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'ANDROID' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '안드로이드 앱 디컴파일 및 코드 획득 및 통신 방식 분석';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'ANDROID' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Flutter 기반 소개팅 앱 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'FLUTTER' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Flutter 기반 소개팅 앱 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'IOS' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Flutter 기반 소개팅 앱 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'IOS' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Flutter 기반 소개팅 앱 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'FIGMA' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '사진 영상 공모전 웹 디자인';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'MARIA_DB' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '진동센서 데이터 수집을 위한 DAQ 및 서버 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'PYTHON' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '진동센서 데이터 수집을 위한 DAQ 및 서버 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'REACT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'React 컴포넌트 업데이트';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'TYPESCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'React 컴포넌트 업데이트';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'PYTHON' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '산업용품 중개 플랫폼 웹 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'MYSQL' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Node.js 기반 프리미엄 모임 앱 서비스 백엔드 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'AWS' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Node.js 기반 프리미엄 모임 앱 서비스 백엔드 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'CSHARP' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '교육 훈련 모델 유지보수 및 운영';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'CPP' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '교육 훈련 모델 유지보수 및 운영';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'ANDROID' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '역사 관련 Android 및 iOS 앱 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'IOS' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '역사 관련 Android 및 iOS 앱 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'AWS' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'MYSQL' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'SPRING_BOOT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'TOMCAT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '영업사원용 CRM Teams 인앱(웹앱) 개발(상주 필수)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'PHOTOSHOP' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '가전제품 설명서 제작/홈페이지 제작 디자인';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'ILLUSTRATOR' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '가전제품 설명서 제작/홈페이지 제작 디자인';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'PHP' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '레거시 PHP 기반 ERP 운영/유지보수';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'KAFKA' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'POSTGRESQL' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'TABLEAU' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'KUBERNETES' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'TYPESCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'MYSQL' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'POSTGRESQL' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'FIREBASE' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '기존 사이트 소스 검토 및 배포를 위한 오류 해결';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'REACT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'React 기반 항공사 사내 시스템 프론트엔드 개발자 구인';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'AWS' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'B2B 차량 호출 서비스 추가 기능 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'JAVASCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'B2B 차량 호출 서비스 추가 기능 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'MYSQL' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'B2B 차량 호출 서비스 추가 기능 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'REACT_NATIVE' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'B2B 차량 호출 서비스 추가 기능 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'TYPESCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'B2B 차량 호출 서비스 추가 기능 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'REACT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '웹(React) 프런트엔드 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'JAVASCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '웹(React) 프런트엔드 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'TYPESCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '웹(React) 프런트엔드 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'FLUTTER' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Flutter 기반 AI 의료 애플리케이션 기능 고도화(재택근무)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'TYPESCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'TypeScript(Express or Nest) 기반 백엔드 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'EXPRESS' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'TypeScript(Express or Nest) 기반 백엔드 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'PHP' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'PHP/MySQL 기반 CRM 백엔드 개발자 구인';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'MYSQL' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'PHP/MySQL 기반 CRM 백엔드 개발자 구인';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'AWS' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'JAVASCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'PYTHON' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'REACT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'ANDROID' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '투썸플레이스 LMS 플랫폼 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'iOS' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '투썸플레이스 LMS 플랫폼 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'CSHARP' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Windows OS 기반 당사 PC 프로그램 오류 수정 및 개선';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'JAVASCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Windows OS 기반 당사 PC 프로그램 오류 수정 및 개선';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'REACT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'Windows OS 기반 당사 PC 프로그램 오류 수정 및 개선';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'AWS' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '모바일 유언장 웹 추가 기능 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'DYNAMO_DB' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '모바일 유언장 웹 추가 기능 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'TYPESCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '모바일 유언장 웹 추가 기능 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'DJANGO' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택, 1일 상주)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'GO' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '사내 ERP 솔루션 백엔드 Go/SQL 개발(상주/원격 여부 협의)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'TYPESCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'HRIS 유지보수 및 추가 개발 (2주 상주/ 2주 재택)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'REACT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'HRIS 유지보수 및 추가 개발 (2주 상주/ 2주 재택)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'POSTGRESQL' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'HRIS 유지보수 및 추가 개발 (2주 상주/ 2주 재택)';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'JAVA' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '신발 제조 기업 MES 전자정부/JAVA 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'ORACLE' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '신발 제조 기업 MES 전자정부/JAVA 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'ASP_NET' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '해외 자재관리 시스템 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'CSHARP' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '해외 자재관리 시스템 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'MYSQL' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '해외 자재관리 시스템 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'REACT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '해외 자재관리 시스템 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'TYPESCRIPT' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '해외 자재관리 시스템 구축';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'MARIA_DB' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'LG전자 EDI 모듈 백엔드 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'JAVA' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = 'LG전자 EDI 모듈 백엔드 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'KOTLIN' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '의료용 웨어러블 로봇 제어 및 모니터링 Android 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'SQLITE' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '의료용 웨어러블 로봇 제어 및 모니터링 Android 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'ANDROID' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '의료용 웨어러블 로봇 제어 및 모니터링 Android 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'JAVA' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '의료용 웨어러블 로봇 제어 및 모니터링 Android 개발';
+
+INSERT INTO `selectskill` (selectskill_id, skill_code, project_idx)
+SELECT 
+    UUID() AS selectskill_id,
+    'JAVA' AS skill_code,
+    pr.project_idx
+FROM project pr
+WHERE pr.projectname = '의료용 웨어러블 로봇 제어 및 모니터링 Android 개발';
