@@ -4,7 +4,7 @@ INSERT INTO selectproject (selectproject_id, yn, partner_idx, project_idx)
 SELECT
   UUID(), b'0', p.partner_idx, pr.project_idx
 FROM (
-  SELECT 'gkdg123' AS partner_member_id, '.Net 기반 키오스크 및 포스 유지보수' AS project_name
+  SELECT 'uyop719' AS partner_member_id, '.Net 기반 키오스크 및 포스 유지보수' AS project_name
   UNION ALL
   SELECT 'sycc3456', '암호화폐 거래소 인프라/DB 최적화 백엔드 개발자 구인'
   UNION ALL
@@ -355,6 +355,182 @@ FROM (
   SELECT 'YxmMu369', '건설 관련 정보 제공 반응형 웹 전면 개편'
   UNION ALL
   SELECT 'uhintx370', 'Android 기반 AI 시연용 앱 설계 및 개발'
+  UNION ALL
+  SELECT 'RDrxrg371', 'React 기반 커뮤니티 반응형 웹 프론트 개발'
+  UNION ALL
+  SELECT 'iYYX372', '신체 측정 결과 레포트 모바일 웹 디자인'
+  UNION ALL
+  SELECT 'rARv373', '그누보드 기반 쇼핑몰 웹 기능 추가 개발'
+  UNION ALL
+  SELECT 'taPd374', '인터넷 가입 대리점 홈페이지 구축'
+  UNION ALL
+  SELECT 'RGqVwk375', '코인 자동매매 서비스 구축'
+  UNION ALL
+  SELECT 'nIxI376', '전자문서지갑 API 연동 개발'
+  UNION ALL
+  SELECT 'jKkq377', '분석 프로그램 기능 간소화'
+  UNION ALL
+  SELECT 'LLBfa378', '모니터링 서비스 웹 UI/UX 디자인 및 퍼블리싱'
+  UNION ALL
+  SELECT 'xdOvOZ379', '자사 인쇄몰 사이트 리뉴얼 구축'
+  UNION ALL
+  SELECT 'SJEj380', '부동산 정보 제공 웹 유지보수 및 운영'
+  UNION ALL
+  SELECT 'CYnP381', '모바일 상품권 구매/판매 서비스 디자인'
+  UNION ALL
+  SELECT 'xLBA382', 'SAP CDS View 개발'
+  UNION ALL
+  SELECT 'VBBn383', '기 운영운인 CRM 베트남 현지화 개발'
+  UNION ALL
+  SELECT 'FNmp384', '키오스크 화면 웹 퍼블리싱 및 6개월 퍼블리싱 유지보수'
+  UNION ALL
+  SELECT 'VyUT385', '업무지원시스템 차세대 PostgreSQL DBA'
+  UNION ALL
+  SELECT 'HVBSQ386', 'YouTube 댓글 분석 프로그램 디자인 개발'
+  UNION ALL
+  SELECT 'nhHCU387', '회사 소개용 반응형 홈페이지 리뉴얼 기획 디자인'
+  UNION ALL
+  SELECT 'QpENr388', '프론트엔드 야구 분석 웹 디자인 및 프런트 개발'
+  UNION ALL
+  SELECT 'WbYzfc389', '솔라나 체인 기반 자동 매매 프로그램 개발(재택근무)'
+  UNION ALL
+  SELECT 'zdxEuZ390', 'Web Admin 내 관리도구 React 개발'
+  UNION ALL
+  SELECT 'GJjp391', 'Java 기반 안드로이드 월패드앱 개발'
+  UNION ALL
+  SELECT 'QrvXoG392', '사용자 모바일 웹페이지 프론트엔드 개발/퍼블리싱'
+  UNION ALL
+  SELECT 'CEKU393', '사이트 이용방법 튜토리얼 디자인 및 퍼블리싱'
+  UNION ALL
+  SELECT 'wPsktS394', '웹툰/웹소설 플랫폼 모바일앱 React Native 개발(Front)'
+  UNION ALL
+  SELECT 'ZZEkD395', '리눅스 기반 USB 통신 기능 프로그램 설계 및 개발'
+  UNION ALL
+  SELECT 'dNYoW396', '크레인 실시간 모니터링 시스템 디자인'
+  UNION ALL
+  SELECT 'mkYjS397', '내부 업무전산 시스템 유지보수 및 신규 기능 개발'
+  UNION ALL
+  SELECT 'HmNfDE398', '라즈베리파이(라즈비안OS) 탑재 의료기기 SW QT/C++ 개발'
+  UNION ALL
+  SELECT 'yoEo399', '커뮤니티 내 코인 모의투자 기능 구축'
+  UNION ALL
+  SELECT 'qHcxQ400', 'AI 기반 맞춤형 컨텐츠 추천 시스템 구축'
+  UNION ALL
+  SELECT 'dlut401', '인테리어 회사 로고 1종 제작'
+  UNION ALL
+  SELECT 'FTki402', 'NFC 태그 기반 병원정보 및 이동동선 관리 모바일앱 Flutter 개발'
+  UNION ALL
+  SELECT 'BCVfMp403', 'JAVA  기반 쇼핑몰 Frontend 개발'
+  UNION ALL
+  SELECT 'zfUq404', 'X Real Air 2 PRO와 연동되는 iOS 데모 앱 개발'
+  UNION ALL
+  SELECT 'ejHslr405', '안드로이드 웹뷰 APK 개발'
+  UNION ALL
+  SELECT 'LiKv406', '택배사 API 연동 및 개발'
+  UNION ALL
+  SELECT 'urco407', '외국인 채용 플랫폼 앱 프론트엔드 추가 개발'
+  UNION ALL
+  SELECT 'AUTrrl408', '코인 시세/뉴스/지표/회원관리 모바일앱 구축'
+  UNION ALL
+  SELECT 'rkMzJ409', '포토 키오스크 클라이언트 및 관리자 WEB 설계 및 개발'
+  UNION ALL
+  SELECT 'wFZwj410', 'JavaScript/Node.js/Electron 기반 SW 마무리 개발'
+  UNION ALL
+  SELECT 'luyH411', 'IPWALL 마무리 개발 및 테스트/디버깅'
+  UNION ALL
+  SELECT 'nhuqC412', '메인 페이지 리뉴얼 UIUX 디자인'
+  UNION ALL
+  SELECT 'xHoS413', '사내 영업 시스템 Backend 개발'
+  UNION ALL
+  SELECT 'TRRFfM414', 'Flutter 기반 앱 BLE 연동 기능 개발'
+  UNION ALL
+  SELECT 'Ewwbh415', '폐쇄형 입점형 복지몰(커머스) Web 및 App 구축'
+  UNION ALL
+  SELECT 'WWPIM416', '장비 대여 보관 서비스의 백엔드 api 개발'
+  UNION ALL
+  SELECT 'HEhIQw417', '모바일 웹 게시판 화면 및 API/admin 개발'
+  UNION ALL
+  SELECT 'rOcUt418', '제품 상세페이지/광고 소재/홈페이지(아임웹) 디자인( 주 20시간 부분 재택 )'
+  UNION ALL
+  SELECT 'lathJc419', 'nRF 기반 의료기기 펌웨어 개발'
+  UNION ALL
+  SELECT 'WZUUT420', '블록체인 스테이킹 관련 반응형 웹 리뉴얼 디자인'
+  UNION ALL
+  SELECT 'jnNuHv421', '사주 운세 웹 및 하이브리드 앱 개발'
+  UNION ALL
+  SELECT 'tTdI422', 'Webflow 기반 상담 플랫폼 고도화 및 추가 개발'
+  UNION ALL
+  SELECT 'XgYHbU423', '장비 H/W 및 F/W 개발'
+  UNION ALL
+  SELECT 'iESa424', '홈페이지 UI/UX 디자인'
+  UNION ALL
+  SELECT 'MWwoH425', '기획서 디자인'
+  UNION ALL
+  SELECT 'yxrDXx526', '운영 중인 회사 웹 UI/UX 리뉴얼 디자인 및 개발'
+  UNION ALL
+  SELECT 'nrMfi527', '하이엔드 컬렉터블 거래 플랫폼 UI/UX 및 컨텐츠 디자인 (주 10시간 근무)'
+  UNION ALL
+  SELECT 'eKoNV528', 'AWS 기반 서버 및 인프라 구축(재택근무)'
+  UNION ALL
+  SELECT 'ZoCsTr529', 'iOS 앱 푸시 오류 해결'
+  UNION ALL
+  SELECT 'fJnARE530', '자사쇼핑몰 보완 및 추가 개발'
+  UNION ALL
+  SELECT 'oNkzLQ531', '회사 소개 반응형 웹 개발'
+  UNION ALL
+  SELECT 'XByeD532', 'MkDocs 기반 문의 게시판 및 문의하기 기능 웹 설계 및 개발'
+  UNION ALL
+  SELECT 'xlFmKn533', '네이버/구글 검색량 급증 알림 서비스'
+  UNION ALL
+  SELECT 'FCSGQx534', 'Python 한글 문서 자동 작성 프로그램 기능 추가 개발'
+  UNION ALL
+  SELECT 'oJiX535', '선불전자지급수단 시스템 및 모바일 앱 기획 디자인'
+  UNION ALL
+  SELECT 'gTFuQ536', 'Squarespace 기반 회사 홈페이지 개발'
+  UNION ALL
+  SELECT 'wAMh537', 'AWS Lambda/TypeScript 기술지원 업무(재택 근무)'
+  UNION ALL
+  SELECT 'QPjDuV538', 'Cafe24 쇼핑몰 전자상거래 이벤트 GA4 세팅(상주 필수)'
+  UNION ALL
+  SELECT 'Lfwrd539', '디지털 교과서 웹 프런트엔드 Nuxt/Vue 개발'
+  UNION ALL
+  SELECT 'YEbYe540', '워드프레스 기반 자사몰 속도 개선'
+  UNION ALL
+  SELECT 'XcnTG541', '온라인 교육 웹 사이트 Frontend React 개발'
+  UNION ALL
+  SELECT 'iTocn542', '치과 구인구직 서비스 웹 및 앱 구축'
+  UNION ALL
+  SELECT 'JvKUVx543', 'GCP 서버와 외부 서버간 VPN망 연결 인프라 세팅'
+  UNION ALL
+  SELECT 'cANxH544', 'Flutter 대여 플랫폼 앱 채팅 기능 추가 개발'
+  UNION ALL
+  SELECT 'haNg545', '상용화를 위한 보드 회로설계 PCB/Artwork 및 펌웨어 개발'
+  UNION ALL
+  SELECT 'nJln546', '기업금융 웹 사이트 프로토타입 디자인'
+  UNION ALL
+  SELECT 'Mvik547', '블루투스 연동 치료기의 사용자 앱 구축 및 AI 개발'
+  UNION ALL
+  SELECT 'azjfr548', '광고 매출 관리 프로그램 웹 설계 및 개발'
+  UNION ALL
+  SELECT 'cikeun549', '웹툰 3D 배경 중개 사이트 개발'
+  UNION ALL
+  SELECT 'GsihfI550', '솔루션 기반 자체 숙박 체험 상품 예약/결제 사이트 구축'
+  UNION ALL
+  SELECT 'qsaqV551', '스토리 기반 AI 챗봇 서비스 시안 메인 테마 스타일 가이드 작성 및 디자인'
+  UNION ALL
+  SELECT 'AXLBzb552', '사내 교육 포털 리뉴얼 구축'
+  UNION ALL
+  SELECT 'YqiHYT553', 'JAVA 기반 그룹웨어/ERP 유지보수 및 운영'
+  UNION ALL
+  SELECT 'diwWoP554', '손해보험사 SM 운영 개발자'
+  UNION ALL
+  SELECT 'NwEOOO555', 'Wordpress learndash LMS 수정 개발'
+  UNION ALL
+  SELECT 'IIfiio556', '금융권 대고객 사이트 운영 웹 디자인'
+  UNION ALL
+  SELECT 'DhDY557', '바코드 생성 프로그램 디자인 고도화 및 개발'
+  UNION ALL
+  SELECT 'ykDus558', '브랜딩 홈페이지 리뉴얼 구축'
   
   
   
