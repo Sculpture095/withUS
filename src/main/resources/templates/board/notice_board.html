@@ -60,9 +60,11 @@
         <!-- ✅ 데이터가 있는 경우 목록 출력 -->
         <tr th:each="board : ${boardPage.content}">
             <td th:text="${board.boardIdx}"></td>
-            <td th:text="${board.subject}"></td>
+            <td>
+            <a th:href="@{/board/detail/{boardId}(boardId=${board.boardId})}" th:text="${board.subject}" class="board-title-link"></a>
+            </td>
             <td th:text="${board.member != null ? board.member.nickname : '❌ 없음'}"></td>
-            <td th:text="${board.createDate}"></td>
+            <td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
             <td th:text="${board.likeCount}"></td>
         </tr>
         </tbody>

@@ -2,10 +2,9 @@ package com.withus.project.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.withus.project.domain.dto.AiRecommendResponse;
-import com.withus.project.service.AiMatchingService;
+import com.withus.project.dto.AiRecommendResponse;
+import com.withus.project.service.other.AiMatchingService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

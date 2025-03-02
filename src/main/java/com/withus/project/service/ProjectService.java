@@ -1,11 +1,11 @@
 package com.withus.project.service;
 
-import com.withus.project.domain.dto.PageResponse;
-import com.withus.project.domain.dto.projects.ProjectDTO;
+import com.withus.project.domain.projects.*;
+import com.withus.project.dto.PageResponse;
+import com.withus.project.dto.projects.CompletedProjectDTO;
+import com.withus.project.dto.projects.OngoingProjectDTO;
+import com.withus.project.dto.projects.ProjectDTO;
 import com.withus.project.domain.members.*;
-import com.withus.project.domain.projects.ProjectEntity;
-import com.withus.project.domain.projects.ProjectStatus;
-import com.withus.project.domain.projects.SelectProjectEntity;
 import com.withus.project.mapper.projects.ProjectMapper;
 import com.withus.project.repository.members.MemberRepositoryImpl;
 import com.withus.project.repository.projects.ProjectRepositoryImpl;
@@ -13,12 +13,12 @@ import com.withus.project.repository.projects.SelectProjectRepositoryImpl;
 import com.withus.project.repository.projects.SelectSkillRepositoryImpl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -341,6 +341,119 @@ public class ProjectService {
         selectSkillRepository.deleteByProjectAndSkillType(project, skillType);
     }
 
+    public List<ProjectDTO> getRegisteredProjects(String clientMemberId) {
+        // DB에서 해당 클라이언트의 모든 프로젝트 조회
+        // -> 아직 isCompleted = false 인 것만 필터링
+        List<ProjectEntity> allProjects = projectRepository.findProjectByMemberId(clientMemberId);
+        // 위 메서드: ProjectRepositoryImpl.findProjectByMemberId(String id) 사용
+
+        return allProjects.stream()
+                .filter(p -> !p.getIsCompleted())  // 완료되지 않은
+                .map(projectMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * (2) 특정 클라이언트가 등록한 프로젝트 중, 완료된(isCompleted=true) 목록
+     */
+    public List<ProjectDTO> getCompletedProjects(String clientMemberId) {
+        // 방법 A) 마찬가지로 모든 프로젝트 조회 후, isCompleted = true 필터
+        List<ProjectEntity> allProjects = projectRepository.findProjectByMemberId(clientMemberId);
+        return allProjects.stream()
+                .filter(ProjectEntity::getIsCompleted)
+                .map(projectMapper::toDTO)
+                .collect(Collectors.toList());
+
+
+    }
+
+
+    @Transactional(readOnly = true)
+    public List<OngoingProjectDTO> getOngoingProjectDetailed(String memberId){
+        String jpql = """
+    SELECT c
+    FROM ContractEntity c
+    JOIN c.project p
+    WHERE p.client.member.id = :memberId
+      AND c.status = com.withus.project.domain.projects.ContractStatus.SIGNED
+      AND p.isCompleted = false
+    """;
+
+        List<ContractEntity> contractList = entityManager.createQuery(jpql, ContractEntity.class)
+                .setParameter("memberId", memberId)
+                .getResultList();
+
+        // ContractEntity마다 -> OngoingProjectDTO로 변환
+        List<OngoingProjectDTO> result = contractList.stream()
+                .map(c -> {
+                    ProjectEntity p = c.getProject();
+
+                    return OngoingProjectDTO.builder()
+                            //프로젝트 정보
+                            .projectId(p.getProjectId().toString())
+                            .projectName(p.getProjectName())
+                            .projectAmount(p.getAmount())
+
+                            //계약정보
+                            .contractId(c.getContractId().toString())
+                            .contractAmount(c.getAmount())
+                            .status(c.getStatus().name())
+                            .progressStatus(p.getProgressStatus().name())
+                            .build();
+                })
+                .collect(Collectors.toList());
+
+        return result;
+    }
+
+    @Transactional
+    public void chooseApplicantsAndSetMeeting(
+            String clientId,
+            String projectId,
+            List<String> applicantIds, //선택한 파트너들의 member.id
+            String meetingDateStr,
+            String meetingTimeStr
+    ){
+        //프로젝트 소유권 검증
+        validateClientOwnership(clientId, projectId);
+
+        //projectEntity 조회
+        ProjectEntity project = projectRepository.findByUUIDToString(projectId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 프로젝트가 없습니다 : "+ projectId));
+
+        //applicantIds 각각에 대해 SelectProjectEntity 조회 -> yn=1, 미팅 일시 설정
+        LocalDate date = LocalDate.parse(meetingDateStr);
+        LocalTime time = LocalTime.parse(meetingTimeStr);
+
+        for(String partnerId : applicantIds){
+            SelectProjectEntity sp = selectProjectRepository.findByProjectIdAndMemberId(projectId,partnerId);
+            sp.setYn(true);
+            sp.setMeetingDate(date);
+            sp.setMeetingTime(time);
+            selectProjectRepository.save(sp);
+        }
+
+        projectRepository.save(project);
+    }
+
+    @Transactional
+    public void endProject(String clientId, String projectId) {
+        // 1) 클라이언트 소유 검증
+        validateClientOwnership(clientId, projectId);
+
+        // 2) project 조회
+        ProjectEntity project = projectRepository.findByUUIDToString(projectId)
+                .orElseThrow(() -> new EntityNotFoundException("프로젝트를 찾을 수 없습니다: " + projectId));
+
+        // 3) is_completed = true 설정
+        project.setIsCompleted(true);
+        projectRepository.save(project);
+    }
+
+
+    public List<CompletedProjectDTO> getCompletedProjectsWithContract(String clientMemberId) {
+        return projectRepository.findCompletedProjectsWithContract(clientMemberId);
+    }
 
 
 

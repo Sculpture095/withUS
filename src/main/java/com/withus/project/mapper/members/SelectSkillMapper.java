@@ -1,15 +1,11 @@
 package com.withus.project.mapper.members;
 
-import com.withus.project.domain.dto.members.SelectSkillDTO;
+import com.withus.project.dto.members.SelectSkillDTO;
 import com.withus.project.domain.members.SelectSkillEntity;
 import com.withus.project.domain.members.SkillType;
-import com.withus.project.domain.projects.CaseEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.mapstruct.Named;
-
-import java.util.UUID;
 
 @Mapper(componentModel = "spring", imports = SkillType.class)
 public interface SelectSkillMapper {

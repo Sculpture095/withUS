@@ -1,29 +1,27 @@
 package com.withus.project.controller;
 
 import com.withus.project.config.CustomUserDetails;
-import com.withus.project.domain.dto.members.MemberDTO;
+import com.withus.project.dto.members.MemberDTO;
 import com.withus.project.service.member.AuthService;
 import com.withus.project.service.member.MemberService;
 import com.withus.project.service.member.MyPageService;
 import com.withus.project.service.member.PasswordService;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -50,6 +48,18 @@ public class MemberController {
         } catch (IllegalStateException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
+    }
+
+    @GetMapping("/signup")
+    public String signupForm(HttpServletRequest request, Model model) {
+        // 기존의 회원가입 폼 처리 로직 유지
+        // 세션에 저장된 alert 메시지가 있으면 모델에 추가 후 세션에서 제거
+        String alertMessage = (String) request.getSession().getAttribute("alertMessage");
+        if (alertMessage != null) {
+            model.addAttribute("alertMessage", alertMessage);
+            request.getSession().removeAttribute("alertMessage");
+        }
+        return "signup"; // templates/signup.html
     }
 
     // 로그인 처리

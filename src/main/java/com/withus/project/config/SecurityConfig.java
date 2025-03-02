@@ -1,7 +1,8 @@
 package com.withus.project.config;
 
 import com.withus.project.repository.members.MemberRepositoryImpl;
-import com.withus.project.service.CustomUserDetailsService;
+import com.withus.project.service.other.CustomOAuth2UserService;
+import com.withus.project.service.other.CustomUserDetailsService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,34 +42,31 @@ public class SecurityConfig {
      * @throws Exception 예외
      */
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http,
+                                                   OAuth2FailureHandler oAuth2FailureHandler,
+                                                   CustomOAuth2UserService customOAuth2UserService) throws Exception {
         http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // ✅ CORS 설정
-                .csrf(csrf -> csrf.disable()) // ✅ CSRF 비활성화
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/check-login","/uploads/**","/css/**","/js/**","/images/**").permitAll() // ✅ 로그인 여부 확인 API는 인증 없이 호출 가능
-                        .requestMatchers("/partner/**","/p_myPage/**", "/c_myPage/**").hasRole("USER") // ✅ 마이페이지는 ROLE_USER 필요
-                        .anyRequest().permitAll() // ✅ 그 외 요청은 허용
+                        .requestMatchers("/auth/check-login", "/uploads/**", "/css/**", "/js/**", "/images/**", "/error", "/login", "/signup").permitAll()
+                        // 예: 특정 경로는 로그인(ROLE_USER) 필요
+                        .requestMatchers("/partner/**", "/p_myPage/**", "/c_myPage/**").hasRole("USER")
+                        .anyRequest().permitAll()
                 )
-
-
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint((request, response, authException) -> {
-                            // ✅ 로그인되지 않은 경우 401 반환 (기존 302 리디렉트 방지)
                             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                             response.setContentType("application/json");
                             response.getWriter().write("{\"loggedIn\": false, \"message\": \"Unauthorized\"}");
                         })
                 )
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS) // ✅ 세션을 항상 유지
+                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                         .maximumSessions(1)
                         .maxSessionsPreventsLogin(true)
                 )
-                .headers(headers -> headers
-                        .cacheControl(cache -> cache.disable()) // 캐시 비활성화
-                )
-
+                .headers(headers -> headers.cacheControl(cache -> cache.disable()))
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
@@ -76,16 +74,28 @@ public class SecurityConfig {
                         .deleteCookies("JSESSIONID")
                         .permitAll()
                 )
-                .rememberMe(remember -> remember.disable()) // ✅ 자동 로그인 비활성화
+                .rememberMe(remember -> remember.disable())
                 .formLogin(form -> form
-                        .loginPage("/login")
+                        .loginPage("/login")           // 커스텀 로그인 페이지
                         .defaultSuccessUrl("/dashboard", true)
                         .permitAll()
+                )
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/login")                // OAuth2 로그인 시작 시 보여줄 페이지
+                        .failureHandler(oAuth2FailureHandler)
+                        .defaultSuccessUrl("/main", true)
+                        // 중요: 여기에 CustomOAuth2UserService 등록
+                        .userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService))
                 )
                 .httpBasic(httpBasic -> httpBasic.disable());
 
         return http.build();
     }
+    @Bean
+    public UserDetailsService userDetailsService(MemberRepositoryImpl memberRepository) {
+        return new CustomUserDetailsService(memberRepository);
+    }
+
 
 
 
@@ -114,10 +124,6 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
-    }
-    @Bean
-    public UserDetailsService userDetailsService(MemberRepositoryImpl memberRepository) {
-        return new CustomUserDetailsService(memberRepository);
     }
 
 

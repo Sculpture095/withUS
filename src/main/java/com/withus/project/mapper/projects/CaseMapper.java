@@ -1,7 +1,7 @@
 package com.withus.project.mapper.projects;
 
-import com.withus.project.domain.dto.members.SelectSkillDTO;
-import com.withus.project.domain.dto.projects.CaseDTO;
+import com.withus.project.dto.members.SelectSkillDTO;
+import com.withus.project.dto.projects.CaseDTO;
 import com.withus.project.domain.members.*;
 import com.withus.project.domain.projects.CaseEntity;
 import com.withus.project.domain.projects.ContractEntity;
@@ -18,46 +18,60 @@ import java.util.stream.Collectors;
 @Mapper(componentModel = "spring")
 public interface CaseMapper {
 
+    // E → D
+    // E → D
     @Mappings({
-            @Mapping(target = "caseIdx", ignore = true),
-            @Mapping(target = "caseId",expression = "java(entity.getCaseId() != null ? entity.getCaseId().toString() : null)"), // UUID 매핑
-            @Mapping(target = "contractId", source = "contract.contractId"), // ✅ ContractEntity에서 contractId 추출
-            @Mapping(target = "createDate", ignore = true), // ✅ 자동 생성되므로 무시
-            @Mapping(target = "relatedTechs", source = "relatedTechs", qualifiedByName = "mapRelatedTechDTOs"), // ✅ 변환 메서드 추가
+            @Mapping(target = "caseIdx", source = "caseIdx"),
+            @Mapping(target = "caseId", expression = "java(entity.getCaseId()!=null?entity.getCaseId().toString():null)"),
+
+            // ★ contractId = entity.contract.contractId (UUID→String)
+            @Mapping(target = "contractId",
+                    expression = "java(entity.getContract()!=null && entity.getContract().getContractId()!=null? entity.getContract().getContractId().toString(): null)"),
+
+            // createDate = LocalDate -> String
+            @Mapping(target = "createDate",
+                    expression = "java(entity.getCreateDate()!=null? entity.getCreateDate().toString(): null)"),
+
+            @Mapping(target = "relatedTechs", source = "relatedTechs", qualifiedByName = "mapRelatedTechDTOs"),
             @Mapping(target = "title", source = "title"),
             @Mapping(target = "content", source = "content"),
+            @Mapping(target = "shortContent", source = "shortContent"),
             @Mapping(target = "caseImg", source = "caseImg"),
-            @Mapping(target = "thumbnail", source = "thumbnail"),
-            @Mapping(target = "caseAmount", source = "caseAmount"),
-            @Mapping(target = "timeline", source = "timeline"),
             @Mapping(target = "rating", source = "rating")
     })
     CaseDTO toDTO(CaseEntity entity);
 
     @Mappings({
             @Mapping(target = "caseIdx", ignore = true),
-            @Mapping(target = "caseId", qualifiedByName = "mapCaseId"), // UUID 매핑
-            @Mapping(target = "contract", source = "contractId", qualifiedByName = "mapContract"), // ✅ UUID 변환 메서드 사용
-            @Mapping(target = "createDate", ignore = true), // ✅ 자동 생성되므로 무시
-            @Mapping(target = "relatedTechs", source = "relatedTechs", qualifiedByName = "mapRelatedTechEntities"), // ✅ 변환 메서드 추가
+            @Mapping(target = "caseId", qualifiedByName = "mapCaseId"),
+            // ★ contract (String→UUID→ContractEntity)
+            @Mapping(target = "contract", source = "contractId", qualifiedByName = "mapContract"),
+
+            @Mapping(target = "createDate", ignore = true),
+            @Mapping(target = "relatedTechs", source = "relatedTechs", qualifiedByName = "mapRelatedTechEntities"),
             @Mapping(target = "title", source = "title"),
             @Mapping(target = "content", source = "content"),
+            @Mapping(target = "shortContent", source = "shortContent"),
             @Mapping(target = "caseImg", source = "caseImg"),
-            @Mapping(target = "thumbnail", source = "thumbnail"),
-            @Mapping(target = "caseAmount", source = "caseAmount"),
-            @Mapping(target = "timeline", source = "timeline"),
             @Mapping(target = "rating", source = "rating")
     })
     CaseEntity toEntity(CaseDTO dto);
 
+    // String -> UUID -> ContractEntity
     @Named("mapContract")
-    default ContractEntity mapContract(UUID contractId) { // ✅ UUID 기반 변환
-        if (contractId == null) return null;
+    default ContractEntity mapContract(String contractIdStr) {
+        if (contractIdStr == null) return null;
+        UUID uuid = UUID.fromString(contractIdStr);
         ContractEntity contract = new ContractEntity();
-        contract.setContractId(contractId);
+        contract.setContractId(uuid); // DB의 contract_id 컬럼
         return contract;
     }
 
+    @Named("mapCaseId")
+    default UUID mapCaseId(String caseIdStr) {
+        if (caseIdStr == null) return null;
+        return UUID.fromString(caseIdStr);
+    }
     @Named("mapClient")
     default ClientEntity mapClient(Integer clientIdx) { // ✅ UUID 기반 변환
         if (clientIdx == null) return null;
@@ -114,13 +128,7 @@ public interface CaseMapper {
                 .collect(Collectors.toList());
     }
 
-    @Named("mapCaseId")
-    default UUID mapCaseId(String caseId) { // ✅ UUID 기반 변환
-        if (caseId != null && caseId.matches("[0-9a-fA-F]{32}")) {
-            return UUID.fromString(caseId);
-        }
-        return null;
-    }
+
 }
 
 

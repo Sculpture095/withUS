@@ -1,9 +1,8 @@
 package com.withus.project.mapper.members;
 
-import com.withus.project.domain.dto.members.parteners.PortfolioDTO;
+import com.withus.project.dto.members.parteners.PortfolioDTO;
 import com.withus.project.domain.members.PartnerEntity;
 import com.withus.project.domain.members.PortfolioEntity;
-import com.withus.project.domain.projects.CaseEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

@@ -3,6 +3,8 @@ package com.withus.project.domain.members;
 import com.withus.project.config.UUIDToStringConverter;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.UUID;
 
@@ -27,6 +29,7 @@ public class QuestionEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_question_member"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private MemberEntity member; // MemberEntity를 참조하는 외래키
 
     @Column(name = "subject", nullable = false, length = 50)

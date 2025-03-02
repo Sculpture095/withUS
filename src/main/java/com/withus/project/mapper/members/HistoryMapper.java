@@ -1,7 +1,7 @@
 package com.withus.project.mapper.members;
 
 
-import com.withus.project.domain.dto.members.parteners.HistoryDTO;
+import com.withus.project.dto.members.parteners.HistoryDTO;
 import com.withus.project.domain.members.HistoryEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,13 +1,11 @@
 package com.withus.project.repository.projects;
 
 
-import com.withus.project.domain.members.MemberEntity;
 import com.withus.project.domain.members.PartnerEntity;
-import com.withus.project.domain.members.SelectSkillEntity;
-import com.withus.project.domain.members.SkillType;
 import com.withus.project.domain.projects.ProjectEntity;
 import com.withus.project.domain.projects.ProjectStatus;
 import com.withus.project.domain.projects.SelectProjectEntity;
+import com.withus.project.dto.projects.CompletedProjectDTO;
 import com.withus.project.repository.AbstractRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
@@ -329,6 +327,32 @@ public class ProjectRepositoryImpl extends AbstractRepository<ProjectEntity> {
             return Optional.empty();
         }
     }
+
+    public List<CompletedProjectDTO> findCompletedProjectsWithContract(String clientMemberId) {
+
+        String jpql = """
+            SELECT new com.withus.project.dto.projects.CompletedProjectDTO(
+                CAST(p.projectId as string),
+                p.projectName,
+                p.amount,
+                CAST(c.contractId as string),
+                c.amount,
+                c.status,
+                p.progressStatus
+            )
+            FROM ContractEntity c
+            JOIN c.project p
+            WHERE p.isCompleted = true
+              AND p.client.member.id = :clientMemberId
+        """;
+
+        return getEntityManager()
+                .createQuery(jpql, CompletedProjectDTO.class)
+                .setParameter("clientMemberId", clientMemberId)
+                .getResultList();
+    }
+
+
 
 
 

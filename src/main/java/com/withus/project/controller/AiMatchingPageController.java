@@ -1,7 +1,7 @@
 package com.withus.project.controller;
 
-import com.withus.project.domain.dto.projects.ProjectDTO;
-import com.withus.project.service.AiMatchingService;
+import com.withus.project.dto.projects.ProjectDTO;
+import com.withus.project.service.other.AiMatchingService;
 import com.withus.project.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

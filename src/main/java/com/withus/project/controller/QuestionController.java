@@ -1,16 +1,12 @@
 package com.withus.project.controller;
 
-import com.withus.project.domain.dto.members.QuestionDTO;
-import com.withus.project.domain.members.MemberEntity;
+import com.withus.project.dto.members.QuestionDTO;
 import com.withus.project.service.QuestionService;
-import com.withus.project.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.security.Principal;

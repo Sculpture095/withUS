@@ -1,6 +1,6 @@
 package com.withus.project.mapper.members;
 
-import com.withus.project.domain.dto.members.MemberDTO;
+import com.withus.project.dto.members.MemberDTO;
 import com.withus.project.domain.members.MemberEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

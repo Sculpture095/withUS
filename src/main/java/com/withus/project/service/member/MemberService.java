@@ -1,6 +1,6 @@
 package com.withus.project.service.member;
 
-import com.withus.project.domain.dto.members.MemberDTO;
+import com.withus.project.dto.members.MemberDTO;
 import com.withus.project.domain.members.*;
 import com.withus.project.mapper.members.MemberMapper;
 import com.withus.project.repository.members.MemberRepositoryImpl;
@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Optional;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -246,7 +245,17 @@ public class MemberService {
         return memberRepository.findById(memberId).orElse(null);
     }
 
-
+    @Transactional(readOnly = true)
+    public MemberDTO getMemberByEmail(String email) {
+        final String normalizedEmail = email == null ? null : email.trim().toLowerCase();
+        Optional<MemberEntity> optionalMember = memberRepository.findByEmail(normalizedEmail);
+        if (optionalMember.isEmpty()) {
+            // 로깅: 에러 메시지를 로그에 출력
+            System.out.println("해당 이메일로 가입된 회원을 찾을 수 없습니다. 이메일: " + normalizedEmail);
+            throw new IllegalArgumentException("해당 이메일로 가입된 회원을 찾을 수 없습니다. 이메일: " + normalizedEmail);
+        }
+        return memberMapper.toDTO(optionalMember.get());
+    }
 
 
 }

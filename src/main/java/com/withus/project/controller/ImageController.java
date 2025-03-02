@@ -1,8 +1,7 @@
 package com.withus.project.controller;
 
-import com.withus.project.service.file.FileUploadService;
+import com.withus.project.service.other.FileUploadService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;

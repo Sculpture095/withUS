@@ -5,6 +5,8 @@ import com.withus.project.domain.projects.CaseEntity;
 import com.withus.project.domain.projects.ProjectEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.UUID;
 
@@ -37,6 +39,7 @@ public class SelectSkillEntity {
     // 🟢 프로젝트에서 사용되는 기술 (프로젝트에만 속함)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_idx", foreignKey = @ForeignKey(name = "fk_selectskill_project"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private ProjectEntity project;
 
     // 🟢 개발자(파트너스)가 보유한 기술 (개발자에게만 속함)

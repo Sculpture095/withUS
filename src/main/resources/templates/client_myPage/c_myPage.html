@@ -46,10 +46,12 @@
                         </a>
                     </li>
                     <li>
-                        <a th:href="@{/c_account}" class="flex justify-between items-center textdeco">
-                            <span>계좌 관리</span>
-                            <span>&gt;</span>
-                        </a>
+                        <hr>
+                        <div class="member-exit">
+                            <a th:href="@{/member_exit}" class="flex justify-between items-center textdeco">
+                                <span>회원 탈퇴</span>
+                            </a>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -102,6 +104,29 @@
                 <button class="btn" id="editInfoButton">수정</button>
                 <button class="btn" id="saveInfoButton" style="display: none;">저장</button>
             </div>
+            <!-- 계좌 관리 -->
+            <div class="section">
+                <h3>계좌</h3>
+                <div class="info" id="accountInfo">
+                    <div>
+                        <span>예금주</span>
+                        <span class="account-text" th:text="${member.name}"></span>
+                    </div>
+                    <div>
+                        <span>은행명</span>
+                        <span class="account-text" th:text="${myPage.bankName}"></span>
+                        <input type="text" class="account-input" style="display: none; width: 250px; height: 23px; float: right;" placeholder="정보를 입력하세요">
+                    </div>
+                    <div>
+                        <span>계좌번호</span>
+                        <span class="account-text" th:text="${myPage.account}"></span>
+                        <input type="text" class="account-input" style="display: none; width: 250px; height: 23px; float: right;" placeholder="정보를 입력하세요">
+                    </div>
+                </div>
+
+                <button class="btn" id="editAccountButton">수정</button>
+                <button class="btn" id="saveAccountButton" style="display: none;">저장</button>
+            </div>
         </div>
     </div>
 </div> <!-- wrapper -->
@@ -140,9 +165,10 @@
     const editInfoButton = document.getElementById("editInfoButton");
     const saveInfoButton = document.getElementById("saveInfoButton");
 
+
     editInfoButton.onclick = function() {
         // 각 정보 항목을 수정할 수 있는 입력 필드로 전환
-        document.querySelectorAll('.info div').forEach((div) => {
+        document.querySelectorAll('#infoSection div').forEach((div) => {
             const span = div.querySelector('span:nth-child(2)'); // 두 번째 span (정보 텍스트)
             const input = div.querySelector('input'); // 해당 div 내부 input
 
@@ -159,7 +185,7 @@
 
     saveInfoButton.onclick = function() {
         // 각 입력 필드의 내용을 span에 업데이트
-        document.querySelectorAll('.info div').forEach((div) => {
+        document.querySelectorAll('#infoSection div').forEach((div) => {
             const span = div.querySelector('span:nth-child(2)');
             const input = div.querySelector('input');
 
@@ -250,6 +276,85 @@
             .catch(error => {
                 console.error('Error:', error); // ✅ 오류 출력 추가
                 alert("서버 요청 중 오류가 발생했습니다.");
+            });
+    };
+
+
+    //----계좌 관련
+    // 계좌 수정/저장 버튼
+    const editAccountButton = document.getElementById("editAccountButton");
+    const saveAccountButton = document.getElementById("saveAccountButton");
+
+    // 조회모드 span / 수정모드 input
+    const accountSpans  = document.querySelectorAll("#accountInfo .account-text");
+    const accountInputs = document.querySelectorAll("#accountInfo .account-input");
+
+    // ─────────────────────────────────────────────────────────
+    // 1) 수정 버튼을 누르면, 은행명/계좌번호만 input 표시
+    // ─────────────────────────────────────────────────────────
+    editAccountButton.onclick = function() {
+
+        // 은행명
+        accountSpans[1].style.display = "none";  // span 감춤
+        accountInputs[0].style.display = "inline";  // input 표시
+        accountInputs[0].value = accountSpans[1].innerText.trim(); // 기존 텍스트 복사
+
+        // 예금주(span만 존재) → 아무 동작하지 않음
+
+        // 계좌번호
+        accountSpans[2].style.display = "none";
+        accountInputs[1].style.display = "inline";
+        accountInputs[1].value = accountSpans[2].innerText.trim();
+
+        // 버튼 전환
+        editAccountButton.style.display = "none";
+        saveAccountButton.style.display = "inline";
+    };
+
+    // ─────────────────────────────────────────────────────────
+    // 2) 저장 버튼을 누르면, 입력값을 서버로 전송 후 화면 갱신
+    // ─────────────────────────────────────────────────────────
+    saveAccountButton.onclick = function() {
+        // 수정된 값
+        const updatedBankName = accountInputs[0].value.trim();
+        const updatedAccount  = accountInputs[1].value.trim();
+
+        // Ajax(Fetch) 통신
+        fetch('/api/updateMyPage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                // 서버에서 DTO나 파라미터로 받을 필드명에 맞춰서 key 설정
+                bankName: updatedBankName,
+                account: updatedAccount
+                // 예금주는 보내지 않음
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // 2-1) 화면도 업데이트
+                    accountSpans[1].innerText = updatedBankName || "정보를 입력하세요";
+                    // 예금주는 건드리지 않음
+                    accountSpans[2].innerText = updatedAccount  || "정보를 입력하세요";
+
+                    // 다시 조회 모드로 전환
+                    accountSpans[1].style.display = "inline";
+                    accountSpans[2].style.display = "inline";
+                    accountInputs[0].style.display = "none";
+                    accountInputs[1].style.display = "none";
+
+                    editAccountButton.style.display = "inline";
+                    saveAccountButton.style.display = "none";
+                } else {
+                    alert("계좌정보 저장에 실패했습니다.");
+                }
+            })
+            .catch(error => {
+                console.error("서버 요청 중 오류:", error);
+                alert("오류가 발생했습니다.");
             });
     };
 

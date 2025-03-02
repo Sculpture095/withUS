@@ -1,15 +1,11 @@
 package com.withus.project.mapper.boards;
 
 import com.withus.project.domain.boards.BoardEntity;
-import com.withus.project.domain.dto.boards.BoardDTO;
+import com.withus.project.dto.boards.BoardDTO;
 import com.withus.project.mapper.DateTimeMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.mapstruct.Named;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 
 @Mapper(componentModel = "spring" , uses = { RemarkMapper.class, DateTimeMapper.class})

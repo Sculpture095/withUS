@@ -5,7 +5,6 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     min-height: 100vh;
     margin: 0;
@@ -15,7 +14,7 @@ body {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
     width: 100%;
     max-width: 500px;
     margin: 150px auto; /* 상하 여백 150px, 좌우 자동 중앙 정렬 */
@@ -23,7 +22,7 @@ body {
 
 h2 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 45px !important;
     color: #333;
 }
 
@@ -38,7 +37,12 @@ h2 {
     font-weight: bold;
 }
 
-/* 입력 필드 스타일 */
+.info_icon img{
+    width: 20px;
+    height: 20px;
+    margin-bottom: 3px;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -50,19 +54,18 @@ input[type="tel"] {
     font-size: 16px;
 }
 
-/* 라디오 그룹 */
 .radio-group {
-    display: flex;
-    gap: 100px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+display: flex;
+gap: 100px;
+margin-bottom: 10px;
+margin-top: 10px;
 }
 
 .radio-group label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
+display: flex;
+align-items: center;
+gap: 10px;
+cursor: pointer;
 }
 
 .sign_btn {
@@ -81,35 +84,36 @@ input[type="tel"] {
     background-color: #3b30bd;
 }
 
-/* 휴대폰 번호 입력 필드 높이 */
+
+/* 휴대폰 번호 입력 필드도 동일한 높이 적용 */
 .phone-group input {
     height: 40px;
     box-sizing: border-box;
 }
 
+/* 휴대폰 번호 구분선 위치 조정 */
 .phone-separator {
     display: flex;
     align-items: center;
     height: 40px;
 }
 
-/* 휴대폰 번호 그룹 스타일 */
-.phone-group {
+ /* 휴대폰 번호 그룹 스타일 조정 */
+ .phone-group {
     display: flex;
     align-items: center;
     gap: 8px;
     max-width: 280px;
 }
 
-/* 변경된 부분: type-select 보이도록 수정 */
 .type-select {
-    margin-top: 10px;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    display: block; /* 기본적으로 보임 */
+margin-top: 10px;
+width: 100%;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 4px;
+font-size: 16px;
+
 }
 
 .error {
@@ -131,8 +135,8 @@ input[type="tel"] {
     align-items: center; /* flex-start에서 center로 변경 */
 }
 
-.check-button, .verify-button {
-    width: 100px;
+.check-button {
+    width: 150px;
     padding: 10px 15px;
     background-color: #4C3DF2;
     color: white;
@@ -144,7 +148,38 @@ input[type="tel"] {
     font-size: 14px;
 }
 
-.check-button:hover, .verify-button:hover {
+.check-button, .verify-button {
+    width: 100px;
+    padding: 10px 15px;
+    background-color: #4C3DF2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    height: 40px; /* 입력 필드 높이와 동일하게 설정 */
+    font-size: 14px;
+    margin-top: 0; /* 혹시 모를 마진 제거 */
+}
+
+.check-button:hover {
+    background-color: #3b30bd;
+}
+
+.verify-button {
+    width: 150px;
+    padding: 10px 15px;
+    background-color: #4C3DF2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    height: 40px;
+    font-size: 14px;
+}
+
+.verify-button:hover {
     background-color: #3b30bd;
 }
 
@@ -164,28 +199,46 @@ input[type="tel"] {
 .input-group input[type="password"],
 .input-group input[type="email"] {
     flex: 1;
-    height: 40px;
-    box-sizing: border-box;
+    height: 40px; /* 버튼 높이와 동일하게 설정 */
+    box-sizing: border-box; /* padding이 높이에 포함되도록 설정 */
 }
 
-.check-button, .verify-button {
-    width: 100px;
-    padding: 10px 15px;
-    background-color: #4C3DF2;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    white-space: nowrap;
-    height: 40px;
-    font-size: 14px;
+
+
+.info_icon {
+    position: relative; /* 상대 위치 설정 */
+    display: inline-block; /* 인라인 블록으로 설정 */
 }
 
-.check-button:hover, .verify-button:hover {
-    background-color: #3b30bd;
+.tooltip {
+    visibility: hidden; /* 기본적으로 숨김 */
+    width: 330px; /* 말풍선 너비 */
+    background-color: #efefef; /* 배경색 */
+    color: #717171; /* 글자색 */
+    text-align: center; /* 중앙 정렬 */
+    border-radius: 5px; /* 둥근 모서리 */
+    padding: 15px !important; /* 내부 여백 */
+    position: absolute; /* 절대 위치 설정 */
+    z-index: 1; /* 위에 표시 */
+    bottom: 125%; /* 이미지 위에 위치 */
+    left: 50%; /* 중앙 정렬 */
+    margin-left: -60px; /* 중앙 정렬을 위한 마진 */
+    opacity: 0; /* 투명도 */
+    transition: opacity 0.3s; /* 부드러운 전환 효과 */
+    font-size: 12px !important;
+    
 }
 
-.verified {
-    background-color: #999 !important;
-    cursor: not-allowed;
+.info_icon:hover .tooltip {
+    visibility: visible; /* 마우스 오버 시 보이기 */
+    opacity: 1; /* 불투명도 */
 }
+
+
+/* 인증번호 입력폼을 보이게 하는 클래스 (기존 클래스와 충돌하지 않음) */
+.custom-verification-active {
+    display: block !important;
+
+}
+
+

@@ -53,6 +53,26 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'com.theokanning.openai-gpt3-java:service:0.18.2'
 
+    // AWS SDK BOM
+    implementation platform("software.amazon.awssdk:bom:2.20.0")
+
+    // S3
+    implementation "software.amazon.awssdk:s3"
+
+
+    // Spring Security OAuth2 Client (Spring Boot 2.1 이상 버전 권장)
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+    // Google OAuth2 관련 (Google API Client 라이브러리, 필요시 사용)
+    implementation 'com.google.api-client:google-api-client:1.34.1'
+
+
+    // JWT 토큰 처리용 Auth0 라이브러리
+    implementation 'com.auth0:java-jwt:4.2.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+
+    implementation group: 'net.nurigo', name: 'javaSDK', version: '2.2'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 
 
 

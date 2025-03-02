@@ -7,7 +7,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.UUID;
 
 @Getter
@@ -34,11 +38,17 @@ public class SelectProjectEntity {
 
     @ManyToOne
     @JoinColumn(name = "project_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_selectproject_project"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private ProjectEntity project; // 프로젝트 외래키
 
     @Column(name = "yn", nullable = false)
     private Boolean yn = false; // 클라이언트 선택 여부
 
+    @Column(name = "meeting_date")
+    private LocalDate meetingDate;
+
+    @Column(name = "meeting_time")
+    private LocalTime meetingTime;
 
 
     @PrePersist

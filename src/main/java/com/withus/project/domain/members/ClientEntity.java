@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.UUID;
 
@@ -33,6 +35,7 @@ public class ClientEntity  {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "member_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_client_member"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private MemberEntity member; // 부모의 member_idx를 외래 키로 참조
 
 

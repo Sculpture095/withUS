@@ -1,13 +1,11 @@
 package com.withus.project.controller;
 
-import com.withus.project.domain.dto.members.MemberDTO;
-import com.withus.project.domain.dto.members.parteners.PortfolioDTO;
+import com.withus.project.dto.members.MemberDTO;
+import com.withus.project.dto.members.parteners.PortfolioDTO;
 import com.withus.project.domain.members.*;
 import com.withus.project.repository.members.HistoryRepositoryImpl;
 import com.withus.project.repository.members.PortfolioRepositoryImpl;
-import com.withus.project.repository.projects.SelectSkillRepositoryImpl;
 import com.withus.project.service.member.PartnerService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,15 +18,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.security.Principal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor

@@ -3,6 +3,8 @@ package com.withus.project.domain.members;
 import com.withus.project.config.UUIDToStringConverter;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.UUID;
 
@@ -27,6 +29,7 @@ public class CertificateEntity {
 
     @ManyToOne
     @JoinColumn(name = "partner_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_certificate_partner"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private PartnerEntity partner; // PartnerEntity와의 연관 관계
 
     @Column(name = "certificatename", nullable = false, length = 100)

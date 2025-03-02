@@ -1,10 +1,10 @@
 package com.withus.project.service.member;
 
-import com.withus.project.domain.dto.PageResponse;
+import com.withus.project.dto.PageResponse;
 import com.withus.project.domain.members.*;
 import com.withus.project.repository.members.*;
 import com.withus.project.repository.projects.SelectSkillRepositoryImpl;
-import com.withus.project.service.file.FileUploadService;
+import com.withus.project.service.other.FileUploadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -52,10 +51,17 @@ public class PartnerService {
 
 
     @Transactional
-    public void savePortfolio(String memberId, String title, String description, LocalDate startDate, LocalDate endDate, Boolean publicOk, MultipartFile[] images) {
+    public void savePortfolio(String memberId,
+                              String title,
+                              String description,
+                              LocalDate startDate,
+                              LocalDate endDate,
+                              Boolean publicOk,
+                              MultipartFile[] images) {
         PartnerEntity partner = memberRepository.findPartnerById(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 회원은 파트너가 아닙니다."));
 
+        // PortfolioEntity 생성
         PortfolioEntity portfolio = new PortfolioEntity();
         portfolio.setPartner(partner);
         portfolio.setPortfolioTitle(title);
@@ -64,11 +70,13 @@ public class PartnerService {
         portfolio.setEndDate(endDate != null ? endDate : LocalDate.now().plusMonths(1));
         portfolio.setPublicOk(publicOk != null ? publicOk : true);
 
+        // ✅ 이미지 업로드 (배열의 첫 번째 파일만)
         if (images.length > 0 && !images[0].isEmpty()) {
             String imagePath = fileUploadService.storeFile(images[0]);
             portfolio.setPortfolioImg(imagePath);
         }
 
+        // DB 저장
         portfolioRepository.save(portfolio);
     }
 

@@ -1,6 +1,6 @@
 package com.withus.project.mapper.members;
 
-import com.withus.project.domain.dto.members.parteners.CertificateDTO;
+import com.withus.project.dto.members.parteners.CertificateDTO;
 import com.withus.project.domain.members.CertificateEntity;
 import com.withus.project.domain.members.PartnerEntity;
 import org.mapstruct.*;

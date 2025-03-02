@@ -2,11 +2,8 @@ package com.withus.project.service;
 
 import com.withus.project.domain.boards.BoardEntity;
 import com.withus.project.domain.boards.BoardType;
-import com.withus.project.domain.dto.PageResponse;
-import com.withus.project.domain.dto.boards.BoardDTO;
-import com.withus.project.mapper.boards.BoardMapper;
 import com.withus.project.repository.boards.BoardRepositoryImpl;
-import com.withus.project.service.file.FileUploadService;
+import com.withus.project.service.other.FileUploadService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -93,23 +89,39 @@ public class BoardService {
         BoardEntity board = boardRepository.findByBoardId(boardId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "게시글을 찾을 수 없습니다."));
 
+        // 수정 권한 체크
         if (!board.getMember().getId().equals(memberId)) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "게시글 수정 권한이 없습니다.");
         }
 
+        // 기존 제목/내용 업데이트
         board.setSubject(subject);
         board.setContent(content);
 
-        // ✅ 파일 삭제 요청이 있을 경우 filePath를 null로 설정
-        if (file == null) {
+        // 기존 파일 경로
+        String oldFilePath = board.getFilePath();
+
+        // (A) 업로드된 파일이 없는 경우 => 기존 파일 삭제
+        if (file == null || file.isEmpty()) {
+            // 기존에 저장된 파일이 있다면, 오브젝트 스토리지에서 삭제
+            if (oldFilePath != null) {
+                fileUploadService.deleteFile(oldFilePath);
+            }
+            // DB상 파일 경로도 null
             board.setFilePath(null);
+
         } else {
-            // ✅ 새 파일이 업로드되면 기존 파일을 대체
-            String filePath = fileUploadService.storeFile(file);
-            board.setFilePath(filePath);
+            // (B) 새 파일이 업로드됨 => 기존 파일이 있다면 먼저 삭제
+            if (oldFilePath != null) {
+                fileUploadService.deleteFile(oldFilePath);
+            }
+            // 새 파일 업로드
+            String newFilePath = fileUploadService.storeFile(file);
+            board.setFilePath(newFilePath);
         }
 
-        boardRepository.save(board); // ✅ 변경 사항 저장
+        // 변경사항 저장
+        boardRepository.save(board);
     }
 
     @Transactional
@@ -117,6 +129,11 @@ public class BoardService {
         BoardEntity board = boardRepository.findByBoardId(boardId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "게시글을 찾을 수 없습니다."));
 
+        // 실제 S3(오브젝트 스토리지) 파일도 삭제
+        String filePath = board.getFilePath();
+        if (filePath != null) {
+            fileUploadService.deleteFile(filePath);
+        }
         boardRepository.delete(board); // ✅ 게시글 삭제
     }
 

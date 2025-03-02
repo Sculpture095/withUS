@@ -44,6 +44,11 @@ body {
   margin-bottom: 20px; /* 아래 여백 */
 }
 
+.myboard table tbody td a {
+  text-decoration: none;
+  color: #3a3a3a;
+}
+
 /* 테이블 스타일 */
 table {
   width: 100%;

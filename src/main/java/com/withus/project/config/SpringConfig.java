@@ -30,15 +30,7 @@ public class SpringConfig {
         dataSource.setUrl("jdbc:mysql://localhost:3306/project?useUnicode=true&characterEncoding=UTF-8");
         return dataSource;
     }
-//@Bean
-//public DataSource dataSource() {
-//    DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//    dataSource.setUsername("sa");
-//    dataSource.setPassword("");
-//    dataSource.setDriverClassName("org.h2.Driver");
-//    dataSource.setUrl("jdbc:h2:tcp://localhost/~/test"); // H2 메모리 DB
-//    return dataSource;
-//}
+
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {

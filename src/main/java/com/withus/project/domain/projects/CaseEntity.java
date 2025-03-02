@@ -35,37 +35,32 @@ public class CaseEntity {
     private UUID caseId;
 
     @ManyToOne
-    @JoinColumn(name = "contract_idx", nullable = false, foreignKey = @ForeignKey(name = "fk_case_contract"))
-    private ContractEntity contract; // ContractEntity를 참조하는 외래키
+    @JoinColumn(name = "contract_idx", foreignKey = @ForeignKey(name="fk_case_contract_of_case_table"))
+    private ContractEntity contract;
 
     @Column(name = "title", length = 60, nullable = false)
     private String title; // 고객 사례 제목
 
-    @Column(name = "content", length = 200, nullable = false)
+    @Column(name = "content", length = 500, nullable = true)
     private String content; // 고객 사례 내용
 
+    @Column(name = "shortcontent", length = 200, nullable = true)
+    private String shortContent; //짧은 후기
+
     @Column(name = "createDate", nullable = false)
-    private LocalDate createDate; // 작성일자
+    private LocalDate createDate = LocalDate.now(); // 작성일자
 
-    @Enumerated(EnumType.STRING)
+
     @Column(name = "rating", length = 30, nullable = false)
-    private Rating rating; // 평가
+    private Double rating; // 평가
 
-    @Column(name = "caseimg", length = 500, nullable = false)
+    @Column(name = "caseimg", length = 500, nullable = true)
     private String caseImg; // 사례 이미지
 
-    @Column(name = "caseamount", nullable = false)
-    private Double caseAmount; // 계약 금액
-
-    @Column(name = "timeline", nullable = false)
-    private LocalDate timeline; // 프로젝트 일정
 
     @OneToMany(mappedBy = "caseEntity", cascade = CascadeType.ALL)
     private List<SelectSkillEntity> relatedTechs; // 관련 기술 리스트
 
-
-    @Column(name = "thumbnail", length = 300)
-    private String thumbnail; // 썸네일 URL
 
     @PrePersist
     public void prePersist() {

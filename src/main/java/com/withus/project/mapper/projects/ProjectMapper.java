@@ -1,6 +1,6 @@
 package com.withus.project.mapper.projects;
 
-import com.withus.project.domain.dto.projects.ProjectDTO;
+import com.withus.project.dto.projects.ProjectDTO;
 import com.withus.project.domain.members.SelectSkillEntity;
 import com.withus.project.domain.projects.ProjectEntity;
 import org.mapstruct.Mapper;
@@ -33,6 +33,9 @@ public interface ProjectMapper {
             @Mapping(target = "teamSize", source = "teamSize"),
             @Mapping(target = "projectInfo", source = "projectInfo"),
             @Mapping(target = "isCompleted", source = "isCompleted"),
+            // ⬇️ 추가된 부분: progressStatus, progressStatusDescription
+            @Mapping(target = "progressStatus", expression = "java(entity.getProgressStatus() != null ? entity.getProgressStatus().name() : null)"),
+            @Mapping(target = "progressStatusDescription", expression = "java(entity.getProgressStatus() != null ? entity.getProgressStatus().getDescription() : null)"),
             @Mapping(target = "skills", expression = "java(mapSkills(entity.getSelectedSkills()))") // ✅ SelectSkillEntity 변환 추가
     })
     ProjectDTO toDTO(ProjectEntity entity);
@@ -52,6 +55,11 @@ public interface ProjectMapper {
             @Mapping(target = "projectLocation", source = "projectLocation"),
             @Mapping(target = "teamSize", source = "teamSize"),
             @Mapping(target = "projectInfo", source = "projectInfo"),
+            // ⬇️ 추가된 부분: progressStatus
+            @Mapping(target = "progressStatus",
+                    expression = "java((dto.getProgressStatus() == null || dto.getProgressStatus().trim().isEmpty())"
+                            + " ? com.withus.project.domain.projects.ProjectProgressStatus.WAITING_PAYMENT"
+                            + " : com.withus.project.domain.projects.ProjectProgressStatus.valueOf(dto.getProgressStatus()))"),
             @Mapping(target = "isCompleted", source = "isCompleted"),
             @Mapping(target = "selectedSkills", expression = "java(mapSkillsFromDTO(dto.getSkills()))") // ✅ DTO에서 Entity로 변환 추가
     })

@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>회원가입</title>
-
     <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
     <link rel="stylesheet" th:href="@{/css/signup.css}" />
     <link rel="stylesheet" th:href="@{/css/main.css}" />
@@ -80,6 +79,14 @@
                 </div>
                 <button type="button" class="verify-button" onclick="sendVerification()">인증하기</button>
             </div>
+            <div class="error" id="phone-error" style="display:none;">휴대폰 번호를 입력하세요.</div>
+        </div>
+
+        <!-- 인증번호 입력 (처음에는 숨김 처리) -->
+        <div class="form-group" id="verificationCodeGroup" style="display:none;">
+            <label for="verificationCode">인증번호 입력</label>
+            <input type="text" id="verificationCode" name="verificationCode" placeholder="발송된 인증번호를 입력하세요">
+            <div class="error" id="verificationCode-error" style="display:none;">인증번호가 일치하지 않습니다.</div>
         </div>
 
         <!-- 회원 유형 (pcaType 선택: 클라이언트 vs 파트너스) -->
@@ -170,9 +177,34 @@
         }
     }
 
-    // 휴대폰 인증
+    // 휴대폰 인증 함수 수정
     function sendVerification() {
-        alert('휴대폰 인증 기능을 추가해야 합니다.');
+        const phone1 = document.getElementById('phone1').value.trim();
+        const phone2 = document.getElementById('phone2').value.trim();
+        const phone3 = document.getElementById('phone3').value.trim();
+        if (!phone1 || !phone2 || !phone3) {
+            document.getElementById('phone-error').style.display = 'block';
+            return;
+        } else {
+            document.getElementById('phone-error').style.display = 'none';
+        }
+        const phone = phone1 + phone2 + phone3;
+        fetch('/check/sendSMS?phoneNumber=' + phone)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('인증번호 전송에 실패했습니다.');
+                }
+                return response.text();
+            })
+            .then(code => {
+                window.sentVerificationCode = code;
+                document.getElementById('verificationCodeGroup').style.display = 'block';
+                alert('인증번호가 발송되었습니다.');
+            })
+            .catch(error => {
+                console.error('인증번호 전송 오류:', error);
+                alert('인증번호 전송에 실패했습니다.');
+            });
     }
 
     // 회원 유형 토글 (라디오 버튼에 따라 세부 유형 드롭다운 표시/숨김)
@@ -218,26 +250,25 @@
         document.getElementById('partnersType').addEventListener('change', updateUserType);
     });
 
-    // 회원가입 AJAX 요청
+    // 회원가입 AJAX 요청 (인증번호 검증 포함)
     document.getElementById('signupForm').addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // userType hidden 필드를 최신 값으로 업데이트
-        updateUserType();
+        // 인증번호 검증
+        const enteredCode = document.getElementById('verificationCode').value.trim();
+        if (!window.sentVerificationCode) {
+            alert('먼저 휴대폰 인증을 진행하세요.');
+            return;
+        }
+        if (enteredCode !== window.sentVerificationCode) {
+            document.getElementById('verificationCode-error').style.display = 'block';
+            alert('인증번호가 일치하지 않습니다.');
+            return;
+        } else {
+            document.getElementById('verificationCode-error').style.display = 'none';
+        }
 
-        const formData = {
-            id: document.getElementById('userid').value,
-            nickname: document.getElementById('nickname').value,
-            name: document.getElementById('name').value,
-            password: document.getElementById('password').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone1').value
-                + document.getElementById('phone2').value
-                + document.getElementById('phone3').value,
-            pcaType: document.getElementById('pcaType').value,  // "CLIENT" 또는 "PARTNER"
-            userType: document.getElementById('userType').value  // 예: "INDIVIDUAL", "TEAM", "SOLE_PROPRIETOR", "CORPORATION"
-        };
-
+        // 유효성 검사
         if (!validateField(document.getElementById('userid')) ||
             !validateField(document.getElementById('nickname')) ||
             !validateField(document.getElementById('password')) ||
@@ -245,6 +276,24 @@
             alert("입력값을 확인하세요.");
             return;
         }
+
+        // userType hidden 필드를 최신 값으로 업데이트
+        updateUserType();
+
+        const phone1 = document.getElementById('phone1').value.trim();
+        const phone2 = document.getElementById('phone2').value.trim();
+        const phone3 = document.getElementById('phone3').value.trim();
+
+        const formData = {
+            id: document.getElementById('userid').value,
+            nickname: document.getElementById('nickname').value,
+            name: document.getElementById('name').value,
+            password: document.getElementById('password').value,
+            email: document.getElementById('email').value,
+            phone: phone1 + phone2 + phone3,
+            pcaType: document.getElementById('pcaType').value,  // "CLIENT" 또는 "PARTNER"
+            userType: document.getElementById('userType').value  // 예: "INDIVIDUAL", "TEAM", "SOLE_PROPRIETOR", "CORPORATION"
+        };
 
         try {
             const response = await fetch('/api/members/signup', {
@@ -259,10 +308,18 @@
                 alert('회원가입 실패: ' + await response.text());
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error('회원가입 중 오류:', error);
             alert('회원가입 중 오류가 발생했습니다.');
         }
     });
+</script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var alertMessage = /*[[${alertMessage}]]*/ '';
+    if (alertMessage && alertMessage !== '') {
+        alert(alertMessage);
+    }
+    /*]]>*/
 </script>
 </body>
 </html>

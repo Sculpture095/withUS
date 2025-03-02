@@ -30,3 +30,20 @@ server:
 openai:
   api-key: "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
 "
+
+
+cloud:
+  ncloud:
+    object-storage:
+      # NCP 오브젝트 스토리지 기본 엔드포인트(서울 리전 예시)
+      endpoint: https://kr.object.ncloudstorage.com
+      region: kr-standard  # 혹은 AWS SDK에서 AP_NORTHEAST_2 등을 쓸 수도 있지만 NCP는 kr-standard를 주로 사용
+      access-key: ncp_iam_BPAMKR2M8bzMTL8aBngq
+      secret-key: ncp_iam_BPKMKRM0ayCS5ycGxTYupK08tpxin8zBaz
+      bucket: my-ncloud-bucket
+
+
+iamport:
+  v1:
+    apiKey: "5241025624343728"
+    apiSecret: "njXoyRCpOc5dHHVyFssrk8qKo41zS4K236puVwn1Q3mRZBUKJvxs33cRj4W1kDUiX9qo956hYqbTybfg"

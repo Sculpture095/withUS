@@ -3,6 +3,8 @@ package com.withus.project.domain.members;
 import com.withus.project.config.UUIDToStringConverter;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -28,6 +30,7 @@ public class PortfolioEntity {
 
     @ManyToOne
     @JoinColumn(name = "partner_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_portfolio_partner"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private PartnerEntity partner; // PartnerEntity를 참조하는 외래키
 
     @Column(name = "portfoliotitle", length = 30)

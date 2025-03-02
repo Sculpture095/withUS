@@ -4,6 +4,8 @@ import com.withus.project.config.UUIDToStringConverter;
 import com.withus.project.domain.members.PartnerEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.mapping.ToOne;
 
 import java.time.LocalDate;
@@ -39,6 +41,7 @@ public class ContractEntity {
 
     @ManyToOne
     @JoinColumn(name = "project_idx", referencedColumnName = "project_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_contract_project"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private ProjectEntity project;
 
 
@@ -47,7 +50,7 @@ public class ContractEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "constatus", nullable = false)
-    private ContractStatus status; // 계약 상태
+    private ContractStatus status = ContractStatus.PENDING; // 계약 상태
 
     @Column(name = "amount", nullable = false)
     private Double amount; // 금액
@@ -57,6 +60,9 @@ public class ContractEntity {
 
     @Column(name = "contractname", length = 30, nullable = false)
     private String contractName; // 계약명
+
+    @Column(name = "apicode", length = 200)
+    private String apiCode; //계약서 API 코드
 
     @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CaseEntity> caseEntities = new ArrayList<>();

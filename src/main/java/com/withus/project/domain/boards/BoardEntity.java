@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -35,6 +37,7 @@ public class BoardEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_board_member"))
+    @OnDelete(action = OnDeleteAction.CASCADE)// 회원삭제시 게시글 삭제
     private MemberEntity member; // MemberEntity를 참조하는 외래키
 
     @Enumerated(EnumType.STRING)

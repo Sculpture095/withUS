@@ -2,9 +2,7 @@ package com.withus.project.service;
 
 import com.withus.project.domain.boards.BoardEntity;
 import com.withus.project.domain.boards.RemarkEntity;
-import com.withus.project.domain.dto.boards.RemarkDTO;
 import com.withus.project.domain.members.MemberEntity;
-import com.withus.project.mapper.boards.RemarkMapper;
 import com.withus.project.repository.boards.BoardRepositoryImpl;
 import com.withus.project.repository.boards.RemarkRepositoryImpl;
 import com.withus.project.service.member.MemberService;
@@ -14,10 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

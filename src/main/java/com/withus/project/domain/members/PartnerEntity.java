@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -35,6 +37,7 @@ public class PartnerEntity  {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "member_idx", nullable = false, unique = true,foreignKey = @ForeignKey(name = "fk_partner_member"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private MemberEntity member; // 부모의 member_idx를 외래 키로 참조
 
     @OneToMany(mappedBy = "partner", cascade = CascadeType.ALL)

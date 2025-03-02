@@ -1,6 +1,6 @@
 package com.withus.project.mapper.projects;
 
-import com.withus.project.domain.dto.projects.SelectProjectDTO;
+import com.withus.project.dto.projects.SelectProjectDTO;
 import com.withus.project.domain.members.PartnerEntity;
 import com.withus.project.domain.projects.ProjectEntity;
 import com.withus.project.domain.projects.SelectProjectEntity;

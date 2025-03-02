@@ -489,6 +489,12 @@
             .catch(error => console.error("🚨 대댓글 등록 오류:", error));
     }
 
+    function redirectToEdit(button) {
+        const editUrl = button.getAttribute("data-edit-url");
+        console.log(">>> 수정 페이지 이동 URL:", editUrl);
+        window.location.href = editUrl;
+    }
+
 
 
 </script>

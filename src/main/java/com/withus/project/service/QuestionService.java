@@ -1,23 +1,18 @@
 package com.withus.project.service;
 
-import com.withus.project.domain.dto.members.QuestionDTO;
+import com.withus.project.dto.members.QuestionDTO;
 import com.withus.project.domain.members.MemberEntity;
 import com.withus.project.domain.members.QuestionEntity;
 import com.withus.project.repository.members.QuestionRepositoryImpl;
-import com.withus.project.service.file.FileUploadService;
+import com.withus.project.service.other.FileUploadService;
 import com.withus.project.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

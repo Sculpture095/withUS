@@ -1,17 +1,14 @@
 package com.withus.project.service.member;
 
-import com.withus.project.domain.dto.members.MyPageDTO;
+import com.withus.project.dto.members.MyPageDTO;
 import com.withus.project.domain.members.*;
-import com.withus.project.domain.projects.ProjectEntity;
 import com.withus.project.mapper.members.MyPageMapper;
 import com.withus.project.repository.members.*;
-import com.withus.project.repository.projects.ProjectRepositoryImpl;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 

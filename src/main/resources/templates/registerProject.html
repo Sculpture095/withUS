@@ -87,7 +87,7 @@
                 <th><label>프로젝트 시작일</label></th>
                 <td>
                     <div class="date-range">
-                        <input type="date" id="projectStartDate" name="startDate" required />
+                        <input type="date" id="projectStartDate" name="startDate" onclick="this.showPicker()" required />
                     </div>
                 </td>
             </tr>
@@ -107,7 +107,7 @@
                 <th><label>모집 마감일</label></th>
                 <td>
                     <div class="date-range">
-                        <input type="date" id="closingdate" name="closingDate" required />
+                        <input type="date" id="closingdate" name="closingDate" onclick="this.showPicker()" required />
                     </div>
                 </td>
             </tr>
@@ -162,7 +162,7 @@
 </div>
 <!-- Footer -->
 <div th:replace="~{footer :: footer}"></div>
-<!--<script th:src="@{/js/script.js}"></script>-->
+<script th:src="@{/js/script.js}"></script>
 
 <script>
     /**
@@ -186,27 +186,27 @@
         // (2) 옵션 클릭 시 <span> 생성
         // 멀티 선택 가능. 동일 항목을 여러 번 누르면 중복 태그가 생긴다는 점에 주의!
         // (중복 방지 로직이 필요하다면 별도 처리)
-        document.querySelectorAll(".options .option").forEach(option => {
-            option.addEventListener("click", function() {
-                const value = this.getAttribute("data-value");
-                const text  = this.textContent.trim();
-                console.log("클릭한 옵션의 data-value:", value);
-
-                // <span data-value="...">
-                const span = document.createElement("span");
-                span.setAttribute("data-value", value);
-                span.textContent = text;
-
-                // .selected-options에 추가
-                const selectedOptions = document.querySelector(".selected-options");
-                if(selectedOptions){
-                    selectedOptions.appendChild(span);
-                }
-
-                // 클릭 후 드롭다운 닫기 (원하면 주석 해제)
-                // document.querySelector(".options").classList.remove("show");
-            });
-        });
+        // document.querySelectorAll(".options .option").forEach(option => {
+        //     option.addEventListener("click", function() {
+        //         const value = this.getAttribute("data-value");
+        //         const text  = this.textContent.trim();
+        //         console.log("클릭한 옵션의 data-value:", value);
+        //
+        //         // <span data-value="...">
+        //         const span = document.createElement("span");
+        //         span.setAttribute("data-value", value);
+        //         span.textContent = text;
+        //
+        //         // .selected-options에 추가
+        //         const selectedOptions = document.querySelector(".selected-options");
+        //         if(selectedOptions){
+        //             selectedOptions.appendChild(span);
+        //         }
+        //
+        //         // 클릭 후 드롭다운 닫기 (원하면 주석 해제)
+        //         // document.querySelector(".options").classList.remove("show");
+        //     });
+        // });
 
         // (3) 폼 submit 시, <span> 들을 순회하여 data-value 추출
         document.getElementById("project").addEventListener("submit", function(e){

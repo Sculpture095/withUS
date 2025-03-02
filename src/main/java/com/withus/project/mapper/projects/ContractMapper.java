@@ -1,7 +1,7 @@
 package com.withus.project.mapper.projects;
 
-import com.withus.project.domain.dto.projects.CaseDTO;
-import com.withus.project.domain.dto.projects.ContractDTO;
+import com.withus.project.dto.projects.CaseDTO;
+import com.withus.project.dto.projects.ContractDTO;
 import com.withus.project.domain.members.PartnerEntity;
 import com.withus.project.domain.projects.CaseEntity;
 import com.withus.project.domain.projects.ContractEntity;
@@ -28,6 +28,7 @@ public interface ContractMapper {
             @Mapping(target = "detail", source = "detail"),
             @Mapping(target = "contractName", source = "contractName"),
             @Mapping(target = "contractDate", source = "contractDate"),
+            @Mapping(target = "apiCode", source = "apiCode"),  // <- apiCode 매핑 추가
             @Mapping(target = "caseEntities", source = "caseEntities", qualifiedByName = "mapCases") // ✅ 고객 사례 리스트 매핑 추가
     })
     ContractDTO toDTO(ContractEntity entity);
@@ -42,6 +43,7 @@ public interface ContractMapper {
             @Mapping(target = "detail", source = "detail"),
             @Mapping(target = "contractName", source = "contractName"),
             @Mapping(target = "contractDate", source = "contractDate"),
+            @Mapping(target = "apiCode", source = "apiCode"),  // <- apiCode 매핑 추가
             @Mapping(target = "caseEntities", ignore = true) // ✅ Entity 생성 시에는 고객 사례를 매핑하지 않음
     })
     ContractEntity toEntity(ContractDTO dto);
@@ -72,11 +74,8 @@ public interface ContractMapper {
                         .title(caseEntity.getTitle())
                         .content(caseEntity.getContent())
                         .createDate(caseEntity.getCreateDate().toString())
-                        .rating(caseEntity.getRating().name()) // Enum → String 변환
+                        .rating(caseEntity.getRating()) // Enum → String 변환
                         .caseImg(caseEntity.getCaseImg())
-                        .caseAmount(caseEntity.getCaseAmount())
-                        .timeline(caseEntity.getTimeline().toString())
-                        .thumbnail(caseEntity.getThumbnail())
                         .build())
                 .collect(Collectors.toList());
     }

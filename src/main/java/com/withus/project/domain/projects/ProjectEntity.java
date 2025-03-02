@@ -6,6 +6,8 @@ import com.withus.project.domain.members.SelectSkillEntity;
 import com.withus.project.domain.members.SkillType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.mapping.ToOne;
 
 import java.time.LocalDate;
@@ -31,6 +33,7 @@ public class ProjectEntity {
 
     @ManyToOne
     @JoinColumn(name = "client_idx", nullable = false,foreignKey = @ForeignKey(name = "fk_project_client"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private ClientEntity client; // ClientEntity를 참조하는 외래키
 
 
@@ -72,6 +75,10 @@ public class ProjectEntity {
 
     @Column(name = "closingdate", nullable = false)
     private LocalDate closingDate; // 프로젝트 마감일
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "progressStatus", nullable = false)
+    private ProjectProgressStatus progressStatus = ProjectProgressStatus.WAITING_PAYMENT;
 
     // 🟢 프로젝트에서 선택한 기술들 (OneToMany)
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)

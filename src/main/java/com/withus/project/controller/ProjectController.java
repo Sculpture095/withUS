@@ -1,15 +1,14 @@
 package com.withus.project.controller;
 
-import com.withus.project.domain.dto.PageResponse;
-import com.withus.project.domain.dto.members.MemberDTO;
-import com.withus.project.domain.dto.projects.ProjectDTO;
-import com.withus.project.domain.members.ClientEntity;
-import com.withus.project.domain.members.PcaType;
+import com.withus.project.dto.PageResponse;
+import com.withus.project.dto.members.MemberDTO;
+import com.withus.project.dto.projects.CompletedProjectDTO;
+import com.withus.project.dto.projects.OngoingProjectDTO;
+import com.withus.project.dto.projects.ProjectDTO;
 import com.withus.project.domain.members.SkillType;
-import com.withus.project.domain.projects.ProjectEntity;
 import com.withus.project.domain.projects.ProjectStatus;
+import com.withus.project.service.ContractService;
 import com.withus.project.service.ProjectService;
-import com.withus.project.service.member.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,6 +30,7 @@ import java.util.stream.Collectors;
 public class ProjectController {
 
     private final ProjectService projectService;
+    private final ContractService contractService;
 
 
     @GetMapping
@@ -58,10 +58,35 @@ public class ProjectController {
             redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
             return "redirect:/login";
         }
+        // (1) 등록한 프로젝트 (isCompleted=false)
+        List<ProjectDTO> registered = projectService.getRegisteredProjects(member.getId());
+
+        // (2) 진행 중인 프로젝트 => OngoingProjectDTO
+        //    계약(SIGNED) + 프로젝트 조인 결과
+        List<OngoingProjectDTO> ongoing = projectService.getOngoingProjectDetailed(member.getId());
+
+
+        // (3) 완료된 프로젝트 (isCompleted=true)
+        List<CompletedProjectDTO> completed = projectService.getCompletedProjectsWithContract(member.getId());
+
+        // **중복 제거**: registered에서 ongoing과 ID가 같은 항목을 제외
+        registered = registered.stream()
+                .filter(r -> ongoing.stream()
+                        .noneMatch(o -> o.getProjectId().equals(r.getProjectId())))
+                .collect(Collectors.toList());
+
+
 
         List<ProjectDTO> projects = projectService.getClientProjects(member.getId());
         model.addAttribute("projects", projects);
+
+
+
+        // 모델에 담아 뷰로 전달
         model.addAttribute("member", member);
+        model.addAttribute("registeredProjects", registered);
+        model.addAttribute("ongoingProjects", ongoing);
+        model.addAttribute("completedProjects", completed);
 
         return "client_myPage/c_project";
     }
@@ -267,6 +292,34 @@ public class ProjectController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(List.of(e.getMessage()));
         }
+    }
+
+
+    @GetMapping("/c_project/current/{projectId}")
+    public String getCurrentProjectDetail(
+            @PathVariable String projectId,
+            HttpSession session,
+            Model model,
+            RedirectAttributes redirectAttributes
+    ) {
+        // 1) 로그인 여부 체크
+        MemberDTO member = (MemberDTO) session.getAttribute("member");
+        if (member == null) {
+            redirectAttributes.addFlashAttribute("alertMessage", "로그인이 필요합니다.");
+            return "redirect:/login";
+        }
+        // 2) 프로젝트 조회
+        ProjectDTO project = projectService.getProjectById(UUID.fromString(projectId));
+        if (project == null) {
+            // or throw new RuntimeException("프로젝트 없음");
+            return "redirect:/c_project";
+        }
+        // 3) 소유 여부 확인 등 필요한 검증 로직 (선택)
+        // ...
+
+        // 4) 모델에 담아서 c_current_project.html 로 이동
+        model.addAttribute("project", project);
+        return "client_myPage/c_current_project";
     }
 
 

@@ -1,7 +1,6 @@
 package com.withus.project.mapper.members;
 
-import com.withus.project.domain.dto.members.QuestionDTO;
-import com.withus.project.domain.members.MemberEntity;
+import com.withus.project.dto.members.QuestionDTO;
 import com.withus.project.domain.members.QuestionEntity;
 import org.mapstruct.*;
 
