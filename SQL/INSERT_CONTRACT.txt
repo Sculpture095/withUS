@@ -1088,23 +1088,4 @@ FROM
   (SELECT project_id FROM project WHERE projectname = '부동산 중개업 내부 업무 시스템 구축' LIMIT 1) AS pr;
   
   
-	INSERT INTO `contract` 
-  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
-SELECT
-  50000000,
-  STR_TO_DATE('2024-12-16','%Y-%m-%d'),
-  UUID(),
-  '부동산 중개업 내부 업무 시스템 구축',
-  '계약 목적: 부동산 중개업 사내 시스템 신규 개발 프로젝트 진행.
-업무: 기존 부동산 데이터 수집 프로그램을 기반으로 자사 업무 프로세스를 분석하여 매물·고객 관리, 매물 등급 및 점수 산정, 수익률 계산, 계산기 기능 등을 포함하는 신규 시스템을 개발합니다. 웹(PC)와 모바일앱(Android/iOS) 지원 및 기존 데이터 이관, 그리고 AI 기반 보고서 자동 생성 연동 방안을 검토합니다.
-기간: 계약 체결 이후 즉시 시작.
-조건: 아이디어 단계에서 시작하며, 완성도가 가장 중요하고 비용 및 기간은 상향 조정 가능합니다.
-산출물: 기획 문서, 디자인 원본, 소스 코드 원본, 기술 문서.
-기타: 모집 마감일은 2024년 12월 12일이며, 우선 순위는 산출물 완성도 > 금액 > 일정 준수; 협업 인력은 별도의 파트너와 협업 가능한 인력이 없습니다.',
-  'SIGNED',
-  p.partner_idx,
-  pr.project_id,
-  '8392047561285686'
-FROM
-  (SELECT partner_idx FROM partner WHERE partner_idx = 53 LIMIT 1) AS p,
-  (SELECT project_id FROM project WHERE projectname = '부동산 중개업 내부 업무 시스템 구축' LIMIT 1) AS pr;
+	
