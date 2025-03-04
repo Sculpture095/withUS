@@ -127,7 +127,7 @@ SELECT
   '8392047561285641'
 FROM
   (SELECT partner_idx FROM partner WHERE partner_idx = 7 LIMIT 1) AS p,
-  (SELECT project_id FROM project WHERE projectname = 'B2B 차량 호출 서비스 추가 기능 개발' LIMIT 1) AS pr;
+  (SELECT project_id FROM project WHERE projectname = '웹(React) 프런트엔드 개발' LIMIT 1) AS pr;
 
 
      INSERT INTO `contract` 
@@ -395,3 +395,716 @@ SELECT
 FROM
   (SELECT partner_idx FROM partner WHERE partner_idx = 19 LIMIT 1) AS p,
   (SELECT project_id FROM project WHERE projectname = '해외 자재관리 시스템 구축' LIMIT 1) AS pr;
+  
+  
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  7500000,
+  STR_TO_DATE('2025-01-11','%Y-%m-%d'),
+  UUID(),
+  'LG전자 EDI 모듈 백엔드 개발',
+  '계약 목적: LG전자 EDI 모듈 백엔드 개발 프로젝트 진행.
+업무: LG전자와 거래선 I/F Portal 구축을 위해, Inbound/Outbound 데이터 포매팅 로직 개발, Oracle PL/SQL 분석 후 MariaDB 재개발, Java Spring 기반 서버 로직 구현.
+기간: 2024년 4월 ~ 2025년 5월(약 5개월 계약), 면접 후 7일 내 계약 결정.
+조건: 경력 8~10년 차 개발자 2명, 월 750만 원(경력에 따라 협의 가능), 기존 팀 증원, 발주처: LG전자. 우선 순위는 업무 능력 > 예산 범위 > 근무 시작일.
+산출물: EDI 모듈 백엔드 소스 코드 및 관련 문서.
+기타: Java, Spring, MariaDB, Oracle PL/SQL 필수; LG전자 프로젝트 경험 우대.
+계약 진행: 지원 → 실무진 대면 인터뷰(코딩테스트 없음) → 계약 결정.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285653'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 20 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = 'LG전자 EDI 모듈 백엔드 개발' LIMIT 1) AS pr;
+  
+  
+  	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  7000000,
+  STR_TO_DATE('2024-12-28','%Y-%m-%d'),
+  UUID(),
+  '의료용 웨어러블 로봇 제어 및 모니터링 Android 개발',
+  '계약 목적: 의료용 웨어러블 로봇 제어 및 모니터링 Android 앱 개발 프로젝트 진행. 업무: Kotlin 기반 로봇 제어/모니터링 앱 구현, 재활 치료 데이터 수집·분석 및 리포트 작성, Bluetooth/BLE 통신 연동, MPAndroidChart 활용 데이터 시각화 및 PDF 생성, RESTful API 연동 및 MVVM 적용. 기간: 약 5개월 계약, ASAP 투입, 면접 후 7일 내 계약 결정. 조건: Android/Java(native) 9년 이상, Kotlin 2년 이상 경력 1명 (월 700만 원, 협의 가능), 제조·생산·화학업 분야, 사내 프로젝트. 산출물: 앱 및 관련 소스 코드, 문서 전반. 기타: Bluetooth/BLE 통신 경험 필수. 해당 프로젝트는 지원자 재모집을 위해 재등록됨.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285654'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 21 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '의료용 웨어러블 로봇 제어 및 모니터링 Android 개발' LIMIT 1) AS pr;
+  
+  
+  INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  5500000,
+  STR_TO_DATE('2025-01-03','%Y-%m-%d'),
+  UUID(),
+  '운영 중인 서비스 Backend 개발',
+  '계약 목적: 운영 중인 서비스 백엔드 개발 프로젝트 진행.
+업무: 보건복지부 산하 기관 백엔드 개발, SNS 연계, Konan Search 통합검색, 2개 시스템 간 DB 송수신.
+기간: 1월 31일까지 개발 완료, 2월 초 인프라 구축/내부 테스트, 2월 중순 고객 테스트, 2월 말 준공 (면접 후 2~3일 내 계약 결정).
+조건: 경력 4년 이상 1명(월 550만 원); 우선 순위: 업무 능력 > 근무 시작일 > 예산; 발주처 수주 프로젝트, IT·정보통신업.
+산출물: 백엔드 소스 코드 및 관련 문서 (JDK 11, SpringBoot 2.7, Oracle, MyBatis, JEUS, WebToB).
+기타: 공공 BE 개발 경험 및 SNS 로그인, 데이터 수집, MyBatis 튜닝, JWT 인증 필수. (재모집)',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285655'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 22 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '운영 중인 서비스 Backend 개발' LIMIT 1) AS pr;
+  
+  
+    INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  4000000,
+  STR_TO_DATE('2025-01-03','%Y-%m-%d'),
+  UUID(),
+  'React 기반 운영 중인 솔루션의 고도화 프론트 개발',
+  '계약 목적: React 기반 운영 솔루션 프론트엔드 고도화.
+업무: React/Next.js 웹 프론트 고도화 및 협업, 즉시 또는 1월 초 투입.
+기간: 약 2개월, 면접 후 7일 내 계약 결정.
+조건: 미드레벨 개발자(경력 25년 차 선호), 월 400~500만 원; 우선순위: 업무 능력 > 근무 시작일 > 예산.
+산출물: React/Next.js 웹 프론트 소스 코드.
+기타: React, Next.js, React-Query 숙련, HTML/CSS/JS/TS 활용, 반응형·웹 접근성 필수; API 사용 경험 및 전공자 우대. (재등록)',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285656'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 23 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = 'React 기반 운영 중인 솔루션의 고도화 프론트 개발' LIMIT 1) AS pr;
+  
+  
+   INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  30000000,
+  STR_TO_DATE('2025-01-03','%Y-%m-%d'),
+  UUID(),
+  '청소년 유해 사이트 자체 차단 앱 구축',
+  '계약 목적: 청소년 유해 사이트 자체 차단 앱 구축 프로젝트 진행. 업무: 청소년들의 불법 도박사이트 접근을 차단하는 Android·iOS 앱을 기획·디자인·개발하고, 서버 및 관리자 페이지도 구축하며, 스토어 등록까지 진행. 기간: 계약 체결 후 3개월 이내 구축 희망. 조건: 아이디어만 있는 단계에서 기능 구현 가능 여부와 요구사항을 협의할 예정이며, 우선 순위는 [1순위] 산출물 완성도 > [2순위] 금액 > [3순위] 일정 준수, 신규 프로젝트로 모바일 보안 전문가 희망. 산출물: 기능·화면 기획 문서, 디자인 원본 파일, 개발 원본 소스 코드 일체. 주요 기능: 특정 URL·사이트·앱 접근 및 다운로드 차단(크롬·웨일 등 브라우저 포함), 운영자가 유해 사이트 및 앱 관리 가능. 참고 사례는 ‘사이버안심존’이며, PM 1명과 협업 진행.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285657'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 24 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '청소년 유해 사이트 자체 차단 앱 구축' LIMIT 1) AS pr;
+  
+  
+     INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  8000000,
+  STR_TO_DATE('2025-01-03','%Y-%m-%d'),
+  UUID(),
+  'PC/iOS/안드로이드 태블릿/전자칠판 앱의 디자인',
+  '계약 목적: PC/iOS/안드로이드 태블릿/전자칠판 앱의 디자인 프로젝트 진행. 업무: 학교 수업을 위한 교육용 양방향 미러링 시스템 구축을 위해, PC·모바일(태블릿)·전자칠판 앱의 UI 디자인을 진행하며, Figma 툴을 사용하여 원형 내비게이터·화면 공유·화이트보드(빈 화면 및 현재화면) 등의 핵심 기능을 포함한 95P(IA 기준, 팝업·분할창 포함) 분량의 와이어프레임을 구체화. 기간: 2월 전까지 디자인 완료를 희망. 조건: 신규 프로젝트로, 우선 순위는 [1순위] 산출물 완성도 > [2순위] 금액 > [3순위] 일정 준수. 산출물: 디자인 원본 파일. 기타: PC·모바일 앱 디자인 경험, 색상 감각 및 가변형 디자인·터치 인터페이스 숙련도가 있는 디자이너 우대.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285658'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 25 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = 'PC/iOS/안드로이드 태블릿/전자칠판 앱의 디자인' LIMIT 1) AS pr;
+  
+  
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  40000000,
+  STR_TO_DATE('2025-01-03','%Y-%m-%d'),
+  UUID(),
+  '노코드기반 웹 빌더 솔루션 구축',
+  '계약 목적: 노코드기반 웹 빌더 솔루션 구축 프로젝트 진행. 업무: (1) 코딩 없이 랜딩페이지를 제작할 수 있는 노코드 웹 빌더 개발 – 고객이 에디터(드래그 앤 드랍)로 레이아웃을 잡고 게시판 추가·템플릿 적용 등 기능을 사용 가능, (2) PC/MO 반응형 지원 및 디자인 템플릿(2종) 제작·추가, (3) Java·MySQL·Next.js 기반 서버/DB/인프라 구성과 관리자 페이지 개발. 기간: 계약 체결 후 즉시 시작, 기간은 협의 가능. 조건: 신규 프로젝트로, 우선 순위는 [1순위] 산출물 완성도 > [2순위] 일정 준수 > [3순위] 금액, 아이디어만 있는 상태이며 상세 기획·UI/UX 디자인·개발 설계 등을 함께 진행. 산출물: (1) 소스 코드 원본, (2) 디자인 원본, (3) 기획 문서, (4) 개발 문서(범위 협의). 기타: 템플릿은 Next.js 기반 추천, WIX·아임웹·카페24빌더 참고, 실제 가능한 비용/일정으로 협의 가능.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285659'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 26 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '노코드기반 웹 빌더 솔루션 구축' LIMIT 1) AS pr;
+  
+  
+  	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  1700000,
+  STR_TO_DATE('2025-01-03','%Y-%m-%d'),
+  UUID(),
+  '자사 서비스 초등 서비스 퍼블리싱 및 프론트 개발',
+  '계약 목적: 자사 초등 서비스 퍼블리싱 및 프론트엔드 개발 프로젝트 진행. 업무: 기존 중·고등 서비스에 맞춰져 있던 플랫폼을 초등용 디자인에 맞게 새롭게 퍼블리싱 및 React/Next.js 기반 프론트엔드 구현(백엔드 API 연동). 주 기능에는 칭찬 스티커, 감정 출석부, 실시간 화상회의 참여, 퀴즈배틀 등이 포함되며, 전체 5P 내외 분량. 기간: 2024년 12월 25일부터 시작 예정이며 일정 준수가 1순위. 조건: 운영 중인 서비스 리뉴얼·유지보수 유형으로, 기획·디자인 시안은 제공. 기술 스택은 Chakra UI, Figma, Next.js, React, React-query 등이 사용되며, 백엔드는 자사에서 개발하여 API 제공. 산출물: 개발 원본 소스 코드.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285660'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 27 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '자사 서비스 초등 서비스 퍼블리싱 및 프론트 개발' LIMIT 1) AS pr;
+  
+  	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  3000000,
+  STR_TO_DATE('2025-01-03','%Y-%m-%d'),
+  UUID(),
+  '기 개발된 모바일/웹 앱 소스 검토 및 오류 수정',
+  '계약 목적: 기 개발 모바일/웹 앱 소스 검토 및 오류 수정 프로젝트 진행.
+업무: Flutter/React 앱 및 백엔드(AWS Lambda, Airtable, Node.js) 코드 검토, 치명적 오류(회원가입 등) 수정, 필요 시 재구축 권고.
+기간: 시작 후 2주 내 검토 완료.
+조건: 운영 중 서비스 리뉴얼/유지보수; Figma, GitHub(4개), iOS 앱, 샘플 MVP, 동영상 자료 제공 가능.
+산출물: 코드 검토 보고서, 복구 평가, 재구축 권고.
+기타: Flutter, React, Node.js 숙련 개발자, AI/헬스케어 앱 경험 우대, NDA 서명 가능. 금액은 협의.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285661'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 28 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '기 개발된 모바일/웹 앱 소스 검토 및 오류 수정' LIMIT 1) AS pr;
+  
+  INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  7000000,
+  STR_TO_DATE('2024-12-21','%Y-%m-%d'),
+  UUID(),
+  'React 기반 노코드 솔루션 프론트엔드 개발(재택근무)',
+  '계약 목적: React 기반 노코드 솔루션 프론트엔드 개발(재택) 프로젝트 진행.
+업무: wedesk.so 컨셉 노코드 솔루션 개발 마무리 및 이슈 처리, React·TypeScript·Mobx 기반 SPA 웹앱 구조 개선, 미완성 로직 개발, 버그 수정, UI/UX 개선, 단위 테스트(Vitest) 및 코드 품질 관리.
+기간: 2025년 3월까지 완료 목표, 면접 후 2~3일 내 계약 결정.
+조건: 경력 5년 이상 React·TypeScript 개발자, OOP·디자인 패턴 필수, SaaS·SPA 경험 우대; 주 40시간 원격(월 24회 오프라인 협업), Desktime 사용, 4대보험 필수.
+산출물: 프론트엔드 소스 코드(React, TS, Mobx), 테스트 코드, UI/UX 개선 문서.
+기타: GitHub, Notion, Slack 협업, AI(Cursor.ai) 적극 활용, 주 40시간 기준.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285662'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 29 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = 'React 기반 노코드 솔루션 프론트엔드 개발(재택근무)' LIMIT 1) AS pr;
+  
+    INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  600000,
+  STR_TO_DATE('2024-12-27','%Y-%m-%d'),
+  UUID(),
+  '서비스 오류수정 및 관리자/프런트 고도화',
+  '계약 목적: 전화통화 서비스 오류 수정 및 관리자/프런트 기능 고도화 프로젝트 진행. 업무: 기존 레거시 검토 후 React Native 앱(프론트), Vue.js 관리자 페이지 고도화, Java(Spring)와 Node.js(문자 기능) 백엔드 오류 수정, AWS·MySQL 기반 서비스 유지보수 및 개선 작업. 기간: 계약 체결 이후 즉시 시작 가능하며, 미팅 시 금액·기간 협의. 조건: 운영 중인 서비스의 리뉴얼·유지보수 프로젝트, XD 시안에 맞춰 정확히 구현 필요. 산출물: 소스 코드 원본 파일. 기타: 전화통화 과금 기능 및 팬-스타 중개/매칭 방식이 주요 도메인이며, 상세 요구사항은 미팅 시 공유. 지원자를 다시 모집 받기 위해 재등록된 프로젝트.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285663'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 30 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '서비스 오류수정 및 관리자/프런트 고도화' LIMIT 1) AS pr;
+  
+  
+     INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  3000000,
+  STR_TO_DATE('2024-12-27','%Y-%m-%d'),
+  UUID(),
+  '사내 학생 관리 웹 서비스 UI/UX 기획 및 디자인',
+  '계약 목적: 사내 학생 관리 웹 서비스 UI/UX 기획 및 디자인 프로젝트 진행.
+업무: 사내 학생 관리 웹 서비스의 프로토타입 기반 UI/UX 기획 및 디자인 작업 수행. Figma를 활용하여 약 3주 간 디자인 산출물 완성.
+기간: 계약 후 즉시 착수 가능하며, 12월 말 ~ 1월 초 내 디자인 완료 희망. 면접 후 23일 이내 계약 여부 결정.
+조건: 경력 35년 차 디자이너 1명(월 300만 원, 3주 기준). 우선 순위는 [1순위] 업무 능력 > [2순위] 예산 범위 > [3순위] 근무 시작일.
+산출물: Figma 디자인 파일 및 UI/UX 관련 문서 전반.
+기타: 관련 프로젝트 진행 경험자 우대, 자사 PM 1명과 협업.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285664'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 31 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '사내 학생 관리 웹 서비스 UI/UX 기획 및 디자인' LIMIT 1) AS pr;
+  
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  2500000,
+  STR_TO_DATE('2024-12-27','%Y-%m-%d'),
+  UUID(),
+  '이벤트 페이지 및 어드민 추가 개발',
+  '계약 목적: 이벤트 페이지 및 어드민 추가 개발 프로젝트 진행. 업무: 기존 홈페이지에 이벤트 페이지(5P)와 어드민(8P) 추가 개발을 담당하며, React(필수) 기반 프론트엔드, Node.js·Express.js 기반 백엔드로 구축. 주요 기능: (1) 유저가 정보 입력 후 룰렛 결과에 따라 쿠폰을 지급, (2) 이벤트 종료 시 쿠폰 발급 차단, (3) 카카오 로그인 연동, (4) 어드민 페이지에서 실시간 접속·제보·가입·당첨 통계, 당첨자 다운로드, 이벤트 종료 전환 버튼 등을 제공. 기간: 2024년 12월 16일부터 개발 착수, 기획(유저플로우·화면정의서) 중이며 디자인·퍼블리싱은 내부 진행 예정. 조건: 신규 프로젝트로, 우선 순위는 [1순위] 일정 준수 > [2순위] 금액 > [3순위] 산출물 완성도. 산출물: 원본 소스 코드. 기타: 기술 스택으로 PostgreSQL, bcrypt, dotenv 등을 사용 가능하며, 어드민 페이지 세부 사항은 협의하여 결정.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285665'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 32 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '이벤트 페이지 및 어드민 추가 개발' LIMIT 1) AS pr;
+  
+  	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  7000000,
+  STR_TO_DATE('2024-12-28','%Y-%m-%d'),
+  UUID(),
+  'OpenCV 비전검사 장비 프로그램 개발',
+  '계약 목적: OpenCV 비전검사 장비 프로그램 개발 프로젝트 진행.
+업무: Windows용 GUI(1920×1080)에서 6대 IDS U3-36L 0XC 카메라 이미지 촬영 및 외관검사(OpenCV 활용), DUT 부품 장착 여부, OCR, Barcode Reading 등 검사 기능과 조명 등 주변기기 제어를 Python/PySide로 구현, 패키징/인스톨러 포함.
+기간: 계약 체결 후 즉시 시작 (주 1회 이상 상주 가능 개발자 우대).
+조건: 신규 프로젝트 – 기획 문서(Adobe XD), 메뉴 구성, 기능 정의, 카메라 연동, 시연용 GUI 완료됨.
+산출물: 소스 코드 원본, 개발 결과 보고서 등.
+기타: Windows 10 이상, Python/PySide, OpenCV, DB/파일 연동 필요; 비전검사 장비 개발 경험자 우대, 예산은 유동 조정 가능.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285666'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 33 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = 'OpenCV 비전검사 장비 프로그램 개발' LIMIT 1) AS pr;
+  
+  
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  6500000,
+  STR_TO_DATE('2024-12-20','%Y-%m-%d'),
+  UUID(),
+  '증권사 MTS, HTS, WTS 고도화 서비스 기획',
+  '계약 목적: 증권사 MTS, HTS, WTS 고도화 서비스 기획 프로젝트 진행.
+업무: 증권사 뱅킹/청약/계좌개설, 트레이딩·투자정보, 자산관리·금융상품 등 사용자 경험 개선 및 고도화 작업 수행. User flow 설계 및 프로젝트 산출물을 작성(MS Office 활용)하고, 장기간 협업하여 결과물을 도출.
+기간: ASAP 투입 후 6개월간. 면접 후 12일 내 계약 여부 결정.
+조건: 47년 차(월 600만 원) 1명, 8~10년 차(월 650만 원) 1명. 우선 순위는 업무 능력 > 근무 시작일 > 예산 범위.
+산출물: 기획 문서, 사용자 경험 개선 관련 산출물 일체.
+기타: 증권사 HTS/MTS/WTS 구축·고도화 유경험자 필수, 사용자 플로우 설계 가능. 인하우스·에이전시 경험 및 원활한 커뮤니케이션 능력 보유자 우대. 재모집을 위해 다시 등록된 프로젝트.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285667'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 34 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '증권사 MTS, HTS, WTS 고도화 서비스 기획' LIMIT 1) AS pr;
+  
+  
+  	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  8000000,
+  STR_TO_DATE('2024-12-28','%Y-%m-%d'),
+  UUID(),
+  '오픈마켓 주문처리 API 연동 개발',
+  '계약 목적: 오픈마켓 주문처리 API 연동 개발 프로젝트 진행. 업무: NestJS(Typescript) 기반의 기존 주문 관리 시스템에 쿠팡·네이버 스마트스토어·11번가·롯데온 API를 연동하여 주문·배송·반품·교환·취소 처리 기능을 추가하고, MongoDB 스키마 매핑 및 성능·예외처리를 고려하여 모든 마켓 주문을 한곳에서 효율적으로 관리할 수 있도록 개발한다. 기간: 계약 체결 후 1~2개월 내 작업 희망(협의 가능). 조건: 사내 프로젝트(IT·정보통신업)로, 우선 순위는 [1순위] 업무 능력 > [2순위] 예산 범위 > [3순위] 근무 시작일, Typescript·Nest.js·MongoDB·Git 관리(Feature 브랜치) 필수. 산출물: 소스 코드 원본 파일. 기타: 지마켓·옥션 연동 사례 참고 가능, 세부 기능(주문 조회·배송 업데이트·반품·교환·취소 처리 등)은 각 마켓별 API 규격에 맞춰 구현, 기능 범위·일정 협의를 통해 최종 금액 조정 가능.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285668'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 35 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '오픈마켓 주문처리 API 연동 개발' LIMIT 1) AS pr;
+  
+  
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  1500000,
+  STR_TO_DATE('2024-12-31','%Y-%m-%d'),
+  UUID(),
+  '운영 중인 체험단 사이트 홈페이지 디자인 리뉴얼',
+  '계약 목적: 운영 중인 체험단 사이트의 홈페이지 디자인 리뉴얼 프로젝트 진행
+업무: 현재 운영 중인 사이트(PC/Mobile 반응형) 내 메인·마이페이지·체험상품 목록/상세·인플루언서 목록/보기 페이지 등의 디자인 레이아웃을 Figma로 재설계
+기간: 계약 체결 후 즉시 시작, 일정 준수가 1순위
+조건: 아이디어만 있는 상태에서, 디자인 방향 제안 및 협의 진행 가능. 산출물은 Figma 디자인 원본 파일. 퍼블리싱까지 가능하다면 추가 협의 가능',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285669'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 36 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '운영 중인 체험단 사이트 홈페이지 디자인 리뉴얼' LIMIT 1) AS pr;
+  
+  
+  INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  1500000,
+  STR_TO_DATE('2024-12-31','%Y-%m-%d'),
+  UUID(),
+  '카페24 기반 자사몰 내 필터 기능 추가 개발',
+  '계약 목적: 카페24 기반 자사몰 내 필터 기능 추가 개발 프로젝트 진행.
+업무: 자사 온라인몰에 적용할 상품 검색 필터 기능을 개발하며, 기존 레거시 검토 후 상품 분류, 성별, 사이즈 등 옵션 및 품절 관리를 위한 필터 기능을 구현.
+기간: 계약 체결 후 즉시 시작, 상세 일정 및 협의 사항은 미팅 시 결정.
+조건: 신규 프로젝트 진행, 기획 상태는 필요한 내용을 간단히 정리한 상태, IT 프로젝트 관리 경험은 없음, 협업 예정 인력은 없음.
+기술: Cafe24 기반 개발 환경 활용.
+산출물: 소스 코드 원본 파일.
+기타: 미팅 시 기존 레거시 검토 후 금액 및 기간 협의 가능.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285670'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 37 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '카페24 기반 자사몰 내 필터 기능 추가 개발' LIMIT 1) AS pr;
+  
+  
+    INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  2500000,
+  STR_TO_DATE('2024-12-27','%Y-%m-%d'),
+  UUID(),
+  '하수관로 관련 프로그램의 추가 기능 개발',
+  '계약 목적: 하수관로 프로그램 추가 기능 개발 프로젝트 진행.
+업무: 기존 Python 기반 노후도 분석 및 객체 탐지 프로그램에 GIS 기능과 추가 기능을 개발합니다. 구체적으로, shp 파일을 불러와 맵에 표출하고, 속성 데이터를 기반으로 트리 레이어 및 검색 기능을 구현하며, 분석 결과에 따른 객체 색상 부여, 클릭 시 관로 제원 및 이미지 팝업, 결함 표시 및 정보 제공, 그리고 보고서 출력 기능을 개발합니다.
+기간: 계약 체결 후 즉시 시작.
+조건: 운영 중인 서비스 리뉴얼/유지보수 프로젝트, 간단한 기획서 제공, 협업 인력 없음. 우선 순위: 금액 > 일정 준수 > 산출물 완성도.
+기술: Python.
+산출물: 원본 소스 코드.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285671'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 38 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '하수관로 관련 프로그램의 추가 기능 개발' LIMIT 1) AS pr;
+  
+  
+    INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  4500000,
+  STR_TO_DATE('2024-12-29','%Y-%m-%d'),
+  UUID(),
+  '플랫폼 유지보수 및 업데이트 Frontend 개발',
+  '계약 목적: 카페24 기반 자사몰 내 필터 기능 추가 개발 프로젝트 진행.
+업무: 자사 온라인몰에 적용할 상품 검색 필터 기능을 개발하며, 기존 레거시 검토 후 상품 분류, 성별, 사이즈 등 옵션 및 품절 관리를 위한 필터 기능을 구현.
+기간: 계약 체결 후 즉시 시작, 상세 일정 및 협의 사항은 미팅 시 결정.
+조건: 신규 프로젝트 진행, 기획 상태는 필요한 내용을 간단히 정리한 상태, IT 프로젝트 관리 경험은 없음, 협업 예정 인력은 없음.
+기술: Cafe24 기반 개발 환경 활용.
+산출물: 소스 코드 원본 파일.
+기타: 미팅 시 기존 레거시 검토 후 금액 및 기간 협의 가능.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285672'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 39 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '플랫폼 유지보수 및 업데이트 Frontend 개발' LIMIT 1) AS pr;
+  
+  
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  9000000,
+  STR_TO_DATE('2024-12-27','%Y-%m-%d'),
+  UUID(),
+  '업무지원시스템 차세대 PostgreSQL DBA',
+  '계약 목적: 업무지원시스템 차세대 PostgreSQL DBA 프로젝트 진행.
+업무: 기존 시스템의 PostgreSQL 관리 및 데이터 분석(DA) 업무를 담당하며, 추가 증원을 위해 고급 DBA를 투입하여 운영, 성능 최적화, DB 관리 및 분석 수행.
+기간: 즉시 투입, 7월 말까지 진행, 인터뷰 후 23일 내 계약 결정.
+조건: 발주처(롯데) 수주 프로젝트(계약 체결 완료). 우선 순위: 업무 능력 > 예산 범위 > 근무 시작일; 모집 인원 1명, 경력 1320년(조율 가능), 월 800900만원.
+필수 기술: PostgreSQL 고급 지식 및 DBA/DA 업무 경험 필수.
+산출물: PostgreSQL 관리 및 데이터 분석 결과 보고서와 관리 문서.
+기타: 대형 프로젝트 환경에서 추가 증원 목적으로 진행.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285673'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 40 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '업무지원시스템 차세대 PostgreSQL DBA' LIMIT 1) AS pr;
+  
+  
+  	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  20000000,
+  STR_TO_DATE('2024-12-23','%Y-%m-%d'),
+  UUID(),
+  'R형 화재수신기 원격제어 시스템 개발',
+  '계약 목적: GR형 화재 수신기 원격제어 시스템 개발.
+업무: 기존 P형 시스템을 기반으로 R형 수신기 원격 제어 기능을 확장·고도화하며, 실시간 모니터링, 이벤트 처리, 원격 제어, 로그 관리, 보안 기능 구현.
+기간: 계약 체결 후 즉시 시작, 총 93주 진행 (요구사항 분석 12주, 서버 개발 46주, 통합 테스트 23주, 문서화 및 배포 12주).
+조건: 운영 중 서비스 리뉴얼/유지보수, 상세 기획 문서 보유; 우선순위: 산출물 완성도 > 일정 > 금액; 협업: 자사 백엔드 개발자 1명 등.
+기술: C/C++ 및 Golang, MODBUS/TCP, MQTT, REST API, MariaDB, React.js, Mosquitto, SSL/TLS, API Key.
+산출물: 원본 소스 코드 및 관련 문서.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285674'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 41 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = 'R형 화재수신기 원격제어 시스템 개발' LIMIT 1) AS pr;
+  
+  
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  10000000,
+  STR_TO_DATE('2024-12-17','%Y-%m-%d'),
+  UUID(),
+  '디지털 피아노 컨트롤 앱 개발',
+  '계약 목적: 신규 디지털 피아노 브랜드 제품의 사용자 편의성 향상 및 매출 증대를 위한 iOS/Android 앱 개발.
+업무: 디지털 피아노 컨트롤 앱 개발 및 스토어 등록; BLE로 MIDI/Sysex 신호 전송, 음색 변경, On/Off 기능 구현 (추가 기능 협의 가능).
+기간: 계약 체결 후 즉시 시작.
+조건: 기획/디자인은 내부 진행; 협업 인력: 경영진 1명, 기획마케팅 개발 담당 1명; 우선순위는 금액 > 산출물 완성도 > 일정 준수.
+기술: Android, BLE, Bluetooth, iOS(크로스플랫폼).
+산출물: 개발 원본 소스 코드.
+참고: 야마하 Digital Piano Controller 앱 참고, BLE 연결 안정성 및 MIDI 특성 이해 우대.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285675'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 42 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '디지털 피아노 컨트롤 앱 개발' LIMIT 1) AS pr;
+  
+  
+  	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  5500000,
+  STR_TO_DATE('2024-12-17','%Y-%m-%d'),
+  UUID(),
+  '대기업 증권사 Java 개발자 구인',
+  '계약 목적: 대기업 증권사 고객 영업 관리 시스템 개발 프로젝트에 참여할 Java 개발자 추가 증원.
+업무: 기존 java, jsp 기반 고객 영업 관리 시스템의 쿼리 담당 업무 수행.
+기간: 12월 초 바로 투입 후 2개월간 업무 진행. 면접 후 3일 이내 계약 여부 결정.
+조건: 발주처 수주 프로젝트(계약 체결 완료)로, 협업 예정 인력은 기획자, 디자이너, 개발자. 모집 인원 4명 중 경력 4년 이상 실무 경력 보유자 우대, 일반적으로 실무 경력 3년 이상이면 가능할 것으로 예상.
+산출물: 프로젝트 관련 소스 코드 및 결과 보고서 등.
+기타: 인터뷰 및 계약 절차는 프로젝트 지원 > 실무진 인터뷰(코딩 테스트 없음) > 계약 결정 방식으로 진행.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285676'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 43 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '대기업 증권사 Java 개발자 구인' LIMIT 1) AS pr;
+  
+  
+  	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  6000000,
+  STR_TO_DATE('2024-12-17','%Y-%m-%d'),
+  UUID(),
+  '한국중부발전 생성형 AI 업무서비스 구축',
+  '계약 목적: 한국중부발전 생성형 AI 업무서비스 구축 프로젝트 진행.
+업무: Python과 생성형 AI를 활용해 RAG 시스템을 구현(문서 전처리, 벡터 DB 적재, 초기 테스트, 프롬프트 최적화 등).
+기간: 계약 체결 후 즉시 시작, 3개월 진행 (인터뷰 후 23일 내 계약 결정).
+조건: 발주처 수주 프로젝트(계약 체결 완료), 모집 인원 6명 (PM 1명, 개발자 2명, DS 지원 2명 포함); 우선 순위: 업무 능력 > 근무 시작일 > 예산.
+기술: Python, RAG, 생성형 AI, 벡터 DB(Milvus/Weaviate/FAISS), LLM 응용. 우대: 대규모 LLM 솔루션, 프롬프트 엔지니어링, 데이터 분석, LangChain/LangGraph, 한국어 데이터셋 튜닝.
+산출물: 개발 원본 소스 코드 및 관련 산출물.
+기타: 주 4일(월, 목) 충남 보령 상주, 교통비·숙박비 정액 지급.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285677'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 44 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '한국중부발전 생성형 AI 업무서비스 구축' LIMIT 1) AS pr;
+  
+  
+  
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  150000000,
+  STR_TO_DATE('2024-12-17','%Y-%m-%d'),
+  UUID(),
+  'JAVA/Spring Boot/Spring/REACT 기반 ERP 및 광고 솔루션 구축',
+  '계약 목적: 운영 중인 사내 자원관리 ERP+AMP 시스템을 Java/Spring/Spring Boot/React 기반으로 리뉴얼하는 프로젝트 진행.
+업무: 기존 PHP 기반 ERP를 재개발하고, 신규 광고 솔루션을 개발하여 인사, 광고, 매체, 매출 및 정산 등 기능을 통합합니다. UI/UX 디자인, 프런트엔드(React), 백엔드(Java, Spring Boot) 및 서버/DB(NCP 클라우드, MySQL) 구성을 수행하며, 세콤 근태 데이터와 매체 광고 API 연동을 포함합니다.
+기간: 12월에 범위 협의 후, 1월 초 계약 체결 및 즉시 투입. 전체 일정은 협의 예정.
+조건: 상세 기획 문서(요구사항 정의서, 화면설계서, 메뉴구조도) 제공, 협업 예정 인력은 자사 기획자 1명과 프론트 개발자 1명, 사용자 약 100명. 우선 순위는 산출물 완성도 > 금액 > 일정 준수.
+산출물: 개발 원본 소스 코드와 디자인 원본 파일.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285678'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 45 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = 'JAVA/Spring Boot/Spring/REACT 기반 ERP 및 광고 솔루션 구축' LIMIT 1) AS pr;
+  
+  
+  INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  5000000,
+  STR_TO_DATE('2024-12-21','%Y-%m-%d'),
+  UUID(),
+  '기존 윈도우 SW의 일부 내용을 웹으로 전환',
+  '계약 목적: 기존 윈도우 시스템의 재고 처리 및 로그인 부분을 웹으로 전환하여 서비스 리뉴얼 진행.
+업무: AWS 환경에서 Node.js, React, MariaDB를 활용해 기존 윈도우 소프트웨어와 동일한 재고 및 로그인 화면을 구현하고, 웹 프런트엔드/백엔드 개발 및 서버/DB/인프라 구성을 수행합니다. 주요 기능은 사용자 로그인 관리와 의약품 관리(제품 검색, exp/lot/수량에 따른 재고 차감 및 선납/납품 코드 처리)입니다.
+기간: 계약 체결 후 즉시 시작하여 1~2개월 내 개발 완료 목표.
+조건: 기획 문서(요구사항 정의서, 화면설계서, 프로토타입) 기반 진행, 의약품 관리 관련 exp, lot, 수량 개념 필수.
+산출물: 개발 원본 소스 코드.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285679'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 46 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '기존 윈도우 SW의 일부 내용을 웹으로 전환' LIMIT 1) AS pr;
+  
+  
+    
+  INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  1800000,
+  STR_TO_DATE('2024-12-21','%Y-%m-%d'),
+  UUID(),
+  '깃헙의 node.js-puppeteer의 arm 포팅',
+  '계약 목적: GitHub에 공개된 Node.js-Puppeteer 프로젝트를 ARM 기반 리눅스 환경에서 구동 가능하도록 포팅하고, 이를 활용하는 자체 Node.js 서버를 Docker 컨테이너화하여 AWS 상에 쿠버네티스 기반으로 배포 및 관리할 수 있는 시스템을 구축하는 신규 프로젝트를 진행합니다. 업무: 기존 윈도우 전용 Node.js-Puppeteer 프로젝트를 ARM 리눅스 환경으로 포팅하고, 자체 Node.js 서버를 Docker 컨테이너화하여 쿠버네티스 배포 및 관리를 위한 코드 작성과 환경 구성을 수행합니다. 이를 통해 여러 대의 AWS 서버에 원활하게 배포 및 관리할 수 있도록 합니다. 기간: 계약 체결 이후 즉시 시작합니다. 조건: 신규 프로젝트로 진행되며, 기획은 필요한 내용을 간단히 정리한 상태입니다. 우선 순위는 [1순위] 산출물 완성도, [2순위] 일정 준수, [3순위] 금액 순이며, 협업 예정 인력은 없습니다. 관련 기술은 AWS, Docker, Kubernetes, Node.js, Puppeteer이며, 산출물은 개발 원본 소스 코드입니다. 참고: GitHub의 Node.js-Puppeteer 프로젝트 관련 세부 사항은 미팅 시 공유되며, 유사 프로젝트 경험 및 디자인 역량이 있는 업체를 선호합니다.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285680'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 47 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '깃헙의 node.js-puppeteer의 arm 포팅' LIMIT 1) AS pr;
+  
+  
+    INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  250000,
+  STR_TO_DATE('2024-12-24','%Y-%m-%d'),
+  UUID(),
+  '글쓰기 에디터 기능에 대한 자문',
+  '계약 목적: 운영 중인 사이트의 PHP 7.1 기반 에디터 기능을 고도화하기 위한 자문 프로젝트를 진행합니다. 업무: 현재 CKEditor를 사용하는 사이트에 대해 네이버 블로그와 유사한 다양한 기능(폰트 기본 설정(크기, 색상, 기울기 등), 링크, 이미지/영상 첨부 및 사이즈 조정, 표 삽입, 이모지 삽입, 비밀글 작성, 덧글 작성 등)을 제공하는 edit 게시판 구현이 가능한 오픈소스를 제안받고, 이를 사이트에 적용할 수 있도록 내부 개발자에게 가이드를 제공하는 작업을 수행합니다. 기간: 계약 체결 이후 즉시 시작. 조건: 이 프로젝트는 운영 중인 서비스의 리뉴얼 및 유지보수로 진행되며, 기획 문서는 필요한 내용을 간단히 정리한 상태로 제공되고, 협업 예정 인력은 개발자 1명과 기획자 1명이 참여합니다. 우선 순위는 산출물 완성도 > 금액 > 일정 준수이며, 관련 기술은 CSS, HTML, JavaScript, PHP입니다. 산출물: 제안 받은 오픈소스와 적용 가이드 문서 등이 포함되며, 최종 산출물은 협의 후 결정됩니다.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285681'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 48 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '글쓰기 에디터 기능에 대한 자문' LIMIT 1) AS pr;
+  
+  
+  INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  6000000,
+  STR_TO_DATE('2024-12-20','%Y-%m-%d'),
+  UUID(),
+  '증권사 MTS, HTS, WTS 개선 UI/UX 디자인',
+  '계약 목적: 증권사 MTS/HTS/WTS 사용자 경험 개선 프로젝트.
+업무: 주식 앱 고도화 및 운영, 다기능 UI 디자인 개선, 선행 디자인 제안, 프로토타이핑, 디자인 시스템 구축.
+기간: ASAP 투입 후 6개월 진행, 인터뷰 후 12일 내 계약 결정.
+조건: 발주처 수주 프로젝트(계약 완료), 모집 인원 2명 (예: 경력 8~10년 차 1명, 월 600만 원), 협업: PM 1명, 기획 6명, 디자인 6명.
+필수: Figma, Adobe Photoshop; 5년 이상 UI 디자인 경험 및 포트폴리오 필수.
+우대: 금융/증권 앱 고도화, 주식 관련 경험, 공통 디자인 시스템 구축, 리더/PM 경험.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285682'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 49 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '증권사 MTS, HTS, WTS 개선 UI/UX 디자인' LIMIT 1) AS pr;
+  
+  
+   INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  8000000,
+  STR_TO_DATE('2024-12-28','%Y-%m-%d'),
+  UUID(),
+  '위치추적 시스템 DBA SM 프로젝트',
+  '계약 목적: 도로명 주소, TMAP POI 장소 속정 정보 등 대용량 데이터를 갱신 및 검증하는 프로젝트를 진행합니다. 업무는 데이터 아키텍처링, Query 튜닝, DBMS 관리를 포함하며, Oracle, PostgreSQL, MySQL 기반 시스템에서 대용량 데이터를 주기적으로 갱신하고 검증하는 작업을 수행합니다. 프로젝트는 2025년 1월 2일부터 6개월 단위로 진행되며(연장 가능), 계약 체결 이후 즉시 투입됩니다. 인터뷰는 지원자 발생 후 23일 이내 진행되어 계약 여부가 결정됩니다. 이 프로젝트는 발주처 수주 프로젝트(계약 체결 완료)로, 기관·협회 산업 분야에 해당되며, 모집 인원은 경력 715년 차 DBA 1명(월 800만 원)으로, 협업 예정 인력은 PM 1명 외 상주 7명이 참여합니다. 우선 순위는 예산 범위가 가장 중요하며, 그 다음으로 업무 능력, 마지막으로 근무 시작일이 고려됩니다. 필수 기술 및 자격 요건은 Oracle 기반 DBA 경험과 PostgreSQL, MySQL 등 OSS 계열 DBA 경험을 보유한 자가 필요하며, 산출물은 계약 시 협의하여 결정되며, 주로 데이터 관리, 갱신 및 검증 결과와 관련된 문서 및 성능 개선 결과 보고서 등이 포함됩니다.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285683'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 50 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '위치추적 시스템 DBA SM 프로젝트' LIMIT 1) AS pr;
+  
+   INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  10000000,
+  STR_TO_DATE('2024-12-16','%Y-%m-%d'),
+  UUID(),
+  'PHP 기반 웹 서비스의 관리자 웹 화면 개선 및 추가 기능 개발',
+  '계약 목적: 기존 체험단 플랫폼 기반 SNS 인플루언서 숏폼 영상 서비스 관리자 페이지 및 웹사이트 일부 개편으로 고품질 관리자 환경 구축.
+업무: 기존 PHP 관리자 페이지 전면 개편, 주요 화면(기업 의뢰, 영상 스토리보드, 수정요청) 개선 및 카드 결제, 세금계산서 자동 발행, 자동 입금 확인, 카카오채널 푸쉬, 일정 관리, 쪽지 등 추가 기능 개발.
+기간: 계약 체결 후 즉시 시작, 2024년 12월 12일부터 진행(전체 일정 협의).
+조건: 운영 중 서비스 리뉴얼/유지보수 프로젝트, 자사 PM 1명 참여; 우선순위: 산출물 완성도 > 일정 > 금액; 기술: HTML, CSS, PHP, MariaDB, Cafe24 서버.
+산출물: 개발 소스 코드 및 관련 문서.
+기타: 카카오톡 푸쉬, 전자계약서, 세금계산서 API 시스템 및 체험단 플랫폼 개발 경험 우대; 미팅 시 금액 및 기간 협의.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285684'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 51 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = 'PHP 기반 웹 서비스의 관리자 웹 화면 개선 및 추가 기능 개발' LIMIT 1) AS pr;
+  
+     INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  7000000,
+  STR_TO_DATE('2024-12-16','%Y-%m-%d'),
+  UUID(),
+  'GCP Cloud Program Manager',
+  '계약 목적: 인도계 IT 컨설팅 기업 발주, 외국계 금융사 대상 대형 GCP 프로젝트의 Cloud Program Manager 역할 수행.
+업무: GCP 기반 대형 프로젝트의 프로그램 관리(계획, 전달, 검증, 위험 및 완화 관리, 하위 프로젝트 분해) 및 Google/파트너와 협업.
+기간: ASAP(12월 내 조율 가능) 투입, 전체 6개월 진행(연장 가능), 인터뷰 후 714일 내 계약 결정.
+조건: 발주처 수주 프로젝트로, 모집 인원은 4명 중 1명(경력 57년, 월 700만 원), 우선 순위는 업무 능력 > 예산 범위 > 근무 시작일.
+자격: GCP 사용 및 글로벌 디지털 전환 프로젝트 경험(최소 3년), 한국어 능숙, 최대 25% 출장 가능.
+우대: MBA/석사, 분산 팀 및 파트너 협업 경험, 정량적 평가 활용 경험, 클라우드 서비스 차별화 요소 이해.
+기타: 4대보험 필수, 영어 이력서 제출, 프로젝트 관리자는 외국인(영어 소통 필수).',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285685'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 52 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = 'GCP Cloud Program Manager' LIMIT 1) AS pr;
+  
+  
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  50000000,
+  STR_TO_DATE('2024-12-16','%Y-%m-%d'),
+  UUID(),
+  '부동산 중개업 내부 업무 시스템 구축',
+  '계약 목적: 부동산 중개업 사내 시스템 신규 개발 프로젝트 진행.
+업무: 기존 부동산 데이터 수집 프로그램을 기반으로 자사 업무 프로세스를 분석하여 매물·고객 관리, 매물 등급 및 점수 산정, 수익률 계산, 계산기 기능 등을 포함하는 신규 시스템을 개발합니다. 웹(PC)와 모바일앱(Android/iOS) 지원 및 기존 데이터 이관, 그리고 AI 기반 보고서 자동 생성 연동 방안을 검토합니다.
+기간: 계약 체결 이후 즉시 시작.
+조건: 아이디어 단계에서 시작하며, 완성도가 가장 중요하고 비용 및 기간은 상향 조정 가능합니다.
+산출물: 기획 문서, 디자인 원본, 소스 코드 원본, 기술 문서.
+기타: 모집 마감일은 2024년 12월 12일이며, 우선 순위는 산출물 완성도 > 금액 > 일정 준수; 협업 인력은 별도의 파트너와 협업 가능한 인력이 없습니다.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285686'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 53 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '부동산 중개업 내부 업무 시스템 구축' LIMIT 1) AS pr;
+  
+  
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  50000000,
+  STR_TO_DATE('2024-12-16','%Y-%m-%d'),
+  UUID(),
+  '부동산 중개업 내부 업무 시스템 구축',
+  '계약 목적: 부동산 중개업 사내 시스템 신규 개발 프로젝트 진행.
+업무: 기존 부동산 데이터 수집 프로그램을 기반으로 자사 업무 프로세스를 분석하여 매물·고객 관리, 매물 등급 및 점수 산정, 수익률 계산, 계산기 기능 등을 포함하는 신규 시스템을 개발합니다. 웹(PC)와 모바일앱(Android/iOS) 지원 및 기존 데이터 이관, 그리고 AI 기반 보고서 자동 생성 연동 방안을 검토합니다.
+기간: 계약 체결 이후 즉시 시작.
+조건: 아이디어 단계에서 시작하며, 완성도가 가장 중요하고 비용 및 기간은 상향 조정 가능합니다.
+산출물: 기획 문서, 디자인 원본, 소스 코드 원본, 기술 문서.
+기타: 모집 마감일은 2024년 12월 12일이며, 우선 순위는 산출물 완성도 > 금액 > 일정 준수; 협업 인력은 별도의 파트너와 협업 가능한 인력이 없습니다.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285686'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 53 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '부동산 중개업 내부 업무 시스템 구축' LIMIT 1) AS pr;
