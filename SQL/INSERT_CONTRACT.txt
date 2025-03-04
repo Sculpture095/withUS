@@ -1087,5 +1087,72 @@ FROM
   (SELECT partner_idx FROM partner WHERE partner_idx = 53 LIMIT 1) AS p,
   (SELECT project_id FROM project WHERE projectname = '부동산 중개업 내부 업무 시스템 구축' LIMIT 1) AS pr;
   
+  	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  6000000,
+  STR_TO_DATE('2024-12-17','%Y-%m-%d'),
+  UUID(),
+  '인사/영업조직 업무운영 시스템 Java/XPLATFORM 개발',
+  '계약 목적: 인사/영업 조직 업무 운영 시스템 Java/XPLATFORM 개발 프로젝트 진행.
+업무: Java를 활용하여 인사/영업 조직 업무 운영 시스템을 구축하고, XPLATFORM(또는 웹스퀘어)와 Oracle을 이용한 개발 수행.
+기간: 2025년 1월 투입, 12개월 진행 (면접 후 즉시 계약 결정).
+조건: 모집 인원 1명 (경력 4~5년, 세전 600만 원, 4대보험 가입 필수); 우선순위: 업무 능력 > 근무 시작일 > 예산 범위; 발주처 수주 프로젝트, 금융·은행업 분야; 협업 예정 인력은 보험경력자 파견.
+산출물: 개발 원본 소스 코드 및 관련 문서.
+기타: XPLATFORM 경험이 없어도 JAVA 개발 가능자 지원.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285687'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 54 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '인사/영업조직 업무운영 시스템 Java/XPLATFORM 개발' LIMIT 1) AS pr;
   
+  
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  6000000,
+  STR_TO_DATE('2024-12-22','%Y-%m-%d'),
+  UUID(),
+  '자율운항 제품 UI React 프론트엔드 개발',
+  '계약 목적: 아비커스 선박 자율운항 솔루션의 DOM 시스템 프론트엔드 개발 및 유지보수 진행.
+업무: React, Typescript, Vite 등을 활용해 기존 UI 개선 및 유지보수 수행, PR 리뷰(13일 주기) 진행.
+기간: 3개월 (시작 ASAP, 12월 말 투입 희망; 면접 후 3영업일 내 계약 결정).
+조건: 경력 37년 차 1명, 월 600만 원 (7년 이상 지원 가능); 우선순위: 업무 능력 > 근무 시작일 > 예산.
+필수: React, Typescript, Javascript, HTML, CSS.
+우대: Electron, Websocket.
+기타: 주차 불가, 근무시간 09:0018:00 (중식 12:0013:00), 필요 시 출장/원격 지원.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285688'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 55 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = '자율운항 제품 UI React 프론트엔드 개발' LIMIT 1) AS pr;
+  
+    
+	INSERT INTO `contract` 
+  (amount, contractdate, contract_id, contractname, detail, status, partner_idx, project_id, apicode)
+SELECT
+  3000000,
+  STR_TO_DATE('2024-12-27','%Y-%m-%d'),
+  UUID(),
+  'React Native 안드로이드 앱 오류 수정',
+  '계약 목적: 테이블 오더 시스템 앱의 React Native 기반 오류 수정 및 안정화 프로젝트 진행.
+업무: 자사 in-service 앱에서 OS에 의한 자동 종료 문제 해결을 위해, 기존 레거시 검토와 React Native 안드로이드 앱 오류 수정을 수행.
+기간: 계약 체결 후 즉시 시작.
+조건: 신규 프로젝트로, 협업 인력은 자사 PM 1명과 RN 개발자 1명; 우선 순위는 업무 능력 > 근무 시작일 > 예산.
+기술: React Native, Android, JAVA.
+산출물: 소스 코드 원본 파일.
+기타: 미팅 시 기존 레거시 검토 후 금액 및 기간 협의 가능.',
+  'SIGNED',
+  p.partner_idx,
+  pr.project_id,
+  '8392047561285689'
+FROM
+  (SELECT partner_idx FROM partner WHERE partner_idx = 56 LIMIT 1) AS p,
+  (SELECT project_id FROM project WHERE projectname = 'React Native 안드로이드 앱 오류 수정' LIMIT 1) AS pr;
+  
+  	
 	
