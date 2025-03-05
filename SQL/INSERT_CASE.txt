@@ -1,9 +1,9 @@
-select * from case;
 
-INSERT INTO `case` (`case_id`, `contract_id`, `title`, `content`, `shortContent`, `caseImg`, `rating`, `createDate`)
+
+INSERT INTO `case_table` (`case_id`, `contract_idx`, `title`, `content`, `shortContent`, `caseImg`, `rating`, `createDate`)
 SELECT 
     uuid(),  -- caseId: UUID 생성
-    c.contract_id,  -- contractId: 계약 번호 (외래키)
+    c.contract_idx,  -- contractId: 계약 번호 (외래키)
     '가전제품 설명서 제작/홈페이지 제작 디자인',  -- title
     '프로젝트 진행 후기: 이 프로젝트는 주식회사 애버홈의 발주로 진행된 가전제품 설명서 및 홈페이지 디자인 프로젝트로, 고객사의 구체적인 요구사항을 반영하여 진행되었습니다. 초기 단계에서 명확한 요구사항 분석과 디자인 컨셉 확정을 통해 쇼핑몰 배너, 이벤트 페이지, 제품 상세 페이지 등 다양한 디자인 요소를 체계적으로 개발하였으며, 계약 기간 내 자사 웹디자이너와 추가 인력이 긴밀하게 협업하여 고객의 기대를 충족하는 결과물을 제공하였습니다. 이를 통해 차후 연장 협의 가능성을 열어두는 유연한 디자인 솔루션을 완성하였습니다.',  -- content
     '파트너의 신속한 문제 진단과 적극적인 대응 덕분에 디자인 작업이 원활하게 진행되었습니다.',  -- shortContent
@@ -11,15 +11,15 @@ SELECT
      3,  -- rating (enum 값)
     '2025-01-06 09:25:00'  -- createDate 
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 1
 LIMIT 1;
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- caseId: UUID 생성
-    c.contract_id,  -- contractId: 계약 번호 (외래키)
+    c.contract_idx,  -- contractId: 계약 번호 (외래키)
     '레거시 PHP 기반 ERP 운영/유지보수',  -- title
     '프로젝트 진행 후기: 진행한 프로젝트는 프랜차이즈 ERP 운영 및 유지보수를 위한 맞춤형 솔루션 제공을 목표로 진행되었습니다. 초기 개발 완료 후 인수받은 레거시 PHP 시스템에 대해 3개월 간의 집중 유지보수를 시작으로, 장기 계약을 고려하는 체계적인 운영 지원이 이루어졌습니다. 프로젝트 전반에 걸쳐 안정적인 시스템 운영과 효율성 향상을 위해 지속적인 모니터링과 개선 작업이 진행되었습니다.',  -- content
     '파트너는 체계적인 일정 관리와 신속한 문제 해결, 세밀한 모니터링을 통해 ERP 유지보수 과정에서 발생하는 다양한 이슈에 효과적으로 대응하며 프로젝트를 성공적으로 완료하였습니다.',  -- shortContent
@@ -27,16 +27,16 @@ SELECT
      4,  -- rating (enum 값)
     '2025-01-06 13:22:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 2
 LIMIT 1;
 
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- caseId: UUID 생성
-    c.contract_id,  -- contractId: 계약 번호 (외래키)
+    c.contract_idx,  -- contractId: 계약 번호 (외래키)
     '운영중인 시스템에 Kubernetes 개발 (주 2~3회 재택근무)',  -- title
 	'프로젝트 진행 후기: 진행했던 프로젝트는 운영 중인 시스템에 Kubernetes를 적용 및 최적화하기 위한 맞춤형 개발 프로젝트로, 고객사는 기존 시스템의 안정성을 강화하고 향후 확장성을 고려한 클러스터 설계, 보안 정책 수립 및 유지보수 체계 마련에 주력하였습니다. 초기 단계에서는 팀원 구성을 완료하고, Kubernetes 클러스터 설계 및 네임스페이스 관리, RBAC 정책 설정 등 핵심 요소에 대해 세밀한 검토와 최적화 작업을 진행하였습니다. 또한, ETCD 백업 및 복구, 리소스 할당 조정, 네트워크 보안 강화 등 전반적인 시스템 안정화와 보안 강화 전략을 마련하며, 프로젝트 전반이 체계적으로 진행되고 있음을 확인하였습니다.',
     '이분과 세밀한 일정 조율과 기술 지원을 통해 Kubernetes 클러스터 설계, 보안 정책 수립 및 백업 전략 등 주요 작업에서 탁월한 역량을 발휘하며 프로젝트 초기 단계부터 안정적인 진행을 도왔습니다.',
@@ -44,15 +44,15 @@ SELECT
      4,  -- rating (enum 값)
     '2025-01-08 16:52:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 3
 LIMIT 1;
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- caseId: UUID 생성
-    c.contract_id,  -- contractId: 계약 번호 (외래키)
+    c.contract_idx,  -- contractId: 계약 번호 (외래키)
     'Nest.js/Node.js 기반 LLM 영어학습앱 백엔드 개발자 구인',  -- title
 	'프로젝트 진행 후기: 이 프로젝트는 LLM 기반 영어 학습 어플리케이션의 백엔드를 구축하기 위해 진행되고 있습니다. Nest.js와 Node.js를 활용하여 안정적이고 확장 가능한 서버를 개발하며, 최신 기술 스택인 TypeScript와 Prisma ORM을 적용해 관계형 데이터베이스(MySQL, PostgreSQL)의 최적화를 이루어내고 있습니다. 초기 개발 단계부터 기존 작업 부분에 대해 신속하게 업무 인수인계를 받고, RESTful API 및 GraphQL API 구현, 마이크로서비스 아키텍처 도입 등을 통해 서비스의 안정성과 확장성을 크게 향상시켰습니다.',  -- content
     '이 파트너는 신속한 기술 지원과 철저한 코드 리뷰, 원활한 협업을 통해 백엔드 개발 및 유지보수 작업을 효과적으로 지원하며 프로젝트 전반에 걸쳐 탁월한 협업 능력을 입증하였습니다.',  -- shortContent
@@ -60,15 +60,15 @@ SELECT
      5,  -- rating (enum 값)
     '2025-01-08 17:57:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 4
 LIMIT 1;
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- caseId: UUID 생성
-    c.contract_id,  -- contractId: 계약 번호 (외래키)
+    c.contract_idx,  -- contractId: 계약 번호 (외래키)
     'React 기반 항공사 사내 시스템 프론트엔드 개발자 구인',  -- title
 	'프로젝트 진행 후기: 본 프로젝트는 특정 항공사 사내 시스템 프론트엔드 개발을 위해 진행되었으며, React 기반 웹 애플리케이션이 성공적으로 개발되었습니다. 발주처 소속 개발팀과의 긴밀한 협업을 통해 초기 기획부터 실제 운영 단계까지 전반적인 업무 인수인계와 개발 진행 상황을 철저하게 관리하였습니다. 이를 통해 고객의 요구사항에 부합하는 안정적인 솔루션이 완성되었으며, 서비스의 안정성과 사용자 만족도가 크게 향상되었습니다.',  -- content
     '파트너의 신속한 기술 지원과 원활한 소통, 체계적인 일정 관리를 통해 프로젝트의 원활한 진행과 빠른 업무 인수인계에 큰 기여를 하였습니다.',  -- shortContent
@@ -76,16 +76,16 @@ SELECT
      4.5,  -- rating (double 값)
     '2025-01-07 19:15:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 5
 LIMIT 1;
 
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- case_id: UUID 생성
-    c.contract_id,  -- contract_id: 계약 번호 (외래키)
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
     'B2B 차량 호출 서비스 추가 기능 개발',  -- title
     '프로젝트 진행 후기: 본 프로젝트는 운영 중인 B2B 차량 호출 서비스의 추가 기능 개발을 통해, 플랫폼운송사업자 신고 등 국가 지정 절차에 필요한 기능을 강화하고 고객의 배차 요청 프로세스를 효율화하는 것을 목표로 진행되었습니다. 기존 레거시 시스템을 면밀히 검토하여 웹 및 앱 상에서 간편한 배차 요청, 실시간 차량 위치 모니터링, ERP 연동 등 핵심 기능을 추가 개발하였으며, API 연동, 결제 기능, 통계 관리 등 다양한 부가 기능을 통합하여 서비스 경쟁력을 크게 향상시켰습니다.',  -- content
     '파트너가 신속한 기술 지원과 체계적인 일정 관리, 명확한 커뮤니케이션을 통해 프로젝트의 각 단계에서 높은 완성도와 효율성을 확보하는 데 큰 기여를 하였습니다.',  -- shortContent
@@ -93,15 +93,15 @@ SELECT
      4.0,  -- rating (double 값)
     '2025-01-07 11:00:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 6
 LIMIT 1;
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- case_id: UUID 생성
-    c.contract_id,  -- contract_id: 계약 번호 (외래키)
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
     '웹(React) 프런트엔드 개발',  -- title
     '프로젝트 진행 후기: 본 프로젝트는 웹(React) 프런트엔드 개발을 위한 맞춤형 솔루션 제공을 목표로 진행되었습니다. 발주처로부터 수주한 계약에 따라, FE 개발자를 대상으로 경기도 이천에서 약 1개월 근무 후 성남 분당 정자동에서 근무하는 형태로 운영되고 있습니다. 초기 기획 단계부터 인터뷰 및 계약 과정을 거쳐 신속하게 인력 투입이 이루어졌으며, 전체 프로젝트 일정에 맞춰 웹 프런트엔드 개발, 프로젝트 리딩, 기술 리서치 및 공유 등이 체계적으로 진행되었습니다. 이를 통해 서비스 완성도와 효율성이 크게 향상되었습니다.',  -- content
     '이 파트너는 명확한 커뮤니케이션과 체계적인 일정 관리로, 인력 투입부터 개발 진행까지 전 단계에서 안정적인 지원을 제공하여 프로젝트의 효율성과 완성도를 높였습니다.',  -- shortContent
@@ -109,15 +109,15 @@ SELECT
      4.5,  -- rating (double 값)
     '2025-01-07 12:52:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 7
 LIMIT 1;
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- case_id: UUID 생성
-    c.contract_id,  -- contract_id: 계약 번호 (외래키)
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
     'Flutter 기반 AI 의료 애플리케이션 기능 고도화(재택근무)',  -- title
     '프로젝트 진행 후기: 본 프로젝트는 인공지능(AI)을 활용한 의료 애플리케이션의 기능 고도화를 목표로 진행되었습니다. 초기 개발 완료 후, 독립적 메시징 시스템 구축, 인증 획득, 환자 프라이버시 보호 등 핵심 기능 고도화 작업이 체계적으로 진행되었으며, Android/iOS 플랫폼에서 Flutter를 활용하여 안정성과 확장성을 강화하였습니다. 이로써 의료 서비스의 품질과 사용자 만족도가 크게 향상되었습니다.',  -- content
     '이 파트너와 체계적인 일정 관리와 신속한 기술 지원, 세밀한 보안 설계를 통해 프로젝트 전반의 안정성과 효율성을 극대화하였으며, 다양한 평가에서 파트너의 전문성과 원활한 커뮤니케이션 능력이 돋보였습니다.',  -- shortContent
@@ -125,15 +125,15 @@ SELECT
     4.0,  -- rating (double 값)
     '2025-01-02 09:25:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 8
 LIMIT 1;
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- case_id: UUID 생성
-    c.contract_id,  -- contract_id: 계약 번호 (외래키)
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
     'TypeScript(Express or Nest) 기반 백엔드 개발',  -- title
     '프로젝트 진행 후기: 이번 프로젝트는 TypeScript(Express 또는 Nest) 기반의 백엔드 개발을 통해 디지털 아트 플랫폼 서비스의 신규 출시를 목표로 진행되었습니다. 초기 단계에서는 요구사항 분석 및 서비스 기획을 체계적으로 수행하였으며, 기존 내부 기획과 디자인을 토대로 백엔드 웹 어플리케이션 개발이 진행되었습니다. 주요 업무는 Node.js 환경에서 TypeScript를 활용하여 Express 혹은 Nest 프레임워크 기반의 안정적인 웹 서비스 구축과 SQL 또는 ORM 기반의 DB 연동을 포함합니다. 프로젝트는 AWS Cloud 상에서 Web과 Mobile 플랫폼을 아우르는 인프라를 구축하고,  자사 PM, 기획자, 디자이너 및 개발자 등 다양한 협업 인력과 함께 업무 능력, 근무 시작일, 예산 범위를 우선 순위로 하여 원활한 진행을 도모하고 있습니다.',  -- content
     '파트너의 탁월한 전문성과 원활한 커뮤니케이션 덕분에 프로젝트가 체계적이고 신속하게 진행되었습니다. 신뢰할 수 있는 업무 처리와 뛰어난 기술 지원이 인상적이었습니다.',  -- shortContent
@@ -141,15 +141,15 @@ SELECT
      4.0,  -- rating (double 값)
     '2025-01-12 09:24:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 9
 LIMIT 1;
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- case_id: UUID 생성
-    c.contract_id,  -- contract_id: 계약 번호 (외래키)
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
     'PHP/MySQL 기반 CRM 백엔드 개발자 구인',  -- title
     '프로젝트 진행 후기: 이번 PHP/MySQL 기반 CRM 백엔드 개발자 구인 프로젝트는 회사 내 관리 및 정산 업무 지원을 위한 최적화된 CRM 솔루션 제공을 목표로 진행되었습니다. 기본 기획 및 퍼블리싱 완료 후, 사내 퍼블리셔와 백엔드 개발자가 긴밀하게 협업하여 안정적인 시스템 구축과 원활한 운영을 도모하였습니다. 전체 시스템은 Web 기반으로 구성되어 PHP와 MySQL을 활용한 개발로 미디어•광고업 분야의 다양한 요구를 충족시켰습니다.',  -- content
     '협업 과정에서 파트너의 세밀한 문제 해결 능력과 전문적인 접근 방식이 프로젝트의 안정성과 완성도를 높이는 핵심 역할을 했습니다.',  -- shortContent
@@ -157,16 +157,16 @@ SELECT
      3.0,  -- rating (double 값)
     '2025-01-06 09:10:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 10
 LIMIT 1;
 
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- case_id: UUID 생성
-    c.contract_id,  -- contract_id: 계약 번호 (외래키)
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
     'Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발',  -- title
     '프로젝트 진행 후기: 본 Process Flow 기반 반응형 웹 퍼블리싱 및 Frontend 개발 프로젝트는 Reactflow Library를 활용하여 프로세스 플로우 다이어그램을 시각화하고, Process Mining 기술을 통해 데이터를 분석하는 최적화된 솔루션 제공을 목표로 진행되었습니다. 내부에서 기획 및 디자인을 완료한 후, Figma 문서를 기반으로 PC 및 모바일 반응형 웹 개발이 수행되었습니다. AWS, HTML, CSS, JavaScript, Python, React 등 다양한 기술 스택을 활용하여 사용자의 상호작용에 따라 동적으로 업데이트되는 웹 애플리케이션을 구현하였으며, 조직 내 프로세스의 병목 및 비효율성을 효과적으로 파악할 수 있는 분석 기능이 포함되었습니다.',  -- content
     '파트너의 전문성과 체계적인 접근 덕분에 기획 단계부터 완성도 높은 퍼블리싱과 Frontend 개발이 성공적으로 이루어졌습니다.',  -- shortContent
@@ -174,15 +174,15 @@ SELECT
      3.0,  -- rating (double 값)
     '2025-01-07 09:30:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 11
 LIMIT 1;
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- case_id: UUID 생성
-    c.contract_id,  -- contract_id: 계약 번호 (외래키)
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
     '투썸플레이스 LMS 플랫폼 구축',  -- title
     '프로젝트 진행 후기: 본 투썸플레이스 LMS 플랫폼 구축 프로젝트는 맞춤형 솔루션 제공을 목표로 진행된 개발 작업입니다. 투썸플레이스의 자체 LMS 구축을 위해, 기존의 ERP 프로그램 일부 기능을 활용하던 시스템을 대체하고, 교육 자료의 접근성과 가시성을 높이기 위해 기획되었습니다. 상세 기획 문서와 요구 사항 정의서를 기반으로, PC/MO 웹 개발, Android 및 iOS 모바일앱 개발, UI/UX 디자인, 관리자페이지 및 서버/DB/인프라 구성이 포함된 종합적인 시스템 구축이 진행되었습니다.',  -- content
     '내부 기획 문서와 명확한 요구 사항에 기반하여, 체계적인 시스템 구축과 일정 준수에 대한 신뢰감을 주는 프로젝트 진행이 돋보였습니다.',  -- shortContent
@@ -190,15 +190,15 @@ SELECT
      3.0,  -- rating (double 값)
     '2025-01-08 10:30:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 12
 LIMIT 1;
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- case_id: UUID 생성
-    c.contract_id,  -- contract_id: 계약 번호 (외래키)
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
     'Windows OS 기반 당사 PC 프로그램 오류 수정 및 개선',  -- title
     '프로젝트 진행 후기: 본 Windows OS 기반 당사 PC 프로그램 오류 수정 및 개선 프로젝트는 운영 중인 강의 플랫폼 서비스와 통신하는 기존 Winform 프로그램의 버그 수정 및 개선을 목적으로 진행되었습니다. 기존 레거시 시스템을 면밀하게 검토하여 Winform 프로그램과 웹뷰 간의 통신 오류 등 다양한 문제점을 개선하였으며, C#, JavaScript, Next.js, React 등의 기술을 활용하여 성능과 안정성을 대폭 향상시켰습니다. 프로젝트는 계약 체결 후 즉시 시작되어 운영 중인 서비스의 유지보수를 효과적으로 지원하였습니다.',  -- content
     '파트너의 전문적인 문제 해결 능력과 신속한 대응이 돋보여, 안정적인 시스템 운영과 높은 완성도를 달성하였습니다.',  -- shortContent
@@ -206,16 +206,16 @@ SELECT
      3.5,  -- rating (double 값)
     '2025-01-11 10:40:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 13
 LIMIT 1;
 
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- case_id: UUID 생성
-    c.contract_id,  -- contract_id: 계약 번호 (외래키)
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
     '모바일 유언장 웹 추가 기능 개발',  -- title
     '프로젝트 진행 후기: 본 모바일 유언장 웹 추가 기능 개발 프로젝트는 기존 웹앱에 새로운 기능을 추가하여 사용자 경험을 대폭 개선하는 것을 목표로 진행되었습니다. 상세 기획 문서와 화면설계서, 프로토타입, 메뉴구조도를 기반으로, AWS Amplify, DynamoDB, Lambda, TypeScript 등 최신 기술 스택을 활용하여 프론트엔드와 백엔드 기능을 체계적으로 확장하였습니다. 모바일 유언장 프론트엔드 작업, 수정 기능 구현, 자유게시판 CRUD 및 소셜 기능, 그리고 하이브리드 앱 패키징 및 배포 등 다양한 요구사항을 반영하였으며, 서버와 DB 구축이 완료된 상태에서 2025년 1월 17일 배포를 목표로 진행되었습니다.',  -- content
     '파트너의 최신 기술 도입과 정교한 기획을 기반으로, 다양한 기능이 원활하게 구현되어 높은 완성도와 일정 준수를 달성하였습니다.',  -- shortContent
@@ -223,16 +223,16 @@ SELECT
      4.0,  -- rating (double 값)
     '2025-01-18 11:40:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 14
 LIMIT 1;
 
 
-INSERT INTO `case` (`case_id`,`contract_id`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
 SELECT 
     uuid(),  -- case_id: UUID 생성
-    c.contract_id,  -- contract_id: 계약 번호 (외래키)
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
     '데이터 마이그레이션 Django 백엔드 개발(주 4일 재택 1일 상주)',  -- title
     '프로젝트 진행 후기: 본 데이터 마이그레이션 Django 백엔드 개발 프로젝트는 기존 Spring Boot 기반 백엔드 시스템을 Django로 이전하여, 데이터를 효과적으로 시각화하고 관리할 수 있는 대시보드 중심의 웹 애플리케이션을 구축하는 것을 목표로 진행되었습니다. 약 30여 페이지 구성과 200개 이상의 API 엔드포인트를 포함하는 대규모 시스템 재구축 작업이 진행되었으며, Django 기반 데이터 모델 설계와 API 재구축, 데이터 시각화 기능 구현, 텍스트 파일 파싱 및 엑셀 형식 변환 등 다양한 기능들이 포함되었습니다. 주 4일 재택과 1일 상주 근무 체계로 진행된 이 프로젝트는 유닛 테스트, 통합 테스트, E2E 테스트 등 철저한 테스트 계획을 통해 안정성과 성능을 확보하였습니다. 또한, 자사 백엔드 개발자와 프론트 개발자가 협업하여 효율적인 API 통합 및 시스템 최적화를 이루어냈으며, 신규 프로젝트에 필요한 인력을 구인하는 목적에 부합하는 결과물을 도출하였습니다.',  -- content
     '파트너의 세밀한 데이터 마이그레이션과 체계적인 API 재구축으로 시스템 안정성과 성능을 극대화한 점이 인상적입니다.',  -- shortContent
@@ -240,7 +240,171 @@ SELECT
      3.5,  -- rating (double 값)
     '2025-01-05 11:21:00'  -- createDate (모집 마감일 기준)
 FROM contract c
-JOIN project p ON c.project_id = p.project_id
+JOIN project p ON c.project_idx = p.project_idx
 JOIN selectskill ss ON p.project_idx = ss.project_idx
 WHERE c.contract_idx = 15
+LIMIT 1;
+
+
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+SELECT 
+    uuid(),  -- case_id: UUID 생성
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
+    '사내 ERP 솔루션 백엔드 Go/SQL 개발(상주/원격 여부 협의)',  -- title
+    '프로젝트 진행 후기: 본 사내 ERP 솔루션 백엔드 Go/SQL 개발 프로젝트는 기업 디지털 전화 프로젝트 내 그룹웨어 및 재경 부문 개발을 위한 최적화된 솔루션 제공을 목표로 진행되었습니다. Azure 클라우드와 SQL Server를 기반으로, Go(Gin/Gorm)를 활용한 백엔드 시스템이 구축되었으며, 300여 명이 사용하는 시스템의 핵심 기능을 담당하는 그룹웨어 및 회계 관리 기능 개발에 중점을 두었습니다. 기획 이후 개발 착수 단계와 재경 부문 기획 단계를 거치며, 상주 또는 원격 근무 조건에 따라 협의하여 진행된 이 프로젝트는 인터뷰 및 계약 절차를 신속하게 진행하여, 발주처에서 수주한 신규 프로젝트의 증원 요구에 부응하였습니다.',  -- content
+    '체계적인 기획과 전문 기술력으로 프로젝트의 안정성을 확보하였고, 파트너의 세심한 업무 처리와 유연한 협의 방식이 큰 신뢰를 주었습니다.',  -- shortContent
+    'https://example.com/images/flutter_ai_medical.jpg',  -- caseImg (예시 URL)
+     3.5,  -- rating (double 값)
+    '2025-01-08 12:21:00'  -- createDate (모집 마감일 기준)
+FROM contract c
+JOIN project p ON c.project_idx = p.project_idx
+JOIN selectskill ss ON p.project_idx = ss.project_idx
+WHERE c.contract_idx = 16
+LIMIT 1;
+
+
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+SELECT 
+    uuid(),  -- case_id: UUID 생성
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
+    'HRIS 유지보수 및 추가 개발 (2주 상주/ 2주 재택)',  -- title
+    '프로젝트 진행 후기: 본 HRIS 유지보수 및 추가 개발 프로젝트는 회사 임직원의 평가와 승진 운영을 위한 기존 HRIS 시스템의 유지보수 및 추가 기능 업데이트를 목표로 진행되었습니다. 기존 백엔드 개발자가 이미 성과평가와 승진 세팅을 완료한 시스템을 기반으로, 다면 역량 평가와 공통역량 평가 추가, 그리고 승진 시스템 개편 작업이 진행되었습니다. 프로젝트는 처음 2주 동안 상주하여 기존 시스템 구조를 면밀히 파악한 후, 이후 2주 동안 재택 근무 형태로 추가 개발 및 유지보수가 이루어졌습니다. TypeScript, React, Next.js, TailwindCSS, Node.js(Express), Prisma, PostgreSQL 등 최신 기술 스택을 활용하여 안정성과 완성도를 높인 결과, 시스템의 전반적인 운영 효율성이 크게 향상되었습니다.',  -- content
+    '세밀한 레거시 분석과 효과적인 기능 업데이트로 시스템 운영 효율성을 크게 향상시켰으며, 파트너의 신속한 문제 해결 능력이 큰 신뢰를 주었습니다.',  -- shortContent
+    'https://example.com/images/flutter_ai_medical.jpg',  -- caseImg (예시 URL)
+     3.0,  -- rating (double 값)
+    '2025-01-09 12:32:00'  -- createDate (모집 마감일 기준)
+FROM contract c
+JOIN project p ON c.project_idx = p.project_idx
+JOIN selectskill ss ON p.project_idx = ss.project_idx
+WHERE c.contract_idx = 17
+LIMIT 1;
+
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+SELECT 
+    uuid(),  -- case_id: UUID 생성
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
+    '신발 제조 기업 MES 전자정부/JAVA 개발',  -- title
+    '프로젝트 진행 후기: 본 신발 제조 기업 MES 전자정부/JAVA 개발 프로젝트는 제조업 분야의 특수 요구사항을 반영하여, 신발 제조 기업의 MES 시스템 구축과 전자정부프레임워크 기반 플랫폼 개발을 목표로 진행되었습니다. 현재 설계 단계에 있으며, 진행되는 본 프로젝트는 발주처로부터 수주한 신규 프로젝트입니다. 8~10년 차 경력의 개발자 3명이 참여하며, Java, 전자정부프레임워크, Oracle 등의 핵심 기술을 활용하여 MES 백엔드 개발을 수행합니다.',  -- content
+    '체계적인 시스템 설계와 효율적인 개발 프로세스를 통해 높은 완성도를 달성하였고, 파트너의 뛰어난 기술력과 신뢰할 만한 지원이 프로젝트 성공에 결정적이었습니다.',  -- shortContent
+    'https://example.com/images/flutter_ai_medical.jpg',  -- caseImg (예시 URL)
+     3.0,  -- rating (double 값)
+    '2025-01-11 13:32:00'  -- createDate (모집 마감일 기준)
+FROM contract c
+JOIN project p ON c.project_idx = p.project_idx
+JOIN selectskill ss ON p.project_idx = ss.project_idx
+WHERE c.contract_idx = 18
+LIMIT 1;
+
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+SELECT 
+    uuid(),  -- case_id: UUID 생성
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
+    '해외 자재관리 시스템 구축',  -- title
+    '프로젝트 진행 후기: 본 해외 자재관리 시스템 구축 프로젝트는 해외 자재관리 프로그램을 신규로 개발하여, 글로벌 자재 관리의 효율성과 정확성을 높이는 것을 목표로 진행되었습니다. 대략적인 와이어프레임과 현업 실무 담당자가 정리한 기능 요구 사항을 바탕으로 진행됩니다. 주요 개발 요소로는 요구 사항 정의, 상세 화면 설계, UI 디자인, PC 및 태블릿 반응형 웹 개발, 모바일(바코드 및 QR 스캔) 앱 개발, 백엔드 개발, 그리고 서버/DB/인프라 구성이 포함됩니다. 개발 환경은 TypeScript, React, Next.js, C# ASP.NET, MySQL, Git 등을 활용, 본 프로젝트는 산출물 완성도, 일정 준수, 금액을 최우선으로 고려하며, 기획자 1명(현업 실무자)과 협업하여 진행되었음.',  -- content
+    '세밀한 계획과 혁신적인 솔루션 제공 덕분에 일정 준수와 높은 완성도를 이루었으며, 파트너의 전문적인 대응과 협력에 만족스러운 결과를 얻었습니다.',  -- shortContent
+    'https://example.com/images/flutter_ai_medical.jpg',  -- caseImg (예시 URL)
+     3.0,  -- rating (double 값)
+    '2025-01-11 14:43:00'  -- createDate (모집 마감일 기준)
+FROM contract c
+JOIN project p ON c.project_idx = p.project_idx
+JOIN selectskill ss ON p.project_idx = ss.project_idx
+WHERE c.contract_idx = 19
+LIMIT 1;
+
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+SELECT 
+    uuid(),  -- case_id: UUID 생성
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
+    'LG전자 EDI 모듈 백엔드 개발',  -- title
+    '프로젝트 진행 후기: 본 LG전자 EDI 모듈 백엔드 개발 프로젝트는 LG전자와 거래선 간 I/F Portal 구축을 위한 핵심 시스템 개발을 목표로 진행되었습니다. 주요 업무는 Inbound 및 Outbound 데이터 포매팅 설정 로직 개발과 Oracle PL/SQL 분석 후 MariaDB로의 재개발 작업으로 구성되며, 경력 8~10년차 이상의 개발자 2명이 참여했습니다다. 자사 개발자 7명과 분석가 3명이 협업하여 Java, Spring, React, MariaDB, Oracle PL/SQL 등의 기술 스택을 활용, 안정적인 시스템 구축과 성능 개선을 도모하였습니다.',  -- content
+    '파트너의 전문적인 접근과 협업 능력이 LG전자 I/F Portal 구축에 큰 기여를 하였으며, 안정적인 시스템 개발을 이끌어냈습니다.',  -- shortContent
+    'https://example.com/images/flutter_ai_medical.jpg',  -- caseImg (예시 URL)
+     3.0,  -- rating (double 값)
+    '2025-01-12 14:41:00'  -- createDate (모집 마감일 기준)
+FROM contract c
+JOIN project p ON c.project_idx = p.project_idx
+JOIN selectskill ss ON p.project_idx = ss.project_idx
+WHERE c.contract_idx = 20
+LIMIT 1;
+
+
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+SELECT 
+    uuid(),  -- case_id: UUID 생성
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
+    '의료용 웨어러블 로봇 제어 및 모니터링 Android 개발',  -- title
+    '프로젝트 진행 후기: 본 의료용 웨어러블 로봇 제어 및 모니터링 Android 개발 프로젝트는 환자의 재활 치료 데이터를 수집 및 분석하여 동작분석 리포트를 제공하는 Android 애플리케이션 개발을 목표로 진행되었습니다. 앱 기획과 디자인이 완료된 상태에서, 현재 개발이 진행 중이며, 최소 SDK 33, target SDK 33을 지원하는 Android 환경에서 Kotlin과 MVVM 아키텍처를 기반으로 Jetpack Components(예: Room, Navigation, ViewModel, LiveData, DataBinding)를 활용하여 개발되고 있습니다. 주요 업무로는 그래프 라이브러리를 통한 데이터 시각화 및 PDF 파일 생성, Bluetooth/BLE를 이용한 로봇 기기 통신 구현, RESTful API 연동 및 코드 최적화, 그리고 unit test 작성을 포함합니다.',  -- content
+    '파트너의 전문적인 역량과 신속한 대응으로, 의료용 로봇 제어 및 모니터링 기능이 안정적으로 구현되어 프로젝트 성공에 크게 기여하였습니다.',  -- shortContent
+    'https://example.com/images/flutter_ai_medical.jpg',  -- caseImg (예시 URL)
+     3.0,  -- rating (double 값)
+    '2024-12-31 14:41:00'  -- createDate (모집 마감일 기준)
+FROM contract c
+JOIN project p ON c.project_idx = p.project_idx
+JOIN selectskill ss ON p.project_idx = ss.project_idx
+WHERE c.contract_idx = 21
+LIMIT 1;
+
+
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+SELECT 
+    uuid(),  -- case_id: UUID 생성
+    c.contract_idx,  -- contract_id: 계약 번호 (외래키)
+    '운영 중인 서비스 Backend 개발',  -- title
+    '프로젝트 진행 후기: 본 운영 중인 서비스 Backend 개발 프로젝트는 보건복지부 산하 기관에서 운영 중인 웹 애플리케이션의 BE 개발을 맡아, 내/외부 시스템 간 연계를 중심으로 기능 구현이 진행된 작업입니다. 기존 시스템의 ASIS 화면 기능을 동일하게 재구현하는 형태로, SNS 연계를 통한 게시글 자동 수집 및 시스템 내 게시 처리(인스타, 페이스북, 블로그, 유튜브), Konan Search 연계를 활용한 통합검색 기능 구현, 그리고 발주처 내 2개 시스템 간 양방향 DB 링크를 통한 데이터 송수신 기능 등이 주요 개발 항목으로 포함되어 있습니다. 기술 스택은 JDK 11, SpringBoot 2.7, Oracle, MyBatis, JEUS, WebToB 등으로 구성.',  -- content
+    '체계적인 개발 프로세스와 파트너의 뛰어난 대응력이 돋보이며, 원활한 시스템 연계 구현에 성공하였습니다.',  -- shortContent
+    'https://example.com/images/flutter_ai_medical.jpg',  -- caseImg (예시 URL)
+     4.0,  -- rating (double 값)
+    '2025-01-04 15:41:00'  -- createDate (모집 마감일 기준)
+FROM contract c
+JOIN project p ON c.project_idx = p.project_idx
+JOIN selectskill ss ON p.project_idx = ss.project_idx
+WHERE c.contract_idx = 22
+LIMIT 1;
+
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+SELECT 
+    uuid(),  -- case_id: UUID 생성
+    c.contract_idx,  -- contract_idx: 계약 번호 (외래키)
+    'React 기반 운영 중인 솔루션의 고도화 프론트 개발',  -- title
+    '프로젝트 진행 후기: 본 React 기반 운영 중인 솔루션의 고도화 프론트 개발 프로젝트는 당사에서 운영 중인 솔루션의 신규 고도화 작업을 위해 진행된 프론트엔드 개발 프로젝트입니다. Web App(하이브리드) 개발을 목표로, React 및 Next.js를 활용하여 사용자 경험 개선과 기능 확장을 도모하고 있습니다. 기존 소스와 백엔드 DB 개발자와의 협업. Javascript, Typescript, React 등 최신 기술 스택을 바탕으로 명확한 요구사항에 따라 체계적인 개발이 이루어졌습니다.',  -- content
+    '세밀한 요구사항 분석과 효율적인 협업으로, 파트너의 전문성이 프로젝트 성공에 결정적인 역할을 했습니다.',  -- shortContent
+    'https://example.com/images/flutter_ai_medical.jpg',  -- caseImg (예시 URL)
+     4.0,  -- rating (double 값)
+    '2025-01-04 21:41:00'  -- createDate (모집 마감일 기준)
+FROM contract c
+JOIN project p ON c.project_idx = p.project_idx
+JOIN selectskill ss ON p.project_idx = ss.project_idx
+WHERE c.contract_idx = 23
+LIMIT 1;
+
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+SELECT 
+    uuid(),  -- case_id: UUID 생성
+    c.contract_idx,  -- contract_idx: 계약 번호 (외래키)
+    '청소년 유해 사이트 자체 차단 앱 구축',  -- title
+    '프로젝트 진행 후기: 본 청소년 유해 사이트 자체 차단 앱 구축 프로젝트는 청소년들의 불법 도박사이트 접근을 효과적으로 차단하기 위한 솔루션 개발을 목표로 진행되었습니다. 초기 단계에서는 아이디어만 존재하는 상태로, 기능 구현 가능 여부를 검토하고 세부 요구사항을 협의하는 중입니다. 주요 개발 내용에는 모바일 기기 자체와 내장 웹브라우저(크롬, 웨일 등)에서 특정 유해 URL 차단, 플레이스토어 및 앱스토어에서 유해 앱 다운로드 방지, 그리고 운영자가 유해 사이트 및 앱을 추가 및 관리할 수 있는 서버 및 관리자 페이지 개발이 포함됩니다. 또한, 기획 문서, 디자인 원본 파일, 개발 소스 코드 등의 산출물을 통해 완성도 높은 결과물을 도출하고자 함.',  -- content
+    '프로젝트 초기의 모호한 아이디어를 파트너가 제시한 분석으로 명확한 실행 계획으로 전환하는 데 성공했습니다.',  -- shortContent
+    'https://example.com/images/flutter_ai_medical.jpg',  -- caseImg (예시 URL)
+     3.0,  -- rating (double 값)
+    '2025-01-05 11:41:00'  -- createDate (모집 마감일 기준)
+FROM contract c
+JOIN project p ON c.project_idx = p.project_idx
+JOIN selectskill ss ON p.project_idx = ss.project_idx
+WHERE c.contract_idx = 24
+LIMIT 1;
+
+INSERT INTO `case_table` (`case_id`,`contract_idx`,`title`,`content`,`shortContent`,`caseImg`,`rating`,`createDate`)
+SELECT 
+    uuid(),  -- case_id: UUID 생성
+    c.contract_idx,  -- contract_idx: 계약 번호 (외래키)
+    'PC/iOS/안드로이드 태블릿/전자칠판 앱의 디자인',  -- title
+    '프로젝트 진행 후기: 본 프로젝트는 PC, iOS, 안드로이드 태블릿, 전자칠판 등 다양한 기기에서 운영 가능한 앱 디자인 작업으로, 학교 수업용 전자기기 연동 교육용 양방향 미러링 시스템 구축을 위한 디자인을 목표로 진행되었습니다. 상세한 기획 문서(요구사항 정의서, 화면설계서, 메뉴구조도 등)를 기반으로 와이어프레임 작업은 이미 완료되었으며, Figma와 Photoshop을 활용하여 원형 내비게이터, 화면 공유, 화이트보드 등 주요 기능에 대한 세밀한 디자인 작업이 진행되었으며, 산출물 완성도, 예산, 일정 준수를 최우선으로 고려한 결과물이 도출되었습니다.',  -- content
+    '독창적인 디자인과 세심한 UI 구성으로, 전자칠판부터 태블릿까지 모든 기기에 최적화된 인터페이스를 구현해냈습니다.',  -- shortContent
+    'https://example.com/images/flutter_ai_medical.jpg',  -- caseImg (예시 URL)
+     3.0,  -- rating (double 값)
+    '2025-01-06 12:11:00'  -- createDate (모집 마감일 기준)
+FROM contract c
+JOIN project p ON c.project_idx = p.project_idx
+JOIN selectskill ss ON p.project_idx = ss.project_idx
+WHERE c.contract_idx = 25
 LIMIT 1;
