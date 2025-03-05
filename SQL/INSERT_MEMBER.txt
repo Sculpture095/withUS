@@ -1,4 +1,4 @@
-select * from `member`;
+
 
 -- admin
 insert into `member`(`email`, `id`, `name`, `nickname`, `password`, `pcatype_idx`, `phone`, `rank_idx`, `usertype_idx`) values 
@@ -330,7 +330,7 @@ insert into `member`(`email`, `id`, `name`, `nickname`, `password`, `pcatype_idx
 
 -- partner
 insert into `member`(`email`, `id`, `name`, `nickname`, `password`, `pcatype_idx`, `phone`, `rank_idx`, `usertype_idx`) values 
-('uyop011221@naver.com', 'uyop719', '곽호범파트너', '곽리더', 'qwer1234', 'PARTNER', '01085583284', 'PLUS', 'TEAM'),
+('a20460759@gmail.com', 'a20460759', '이현준파트너', '파트너', 'qwer1234', 'PARTNER', '01085583284', 'PLUS', 'TEAM'),
 ('sycc3@gmail.com', 'sycc3456', '조예준', '예준대표', '1234qwer', 'PARTNER', '01000879543', 'BASIC', 'SOLE_PROPRIETOR'),
 ('zlwU4@gmail.com', 'zlwU4377', '장하준', '하준리더', 'abcd1234', 'PARTNER', '01074566438', 'PLUS', 'TEAM'),
 ('fNK10@gmail.com', 'qFNK10', '정서준', '정리더', 'abcd1234q', 'PARTNER', '01062253923', 'BASIC', 'TEAM'),
